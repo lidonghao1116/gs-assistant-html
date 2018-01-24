@@ -1,0 +1,610 @@
+.naviLeft {
+  width: 188px;
+  background-color: #EBEFF8;
+  position: fixed;
+}
+
+.naviLeft ul {
+  margin-top: 30px;
+}
+
+.naviLeft ul li {
+  height: 44px;
+  line-height: 44px;
+  vertical-align: top;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.naviLeft ul .nl_on {
+  background-color: #FFF;
+}
+
+.naviLeft ul .nl_on a {
+  color: #0A7EE3 !important;
+}
+
+.naviLeft ul .zhgl em {
+  background-image: url(../img/am.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 12px;
+  left: 40px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+.naviLeft ul .xgmm em {
+  background-image: url(../img/password.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 12px;
+  left: 40px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+.naviLeft ul .nl_on .zhgl em {
+  background-image: url(../img/am_on.png) !important;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 12px;
+  left: 40px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+.naviLeft ul .nl_on .xgmm em {
+  background-image: url(../img/password_on.png) !important;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 12px;
+  left: 40px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+.naviLeft ul li a {
+  display: block;
+  width: 108px;
+  padding: 0 40px;
+  text-align: right;
+  font-size: 16px;
+  position: relative;
+}
+
+.naviLeft ul li a:link {
+  color: #333333;
+}
+
+.naviLeft ul li a:visited {
+  color: #333333;
+}
+
+.particulars {
+  margin-left: 188px;
+}
+
+/* .particulars .frame {min-width: 800px!important;} */
+.frame .am-filter {
+  padding: 20px 0;
+}
+
+.frame .am-filter p {
+  float: left;
+  margin-right: 50px;
+}
+
+.frame .am-filter p label {
+  margin-right: 10px;
+}
+
+.frame .am-filter p input {
+  width: 166px;
+  height: 22px;
+}
+
+.frame .am-filter a {
+  display: block;
+  width: 64px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #0A7EE3;
+  cursor: pointer;
+  float: right;
+}
+
+.frame .addAccount a {
+  float: right;
+  color: #0A7EE3;
+  cursor: pointer;
+}
+
+.frame .clearfix .edit {
+  margin-top: 20px;
+}
+
+.frame .clearfix .edit-sel {
+  width: 160px;
+  float: right;
+  margin-top: 15px;
+  display: none;
+}
+
+.frame .am-list {
+  width: 100%;
+  text-align: center;
+  margin-top: 25px;
+  min-width: 750px;
+}
+
+.frame .am-list tr {
+  border: 1px solid #EBEFF8;
+}
+
+.frame .am-list thead tr {
+  background-color: #EBEFF8;
+  height: 40px;
+}
+
+.frame .am-list tbody tr {
+  height: 46px;
+}
+
+.frame .am-list tbody tr a {
+  color: #0A7EE3;
+  margin: 0 13px;
+  cursor: pointer;
+}
+
+.deleteAccount {
+  width: 420px;
+  position: fixed;
+  background-color: #FFFFFF;
+  z-index: 101;
+  left: 50%;
+  top: 50%;
+  margin-left: -210px;
+  height: 240px;
+  margin-top: -120px;
+  display: none;
+}
+
+.deleteAccount .da-title {
+  width: 100%;
+  height: 36px;
+  background-color: #0A7EE3;
+  color: #FFFFFF;
+  line-height: 36px;
+}
+
+.deleteAccount .da-title p {
+  float: left;
+  margin-left: 8px;
+  font-weight: bold;
+}
+
+.deleteAccount .da-title a {
+  float: right;
+  margin-right: 8px;
+  display: block;
+  cursor: pointer;
+}
+
+.deleteAccount .da-title a:after {
+  display: block;
+  content: '\2715';
+}
+
+.deleteAccount .da-content {
+  text-align: center;
+  margin-bottom: 44px;
+}
+
+.deleteAccount .da-content p {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 36px 0 14px 0;
+}
+
+.deleteAccount .da-btn {
+  width: 182px;
+  height: 30px;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: bold;
+  line-height: 30px;
+}
+
+.deleteAccount .da-btn a {
+  display: block;
+  width: 80px;
+  color: #FFFFFF;
+  height: 100%;
+  cursor: pointer;
+}
+
+.deleteAccount .da-btn .dab-left {
+  float: left;
+  background-color: #DBDBDB;
+}
+
+.deleteAccount .da-btn .dab-right {
+  float: right;
+  background-color: #0A7EE3;
+}
+
+/*新增账户*/
+.aa-form {
+  tbody {
+    margin-top: 20px;
+  }
+}
+
+.aa-form table {
+}
+
+.aa-form table tr {
+  height: 52px;
+  vertical-align: top;
+  &:last-child{
+    height:100%;
+  }
+}
+
+.aa-form table tr .aaf-fd {
+  width: 90px;
+  line-height: 28px;
+}
+
+.aa-form table tr .account-fn {
+  display: inline-block;
+  max-width: 100px;
+}
+
+.aa-form table tr .userType label {
+  margin-right: 20px;
+}
+
+.aa-form table tr .userType label input {
+  margin-right: 5px;
+}
+
+.aa-form table tr input[type='text'] {
+  box-sizing: border-box;
+  width: 216px;
+  height: 28px;
+}
+
+.aa-form table tr .aaf-authority {
+  border-radius: 4px;
+  width: 448px;
+  height: 210px;
+  background: #ffffff;
+  border: 1px solid #CCCCCC;
+  padding: 20px 0 0 16px;
+}
+
+.aa-form table tr .aaf-authority p {
+  margin-top: 15px;
+}
+
+.aa-form table tr .aaf-authority p:first-child {
+  margin: 0;
+}
+
+.aa-form table tr .aaf-authority p label {
+  display: inline-block;
+  width: 150px;
+}
+
+.aa-form table tr .aaf-authority p label img {
+  margin-right: 14px;
+}
+
+.aa-form table tr .aaf-authority p span {
+  margin-right: 60px;
+}
+
+.aa-form table tr .aaf-authority p span input[type='checkbox'] {
+  margin-right: 8px;
+}
+
+.aa-form .aaf-btn {
+  width: 272px;
+  height: 40px;
+  margin: 22px 0 0 130px;
+}
+
+.aa-form .aaf-btn a {
+  display: block;
+  width: 120px;
+  height: 100%;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.aa-form .aaf-btn .aafb-left {
+  border: 1px solid #cccccc;
+  float: left;
+  background-color: #fff;
+  border-radius: 3px;
+  font-size: 16px;
+  color: #333;
+}
+
+.aa-form .aaf-btn .aafb-right {
+  float: right;
+  border-radius: 3px;
+  background-color: #0A7EE3;
+}
+
+.upperLimit {
+  width: 420px;
+  height: 260px;
+  position: fixed;
+  background-color: #FFFFFF;
+  z-index: 101;
+  left: 50%;
+  top: 50%;
+  margin-left: -210px;
+  margin-top: -130px;
+  display: none;
+}
+
+.upperLimit .ul-title, .createSuccess .cs-title, .resetpw .rp-title {
+  width: 100%;
+  height: 36px;
+  background-color: #0A7EE3;
+  color: #FFFFFF;
+  line-height: 36px;
+}
+
+.upperLimit .ul-title p, .createSuccess .cs-title p, .resetpw .rp-title p {
+  float: left;
+  margin-left: 8px;
+  font-weight: bold;
+}
+
+.upperLimit .ul-title a, .createSuccess .cs-title a, .resetpw .rp-title a {
+  float: right;
+  margin-right: 8px;
+  display: block;
+  cursor: pointer;
+}
+
+.upperLimit .ul-title a:after, .createSuccess .cs-title a:after, .resetpw .rp-title a:after {
+  display: block;
+  content: '\2715';
+}
+
+.upperLimit .ul-content > p, .createSuccess .cs-content p {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin: 32px 0 14px 0;
+}
+
+.upperLimit .ul-content div {
+  width: 340px;
+  margin: 0 auto;
+}
+
+.upperLimit .ul-content div p {
+  text-align: center;
+  font-weight: bold;
+}
+
+/*.upperLimit .ul-content div p {float:left;width: 13%;font-weight: bold;}
+.upperLimit .ul-content div span {display: block;float: left;width: 87%;}*/
+.upperLimit .ul-content div span {
+  font-weight: normal;
+}
+
+.upperLimit .ul-btn {
+  display: block;
+  width: 130px;
+  height: 30px;
+  margin: 34px auto 0 auto;
+  text-align: center;
+  line-height: 30px;
+  color: #FFFFFF;
+  background-color: #0A7EE3;
+  cursor: pointer;
+}
+
+.createSuccess {
+  width: 420px;
+  height: 240px;
+  position: fixed;
+  background-color: #FFFFFF;
+  z-index: 101;
+  left: 50%;
+  top: 50%;
+  margin-left: -210px;
+  margin-top: -120px;
+  display: none;
+}
+
+.createSuccess .cs-content span {
+  text-align: center;
+  display: block;
+}
+
+.createSuccess .cs-btn {
+  display: block;
+  width: 80px;
+  height: 30px;
+  margin: 34px auto 0 auto;
+  text-align: center;
+  line-height: 30px;
+  color: #FFFFFF;
+  background-color: #DBDBDB;
+  cursor: pointer;
+}
+
+.reset {
+  margin-left:20px;
+  display: inline-block;
+  width: 70px;
+  height: 22px;
+  line-height: 22px;
+  text-align: center;
+  border: 1px solid #B3B3B3;
+  cursor: pointer;
+}
+
+.resetpw {
+  width: 420px;
+  height: 220px;
+  position: fixed;
+  background-color: #FFFFFF;
+  z-index: 101;
+  left: 50%;
+  top: 50%;
+  margin-left: -210px;
+  margin-top: -110px;
+  display: none;
+}
+
+.resetpw .rp-content {
+  height: 76px;
+  text-align: center;
+  padding-top: 44px;
+}
+
+.resetpw .rp-content p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.resetpw .rp-btn {
+  width: 184px;
+  height: 30px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.resetpw .rp-btn a {
+  width: 80px;
+  height: 100%;
+  line-height: 30px;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.resetpw .rp-btn .rpb-left {
+  float: left;
+  background-color: #DBDBDB;
+}
+
+.resetpw .rp-btn .rpb-right {
+  float: right;
+  background-color: #0A7EE3;
+}
+
+#rp-step2 {
+  display: none;
+}
+
+.resetpw .rpb-center {
+  display: block;
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #DBDBDB;
+  color: #FFFFFF;
+  margin: 0 auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+.resetpw .rp-content span {
+  margin-top: 12px;
+}
+
+.pannel {
+  border: 1px solid #f5f5f5;
+  background: #f5f5f5;
+  width: 100%;
+  .aaf-fd {
+    padding-left: 40px;
+  }
+}
+body{
+  background: #ffffff;
+}
+.particulars {
+  //position: fixed;
+  //height:100%;
+  background: #ffffff;
+}
+#fm02{
+  margin-top:15px;
+}
+.mobile{
+  line-height: 28px;
+}
+.form{
+  background: #f5f5f5;
+  padding:24px 0;
+  td{
+    position: relative;
+  }
+}
+.loginAccount{
+  //width: 400px;
+}
+.validation{
+  display: inline-block;
+}
+.intRight{
+  display: inline-block;
+  width: 216px;
+}
+input[name='loginAccount']{
+  float: right;
+}
+#code{
+  width: 102px;
+}
+#smsBtn{
+  box-sizing: border-box;
+  cursor: pointer;
+  height: 28px;
+  background: #ffffff;
+  border: 1px solid #0a7ee3;
+  -webkit-appearance:none;
+
+  border-radius: 4px;
+  font-size: 14px;
+  color: #0a7ee3;
+  float: right;
+  width: 102px;
+}
+.paths{
+  padding-left: 33px;
+}
+.noClickAble{
+  cursor: default!important;
+  border: #d6d6d6!important;
+  background: #e5e5e5!important;
+}
+input[name="loginAccount"]{
+  width: 102px!important;
+}
+.tips{
+  vertical-align: middle;
+  margin-left: 15px;
+  color: #d6d6d6;
+  font-size: 14px;
+}

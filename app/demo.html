@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+  <button>读卡</button>
+  <div id="show"></div>
+  <img src="" alt="">
+</body>
+<script>
+  const fs = require('fs');
+  const path = require('path');
+
+  if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};
+  $("button").click(function () {
+    var card=__dirname.split("electron.asar")[0];
+
+    var cardUrl=path.join(card,'app.asar/card_read.js').replace("/","\\");
+    console.log(cardUrl);
+    var card_read = require(cardUrl);
+    var timestamp = Date.parse(new Date());
+    console.log(timestamp);
+//    var imgSrc = path.join(card,"123.bmp?"+timestamp)
+    var imgSrc = "123.bmp?"+timestamp;
+    console.log(imgSrc);
+    var results = card_read.readIdInfo(imgSrc);
+    console.log(results);
+    $("#show").html(results)
+    fs.readFile(`${process.cwd()}/123.bmp`, (err, data) => {
+
+      //get image file extension name
+      let extensionName = path.extname(`${process.cwd()}/123.bmp`);
+
+      //convert image file to base64-encoded string
+      let base64Image = new Buffer(data, 'binary').toString('base64');
+//      console.log(base64Image);
+      //combine all strings
+      let imgSrcString = `data:image/${extensionName.split('.').pop()};base64,${base64Image}`;
+      console.log(imgSrcString);
+      $("img").attr("src", imgSrcString)
+    })
+  })
+
+
+  //read image file
+
+</script>
+</html>

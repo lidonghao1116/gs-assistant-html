@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+    	<meta http-equiv="Pragma" CONTENT="no-cache">
+		<title>您身边的，家政好帮手</title>
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+	</head>
+	<body>
+		<div id="layer"></div>
+		
+		<div class="payQR">
+			<a></a>
+			<div class="payQR-center">
+				<img id="QRcode-pay" src=""/>
+				<div>
+					<p>请使用微信扫一扫</p>
+					<p>扫描二维码支付</p>
+				</div>
+			</div>
+		</div>
+		
+		<div id="header" class="clearfix">
+			<div class="h-frame">
+				<div class="logo"><img src="img/logo.png"/></div>
+				<div class="h-right">
+					<div class="account">
+						<ul class="clearfix">
+							<!-- <li class="login"><a href="login.html">登录</a></li>
+							<li><a href="accountManagement.html">系统管理</a></li>
+							<li><a>退出</a></li> -->
+						</ul>
+					</div>
+					<div class="navigator">
+						<ul class="clearfix">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<p class="paths">当前页面：<a href="index.html">首页</a> > 支付收银台</p>
+		<div>
+			<div class="frame">
+				<p class="title"><i>充值</i></p>
+				<div class="deposit">
+					<table>
+						<tbody>
+							<tr class="available">
+								<td>可用余额</td>
+								<td class="secTd" width="89%">￥100.00</td>
+							</tr>
+							<tr>
+								<td>充值金额</td>
+								<td class="secTd"><input type="text" name="payAmount" class="dep_amount" value="200" /></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="secTd" style="vertical-align: top;">
+									<a class="dep_on">200元</a>
+									<a>500元</a>
+									<a>1000元</a>
+								</td>
+							</tr>
+							<tr>
+								<td>支付方式</td>
+								<td class="secTd">
+									<label>
+										<input type="radio" name="payType" value="P03" checked="checked" />
+										<img src="img/zfb.jpg"/>
+									</label>
+									<label>
+										<input type="radio" name="payType" value="P02" />
+										<img src="img/wxzf.jpg"/>
+									</label>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<input type="hidden" name="transDesc" id="transDesc" value="123" />
+					<a class="confRecharge">确认充值</a>
+				</div>
+			</div>
+		</div>
+		<div class="hint">
+			<h3>温馨提示：</h3>
+			<p>1.充值金额为大于100元的整数。</p>
+		</div>
+		<input type="hidden" value="" name='tradeNo'>
+		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function checkQR(){
+				var tradeNo = $("input[name='tradeNo']").val();
+				$.ajax({
+			        url: publicPath+"/api/payment/result?tradeNo="+tradeNo,
+			        type: "get",
+			        data: {},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData
+			                	if (dataJD==0) {
+			                		location.href="index.html";
+			                	}
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			};
+		
+			// function pay(payAmount,transDesc,payType){
+			// 	$.ajax({
+			// 		url: "/fbeeConsole_web/api/index/before.do",
+			//         type: "post",
+			//         data:{},
+		 	// 		dataType: "json",
+			//         success: function success(data2) {
+			//         	if(data2.jsonData){
+			//         		$.ajax({
+			// 	    			url: "/fbeeConsole_web/api/index/sendBeforePayRequest.do",
+			// 	    	        type: "get",
+			// 	    	        data:{orderNo:data2.jsonData,payAmount:payAmount,transDesc:transDesc,payType:payType,openId:""},
+			// 	    	        dataType: "json",
+			// 	    	        success: function success(data3) {
+			// 	    	        	$.ajax({
+			// 	            			url:"/fbeeConsole_web/api/index/sendPayRequest.do",
+			// 	            	        type: "get",
+			// 	            	        data:{pay_data:data3.pay_data,sign_msg:data3.sign_msg},
+			// 	             			dataType: "json",
+			// 	            	        success: function success(data4) {
+			// 	            	        	$("#layer,.payQR").show();
+			// 	            	            $("#QRcode-pay").attr("src",data4.codeImgUrl);
+			// 	            	            setInterval(checkQR,1000);
+			// 	            	        },
+			// 	            	        error:function(err){
+			// 	            	            console.log(err);
+			// 	            	        }
+			// 	            	    });
+			// 	    	        },
+			// 	    	        error:function(err){
+			// 	    	            console.log(err);
+			// 	    	        }
+			// 	    	    });
+			//         	}
+			//         },
+			//         error:function(err){
+			//             console.log(err);
+			//         } 
+			//     });
+			    
+			// }
+			var myPay;
+			function pay(payAmount,payType){
+				$.ajax({
+					url: publicPath+"/api/payment/recharge",
+					type: "post",
+					data:JSON.stringify({
+						amount:payAmount,
+						payType:payType,
+						remarks:"商户充值"
+					}),
+					dataType: "json",
+					contentType: "application/json;charset=UTF-8",
+					success: function success(data) {
+						if(data.success){
+							var dataJD = data.jsonData;
+							$("#layer,.payQR").show();
+							$("#QRcode-pay").attr("src",dataJD.codeImgUrl);
+							$("input[name='tradeNo']").val(dataJD.tradeNo);
+							myPay = window.setInterval(checkQR,1000);
+						}else{
+							alert(data1.msg);
+							console.log(data1.msg);
+						}
+					},
+					error:function(err){
+						console.log(err);
+					}
+				});
+			}
+			
+			$(function(){
+				$.ajax({
+			        url: publicPath+"/api/index/info",
+			        type: "post",
+			        data: {},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+								var dataJD = data.jsonData;
+			                	if(dataJD.availableAmount!=null){
+									if(dataJD.availableAmount == 0){
+										$(".available .secTd").text("0.00");
+									}else{
+										$(".available .secTd").text(dataJD.availableAmount);
+									}
+								}
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+				
+				$(".deposit .secTd a").click(function(){
+					$(this).addClass("dep_on").siblings().removeClass("dep_on");
+					var i = $(this).index();
+					if (i == 0) {
+						$(".dep_amount").val(200);
+					} else if (i == 1) {
+						$(".dep_amount").val(500);
+					} else {
+						$(".dep_amount").val(1000);
+					}
+					
+					$("input[name='payAmount']").nextAll('.validation').remove();
+				})
+				
+				var regNum= /^[1-9]\d*$/;
+				$("input[name='payAmount']").keyup(function(){
+					var self=$(this);
+					var payAmount =parseInt($(this).val());
+					if (payAmount == "") {
+						onError('不能为空',self);
+						return;
+					} else if (!regNum.test(payAmount)) {
+						onError('请填写数字',self);
+						return;
+					} else if (payAmount%100!=0) {
+						onError('充值金额为大于100元的整数。',self);
+						return;
+					} else {
+						onSuccess(self);
+					}
+				});
+				
+				
+				$(".confRecharge").click(function(){
+					$("input[name='payAmount']").trigger("keyup");
+					if ($(".validation").length>0){
+						return false;
+					}
+					var payAmount = $("input[name='payAmount']").val();
+					// var transDesc = $("input[name='transDesc']").val();
+					var payType = $("input[name='payType']:checked").val();
+					if (payType=="P02") {
+						$(".payQR div p:first-child").text("请使用微信扫一扫");
+					} else{
+						$(".payQR div p:first-child").text("请使用手机支付宝");
+					}
+					pay(payAmount,payType);
+					
+				});
+				
+				$(".payQR a").click(function(){
+					$(".payQR,#layer").hide();
+					if(myPay)window.clearInterval(myPay);
+				});
+			});
+			
+			function onError (msg,self) {
+				if(self.nextAll().hasClass('validation')){
+					self.nextAll('.validation').text(msg);
+					return;
+				}
+				self.parent().append("<span class='validation'>"+msg+"</span>");
+			}
+	
+			function onSuccess(self) {
+				self.nextAll('.validation').remove();	
+			}
+		</script>
+	</body>
+</html>

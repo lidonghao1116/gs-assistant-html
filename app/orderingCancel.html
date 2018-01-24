@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+    	<meta http-equiv="Pragma" CONTENT="no-cache">
+		<title>您身边的，家政好帮手</title>
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/ordermenu.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/ordering.css?v=0.01"/>
+	</head>
+	<body>
+		<div id="layer"></div>
+		<!-- 头部导航菜单 -->
+		<div id="header" class="clearfix">
+			<div class="h-frame">
+				<div class="logo"><img src="img/logo.png"/></div>
+				<div class="h-right">
+					<div class="account">
+						<ul class="clearfix">
+						</ul>
+					</div>
+					<div class="navigator">
+						<ul class="clearfix">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 左侧导航菜单 -->
+		<div class="naviLeft">
+			<ul>
+				<li><a class="ddgl" href="orderManagement.html"><em></em>我的订单</a></li>
+				<li class="nl_on"><a class="hzqd" href="ordering.html"><em></em>合作抢单</a></li>
+				<li><a class="zpgl" href="recruitManagement.html"><em></em>我的招聘</a></li>
+				<li><a class="jlx" href="orderingReceive.html"><em></em>简历箱</a></li>
+			</ul>
+		</div>
+		<!-- 主要内容 -->
+		<div class="particulars">
+			<div class="frame">
+				<!-- 状态 -->
+				<div class="orderingStatus">
+					<ul class="clearfix">
+						<li><a href="ordering.html" data-orderstatus="">可抢单</a></li>
+						<li><a href="orderingProcess.html"  data-orderstatus=""><i class="red"></i>处理中</a></li>
+						<li><a href="orderingComplete.html" data-orderstatus="">已完成</a></li>
+						<li><a class="os_on" href="orderingCancel.html" data-orderstatus="">已取消</a></li>
+					</ul>
+				</div>
+				<!-- 筛选 -->
+				<div class="selector">
+					<div class="selectorList">
+						<div class="selector_l">服务工种：</div>
+						<div class="selector_r">
+							<ul class="selector_ul" id="serviceType">
+							</ul>
+						</div>
+					</div>
+					<div class="selectorList">
+						<div class="selector_l">订单状态：</div>
+						<div class="selector_r">
+							<ul class="selector_ul" id="order_state">
+								<li class="active" data-code="35">全部</li>
+								<li data-code="3">已拒绝</li>
+								<li data-code="5">已取消</li>
+							</ul>
+						</div>
+					</div>
+					<div class="selectorList" style="display:none">
+						<div class="selector_l">价格预算：</div>
+						<div class="selector_r">
+							<ul class="selector_ul" id="price">
+							</ul>
+						</div>
+					</div>
+					<div class="selectorList" style="display:none">
+						<div class="selector_l">服务区域：</div>
+						<div class="selector_r">
+							<ul class="selector_ul" id="area_sp">
+							</ul>
+						</div>
+					</div>
+					<span class="more_selector">全部</span>
+				</div>
+				<!-- 总数 -->
+				<div class="total">
+					<p class="summ_order">订单总数：单</p>
+				</div>
+				<!-- 列表 -->
+				<div class="orderlist_box">
+					<!-- <div class='orderlist'>
+						<div class='order_top'>
+							<h2>月嫂-住家<i>急</i><a>已取消</a></h2>
+							<ul>
+								<li>发布时间：<span>2017-11-01</span></li>
+								<li>价格预算：<span class='salary'>9000元/月</span></li>
+								<li>年龄要求：<span>29-39岁</span></li>
+								<li>服务区域：<span>上海市-徐汇区-城区</a></span></li>
+							</ul>
+						</div>
+						<div class='order_bottom'>
+							<p class='order_demand'>职位要求：</p>
+							<div class='demand_box'>
+								<div class='demand'>
+									要求阿姨具备一定的理论知识，且有过照顾宝宝经历，要求阿姨有月嫂证
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class='orderlist'>
+						<div class='order_top'>
+							<h2>月嫂-住家<i>急</i><a>已拒绝</a></h2>
+							<ul>
+								<li>发布时间：<span>2017-11-01</span></li>
+								<li>价格预算：<span class='salary'>9000元/月</span></li>
+								<li>年龄要求：<span>29-39岁</span></li>
+								<li>服务区域：<span>上海市-徐汇区-城区</a></span></li>
+							</ul>
+						</div>
+						<div class='order_bottom'>
+							<p class='order_demand'>职位要求：</p>
+							<div class='demand_box'>
+								<div class='demand'>
+									要求阿姨具备一定的理论知识，且有过照顾宝宝经历，要求阿姨有月嫂证
+								</div>
+							</div>
+						</div>
+					</div> -->
+				</div>
+				<div class="clearfix">
+					<div id="pagination">
+						<span class="current prev">上一页</span>
+						<span class="current">1</span>
+						<span class="current next">下一页</span>
+					</div>
+					<p class="records">共<span></span>条</p>
+				</div>
+			</div>
+		</div>
+		<!-- 详情 -->
+		<div class="orderDetails orderDetails_sp">
+			<input type="hidden" value="" name="id" >
+			<input type="hidden" value="" name="orderNo" >
+			<input type="hidden" value="" name="staffId" >
+			<p class="od-title clearfix">订单详情<a></a></p>
+			<div id="ic-frame">
+				<div class="infoCard">
+					<div class="card_list">
+						<p class="title"><i>订单信息</i> <a class="status">已取消</a></p>
+						<div class="order_info">
+							<ul class="column_ul">
+								<li  class="column clearfix">
+									<label>发布时间：</label>
+									<div class="column_right De_addTime"></div>
+								</li>
+								<li  class="column clearfix">
+									<label>最后处理：</label>
+									<div class="column_right De_modifyTime"></div>
+								</li>
+								<li  class="column clearfix">
+									<label>订单来源：</label>
+									<div class="column_right De_jobTenantName"></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="card_list">
+						<p class="title"><i>服务信息</i></p>
+						<div class="order_info">
+							<ul class="column_ul">
+								<li  class="column clearfix">
+									<label>服务工种：</label>
+									<div class="column_right De_positionName"></div>
+								</li>
+								<li  class="column clearfix">
+									<label>服务区域：</label>
+									<div class="column_right De_serviceAd"></div>
+								</li>
+								<li  class="column clearfix">
+									<label>服务时间：</label>
+									<div class="column_right De_serviceTime"> <span>至</span> </div>
+								</li>
+								<li  class="column clearfix">
+									<label>价格预算：</label>
+									<div class="column_right De_salary"></div>
+								</li>
+								<li  class="column clearfix">
+									<label>年龄要求：</label>
+									<div class="column_right De_age"></div>
+								</li>
+								<li  class="column clearfix">
+									<label>技能要求：</label>
+									<div class="column_right De_skill"></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="card_list">
+						<p class="title"><i>职位要求</i></p>
+						<div class="order_info">
+							<ul class="column_ul">
+								<li  class="column clearfix">
+									<label>职位要求：</label>
+									<div class="column_right De_demand">
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="card_list card_list_sp">
+						<p class="title"><i>我的家政员</i></p>
+						<div class="order_info">
+							<div class="hi-basic">
+								<!-- <img src="/images/staff/headImage/201707071721309818416.jpg">
+								<div>
+									<p class="service-status"><span>吴小龙</span><i>月嫂、育儿嫂</i></p>
+									<p class="staffData">29岁 | 属蛇 | 上海人 | 双鱼座 | 本科</p>
+									<p class="price">¥ 5600 元／月</p>
+								</div> -->
+							</div>
+						</div>
+					</div>
+					<div class="card_list" id="cancel_reason">
+						<p class="title"><i>取消理由</i></p>
+						<div class="order_info">
+							<ul class="column_ul">
+								<li  class="column clearfix">
+									<label>取消理由：</label>
+									<div class="column_right cancel_reason">
+										取消理由
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.pagination.js" type="text/javascript" charset="utf-8"></script>
+		<script src="time/lhgcore.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="time/lhgcalendar.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+		<script src="js/echarts.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/scroller.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				// 获取筛选列表
+				pullSelector();
+				// 获取列表
+				 getRecord();
+
+				 // 是否有待处理
+				$.ajax({
+					url:publicPath+"/api/job/info",
+					type:"get",
+					data:{},
+					dataType:"json",
+					success:function success(data){
+						if(data.success){
+							if(data.code == 0){
+								var dataJD = data.jsonData;
+								if(dataJD.processResumeNum > 0){
+									$(".orderingStatus ul li i").show();
+								}else{
+									$(".orderingStatus ul li i").hide();
+								}
+								console.log(data.msg);
+							}else{
+								alert(data.msg);
+							}
+						}else{
+							alert(data.msg);
+						}
+					}
+				});
+
+				// 筛选
+				$(".selector").on("click","li",function(){
+					$(this).addClass("active").siblings().removeClass("active");
+					 getRecord();
+				});
+				// 查看详情
+				$(".orderlist_box").on("click",".orderlist",function(){
+					var id = $(this).find("input[name='id']").val();
+					var orderNo = $(this).find("input[name='orderNo']").val();
+					if($(this).hasClass("slideRight")){
+						$(this).removeClass("slideRight");
+						$(".orderDetails").animate({"right":-750})
+						return;
+					} else {
+						$(this).addClass("slideRight").siblings().removeClass("slideRight");
+						$(".orderDetails").animate({"right":0});
+						$(".orderDetails input[name='id']").val(id);
+						$(".orderDetails input[name='orderNo']").val(orderNo);
+						getDetails();
+					}
+				});
+				// 关闭详情
+				$(".od-title a").click(function(){
+					$(".orderlist").removeClass("slideRight");
+					$(".orderDetails").animate({"right":-750});
+				});
+			// 筛选展开收起
+			$(".more_selector").click(function(){
+				if($(this).hasClass("up_selector")){
+					$(this).parents(".selector").find(".selectorList:gt(1)").hide();
+					$(this).removeClass("up_selector");
+					$(this).text("全部");
+				}else{
+					$(this).parents(".selector").find(".selectorList").show();
+					$(this).addClass("up_selector");
+					$(this).text("收起");
+				}
+			});
+
+			})
+		// 获取筛选列表
+		function pullSelector(){
+			// 服务工种
+			$.ajax({
+				url: publicPath + "/api/common/getDictionaryData/c004",
+				type: "post",
+				data: {},
+				dataType: "json",
+				async: false,
+				success: function success(data) {
+					if (data.success) {
+						if (data.code == 0) {
+							var dataJD = data.jsonData;
+							var html = "<li data-code='' class='active'>全部</li>";
+							$.each(dataJD, function(i, item) {
+								html += "<li data-code='" + item.code + "'>" + item.name + "</li>";
+							});
+							$("#serviceType").html(html);
+							console.log(data.msg);
+						} else {
+							console.log(data.msg);
+						}
+					} else {
+						console.log(data.msg);
+					}
+				}
+			});
+			// 价格预算
+			$.ajax({
+				url: publicPath + "/api/common/getDictionaryData/c035",
+				type: "post",
+				data: {},
+				dataType: "json",
+				async: false,
+				success: function success(data) {
+					if (data.success) {
+						if (data.code == 0) {
+							var dataJD = data.jsonData;
+							var html = "<li data-code='' class='active'>全部</li>";
+							$.each(dataJD, function(i, item) {
+								html += "<li data-code='" + item.code + "'>" + item.name + "</li>";
+							});
+							$("#price").html(html);
+							console.log(data.msg);
+						} else {
+							console.log(data.msg);
+						}
+					} else {
+						console.log(data.msg);
+					}
+				}
+			});
+		// 地区
+			$.ajax({
+				url: publicPath+"/api/common/getAreaData/c001",
+				type: "post",
+				data: {},
+				dataType: "json",
+				async:false,
+				success: function success(data) {
+					if(data.success){
+						if(data.code == 0){
+							var dataJD = data.jsonData;
+							var html = "";
+							$.each(dataJD, function(i,item) {
+								html += "<li data-code='"+item.areaCode+"'>"+item.areaName+"</li>";
+							});
+							$("#area_sp").html("<li class='active' data-code=''>全部</li>"+html);
+							console.log(data.msg);
+						}else{
+							console.log(data.msg);
+						}
+					}else{
+						console.log(data.msg);
+					}
+				}
+			});
+			//			    年龄要求
+			$.ajax({
+				url: publicPath+"/api/common/getDictionaryData/c008",
+				type: "post",
+				data: {},
+				dataType: "json",
+				success: function success(data) {
+					if(data.success){
+						if(data.code == 0){
+							var dataJD = data.jsonData;
+							var html = "<li data-code='' class='active'>全部</li>";
+							$.each(dataJD, function(i,item) {
+								var name = "";
+								if (item.name=="0,29") {
+									name = "29岁以下";
+								} else if (item.name=="29,39") {
+									name = "29-39岁";
+								} else if (item.name=="39,49") {
+									name = "39-49岁";
+								} else {
+									name = "50岁以上";
+								}
+								html += "<li data-code='"+item.code+"' >"+name+"</li>";
+							});
+							$("#age").html(html);
+							console.log(data.msg);
+						}else{
+							console.log(data.msg);
+						}
+					}else{
+						console.log(data.msg);
+					}
+				}
+			});
+		}
+
+		//			获取招聘列表信息
+		function getRecord(){
+			var serviceType = $("#serviceType li.active").data("code");
+			var salaryType = $("#price li.active").data("code");
+			var serviceProvince = $("#area_sp li.active").data("code");
+			var status = $("#order_state li.active").data("code");
+			$.ajax({
+				url: publicPath+"/api/job/resume/mine/apply",
+				type: "get",
+				data: {
+					status:status,
+					serviceType:serviceType,
+					salaryType:salaryType,
+					serviceProvince:serviceProvince
+				},
+				dataType: "json",
+				success: function success(data) {
+					if(data.success){
+						if(data.code == 0){
+							var dataJD = data.jsonData;
+							$(".total .summ_order").text("订单总数："+dataJD.records+" 单");
+							$(".records span").text(dataJD.records);
+							pagination(dataJD.records);
+							console.log(data.msg);
+						}else{
+							console.log(data.msg);
+						}
+					}else{
+						console.log(data.msg);
+					}
+				}
+			});
+		}
+	//			分页
+			var page = 1;
+			var rowNum = 8;
+			function pagination(records){
+				$("#pagination").pagination(records, {
+					num_edge_entries: 1,
+					num_display_entries: 4,
+					current_page:page-1,
+					items_per_page:rowNum,
+					prev_text:"上一页",
+					next_text:"下一页",
+					callback: getTenantsJobsListInfo
+				});
+			};
+			function getTenantsJobsListInfo(page_index){
+				var page = page_index+1;
+				var serviceType = $("#serviceType li.active").data("code");
+				var salaryType = $("#price li.active").data("code");
+				var serviceProvince = $("#area_sp li.active").data("code");
+				var status = $("#order_state li.active").data("code");
+				$.ajax({
+					url: publicPath+"/api/job/resume/mine/apply",
+					type: "get",
+					data: {
+						page:page,
+						rowNum:rowNum,
+						status:status,
+						serviceType:serviceType,
+						salaryType:salaryType,
+						serviceProvince:serviceProvince
+					},
+					dataType: "json",
+					success: function success(data) {
+						if(data.success){
+							if(data.code == 0){
+								var dataJD = data.jsonData.rows;
+								if(dataJD!=""){
+									var html="";
+									$.each(dataJD,function(i,item){
+										var emsSign="";
+										if(item.jobInfo.emsSign=="01"){
+											emsSign="<i>急</i>"
+										}
+										var orderStatus="";
+										if(item.status=="3"){
+											orderStatus = "<a>已拒绝</a>";
+										}else if(item.status=="5"){
+											orderStatus = "<a>已取消</a>";
+										}
+										var addDate =new Date(item.jobInfo.addTime);
+										var addTime = "";
+											$.ajax({
+												url: publicPath+"/api/common/now",
+												type: "get",
+												data: {},
+												dataType: "json",
+												async:false, 
+												success: function success(data0) {
+													var dateNow = new Date(data0);
+													if((dateNow-addDate)>0 && (dateNow-addDate)<3600000){
+														if(parseInt((dateNow-addDate)/60000)==0){
+																addTime = "刚刚";
+															}else{
+																addTime = parseInt((dateNow-addDate)/60000)+"分钟前";
+															}
+														}else{
+															addTime = item.jobInfo.addTime;
+														}
+												}
+											});
+										html +="<div class='orderlist'>"+
+												"<input name='orderNo' type='hidden' value='"+item.orderNo+"'/>"+
+												"<input name='id' type='hidden' value='"+item.id+"'/>"+
+												"<div class='order_top'>"+
+													"<h2>"+item.jobInfo.positionName+emsSign+orderStatus+"</h2>"+
+													"<ul>"+
+														"<li>发布时间：<span>"+addTime+"</span></li>"+
+														"<li>价格预算：<span class='salary'>"+item.jobInfo.salary+item.jobInfo.salaryTypeValue+"</span></li>"+
+														"<li>年龄要求：<span>"+item.jobInfo.ageValue+"</span></li>"+
+														"<li>服务区域：<span>"+item.jobInfo.serviceProvinceValue+"-"+item.jobInfo.serviceCityValue+"-"+item.jobInfo.serviceAreaValue+"</a></span></li>"+
+													"</ul>"+
+												"</div>"+
+												"<div class='order_bottom'>"+
+													"<p class='order_demand'>职位要求：</p>"+
+													"<div class='demand_box'>"+
+														"<div class='demand'>"+item.jobInfo.demand+"</div>"+
+													"</div>"+
+												"</div>"+
+											"</div>";
+									})
+									$(".orderlist_box").html(html);
+								}else{
+									$(".orderlist_box").html("<div class='no_order'>暂无内容~</div>");
+								}
+								
+								console.log(data.msg);
+							}else{
+								console.log(data.msg);
+							}
+						}else{
+							console.log(data.msg);
+						}
+					}
+				});
+			}
+
+			// 订单详情
+			function getDetails(){
+				var resumeId = $(".orderDetails input[name='id']").val();
+				$.ajax({
+					url: publicPath+"/api/job/resume/"+resumeId,
+					type: "get",
+					data: {},
+					dataType: "json",
+					success: function success(data) {
+						if(data.success){
+							if(data.code == 0){
+								var dataJD = data.jsonData;
+								var dataJob = data.jsonData.jobInfo;
+								var dataStaff = data.jsonData.staffInfo;
+								if(dataJD.status==3){
+									status = "已拒绝";
+									$(".orderDetails .De_jobTenantName").parent().hide();
+								}else if(dataJD.status==5){
+									status = "已取消";
+									var contactName= dataJob.contactName.substr(0,1)+"老师";
+									$(".orderDetails .De_jobTenantName").text(dataJob.jobTenantName+"，"+contactName+"，"+dataJob.contactPhone).parent().show();
+
+								}
+								var serviceTime = "";
+								if(dataJob.serviceStartTime!=null && dataJob.serviceEndTime!=null){
+									serviceTime = dataJob.serviceStartTime+"<span> 至 </span>"+dataJob.serviceEndTime;
+								}
+								$(".orderDetails .cancel_reason").text(dataJD.remarks);
+								$(".orderDetails .status").text(status);
+								$(".orderDetails .De_addTime").text(dataJob.addTime||"");
+								$(".orderDetails .De_modifyTime").text(dataJob.modifyTime||"");
+								$(".orderDetails .De_positionName").text(dataJob.positionName||"");
+								$(".orderDetails .De_serviceAd").text(dataJob.serviceProvinceValue + dataJob.serviceCityValue + dataJob.serviceAreaValue);
+								$(".orderDetails .De_serviceTime").html(serviceTime)
+								$(".orderDetails .De_salary").text(dataJob.salary + dataJob.salaryTypeValue);
+								$(".orderDetails .De_age").text(dataJob.ageValue||"");
+								$(".orderDetails .De_skill").text(dataJob.skillRequirementsValue||"");
+								$(".orderDetails .De_demand").html(dataJob.demand||"");
+								var staffId = dataJD.resumeTenantStaffId;
+								$(".orderDetails input[name='staffId']").val(staffId);
+								var html = "<img src='"+dataStaff.headImage+"'>"+
+											"<div>"+
+												"<p class='service-status'><span>"+dataStaff.staffName+"</span><i>"+dataStaff.serviceTypeValue+"</i></p>"+
+												"<p class='staffData'>"+dataStaff.age+"岁 | 属"+dataStaff.zodiacValue+" | "+dataStaff.nativePlaceValue+"人 | "+dataStaff.constellationValue+" | "+dataStaff.educationValue+"</p>"+
+												"<p class='price'>¥ "+dataStaff.price+dataStaff.unitValue+"</p>"+
+											"</div>";
+								$(".orderDetails .hi-basic").html(html);
+								$("#ic-frame").scroller(0);
+								console.log(data.msg);
+							}else{
+								console.log(data.msg);
+							}
+						}else{
+							console.log(data.msg);
+						}
+					}
+				});
+			}
+
+			function onError (msg,self) {
+				if(self.nextAll().hasClass('validation')){
+					self.nextAll('.validation').text(msg);
+					return;
+				}
+				self.parent().append("<p class='validation'>"+msg+"</p>")
+			}
+
+			function onSuccess(self) {
+				self.nextAll('.validation').remove();
+			}
+		</script>
+	</body>
+</html>

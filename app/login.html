@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+    	<meta http-equiv="Pragma" CONTENT="no-cache">
+		<title>您身边的，家政好帮手</title>
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css?v=0.01"/>
+	</head>
+	<body class="login">
+		<div class="loginLogo">
+			<img src="img/loginLogo.png"/>
+		</div>
+
+		<div class="loginBg">
+			<img src="img/loginSlogan.png"/>
+		</div>
+		<div class="loginCase">
+			<h1>家策门店助手</h1>
+			<div class="lc-validation">
+
+			</div>
+			<div class="lc-inp">
+				<p class="lc-account">
+					<em></em>
+					<input type="text" id="username" name="loginAccount" value="" placeholder="登录账号" />
+				</p>
+				<p class="lc-password">
+					<em></em>
+					<input type="password" name="password" value="" placeholder="登录密码" />
+				</p>
+				<div class="lc-code clearfix">
+					<p>
+						<em></em>
+						<input type="text" name="captcha" value="" placeholder="图形验证码" />
+					</p>
+					<img src=""/>
+				</div>
+				<div class="remember_me">
+					<input id="remember_me" type="checkbox" name="remember_me"  >
+	　　		 <label for="remember_me"  >记住用户名</label>
+				</div>
+				<button class="login-btn">登录</button>
+			</div>
+		</div>
+
+		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>-->
+		<script type="text/javascript">
+		var publicPath="http://"+window.location.host+"/fbeeConsole_web";
+//			验证码
+			function getCaptcha(){
+				$.ajax({
+			        url: publicPath+"/api/user/getCaptcha",
+			        type: "post",
+			        data: {},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	var img = "data:image/jpeg;base64,"+dataJD.captcha;
+			                	$(".lc-code img").attr("src",img);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			}
+
+//			function setCookie(value,expiredays) {
+//				var exdate=new Date()
+//				exdate.setDate(exdate.getDate()+expiredays)
+//				document.cookie=name+ "=" +escape(value)+
+//				((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+//			}
+			$(function(){
+				getCaptcha();
+
+			$("#username").val(localStorage.getItem("username"));
+			if(localStorage.getItem("username")==""||localStorage.getItem("username")==null){
+			    $("#remember_me").attr("checked",false)
+			}else{
+			    $("#remember_me").attr("checked",true)
+			}
+
+
+				$(".lc-code img").click(function(){
+					getCaptcha()
+				});
+//				登录
+				$(".login-btn").click(function(){
+					for (var i=0;i<$(".lc-inp input").length;i++) {
+						$(".lc-inp input").eq(i).trigger("blur");
+						if ($(".lv_on").length>0){
+							return;
+							break;
+						}
+					}
+
+					var loginAccount = $("input[name='loginAccount']").val();
+					var password = $("input[name='password']").val();
+					var captcha = $("input[name='captcha']").val();
+					$.ajax({
+				        url: publicPath+"/api/user/login",
+				        type: "post",
+				        data: {loginAccount:loginAccount,password:password,captcha:captcha},
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+													if ($("#remember_me").is(":checked")) {
+														var username =$("#username").val();
+														localStorage.setItem("username", username);
+												　　}
+												　　else {
+													localStorage.setItem("username", "");
+												　　}
+				                	location.href="index.html?v=0.01";
+				                	console.log(data.msg);
+				                } else {
+				                    alert(data.msg);
+				                }
+				            } else {
+				            	onError(data.msg);
+				            	getCaptcha();
+			                }
+			            }
+				    });
+				});
+
+				$("body").keydown(function(event){
+					if (event.keyCode == "13") {
+						$(".login-btn").trigger("click");
+					}
+				});
+
+
+//				表单验证
+				var regPhone= /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\\d{8}$/;//手机号
+
+				$(".lc-inp input").blur(function(){
+					var self = $(this);
+					var name = $(this).attr("name");
+					switch (name){
+						case "loginAccount":
+							if (self.val() == "") {
+								onError('账号不能为空');
+							} else {
+								onSuccess();
+							}
+							break;
+						case "password":
+							if (self.val() == "") {
+								onError('密码不能为空');
+							} else {
+								onSuccess();
+							}
+							break;
+						case "captcha":
+							if (self.val() == "") {
+								onError('验证码不能为空');
+								getCaptcha()
+							} else {
+								onSuccess();
+							}
+							break;
+						default:
+							break;
+					}
+				});
+
+			});
+
+
+			function onError (msg,self) {
+				if($(".lc-validation").hasClass("lv_on")){
+					$(".lc-validation").text(msg);
+					return;
+				}
+				$(".lc-validation").addClass("lv_on").text(msg);
+			}
+
+			function onSuccess() {
+				$(".lc-validation").removeClass("lv_on").text("");
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+    	<meta http-equiv="Pragma" CONTENT="no-cache">
+		<title>您身边的，家政好帮手</title>
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/ordermenu.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/orderingReceive.css?v=0.01"/>
+	</head>
+	<body>
+		<div id="layer"></div>
+		<div class="alert_tip" id="refuse_alert">
+			<div class="content">
+				<h1>拒绝理由</h1>
+				<ul>
+					<li><input name="reason" type="radio" value="0"/>该家政员不合适，下次合作</li>
+					<li><input name="reason" type="radio" value="1"/>刚找到匹配家政员，下次合作</li>
+					<li><input name="reason" type="radio" value="2" />其他<input type="text" placeholder="不超过20个字" name="remarks"></li>
+				</ul>
+			</div>
+			<div class="button clearfix">
+				<a class="cancel">取消</a>
+				<a class="ok" id="refuse_commit">提交</a>
+			</div>
+		</div>
+		<!-- 头部导航菜单 -->
+		<div id="header" class="clearfix">
+			<div class="h-frame">
+				<div class="logo"><img src="img/logo.png"/></div>
+				<div class="h-right">
+					<div class="account">
+						<ul class="clearfix">
+						</ul>
+					</div>
+					<div class="navigator">
+						<ul class="clearfix">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 左侧导航菜单 -->
+		<div class="naviLeft">
+			<ul>
+				<li><a class="ddgl" href="orderManagement.html"><em></em>我的订单</a></li>
+				<li><a class="hzqd" href="ordering.html"><em></em>合作抢单</a></li>
+				<li><a class="zpgl" href="recruitManagement.html"><em></em>我的招聘</a></li>
+				<li class="nl_on"><a class="jlx" href="orderingReceive.html"><em></em>简历箱</a></li>
+			</ul>
+		</div>
+		<!-- 主要内容 -->
+		<div class="particulars">
+			<div class="frame">
+				<div class="selector">
+					<div class="selectorList">
+						<div class="selector_l">处理结果：</div>
+						<div class="selector_r">
+							<ul class="selector_ul" id="order-status">
+								<li class="active" data-code="">全部</li>
+								<li data-code="1">待处理</li>
+								<li data-code="2">待面试</li>
+								<li data-code="4">已完成</li>
+								<li data-code="3">已拒绝</li>
+								<li data-code="5">已取消</li>
+							</ul>
+						</div>
+					</div>
+					<div class="selectorList">
+						<div class="selector_l">学历：</div>
+						<div class="selector_r">
+							<ul class="selector_ul" id="education">
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="total clearfix">
+					<p class="summ_order">订单总数：7单</p>
+					<div class="search">
+						<span><label>订单编号</label><input type="text" name="orderNo" value="" placeholder="请输入原始订单编号"></span>
+						<span>
+							<label>投递时间</label>
+							<input type="text" id="date_start" name="date_start" readonly="readonly" value="" placeholder="请输入">&nbsp;&nbsp;至&nbsp;&nbsp;<input type="text" id="date_end" name="date_end" readonly="readonly" value="" placeholder="请输入">
+						</span>
+						<a class="inquiry-btn"></a>
+					</div>
+				</div>
+				<table class="om-list">
+					<thead>
+						<tr>
+							<td width="6%">序号</td>
+							<td width="10%">家政员照片</td>
+							<td width="10%">家政员</td>
+							<td width="10%">匹配度</td>
+							<td width="21%">服务工种</td>
+							<td width="21%">基本信息</td>
+							<td width="10%">处理结果</td>
+							<td width="12%">投递时间</td>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- <tr data-staffId="">
+							<td>1</td>
+							<td><img src="/images/staff/headImage/201706142214440602722.jpg"></td>
+							<td>李阿姨</td>
+							<td>90%</td>
+							<td>月嫂、育儿嫂</td>
+							<td>30岁／鸡／上海人／高中</td>
+							<td>待处理</td>
+							<td><p>2017-11-09<br/><span>16:12:12</span></p></td>
+						</tr>
+						<tr data-staffId="">
+							<td>2</td>
+							<td><img src="/images/staff/headImage/201706142214440602722.jpg"></td>
+							<td>李阿姨</td>
+							<td>90%</td>
+							<td>月嫂、育儿嫂</td>
+							<td>30岁／鸡／上海人／高中</td>
+							<td>待处理</td>
+							<td><p>2017-11-09<br/><span>16:12:12</span></p></td>
+						</tr> -->
+					</tbody>
+				</table>
+				<div class="clearfix">
+					<div id="pagination"><span class="current prev">上一页</span><span class="current">1</span><span class="current next">下一页</span></div>
+					<p class="records">共<span>7</span>条</p>
+				</div>
+			</div>
+		</div>
+		<!-- 详情 -->
+		<div class="orderDetails">
+			<input type="hidden" name="id" value=""/>
+			<input type="hidden" name="jobId" value=""/>
+			<input type="hidden" name="staffId" value=""/>
+			<input type="hidden" name="orderNo" value=""/>
+			<input type="hidden" name="orderStatus" value=""/>
+			<p class="od-title clearfix">订单详情<a></a></p>
+			<div id="ic-frame">
+				<div class="infoCard">
+					<div class="card_list">
+						<p class="title"><i>家政员信息</i> <a class="status">已取消</a><a class="td_date">投递时间：2017-11-09</a></p>
+						<div class="order_info" id="staff">
+							<div class="order_info_left">
+								<div class="hi-basic">
+									<img src="/images/staff/headImage/201707071721309818416.jpg">
+									<div>
+										<p class="service-status"><span>吴师傅</span><i>月嫂、育儿嫂</i></p>
+										<p class="staffData">29岁 | 属蛇 | 上海人 | 双鱼座 | 本科</p>
+										<p class="price">¥ 5600 元／月</p>
+									</div>
+								</div>
+							</div>
+							 <p class="border"></p>
+							<div class="order_info_right orcode">
+								<!-- <img src="/img/scanUpload.png"> -->
+							</div> 
+						</div>
+					</div>
+					<div class="card_list" id="service_info">
+						<p class="title"><i>服务信息</i></p>
+						<div class="order_info">
+							<div class="order_info_left">
+								<ul class="column_ul">
+									<li  class="column clearfix">
+										<label>服务工种：</label>
+										<div class="column_right De_positionName">保姆 - 住家</div>
+									</li>
+									<li  class="column clearfix">
+										<label>服务区域：</label>
+										<div class="column_right De_serviceAd">上海市-徐汇区-城区</div>
+									</li>
+									<li  class="column clearfix">
+										<label>服务时间：</label>
+										<div class="column_right De_serviceTime">2017-11-01 <span>至</span> 2017-11-30</div>
+									</li>
+									<li  class="column clearfix">
+										<label>价格预算：</label>
+										<div class="column_right De_salary">12000元／月</div>
+									</li>
+									<li  class="column clearfix">
+										<label>年龄要求：</label>
+										<div class="column_right De_age">29-39岁</div>
+									</li>
+									<li  class="column clearfix">
+										<label>技能要求：</label>
+										<div class="column_right De_skill">月子餐、催乳开奶、衣物清洗</div>
+									</li>
+								</ul>
+							</div>
+							<p class="border"></p>
+							<div class="order_info_right">
+								<div class="eCharts">
+									<div id="eCharts" style="width: 120px;height: 120px;margin: 0 auto;">
+									</div>
+									<p></p>
+								</div>
+								<p class="matchValue">阿姨与订单匹配度</p>
+							</div>
+						</div>
+					</div>
+					<div class="card_list">
+						<p class="title"><i>职位要求</i></p>
+						<div class="order_info">
+							<ul class="column_ul">
+								<li  class="column clearfix">
+									<label>职位要求：</label>
+									<div class="column_right De_demand">
+										月子餐、催乳开奶、衣物清洗
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="card_list" id="cancel_reason">
+						<p class="title"><i>取消理由</i></p>
+						<div class="order_info">
+							<ul class="column_ul">
+								<li  class="column clearfix">
+									<label>取消理由：</label>
+									<div class="column_right cancel_reason">
+										取消理由取消理由
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="bottom-navi">
+				<ul class="clearfix">
+					<li><a id="order_href">原始订单</a></li>
+					<li class="no_common" id="pass"><a>通过</a></li>
+					<li class="no_common" id="refuse"><a>拒绝</a></li>
+				</ul>
+				<p>天天家政，王老师，13200000000</p>
+			</div>
+		</div>
+
+		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.pagination.js" type="text/javascript" charset="utf-8"></script>
+		<script src="time/lhgcore.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="time/lhgcalendar.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+		<script src="js/echarts.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/scroller.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				J('#date_start').calendar({maxDate:'#date_start'});
+				J('#date_end').calendar({minDate:'#date_end'});
+				$.ajax({
+					url:publicPath + "/api/common/getDictionaryData/c012",
+					type:"post",
+					data:{},
+					dataType:"json",
+					async:false,
+					success:function success(data){
+						if(data.success){
+							if(data.code==0){
+								var dataJD = data.jsonData;
+								var html = "<li data-code='' class='active'>全部</li>";
+								$.each(dataJD,function(i,item){
+									html += "<li data-code='" + item.code + "'>" + item.name + "</li>";
+								});
+								$("#education").html(html);
+								console.log(data.msg);
+							}else{
+								console.log(data.msg);
+							}
+						}else{
+							console.log(data.msg);
+						}
+					}
+				});
+
+				getRecord();
+				// 筛选
+				$(".selector").on("click","li",function(){
+					$(this).addClass("active").siblings().removeClass("active");
+					getRecord();
+				});
+				$(".total .inquiry-btn").click(function(){
+					getRecord();
+				})
+				// 查看详情
+				$(".om-list").on("click","tbody tr",function(){
+					$(".orderDetails input[type='hidden']").val("");
+					// 操作按钮以及取消模块隐藏
+					$(".bottom-navi li.no_common,#cancel_reason").hide();
+					$(".bottom-navi p").text("");
+					var id = $(this).data("id");
+					var staffId = $(this).data("staffid");
+					var orderNo = $(this).data("orderno");
+					if($(this).hasClass("slideBlue")){
+						$(this).removeClass("slideBlue");
+						$(".orderDetails").animate({"right":-750})
+						return;
+					} else {
+						$(this).addClass("slideBlue").siblings().removeClass("slideBlue");
+						$(".orderDetails").animate({"right":0});
+						$(".orderDetails input[name='id']").val(id);
+						$(".orderDetails input[name='staffId']").val(staffId);
+						$(".orderDetails input[name='orderNo']").val(orderNo);
+						getStaffDetail();
+					}
+				});
+
+				// 通过
+				$("#pass").click(function(){
+					var jobId = $(".orderDetails input[name='jobId']").val();
+					var resumeId = $(".orderDetails input[name='id']").val();
+					$.ajax({
+						url: publicPath+"/api/job/"+jobId+"/resume/"+resumeId,
+						type: "post",
+						data: JSON.stringify({
+							status:"2"
+						}),
+						dataType: "json",
+						contentType: "application/json;charset=UTF-8",
+						success: function success(data) {
+							if(data.success){
+								if(data.code == 0){
+									toast_tip("已通过");
+									setTimeout(function(){
+										window.location.reload();	
+									},2100);
+								}else{
+									console.log(data.msg);
+								}
+							}else{
+								console.log(data.msg);
+							}
+						}
+					});
+				});
+
+				// 拒绝
+				$("#refuse").click(function(){
+					$("#layer,#refuse_alert").show();
+				});
+				$(".alert_tip .cancel").click(function(){
+					$(this).parents(".alert_tip").hide();
+					$("#layer").hide();
+				})
+				$(".alert_tip #refuse_commit").click(function(){
+					var jobId = $(".orderDetails input[name='jobId']").val();
+					var resumeId = $(".orderDetails input[name='id']").val();
+					var remarks = "";
+					if($("input[name='reason']:checked").length<1){
+						$(".no_reason").remove();
+						$(".content").append("<span class='no_reason'>请选择拒绝理由</span>");
+						return;
+					}else if($("input[name='reason']:checked").val()==2 && $("#refuse_alert input[name='remarks']").val().trim()==""){
+						$(".no_reason").remove();
+						$(".content").append("<span class='no_reason'>请填写拒绝理由</span>");
+						return;
+					}else{
+						$(".no_reason").remove();
+					}
+					if($("input[name='reason']:checked").val()==0 ||$("input[name='reason']:checked").val()==1){
+						remarks = $("input[name='reason']:checked").parent().text();
+					}else if($("input[name='reason']:checked").val()==2){
+						remarks = $("#refuse_alert input[name='remarks']").val();
+					}
+					
+					$.ajax({
+						url: publicPath+"/api/job/"+jobId+"/resume/"+resumeId,
+						type: "post",
+						data: JSON.stringify({
+							status:"3",
+							remarks:remarks
+						}),
+						dataType: "json",
+						contentType: "application/json;charset=UTF-8",
+						success: function success(data) {
+							if(data.success){
+								if(data.code == 0){
+								
+									window.location.reload();
+								}else{
+									console.log(data.msg);
+								}
+							}else{
+								console.log(data.msg);
+							}
+						}
+					});
+				})
+				$(".od-title a").click(function(){
+					$(".om-list tbody tr").removeClass("slideBlue");
+					$(".orderDetails").animate({"right":-750});
+				});
+				// 查看原始订单
+				$("#order_href").click(function(){
+					var orderStatus = $(".orderDetails input[name='orderStatus']").val();
+					var orderNo = $(".orderDetails input[name='orderNo']").val();
+					var href = "";
+					if(orderStatus==01||orderStatus==02||orderStatus==03||orderStatus==06){
+						href = "orderManagement.html?"+orderNo;
+					}else if(orderStatus==04){
+						href = "completionOrder.html?"+orderNo;
+					}else if(orderStatus==05){
+						href = "cancelOrder.html?"+orderNo;
+					}
+					window.location.href=href;
+				})
+				
+			})
+
+			//			获取简历箱列表信息
+		function getRecord(){
+			var education = $("#education li.active").data("code");
+			var status = $("#order-status li.active").data("code");
+			var orderNo = $(".total input[name='orderNo']").val();
+			var applyStartDate = $(".total input[name='date_start']").val();
+			var applyEndDate = $(".total input[name='date_end']").val();
+			$.ajax({
+				url: publicPath+"/api/job/resume/mine/box",
+				type: "get",
+				data: {
+					education:education,
+					status:status,
+					orderNo:orderNo,
+					applyStartDate:applyStartDate,
+					applyEndDate:applyEndDate
+				},
+				dataType: "json",
+				success: function success(data) {
+					if(data.success){
+						if(data.code == 0){
+							var dataJD = data.jsonData;
+							$(".total .summ_order").text("订单总数："+dataJD.records+" 单");
+							$(".records span").text(dataJD.records);
+							pagination(dataJD.records);
+							console.log(data.msg);
+						}else{
+							console.log(data.msg);
+						}
+					}else{
+						console.log(data.msg);
+					}
+				}
+			});
+		}
+//			分页
+			var page = 1;
+			var rowNum = 8;
+			function pagination(records){
+				$("#pagination").pagination(records, {
+				    num_edge_entries: 1,
+				    num_display_entries: 4,
+				    current_page:page-1,
+				    items_per_page:rowNum,
+				    prev_text:"上一页",
+				    next_text:"下一页",
+				    callback: getStaffList
+				});
+			};
+			function getStaffList(page_index){
+				var page = page_index+1;
+				var education = $("#education li.active").data("code");
+				var status = $("#order-status li.active").data("code");
+				var orderNo = $(".total input[name='orderNo']").val();
+				var applyStartDate = $(".total input[name='date_start']").val();
+				var applyEndDate = $(".total input[name='date_end']").val();
+				$.ajax({
+					url: publicPath+"/api/job/resume/mine/box",
+					type: "get",
+					data: {
+						page:page,
+						rowNum:rowNum,
+						education:education,
+						status:status,
+						orderNo:orderNo,
+						applyStartDate:applyStartDate,
+						applyEndDate:applyEndDate
+					},
+					dataType: "json",
+					success: function success(data) {
+						if(data.success){
+							if(data.code == 0){
+								var dataJD = data.jsonData.rows;
+
+								if(dataJD!=""){
+									var html="";
+									var n = 0;
+									$.each(dataJD,function(i,item){
+										n++;
+										var jobInfo = item.jobInfo;
+										var staffInfo = item.staffInfo;
+										var  staffName = staffInfo.staffName.substr(0,1);
+										if(staffInfo.sex=="02"){
+											staffName = staffName+"阿姨";
+										}else if(staffInfo.sex=="01"){
+											staffName = staffName+"师傅";
+										}
+										var status = "";
+										if(item.status==1){
+											status = "待处理";
+										}else if(item.status==2){
+											status = "待面试";
+										}else if(item.status==3){
+											status = "已拒绝";
+										}else if(item.status==4){
+											status = "已完成";
+										}else if(item.status==5){
+											status = "已取消";
+										}
+										var applyDateY = item.applyDate.split(" ")[0];
+										var applyDateT = item.applyDate.split(" ")[1];
+
+										html += "<tr data-staffid='"+staffInfo.id+"' data-id='"+item.id+"' data-orderno='"+jobInfo.orderNo+"'>"+
+														"<td>"+n+"</td>"+
+														"<td><img src='"+staffInfo.headImage+"'></td>"+
+														"<td>"+staffName+"</td>"+
+														"<td>"+item.match+"%</td>"+
+														"<td>"+staffInfo.serviceTypeValue+"</td>"+
+														"<td>"+staffInfo.age+"岁／"+staffInfo.zodiacValue+"／"+staffInfo.nativePlaceValue+"人／"+staffInfo.educationValue+"</td>"+
+														"<td>"+status+"</td>"+
+														"<td><p>"+applyDateY+"<br/><span>"+applyDateT+"</span></p></td>"+
+													"</tr>";
+									})
+									$(".particulars .om-list tbody").html(html);
+									$(".no_order").remove();
+								}else{
+									$(".no_order").remove();
+									$(".particulars .om-list").after("<div class='no_order'>暂无内容~</div>").children("tbody").html("");
+								}
+								console.log(data.msg);
+							}else{
+								console.log(data.msg);
+							}
+						}else{
+							console.log(data.msg);
+						}
+					}
+				});
+			}
+
+			// 阿姨详情
+			function getStaffDetail(){
+				var resumeId = $(".orderDetails input[name='id']").val();
+				$.ajax({
+					url: publicPath+"/api/job/resume/"+resumeId,
+					type: "get",
+					data: {},
+					dataType: "json",
+					success: function success(data) {
+						if(data.success){
+							if(data.code == 0){
+								var dataJD = data.jsonData;
+								var dataJob = data.jsonData.jobInfo;
+								var dataStaff = data.jsonData.staffInfo;
+								var status = "";
+								var contactName = "";
+								if(dataJD.contactName!="" && dataJD.contactName!=null){
+									contactName = dataJD.contactName.substr(0,1)
+								}
+								var orderNo = dataJD.orderNo;
+								var source = dataJD.resumeTenantName +"，"+ contactName + "老师，"+ dataJD.contactPhone ;
+								if(dataJD.status==1){
+									status = "待处理";
+									$(".bottom-navi li.no_common").show();
+								}else if(dataJD.status==2){
+									status = "待面试";
+									$(".bottom-navi p").text(source);
+								}else if(dataJD.status==3){
+									status = "已拒绝";
+									$("#cancel_reason").show().find(".cancel_reason").html(dataJD.remarks||"");
+								}else if(dataJD.status==4){
+									status = "已完成";
+									$(".bottom-navi p").text(source);
+								}else if(dataJD.status==5){
+									status = "已取消";
+									$(".bottom-navi p").text(source);
+									$("#cancel_reason").show().find(".cancel_reason").html(dataJD.remarks||"");
+								}
+								var  staffName = dataStaff.staffName.substr(0,1);
+								if(dataStaff.sex=="02"){
+									staffName = staffName+"阿姨";
+								}else if(dataStaff.sex=="01"){
+									staffName = staffName+"师傅";
+								}
+								myChart(dataJD.match,100-dataJD.match);
+								var serviceTime = "";
+								if(dataJob.serviceStartTime!=null && dataJob.serviceEndTime!=null){
+									serviceTime =dataJob.serviceStartTime+"<span> 至 </span>"+dataJob.serviceEndTime;
+								}
+								$(".eCharts p").text(dataJD.match+"%");
+								$(".orderDetails .status").text(status);
+								$(".orderDetails .td_date").text("投递时间："+dataJD.applyDate);
+								$(".orderDetails .De_addTime").text(dataJob.addTime||"");
+								$(".orderDetails .De_modifyTime").text(dataJob.modifyTime||"");
+								$(".orderDetails .De_positionName").text(dataJob.positionName||"");
+								$(".orderDetails .De_serviceAd").text(dataJob.serviceProvinceValue + dataJob.serviceCityValue + dataJob.serviceAreaValue);
+								$(".orderDetails .De_serviceTime").html(serviceTime)
+								$(".orderDetails .De_salary").text(dataJob.salary + dataJob.salaryTypeValue);
+								$(".orderDetails .De_age").text(dataJob.ageValue||"");
+								$(".orderDetails .De_skill").text(dataJob.skillRequirementsValue||"");
+								$(".orderDetails .De_demand").html(dataJob.demand||"");
+								var staffId = dataJD.resumeTenantStaffId;
+								$(".orderDetails input[name='staffId']").val(staffId);
+								$(".orderDetails input[name='jobId']").val(dataJD.jobId);
+								$(".orderDetails input[name='orderStatus']").val(dataJob.orderStatus||"");
+								getORcode(staffId,orderNo,resumeId);
+								var html = "<img src='"+dataStaff.headImage+"'>"+
+											"<div>"+
+												"<p class='service-status'><span>"+staffName+"</span><i>"+dataStaff.serviceTypeValue+"</i></p>"+
+												"<p class='staffData'>"+dataStaff.age+"岁 | 属"+dataStaff.zodiacValue+" | "+dataStaff.nativePlaceValue+"人 | "+dataStaff.constellationValue+" | "+dataStaff.educationValue+"</p>"+
+												"<p class='price'>¥ "+dataStaff.price+dataStaff.unitValue+"</p>"+
+											"</div>";
+								$(".orderDetails .hi-basic").html(html);
+								$("#ic-frame").scroller(0);
+								console.log(data.msg);
+							}else{
+								console.log(data.msg);
+							}
+						}else{
+							console.log(data.msg);
+						}
+					}
+				});
+			}
+			// 获取阿姨二维码
+			function getORcode(staffId,orderNo,resumeId){
+				$.ajax({
+					url: publicPath+"/api/common/getResumDetailTwoDimensionCode",
+					type: "get",
+					data: {
+						staffId:staffId,
+						orderNo:orderNo,
+						resumeId:resumeId
+					},
+					dataType: "json",
+					success: function success(data) {
+						if(data.success){
+							if(data.code == 0){
+								var dataJD = data.jsonData;
+								$(".orderDetails .orcode").html("<img src='"+dataJD+"'>")
+								console.log(data.msg);
+							}else{
+								console.log(data.msg);
+							}
+						}else{
+							console.log(data.msg);
+						}
+					}
+				});
+			}
+//			图表
+			function myChart(matchValue,other){
+				var myChart = echarts.init(document.getElementById('eCharts'));
+				var option = {
+					animation: false,
+				    tooltip: {
+				    	trigger: 'item',
+				        formatter: "{a} <br/>{b}: {c} ({d}%)"
+				    },
+				    series: [
+				        {
+				            name:'',
+				            type:'pie',
+				            radius: ['50%', '80%'],
+				            avoidLabelOverlap: false,
+				            label: {
+				                normal: {
+				                    show: false,
+				                    position: 'center'
+				                },
+				                emphasis: {
+				                    show: true,
+				                    textStyle: {
+				                        fontSize: '10',
+				                        fontWeight: 'bold'
+				                    }
+				                }
+				            },
+				            labelLine: {
+				                normal: {
+				                    show: false
+				                }
+				            },
+				            data:[
+				                {
+				                	value:other,name:'',itemStyle:{
+				                		normal:{color:'#E6E6E6'}
+				                	}
+				                },
+				                {
+				                	value:matchValue,name:'',itemStyle:{
+				                		normal:{color:'#FFC05C'}
+				                	}
+				                }
+				            ]
+				        }
+				    ]
+				};
+
+		        myChart.setOption(option);
+			};
+			function onError (msg,self) {
+				if(self.nextAll().hasClass('validation')){
+					self.nextAll('.validation').text(msg);
+					return;
+				}
+				self.parent().append("<p class='validation'>"+msg+"</p>")
+			}
+
+			function onSuccess(self) {
+				self.nextAll('.validation').remove();
+			}
+		</script>
+	</body>
+</html>

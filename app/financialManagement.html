@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+    	<meta http-equiv="Pragma" CONTENT="no-cache">
+		<title>您身边的，家政好帮手</title>
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/financialManagement.css?v=0.01"/>
+	</head>
+	<body>
+		<div id="header" class="clearfix">
+			<div class="h-frame">
+				<div class="logo"><img src="img/logo.png"/></div>
+				<div class="h-right">
+					<div class="account">
+						<ul class="clearfix">
+							<!-- <li class="login"><a href="login.html">登录</a></li>
+							<li><a href="accountManagement.html">系统管理</a></li>
+							<li><a>退出</a></li> -->
+						</ul>
+					</div>
+					<div class="navigator">
+						<ul class="clearfix">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--<div class="frame">
+			<p class="title"><i>财务总览</i></p>
+			<div class="financialPandect">
+				<p class="grossProfit">总利润<span></span></p>
+				<p class="grossEarnings">总收入<span></span></p>
+				<p class="grossCharge">总支出<span></span></p>
+			</div>
+		</div>-->
+		
+		<div class="frame">
+			<p class="title"><i>财务流水</i></p>
+			<div class="financialQuery clearfix">
+				<p>
+					<span>
+						<label>收支类型</label>
+						<select name="inOutType">
+							<option value=""></option>
+						</select>
+					</span>
+					<span>
+						<label>身份类别</label>
+						<select name="draweeType">
+							<option value="">请选择</option>
+							<option value="01">客户</option>
+							<option value="02">家政机构</option>
+							<option value="03">业务员</option>
+							<option value="04">家政员</option>
+							<option value="05">平台</option>
+						</select>
+					</span>
+					<span>
+						<label>发生时间</label>
+						<input type="text" class="runcode" id="financialTimeStart" value="" readonly="readonly" placeholder="选择日期" /> - 
+						<input type="text" class="runcode" id="financialTimeEnd" value="" readonly="readonly" placeholder="选择日期" />
+					</span>
+					<a>查询</a>
+				</p>
+			</div>
+			
+			<p class="totalNum">流水总数：<span></span>条</p>
+			
+			<table class="financialFlow">
+				<thead>
+					<tr>
+						<td width="6%">序号</td>
+						<td width="15%">时间</td>
+						<td width="15.5%">订单编号/流水</td>
+						<td width="10%">收支类目</td>
+						<td width="10%">收/付金额</td>
+						<td width="8.5%">收/付对象</td>
+						<td width="8.5%">身份类别</td>
+						<td width="8.5%">交易状态</td>
+						<td width="18%">备注</td>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			
+			<div class="subtotal">
+				<p>收入：<span></span>元<i>共：<b></b>笔</i></p>
+				<p>支出：<span></span>元<i>共：<b></b>笔</i></p>
+				<p>合计：<span></span>元</p>
+			</div>
+			
+			<div class="clearfix">
+				<div id="pagination">
+				</div>
+				<p class="records">共<span></span>条</p>
+			</div>
+		</div>
+		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="time/lhgcore.min.js"></script>
+    	<script type="text/javascript" src="time/lhgcalendar.min.js"></script>
+    	<script src="js/jquery.pagination.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//			财务流水
+//			分页
+			var pageNumber = 1;
+			var pageSize = 10;
+			
+			function pagination(records){
+				$("#pagination").siblings(".records").children().text(records);
+				$("#pagination").pagination(records, {
+				    num_edge_entries: 1,
+				    num_display_entries: 4,
+				    current_page:pageNumber-1,
+				    items_per_page:pageSize,
+				    prev_text:"上一页",
+				    next_text:"下一页",
+				    callback: getTenantsFinanceListInfo
+				});
+			};
+			
+			function getTenantsFinanceListInfo(page_index){
+				var pageNumber = page_index+1;
+				var startTime = $("#financialTimeStart").val();
+			    var endTime = $("#financialTimeEnd").val();
+			    var inOutType = $("select[name='inOutType']").val();
+			    var draweeType = $("select[name='draweeType']").val();
+				$.ajax({
+			        url: publicPath+"/api/funds/getTenantsFinanceListInfo",
+			        type: "post",
+			        data: {pageNumber:pageNumber,pageSize:pageSize,startTime:startTime,endTime:endTime,inOutType:inOutType,draweeType:draweeType},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	if (typeof(data.jsonData.inTotalAmount)=='undefined') {
+			                		$(".subtotal p").eq(0).find("span").text("0.00");
+				                	$(".subtotal p").eq(0).find("b").text("0");
+				                	$(".subtotal p").eq(1).find("span").text("0.00");
+				                	$(".subtotal p").eq(1).find("b").text("0");
+				                	$(".subtotal p").eq(2).find("span").text("0.00");
+			                	} else {
+				                	var inTotalAmount = RetainedDecimalPlaces(data.jsonData.inTotalAmount);
+				                	var outTotalAmount = RetainedDecimalPlaces(data.jsonData.outTotalAmount);
+				                	var total = RetainedDecimalPlaces(parseFloat(data.jsonData.inTotalAmount)-parseFloat(data.jsonData.outTotalAmount));
+				                	$(".subtotal p").eq(0).find("span").text(inTotalAmount);
+				                	$(".subtotal p").eq(0).find("b").text(data.jsonData.inTotalCount);
+				                	$(".subtotal p").eq(1).find("span").text(outTotalAmount);
+				                	$(".subtotal p").eq(1).find("b").text(data.jsonData.outTotalCount);
+				                	$(".subtotal p").eq(2).find("span").text(total);
+				                }
+			                	var dataJD = data.jsonData.rows;
+			                	var html = "";
+			                	var n = 0;
+			                	$.each(dataJD, function(i,item) {
+			                		n++;
+			                		var obj="";
+			                		var mantissa="";
+			                		var remarks="";
+			                		var amount=RetainedDecimalPlaces(item.amount);
+			                		var status="";
+			                		var draweeType="";
+			                		var no = ""
+			                		if (item.object!=null) {
+			                			obj=item.object;
+			                		} else{
+			                			obj="";
+			                		}
+			                		
+			                		if (item.mantissa!=null) {
+			                			mantissa=item.mantissa;
+			                		} else{
+			                			mantissa="";
+			                		}
+			                		
+			                		if (item.remarks!=null) {
+			                			remarks=item.remarks;
+			                		} else{
+			                			remarks="";
+			                		}
+			                		
+			                		if (item.InOutType=="01") {
+			                			amount = "+"+amount;
+			                		} else {
+			                			amount = "-"+amount;
+			                		}
+			                		
+			                		if (item.status!=null) {
+			                			if (item.status=="01") {
+			                				status="待处理";
+			                			} else if (item.status=="02") {
+			                				status="处理中";
+			                			} else if (item.status=="03") {
+			                				status="已处理";
+			                			} else if (item.status=="04") {
+			                				status="已处理交易失败";
+			                			}
+			                		} else{
+			                			status="";
+			                		}
+			                		
+			                		if (item.draweeType!=null) {
+			                			if (item.draweeType=="01") {
+			                				draweeType="客户";
+			                			} else if (item.draweeType=="02") {
+			                				draweeType="家政机构";
+			                			} else if (item.draweeType=="03") {
+			                				draweeType="业务员";
+			                			} else if (item.draweeType=="04") {
+			                				draweeType="家政员";
+			                			} else if (item.draweeType=="05") {
+			                				draweeType="平台";
+			                			}
+			                		} else{
+			                			draweeType="";
+			                		}
+			                		
+			                		if (item.relatedTrans!=null&&item.relatedTrans!="") {
+			                			no = "<a href='orderManagement.html?"+item.relatedTrans+"'>"+item.relatedTrans+"</a>";
+			                		} else {
+			                			no = item.no;
+			                		}
+			                		
+			                		var time1 = item.time.split(" ")[0];
+			                		var time2 = item.time.split(" ")[1];
+			                		
+			                		
+			                		html += "<tr>"+
+										"<td class='size12'>"+n+"</td>"+
+										"<td class='size12'>"+time1+"<span>"+time2+"</span>"+"</td>"+
+										"<td class='size12'>"+no+"</td>"+
+										"<td>"+item.category+"</td>"+
+										"<td class='tright'>"+amount+"</td>"+
+										"<td>"+obj+"</td>"+
+										"<td>"+draweeType+"</td>"+
+										"<td>"+status+"</td>"+
+										"<td>"+remarks+"</td>"+
+									"</tr>"
+			                	});
+			                	$(".financialFlow tbody").html(html);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			};
+			
+
+			$(function(){
+//				头部引入
+//				$('#header').load('header.html?v=0.01',function(){
+//					$(".navigator ul li a").removeClass("navi-on");
+//					$(".navigator ul li").eq(5).children().addClass("navi-on");
+//				});
+				
+//				获取总条数
+				$.ajax({
+			        url: publicPath+"/api/funds/getTenantsFinanceListInfo",
+			        type: "post",
+			        data: {},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	pagination(dataJD.records);
+			                	$(".totalNum span").text(dataJD.records);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+				
+				J('#financialTimeStart').calendar({maxDate:'#financialTimeEnd'});
+				J('#financialTimeEnd').calendar({minDate:'#financialTimeStart'});
+//				财务总览
+//				$.ajax({
+//			        url: publicPath+"/api/funds/getTenantsFortuneInfo",
+//			        type: "post",
+//			        data: {},
+//			        dataType: "json",
+//			        success: function success(data) {
+//			            if(data.success){
+//			                if(data.code == 0){
+//			                	var dataJD = data.jsonData;
+//			                	$(".grossProfit span").text(RetainedDecimalPlaces(dataJD.totalMoney));
+//			                	$(".grossEarnings span").text(RetainedDecimalPlaces(dataJD.incomeMoney));
+//			                	$(".grossCharge span").text(RetainedDecimalPlaces(dataJD.expenseMoney));
+//			                	console.log(data.msg);
+//			                }else{
+//			                    console.log(data.msg);
+//			                }
+//			            }else{
+//			                console.log(data.msg);
+//			            }
+//			        }
+//			    });
+			    
+			    $(".financialQuery a").click(function(){
+			    	var startTime = $("#financialTimeStart").val();
+			    	var endTime = $("#financialTimeEnd").val();
+			    	var inOutType = $("select[name='inOutType']").val();
+			    	var draweeType = $("select[name='draweeType']").val();
+			    	$.ajax({
+				        url: publicPath+"/api/funds/getTenantsFinanceListInfo",
+				        type: "post",
+				        data: {startTime:startTime,endTime:endTime,inOutType:inOutType,draweeType:draweeType},
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	var dataJD = data.jsonData;
+				                	pagination(dataJD.records);
+				                	console.log(data.msg);
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				                console.log(data.msg);
+				            }
+				        }
+				    });
+				    getTenantsFinanceListInfo(0);
+			    });
+			})
+		</script>
+	</body>
+</html>

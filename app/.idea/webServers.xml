@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e907750d-861f-4d1e-b19e-4b52b98b3433" name="门店助手预生产" url="http://106.15.1.234">
+        <fileTransfer host="106.15.1.234" port="22" rootFolder="/alidata/www/fbeeconsole/app" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="8c6dc2b2-4f71-4dac-9493-3268e70a06a5" name="门店助手测试" url="http://139.224.49.192">
+        <fileTransfer host="139.224.49.192" port="22" rootFolder="/jiacer/www/fbeeconsole/app" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,22 @@
+.frame{
+    min-width: 1200px;
+}
+.frame .financialPandect {margin-top: 40px;padding-left: 46px;}
+.frame .financialPandect p {display: inline-block;margin-right: 90px;font-size: 16px;}
+.frame .financialPandect p span {margin-left: 12px;color: #f7532d;}
+.frame .financialQuery p {float: right;}
+.frame .financialQuery p a {display: inline-block;width: 64px;height: 28px;line-height: 28px;text-align: center;color: #FFFFFF;background-color: #0A7EE3;vertical-align: middle;cursor: pointer;}
+.frame .financialQuery p span {margin-right: 40px;}
+.frame .financialQuery p span select {width: 175px;height: 24px;border: 1px solid #CCCCCC;}
+.frame .financialFlow {width: 100%;text-align: center;margin-top: 18px;}
+.frame .financialFlow thead {background-color: #F5F5F5;}
+.frame .financialFlow tr {height: 44px;border: 1px solid #CCCCCC;}
+.frame .financialFlow .size12 {font-size: 12px;}
+.frame .financialFlow .size12 span {color: #7F7F7F;margin-left: 6px;}
+.frame .financialFlow .size12 a {color: #0A7EE3;text-decoration: underline;}
+.frame .financialFlow .tright {text-align: right;padding-right: 34px;}
+.frame .totalNum {padding: 0 7px;}
+.frame .subtotal {height: 32px;background-color: #EFEFEF;text-align: center;margin-top: 13px;line-height: 32px;}
+.frame .subtotal p {display: inline-block;margin-left: 48px;}
+.frame .subtotal p:first-child {margin: 0;}
+.frame .subtotal p i {margin-left: 18px;}

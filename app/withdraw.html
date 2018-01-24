@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+    	<meta http-equiv="Pragma" CONTENT="no-cache">
+		<title>您身边的，家政好帮手</title>
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+	</head>
+	<body>
+		<div id="layer"></div>
+		<!--操作成功弹窗-->
+		<div class="prompt">
+			<img src="img/success.png"/>
+			<p>操作成功，提现金额暂被冻结，预计3个工作日到账</p>
+			<a class="b-btn" href="index.html">返回首页</a>
+		</div>
+		
+		<div id="header" class="clearfix">
+			<div class="h-frame">
+				<div class="logo"><img src="img/logo.png"/></div>
+				<div class="h-right">
+					<div class="account">
+						<ul class="clearfix">
+							<!-- <li class="login"><a href="login.html">登录</a></li>
+							<li><a href="accountManagement.html">系统管理</a></li>
+							<li><a>退出</a></li> -->
+						</ul>
+					</div>
+					<div class="navigator">
+						<ul class="clearfix">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<p class="paths">当前页面：<a href="index.html">首页</a> > 支付收银台</p>
+		<div>
+			<div class="frame">
+				<p class="title"><i>提现</i></p>
+				<div class="cashierDesk">
+					<form action="" method="post">
+						<table>
+							<tbody>
+								<tr>
+									<td>提现金额</td>
+									<td width="80%" class="secTd"><input type="text" name="widthDraw" value="" placeholder="0.00" /></td>
+								</tr>
+								<tr class="available">
+									<td></td>
+									<td class="secTd"><p>可提现金额<span data-num=""></span>元,<a>全部提现</a></p></td>
+								</tr>
+								<tr>
+									<td>实际到账金额</td>
+									<td class="secTd"><input disabled="disabled" type="text" name="actualArrival" value="" placeholder="0.00" /></td>
+								</tr>
+								<tr>
+									<td>手续费</td>
+									<td class="secTd"><input disabled="disabled" type="text" name="counterFee" value="" placeholder="0.00" /></td>
+								</tr>
+								<tr class="creditCard">
+									<td>提现账户</td>
+									<td class="secTd"><span></span> 尾号(<i></i>)</td>
+								</tr>
+							</tbody>
+						</table>
+						<a class="wd-sub">提交</a>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="hint">
+			<h3>温馨提示：</h3>
+			<p>1. 提现手续费按照提现金额0.6%收费；</p>
+			<p>2. 提现金额不能低于100元；</p>
+			<p>3. 提现申请提交后，该笔提现金额处于冻结状态，预计3个工作日到账；</p>
+			<p>4. 如需更换银行卡请与渠道人员联系。</p>
+		</div>
+		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+//				头部引入
+//				$('#header').load('header.html?v=0.01',function(){
+//					$(".navigator ul li a").removeClass("navi-on");
+//					$(".navigator ul li").eq(0).children().addClass("navi-on");
+//				});
+				
+				var url = decodeURI(location.search);
+				var str = url.substr(1);
+				var arr = str.split("&");
+				var available = arr[0].split("=")[1];
+				var creditCard = arr[1].split("=")[1];
+				var endNumber = arr[2].split("=")[1];
+				$(".available p span").attr("data-num",available)
+				$(".available p span").text(RetainedDecimalPlaces(available));
+				$(".creditCard span").text(creditCard);
+				$(".creditCard i").text(endNumber);
+				
+//				全部提现
+				$(".available a").click(function(){
+					var money = $(".available p span").data("num")
+					$("input[name='widthDraw']").val(money).trigger("keyup");
+				});
+				
+//				计算手续费
+				var regNum= /^[1-9]\d*$/;
+				$("input[name='widthDraw']").keyup(function(){
+					var self=$(this);
+					var widthDraw =parseInt($(this).val());
+					var available = parseInt($(".available p span").data("num"));
+					if (widthDraw == "") {
+						onError('不能为空',self);
+						return;
+					} else if (widthDraw<100) {
+						onError('提现金额不能低于100元',self);
+						return;
+					} else if (!regNum.test(widthDraw)) {
+						onError('请填写数字',self);
+						return;
+					} else if (widthDraw>available) {
+						onError('金额不足',self);
+						return;
+					} else {
+						onSuccess(self);
+					}
+					if (widthDraw<=3) {
+						$("input[name='actualArrival']").val("0.00");
+						$("input[name='counterFee']").val("3.00");
+					} else if (widthDraw<500&&widthDraw>3) {
+						$("input[name='actualArrival']").val((widthDraw-3).toFixed(2));
+						$("input[name='counterFee']").val("3.00");
+					} else{
+						$("input[name='actualArrival']").val(widthDraw-(widthDraw*0.006+0.004).toFixed(2));
+						$("input[name='counterFee']").val((widthDraw*0.006+0.004).toFixed(2));
+					}
+				});
+				
+				$(".wd-sub").click(function(){
+					$("input[name='widthDraw']").trigger("keyup");
+					if ($(".validation").length>0){
+						return false;
+					}
+					var counterFee = parseFloat($("input[name='counterFee']").val());
+					var actualArrival = parseFloat($("input[name='actualArrival']").val());
+					$.ajax({
+				        url: publicPath+"/api/withdrawals/withdrawals",
+				        type: "post",
+				        data: {
+				        	counterFee:counterFee,
+				        	actualArrival:actualArrival
+				        },
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	$("#layer,.prompt").show();
+				                	console.log(data.msg);
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				                console.log(data.msg);
+				            }
+				        }
+				    });
+				})
+			});
+			
+			function onError (msg,self) {
+				if(self.nextAll().hasClass('validation')){
+					self.nextAll('.validation').text(msg);
+					return;
+				}
+				self.parent().append("<span class='validation'>"+msg+"</span>");
+			}
+	
+			function onSuccess(self) {
+				self.nextAll('.validation').remove();	
+			}
+		</script>
+	</body>
+</html>

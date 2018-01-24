@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+    	<meta http-equiv="Pragma" CONTENT="no-cache"> 
+		<title>您身边的，家政好帮手</title>
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/siteManagement.css?v=0.01"/>
+	</head>
+	<body>
+		<div id="header" class="clearfix">
+			<div class="h-frame">
+				<div class="logo"><img src="img/logo.png"/></div>
+				<div class="h-right">
+					<div class="account">
+						<ul class="clearfix">
+							<!-- <li class="login"><a href="login.html">登录</a></li>
+							<li><a href="accountManagement.html">系统管理</a></li>
+							<li><a>退出</a></li> -->
+						</ul>
+					</div>
+					<div class="navigator">
+						<ul class="clearfix">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="naviLeft">
+			<ul>
+				<!-- <li><a class="sygl" href="homeManagement.html"><em></em>首页管理</a></li>
+				<li><a class="fwgl" href="serviceManagement.html"><em></em>服务管理</a></li>
+				<li><a class="lxfs" href="contactWay.html"><em></em>联系方式</a></li>
+				<li><a class="zpgl" href="recruitManagement.html"><em></em>招聘管理</a></li>
+				<li class="nl_on"><a class="gywm" href="aboutUs.html"><em></em>关于我们</a></li> -->
+			</ul>
+		</div>
+
+		<div class="particulars">
+			<p class="paths">当前页面：网站管理 > 关于我们</p>
+			<div class="frame">
+				<div class="clearfix">
+					<p class="title"><i>公司介绍</i></p>
+				</div>
+				<ul class="au-list">
+
+				</ul>
+				<form id="company-intro" enctype="multipart/form-data" action="/fbeeConsole_web/api/website/saveAboutUsInfo" method="post">
+					<input type="hidden" name="callbackUrl" value="" />
+					<ul class="company-intro">
+						<!--<li>
+							<div class="banner-pic">
+								<img src="/images/website/aboutus/default.png"/>
+							</div>
+							<div class="pic-manage">
+								<label><input type="radio" name="systemDefault" id="" value="Y" checked="checked"/>系统默认</label><br />
+								<label><input type="radio" name="systemDefault" id="" class="custom" value="Z"/>自定义</label>
+								<span class="limit">(尺寸不能超过<i>1920*460</i>,大小<i>100K</i>以内)</span>
+								<span class="upload-sel">
+									<a>选择</a>
+								</span>
+							</div>
+							<div class="clearfix">
+								<a class="edit-cc">编辑</a>
+							</div>
+							<div class="ci-content">
+								<p></p>
+								<textarea name='content' placeholder='请输入内容'></textarea>
+							</div>
+						</li>-->
+					</ul>
+					<div class="ci-btn">
+						<a>取消</a>
+						<input type="submit" class="ci-save" value="保存">
+					</div>
+					<a class="addBanner">+添加图片和表述</a>
+				</form>
+			</div>
+		</div>
+		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function queryAboutUsInfo(){
+				$.ajax({
+			        url: publicPath+"/api/website/queryAboutUsInfo",
+			        type: "get",
+			        data: {},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	if (dataJD.length!=0) {
+			                		if (dataJD[0].default=="Y") {
+//				                		var de1 = "<li class='defaultY'>"+
+//											"<div class='banner-pic'>"+
+//												"<img src='/images/website/aboutus/default.png'>"+
+//											"</div>"+
+//											"<div class='pic-manage'>"+
+//												"<div>"+
+//													"<label><input type='radio' name='systemDefault' class='default' value='Y' checked='checked'/>系统默认</label><br />"+
+//													"<label><input type='radio' name='systemDefault' class='custom' value='Z'/>自定义</label>"+
+//												"</div>"+
+//												"<span class='limit'>图片尺寸不能超过<i>1920*460</i>,大小<i>100K</i>以内</span>"+
+//												"<span class='upload-sel'>"+
+//												"<a>选择<input type='file' name='file' /></a>"+
+//												"</span>"+
+//											"</div>"+
+//											"<div class='clearfix'>"+
+//												"<a class='edit-cc'>编辑</a>"+
+//											"</div>"+
+//											"<div class='ci-content'>"+
+//												"<p>"+dataJD[0].content+"</p>"+
+//												"<textarea name='content' placeholder='请输入内容'>"+dataJD[0].content+"</textarea>"+
+//											"</div>"+
+//										"</li>";
+
+										var de1 = "<li class='defaultY'>"+
+											"<div class='banner-pic'>"+
+												"<img src='/images/website/aboutus/default.png'>"+
+											"</div>"+
+											"<div class='bannerPick'>"+
+												"<p><input type='radio' name='systemDefault' class='default' value='Y' checked='checked'/>系统默认</p>"+
+												"<p><input type='radio' name='systemDefault' class='custom' value='Z'/>自定义<span class='restrict' style='margin-left:10px'>图片尺寸不能超过<i>1920*460</i>,大小<i>100K</i>以内<a>选择<input type='file' name='file' /></a></span></p>"+
+											"</div>"+
+											"<div class='clearfix'>"+
+												"<a class='edit-cc'>编辑</a>"+
+											"</div>"+
+											"<div class='ci-content'>"+
+												"<p>"+dataJD[0].content+"</p>"+
+												"<textarea name='content' placeholder='请输入内容'>"+dataJD[0].content+"</textarea>"+
+											"</div>"+
+										"</li>";
+
+										var aul1 = "<li>"+
+											"<div class='aul-pic'>"+
+												"<img src='/images/website/aboutus/default.png'>"+
+											"</div>"+
+											"<div class='aul-content'>"+
+												"<p>"+dataJD[0].content+"</p>"+
+											"</div>"+
+										"</li>";
+										var html1="";
+										var auhtml1="";
+										for (i=1;i<dataJD.length;i++) {
+//											html1+="<li class='deletable'>"+
+//												"<a class='da-btn'>删除图片和描述</a>"+
+//												"<div class='banner-pic'>"+
+//													"<img src='"+dataJD[i].imageUrl+"'/>"+
+//												"</div>"+
+//												"<div class='pic-manage'>"+
+//													"<span class='limit'>图片尺寸不能超过<i>1920*460</i>,大小<i>100K</i>以内</span>"+
+//													"<span class='upload-sel'>"+
+//													"<a>选择<input type='file' name='file' /></a>"+
+//													"</span>"+
+//												"</div>"+
+//												"<div class='clearfix'>"+
+//													"<a class='edit-cc'>编辑</a>"+
+//												"</div>"+
+//												"<div class='ci-content'>"+
+//													"<p>"+dataJD[i].content+"</p>"+
+//													"<textarea name='content' placeholder='请输入内容'>"+dataJD[i].content+"</textarea>"+
+//												"</div>"+
+//												"<input type='hidden' name='id' value='"+dataJD[i].id+"' />"+
+//											"</li>";
+
+											html1+="<li class='deletable'>"+
+												"<a class='da-btn'>删除图片和描述</a>"+
+												"<div class='banner-pic'>"+
+													"<img src='"+dataJD[i].imageUrl+"'/>"+
+												"</div>"+
+												"<div class='bannerPick'>"+
+													"<span class='restrict' style='margin-left:10px'>图片尺寸不能超过<i>1920*460</i>,大小<i>100K</i>以内<a>选择<input type='file' name='file' /></a></span>"+
+												"</div>"+
+												"<div class='clearfix'>"+
+													"<a class='edit-cc'>编辑</a>"+
+												"</div>"+
+												"<div class='ci-content'>"+
+													"<p>"+dataJD[i].content+"</p>"+
+													"<textarea name='content' placeholder='请输入内容'>"+dataJD[i].content+"</textarea>"+
+												"</div>"+
+												"<input type='hidden' name='id' value='"+dataJD[i].id+"' />"+
+											"</li>";
+
+											auhtml1+="<li>"+
+												"<div class='aul-pic'>"+
+													"<img src='"+dataJD[i].imageUrl+"'/>"+
+												"</div>"+
+												"<div class='aul-content'>"+
+													"<p>"+dataJD[i].content+"</p>"+
+												"</div>"+
+											"</li>";
+										}
+										$(".au-list").append(aul1+auhtml1);
+										$(".company-intro").append(de1+html1);
+										$(".custom").parents(".bannerPick").find(".restrict").children("a").css({"background":"#DBDBDB","cursor":"default"}).children("input").css("cursor","default").attr("readonly","readonly").val("");
+				                	} else {
+//				                		var de2 = "<li>"+
+//											"<div class='banner-pic'>"+
+//												"<img src='"+dataJD[0].imageUrl+"'>"+
+//											"</div>"+
+//											"<div class='pic-manage'>"+
+//												"<div>"+
+//													"<label><input type='radio' name='systemDefault' class='default' value='Y'/>系统默认</label><br />"+
+//													"<label><input type='radio' name='systemDefault' class='custom' value='Z' checked='checked'/>自定义</label>"+
+//												"</div>"+
+//												"<span class='limit'>图片尺寸不能超过<i>1920*460</i>,大小<i>100K</i>以内</span>"+
+//												"<span class='upload-sel'>"+
+//												"<a>选择<input type='file' name='file' /></a>"+
+//												"</span>"+
+//											"</div>"+
+//											"<div class='clearfix'>"+
+//												"<a class='edit-cc'>编辑</a>"+
+//											"</div>"+
+//											"<div class='ci-content'>"+
+//												"<p>"+dataJD[0].content+"</p>"+
+//												"<textarea name='content' placeholder='请输入内容'>"+dataJD[0].content+"</textarea>"+
+//											"</div>"+
+//										"</li>";
+
+										var de2 = "<li>"+
+											"<div class='banner-pic'>"+
+												"<img src='"+dataJD[0].imageUrl+"'>"+
+											"</div>"+
+											"<div class='bannerPick'>"+
+												"<p><input type='radio' name='systemDefault' class='default' value='Y'/>系统默认</p>"+
+												"<p><input type='radio' name='systemDefault' class='custom' value='Z' checked='checked'/>自定义<span class='restrict' style='margin-left:10px'>图片尺寸不能超过<i>1920*460</i>,大小<i>100K</i>以内<a>选择<input type='file' name='file' /></a></span></p>"+
+											"</div>"+
+											"<div class='clearfix'>"+
+												"<a class='edit-cc'>编辑</a>"+
+											"</div>"+
+											"<div class='ci-content'>"+
+												"<p>"+dataJD[0].content+"</p>"+
+												"<textarea name='content' placeholder='请输入内容'>"+dataJD[0].content+"</textarea>"+
+											"</div>"+
+										"</li>";
+
+										var aul2= "<li>"+
+											"<div class='aul-pic'>"+
+												"<img src='"+dataJD[0].imageUrl+"'>"+
+											"</div>"+
+											"<div class='aul-content'>"+
+												"<p>"+dataJD[0].content+"</p>"+
+											"</div>"+
+										"</li>";
+
+										var html2="";
+										var auhtml2="";
+										for (i=1;i<dataJD.length;i++) {
+//											html2+="<li class='deletable'>"+
+//												"<a class='da-btn'>删除图片和描述</a>"+
+//												"<div class='banner-pic'>"+
+//													"<img src='"+dataJD[i].imageUrl+"'/>"+
+//												"</div>"+
+//												"<div class='pic-manage'>"+
+//													"<span class='limit'>图片尺寸不能超过<i>1920*460</i>,大小<i>100K</i>以内</span>"+
+//													"<span class='upload-sel'>"+
+//													"<a>选择<input type='file' name='file' /></a>"+
+//													"</span>"+
+//												"</div>"+
+//												"<div class='clearfix'>"+
+//													"<a class='edit-cc'>编辑</a>"+
+//												"</div>"+
+//												"<div class='ci-content'>"+
+//													"<p>"+dataJD[i].content+"</p>"+
+//													"<textarea name='content' placeholder='请输入内容'>"+dataJD[i].content+"</textarea>"+
+//												"</div>"+
+//												"<input type='hidden' name='id' value='"+dataJD[i].id+"' />"+
+//											"</li>";
+
+											html2+="<li class='deletable'>"+
+												"<a class='da-btn'>删除图片和描述</a>"+
+												"<div class='banner-pic'>"+
+													"<img src='"+dataJD[i].imageUrl+"'/>"+
+												"</div>"+
+												"<div class='bannerPick'>"+
+													"<span class='restrict' style='margin-left:10px'>图片尺寸不能超过<i>1920*460</i>,大小<i>100K</i>以内<a>选择<input type='file' name='file' /></a></span>"+
+												"</div>"+
+												"<div class='clearfix'>"+
+													"<a class='edit-cc'>编辑</a>"+
+												"</div>"+
+												"<div class='ci-content'>"+
+													"<p>"+dataJD[i].content+"</p>"+
+													"<textarea name='content' placeholder='请输入内容'>"+dataJD[i].content+"</textarea>"+
+												"</div>"+
+												"<input type='hidden' name='id' value='"+dataJD[i].id+"' />"+
+											"</li>";
+
+											auhtml2+="<li>"+
+												"<div class='aul-pic'>"+
+													"<img src='"+dataJD[i].imageUrl+"'/>"+
+												"</div>"+
+												"<div class='aul-content'>"+
+													"<p>"+dataJD[i].content+"</p>"+
+												"</div>"+
+											"</li>";
+										}
+										$(".au-list").append(aul2+auhtml2);
+										$(".company-intro").append(de2+html2);
+										$(".custom").parents(".bannerPick").find(".restrict").children("a").css({"background":"#0A7EE3","cursor":"pointer"}).children("input").css("cursor","pointer").removeAttr("readonly");
+
+				                	}
+			                	} else {
+			                		var de = "<li>"+
+										"<div class='banner-pic'>"+
+											"<img src='/images/website/aboutus/default.png'>"+
+										"</div>"+
+										"<div class='bannerPick'>"+
+											"<p><input type='radio' name='systemDefault' class='default' value='Y' checked='checked'/>系统默认</p>"+
+											"<p><input type='radio' name='systemDefault' class='custom' value='Z'/>自定义<span class='restrict' style='margin-left:10px'>图片尺寸不能超过<i>1920*460</i>,大小<i>100K</i>以内<a>选择<input type='file' name='file' /></a></span></p>"+
+										"</div>"+
+										"<div class='clearfix'>"+
+											"<a class='edit-cc'>编辑</a>"+
+										"</div>"+
+										"<div class='ci-content'>"+
+											"<p></p>"+
+											"<textarea name='content' placeholder='请输入内容'></textarea>"+
+										"</div>"+
+									"</li>";
+
+									var aul = "<li>"+
+										"<div class='banner-pic'>"+
+											"<img src='/images/website/aboutus/default.png'>"+
+										"</div>"+
+										"<div class='ci-content'>"+
+											"<p></p>"+
+										"</div>"+
+									"</li>";
+									$(".au-list").append(aul);
+									$(".company-intro").append(de);
+									$(".custom").parents(".bannerPick").find(".restrict").children("a").css({"background":"#DBDBDB","cursor":"default"}).children("input").css("cursor","default").attr("readonly","readonly").val("");
+			                	}
+
+//								var taW = $(".ci-content").width()-32;
+//								var taH = $(".ci-content").height()-24;
+//								$("textarea").css({"width":taW,"height":taH});
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			};
+
+			function getObjectURL(file) {
+				var url = null ;
+				if (window.createObjectURL!=undefined) { // basic
+					url = window.createObjectURL(file) ;
+				} else if (window.URL!=undefined) { // mozilla(firefox)
+					url = window.URL.createObjectURL(file) ;
+				} else if (window.webkitURL!=undefined) { // webkit or chrome
+					url = window.webkitURL.createObjectURL(file) ;
+				}
+				return url ;
+			}
+
+
+
+
+
+			$(function(){
+//				头部引入
+//				$('#header').load('header.html?v=0.01',function(){
+//					$(".navigator ul li a").removeClass("navi-on");
+//					$(".navigator ul li").eq(1).children().addClass("navi-on");
+//				});
+
+//				$(".company-intro").on("change",".pic-manage input[type='radio']",function(){
+//
+//				});
+
+
+
+				queryAboutUsInfo();
+				$(".frame").on("click",".edit-cc",function(){
+					$(this).parent().siblings(".ci-content").find("p").hide();
+					$(this).parent().siblings(".ci-content").find("textarea").show().focus();
+				});
+
+//				修改图文信息
+				$(".frame").on("click",".edit",function(){
+					$(".edit,.au-list").hide();
+					$("#company-intro").show();
+				})
+
+				$(".ci-btn a").click(function(){
+					$(".edit,.au-list").show();
+					$("#company-intro").hide();
+				})
+
+
+//				删除图文信息
+				$(".frame").on("click",".deletable .da-btn",function(){
+					var id = $(this).siblings("input[name='id']").val();
+					if (id==''){
+						$(this).parent().remove();
+					}
+					$.ajax({
+				        url: publicPath+"/api/website/deleteAboutUsInfo",
+				        type: "post",
+				        data: {id:id},
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	$(this).parent().remove();
+				                	location.reload();
+				                	console.log(data.msg);
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				                console.log(data.msg);
+				            }
+				        }
+				    });
+				});
+
+
+				$(".frame").on("click",".addBanner",function(){
+					var len=$(".company-intro li").length;
+					var clci = "<li class='deletable'>"+
+							"<a class='da-btn'>删除图片和描述</a>"+
+							"<div class='banner-pic'>"+
+								"<img src='/images/website/aboutus/default.png'/>"+
+							"</div>"+
+							"<div class='bannerPick'>"+
+								"<span class='restrict' style='margin-left:10px'>图片尺寸不能超过<i>1920*460</i>,大小<i>100K</i>以内<a>选择<input type='file' name='file' /></a></span>"+
+							"</div>"+
+							"<div class='clearfix'>"+
+								"<a class='edit-cc'>编辑</a>"+
+							"</div>"+
+							"<div class='ci-content'>"+
+								"<p></p>"+
+								"<textarea name='content' placeholder='请输入内容'></textarea>"+
+							"</div>"+
+							"<input type='hidden' name='id' value='' />"+
+						"</li>"
+					if ($(".company-intro li").length <=4) {
+						$(".company-intro").append(clci);
+
+//						var taW = $(".ci-content").width()-32;
+//						var taH = $(".ci-content").height()-24;
+//						$("textarea").css({"width":taW,"height":taH});
+					}
+
+				});
+
+
+//				图片上传预览,检查
+				$(".company-intro").on("change","input[name='file']",function(){
+					var objUrl = getObjectURL(this.files[0]);
+					var fileSize = this.files[0].size;
+					var size = fileSize/1024;
+					var filepath = $(this).val();
+					var extStart = filepath.lastIndexOf(".");
+					var ext = filepath.substring(extStart, filepath.length).toUpperCase();
+
+					if (ext != ".BMP" && ext != ".PNG" && ext != ".JPG") {
+	                    alert("图片限于bmp,png,jpg格式");
+	                    $(this).val("");
+	                    return;
+	               	};
+	               	if (size > 500){
+	               		alert("上传的图片大小不能超过500K！");
+	               		$(this).val("");
+	               		return;
+	               	};
+					if (objUrl) {
+						$(this).parents(".bannerPick").siblings(".banner-pic").children("img").attr("src",objUrl);
+					};
+
+
+				});
+
+				//					自定义
+				$(".company-intro").on("change",".bannerPick input[type='radio']",function(){
+					var checked = $(this).parents(".bannerPick").find(".custom").prop("checked");
+					if (checked) {
+						$(this).parents(".bannerPick").find(".restrict").children("a").css({"background":"#0A7EE3","cursor":"pointer"}).children("input").css("cursor","pointer").removeAttr("readonly");
+					} else{
+						$(this).parents(".bannerPick").find(".restrict").children("a").css({"background":"#DBDBDB","cursor":"default"}).children("input").css("cursor","default").attr("readonly","readonly").val("");
+					}
+				})
+
+
+//				保存
+				$(".ci-save").click(function(e){
+					e.preventDefault();
+
+//					if ($(".company-intro li").eq(0).hasClass("defaultY")) {
+//						if ($(".pic-manage .custom").prop("checked")==true) {
+//							if ($(".company-intro li").eq(0).find("input[name='file']").val()==""){
+//								alert("图片不能为空");
+////								$(".company-intro li").eq(0).find(".valiFile").remove();
+////								$(".company-intro li").eq(0).find(".pic-manage").append("<span class='valiFile' style='color: #FF411B;'>请上传图片！</span>")
+//								return false;
+//							}
+////							else {
+////								$(".company-intro li").eq(0).find(".valiFile").remove();
+////							}
+//						}
+//					}
+//
+//					for (var i=0;i<$(".deletable").length;i++) {
+//						if($(".deletable").eq(i).find("input[name='id']").val()=="") {
+//							alert("图片不能为空");
+//							return false;
+//						}
+//
+//					}
+
+//第一个描述图片校验
+
+//第一个之后的描述图片校验
+					$(".restrict:gt(0)").each(function() {
+						if($(this).find("input[name='file']").val()=="" && $(this).parents("li.deletable").children(".banner-pic").children("img").attr("src")=="/images/website/aboutus/default.png"){
+						$(this).parent().find(".no-file").remove();
+								$(this).parent().append("<p class='no-file' style='color: #FF411B;margin-top: 10px;padding-left:10px;'>请上传图片！</p>");
+								return;
+						}else {
+							$(this).parent().find(".no-file").remove();
+						}
+					})
+
+
+					$(".ci-content p").each(function(){
+						var cont = $(this).text().trim();
+						if (cont=="") {
+							$(this).parent().siblings(".clearfix").children(".edit-cc").trigger("click");
+						}
+					});
+
+					for (var i=0;i<$(".company-intro li").length;i++) {
+						if($(".company-intro li").eq(i).find("textarea[name='content']").val()=="") {
+							$(".company-intro li").eq(i).find(".no-cont").remove();
+							$(".company-intro li").eq(i).append("<p class='no-cont' style='color: #FF411B;margin-top: 10px;'>请输入内容！</p>");
+							return false;
+						}else {
+							$(".company-intro li").eq(i).find(".no-cont").remove();
+						}
+
+					}
+
+
+					$("textarea[name='content']").each(function(){
+						$(this).blur(function(){
+							if($(this).val()!=""){
+								$(this).parent().siblings(".no-cont").remove();
+							}
+						});
+						if($(this).val()==""){
+							$(this).parent().siblings(".no-cont").remove();
+							$(this).parents("li").append("<p class='no-cont' style='color: #FF411B;margin-top: 10px;'>请输入内容！</p>");
+							return false;
+						}
+						// else {
+						// 	var callbackUrl = location.href;
+						// 	$("input[name='callbackUrl']").val(callbackUrl);
+						// 	$("#company-intro").submit();
+						//
+						// }
+					});
+					if($(".no-cont").length>0 || $(".no-file").length>0){
+						return;
+					}else {
+							var callbackUrl = location.href;
+							$("input[name='callbackUrl']").val(callbackUrl);
+							$("#company-intro").submit();
+					}
+
+
+				});
+
+
+			});
+		</script>
+	</body>
+</html>

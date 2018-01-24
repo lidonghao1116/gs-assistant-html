@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+    	<meta http-equiv="Pragma" CONTENT="no-cache">
+		<title>您身边的，家政好帮手</title>
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/siteManagement.css?v=0.01"/>
+	</head>
+	<body>
+		<div id="header" class="clearfix">
+			<div class="h-frame">
+				<div class="logo"><img src="img/logo.png"/></div>
+				<div class="h-right">
+					<div class="account">
+						<ul class="clearfix">
+							<!-- <li class="login"><a href="login.html">登录</a></li>
+							<li><a href="accountManagement.html">系统管理</a></li>
+							<li><a>退出</a></li> -->
+						</ul>
+					</div>
+					<div class="navigator">
+						<ul class="clearfix">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="naviLeft">
+			<ul>
+				<!-- <li><a class="sygl" href="homeManagement.html"><em></em>首页管理</a></li>
+				<li class="nl_on"><a class="fwgl" href="serviceManagement.html"><em></em>服务管理</a></li>
+				<li><a class="lxfs" href="contactWay.html"><em></em>联系方式</a></li>
+				<li><a class="zpgl" href="recruitManagement.html"><em></em>招聘管理</a></li>
+				<li><a class="gywm" href="aboutUs.html"><em></em>关于我们</a></li> -->
+			</ul>
+		</div>
+
+		<div class="particulars">
+			<p class="paths">当前页面：网站管理 > 服务管理</p>
+			<div class="frame">
+				<p class="title"><i>服务工种</i></p>
+				<div class="serviceWork">
+					<form id="serviceWork" enctype="multipart/form-data">
+					<table data-authority="0">
+						<tbody>
+						</tbody>
+					</table>
+
+					<a class="sme-sub">保存</a>
+					</form>
+				</div>
+
+			</div>
+		</div>
+
+		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//			服务工种列表获取
+			function serviceItems(){
+				$.ajax({
+			        url: publicPath+"/api/staffs/serviceItems",
+			        type: "post",
+			        data: {},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	var html = "";
+												$(".sme-sub").hide();
+								$.each(dataJD, function(i,item) {
+									html += "<tr>"+
+									"<td width='10%'><input type='checkbox' name='serviceItems' value='"+item.serviceItemCode+"' data-stcode='"+item.isShow+"' disabled='disabled' /></td>"+
+									"<td width='15%'>"+item.serviceItemName+"</td>"+
+									"<td width='65%'><span>"+item.servicePrice+item.servicePriceUnit+"<em data-hot='"+item.isHot+"' class='hot'></em></span></td>"+
+									"<td width='10%' data-stcode='"+item.serviceItemCode+"'></td>"+
+									"</tr>";
+								});
+								$(".serviceWork table tbody").append(html);
+								$(".serviceWork table tr").each(function(){
+									if ($(this).find(".hot").data("hot")==1){
+										$(this).find(".hot").show();
+									};
+								});
+								$(".serviceWork input[name='serviceItems']").each(function(){
+									if ($(this).data("stcode")==1){
+										$(this).prop("checked",true);
+									} else {
+										$(this).prop("checked",false);
+									}
+								});
+								if ($(".serviceWork table").data("authority")==1) {
+									$(".sme-sub").show();
+									$(".serviceWork table tbody tr").each(function(){
+										$(this).find("input").removeAttr("disabled");
+										$(this).find("td").eq(3).html("<a class='edit'></a>");
+									})
+								}
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			};
+
+			$(function(){
+//				头部引入
+//				$('#header').load('header.html?v=0.01',function(){
+//					$(".navigator ul li a").removeClass("navi-on");
+//					$(".navigator ul li").eq(1).children().addClass("navi-on");
+//				});
+
+				serviceItems();
+
+
+
+				$(".serviceWork").on("click",".edit",function(){
+					var Url = "serviceManagementEdit.html"+"?"+"serviceItemCode="+$(this).parent().data("stcode");
+					location.assign(Url);
+				});
+
+				$(".sme-sub").click(function(){
+					$("#serviceWork").ajaxSubmit({
+						url: publicPath+"/api/website/updateServiceItems",
+				        type: "post",
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	toast();
+				                	setTimeout("location.reload();",3000);
+				                	console.log(data.msg);
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				                console.log(data.msg);
+				            }
+				        }
+					});
+
+				});
+
+			});
+		</script>
+	</body>
+</html>

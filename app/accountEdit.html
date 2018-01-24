@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" CONTENT="no-cache">
+  <meta http-equiv="Pragma" CONTENT="no-cache">
+  <title>您身边的，家政好帮手</title>
+  <link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+  <link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+  <link rel="stylesheet" type="text/css" href="css/accountManagement.css"/>
+</head>
+<body>
+<div id="layer"></div>
+<!--达到上限-->
+<div class="upperLimit">
+  <div class="ul-title clearfix">
+    <p>创建账号</p>
+    <a></a>
+  </div>
+  <div class="ul-content">
+    <p>可使用账号数已达上限</p>
+    <div class="clearfix">
+      <p>提示：<span>该版本为标准版，最多可创建5个账号。</span></p>
+      <!-- <span>您可以通过升级成家策门店助手高级会员，拥有更多账号数，为您业务起航。同时有更多高级功能等着您哦！</span> -->
+
+    </div>
+  </div>
+  <a class="ul-btn">确定</a>
+</div>
+
+
+<!--创建成功
+
+-->
+<div class="createSuccess">
+  <div class="cs-title clearfix">
+    <p>创建账号</p>
+    <a></a>
+  </div>
+  <div class="cs-content">
+    <p>账号创建成功</p>
+    <span>默认密码111111，请登录后及时修改。</span>
+  </div>
+  <a class="cs-btn">知道了</a>
+</div>
+
+
+<!--重置密码-->
+<div class="resetpw">
+  <div class="rp-title clearfix">
+    <p>重置密码</p>
+    <a></a>
+  </div>
+  <div id="rp-step1">
+    <div class="rp-content">
+      <p>确认重置密码？</p>
+    </div>
+    <div class="rp-btn">
+      <a class="rpb-left">取消</a>
+      <a class="rpb-right">确定</a>
+    </div>
+  </div>
+
+  <div id="rp-step2">
+    <div class="rp-content">
+      <p>密码已重置</p>
+      <span>默认密码111111，请登录后及时修改。</span>
+    </div>
+    <a class="rpb-center">知道了</a>
+  </div>
+</div>
+
+<div id="header" class="clearfix">
+  <div class="h-frame">
+    <div class="logo"><img src="img/logo.png"/></div>
+    <div class="h-right">
+      <div class="account">
+        <ul class="clearfix">
+          <!-- <li class="login"><a href="login.html">登录</a></li>
+          <li><a href="accountManagement.html">系统管理</a></li>
+          <li><a>退出</a></li> -->
+        </ul>
+      </div>
+      <div class="navigator">
+        <ul class="clearfix">
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="naviLeft">
+  <ul>
+    <!-- <li class=""><a class="xgmm" href="resetPassword.html"><em></em>修改密码</a></li>
+    <li class="nl_on"><a class="zhgl" href="accountManagement.html"><em></em>账号管理</a></li> -->
+  </ul>
+</div>
+
+<div class="particulars">
+  <p class="paths">当前页面：系统管理 > 账号管理 > 新建账号</p>
+  <div class="frame">
+    <div class="aa-form">
+      <div class="form">
+        <table class="pannel" cellpadding="20">
+          <tbody>
+          <tr>
+            <td class="aaf-fd">账号</td>
+            <td class="loginAccount">
+              <div class="intRight">
+              <span class="account-fn"></span><input type="text" maxlength="3" name="loginAccount" id="" value="" placeholder="示例：001"/>
+              </div>
+              <span class="tips">(限制3位数字，如:001)</span>
+              <p class="tipTxt"></p>
+            </td>
+          </tr>
+          <tr id="hideMobile">
+            <td class="aaf-fd">手机号</td>
+            <td class="mobile">
+
+            </td>
+          </tr>
+          <tr>
+            <td class="aaf-fd">姓名</td>
+            <td>
+              <input type="text" name="loginName" id="" value="" placeholder="请输入业务员姓名"/>
+              <p class="tipTxt"></p>
+            </td>
+          </tr>
+          <tr id="createMobile">
+            <td class="aaf-fd">手机号</td>
+            <td>
+              <input type="text" name="telephone" id="telephone" value="" placeholder="请输入业务员手机号"/>
+              <p class="tipTxt"></p>
+            </td>
+          </tr>
+          <tr id="hide">
+            <td class="aaf-fd">验证码</td>
+            <td>
+              <div class="intRight">
+                <input type="text" name="code" id="code" value="" placeholder="短信验证码"/>
+                <input type="button" name="smsBtn" id="smsBtn" value="获取验证码" class="clickable"/>
+                <p class="tipTxt"></p>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="form" id="fm02">
+        <table class="pannel">
+          <tbody>
+          <tr>
+            <td class="aaf-fd">账号类型</td>
+            <td class="userType">
+              <label><input type="radio" name="userType" class="ut1" value="02"/>管理员</label>
+              <label><input type="radio" name="userType" class="ut2" value="03" checked="checked"/>业务员</label>
+            </td>
+          </tr>
+          <tr>
+            <td class="aaf-fd">角色权限</td>
+            <td>
+              <div class="aaf-authority">
+                <p>
+                  <label><img src="img/authority1.png"/>网站管理</label>
+                  <span><input type="checkbox" name="cb1" value="13"/>新增</span>
+                  <span><input type="checkbox" name="cb2" value="14"/>修改</span>
+                </p>
+                <p>
+                  <label><img src="img/authority1.png"/>家政员管理</label>
+                  <span><input type="checkbox" name="cb3" value="15"/>新增</span>
+                  <span><input type="checkbox" name="cb4" value="16"/>修改</span>
+                </p>
+                <p>
+                  <label><img src="img/authority1.png"/>订单管理</label>
+                  <span>具备全部功能</span>
+                </p>
+                <p>
+                  <label><img src="img/authority1.png"/>客户管理</label>
+                  <span>具备全部功能</span>
+                </p>
+                <p>
+                  <label><img src="img/authority1.png"/>财务管理</label>
+                  <span><input type="checkbox" name="cb5" value="6"/>查询</span>
+                </p>
+                <p>
+                  <label><img src="img/authority2.png"/>账户管理</label>
+                </p>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="aaf-btn clearfix">
+        <a class="aafb-left" href="accountManagement.html">取消</a>
+        <a class="aafb-right">创建</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  $(function () {
+    $("#hideMobile").hide();
+//				$('#header').load('header.html?v=0.01',function(){
+//					$(".navigator ul li a").removeClass("navi-on");
+//					$(".navigator ul li").eq(6).children().addClass("navi-on");
+//				});
+
+    $.ajax({
+      url: publicPath + "/api/user/getUserSysSetting",
+      type: "get",
+      data: {},
+      dataType: "json",
+      success: function success(data) {
+        if (data.success) {
+          if (data.code == 0) {
+            var naviLeft1 = data.jsonData[0].subMenuList;
+            $(".naviLeft ul").empty();
+            for (var i = 0; i < naviLeft1.length; i++) {
+              $(".naviLeft ul").append("<li><a href='" + naviLeft1[i].href + "'><em></em>" + naviLeft1[i].name + "</a></li>")
+            }
+            $(".naviLeft ul li").each(function () {
+              if ($(this).index() == 0) {
+                $(this).children("a").addClass("xgmm");
+              } else if ($(this).index() == 1) {
+                $(this).children("a").addClass("zhgl");
+              }
+            })
+
+            var UrlLeft = location.href;
+            if (UrlLeft.indexOf("resetPassword") != -1) {
+              $(".naviLeft li").eq(0).addClass("nl_on");
+            } else if (UrlLeft.indexOf("accountManagement") != -1 || UrlLeft.indexOf("accountEdit") != -1) {
+              $(".naviLeft li").eq(1).addClass("nl_on");
+            }
+          }
+        }
+      }
+    })
+
+    $(".am-list").on("click", ".aml-delete", function () {
+      $("#layer,.deleteAccount").show();
+    })
+
+    $(".deleteAccount .da-title a,.dab-left").click(function () {
+      $("#layer,.deleteAccount").hide();
+    })
+
+    $(".upperLimit .ul-title a,.createSuccess .cs-title a,.ul-btn").click(function () {
+      $("#layer,.upperLimit,.createSuccess").hide();
+    })
+
+    $(".resetpw .rp-title a,.resetpw .rpb-left,.resetpw .rpb-center,.resetpw .rp-title a").click(function () {
+      $("#layer,.resetpw").hide();
+    })
+    $(".cs-btn").click(function () {
+      $("#layer,.createSuccess").hide();
+      location.href = "accountManagement.html";
+    })
+
+    var Url = window.location.search;
+    if (Url.indexOf("?") != -1) {
+      $("title").text("修改账号");
+      $(".paths").text("当前页面：系统管理 > 账号管理 > 修改账号");
+      $(".aafb-right").text("保存");
+      $("input[name='loginAccount']").remove();
+      $("input[name='loginAccount']").remove();
+      $("#hide").remove();
+      $(".loginAccount .intRight").append("<a class='reset'>重置密码</a>");
+      $("#createMobile").remove();
+
+      var str = Url.substr(1);
+      var id = str.split("=")[1];
+      $.ajax({
+        url: publicPath + "/api/user/getTenatsUserInfo",
+        type: "post",
+        data: {id: id},
+        dataType: "json",
+        success: function success(data) {
+          if (data.success) {
+            if (data.code == 0) {
+              var dataJD = data.jsonData;
+              if (dataJD.userType != null) {
+                if (dataJD.userType == "02") {
+                  $(".userType .ut1").prop("checked", true);
+                  $(".aaf-authority").find("input").prop("checked", true).attr("disabled", "disabled");
+                  $(".aaf-authority p").eq(5).find("img").attr("src", "img/authority1.png");
+                } else {
+                  $(".userType .ut2").prop("checked", true);
+                  $.each(dataJD.sysMenuList, function (i, item) {
+                    if (item.id == "13") {
+                      $("input[name='cb1']").prop("checked", true);
+                    } else if (item.id == "14") {
+                      $("input[name='cb2']").prop("checked", true);
+                    } else if (item.id == "15") {
+                      $("input[name='cb3']").prop("checked", true);
+                    } else if (item.id == "16") {
+                      $("input[name='cb4']").prop("checked", true);
+                    } else if (item.id == "6") {
+                      $("input[name='cb5']").prop("checked", true);
+                    }
+                  });
+                }
+              }
+              $(".account-fn").text(dataJD.loginAccount);
+              $(".aa-form input[name='loginName']").val(dataJD.loginName);
+//              $(".aa-form input[name='telephone']").val(dataJD.telephone);
+              $(".aa-form input[name='telephone']").hide();
+              $("#hideMobile").show().find(".mobile").text(dataJD.telephone);
+              console.log(data.msg);
+            } else {
+              console.log(data.msg);
+            }
+          } else {
+            console.log(data.msg);
+          }
+        }
+      });
+
+//				    保存修改信息
+      $(".aafb-right").click(function () {
+        $(".aa-form input").trigger("blur");
+        if ($(".aa-form .validation").length > 0) {
+          return false;
+        };
+        var userType = $(".userType").find("input[type='radio']:checked").val();
+        var loginAccount = $(".account-fn").text();
+        var loginName = $(".aa-form input[name='loginName']").val();
+//        var telephone = $(".aa-form input[name='telephone']").val();
+        var menuIds = [];
+        $(".aaf-authority").find("input[type='checkbox']:checked").each(function () {
+          menuIds.push($(this).val());
+        })
+        $.ajax({
+          url: publicPath + "/api/user/updateTenatsUser",
+          type: "post",
+          data: {
+            id: id,
+            userType: userType,
+            loginAccount: loginAccount,
+            loginName: loginName,
+            menuIds: menuIds.join(",")
+          },
+          dataType: "json",
+          success: function success(data) {
+            if (data.success) {
+              if (data.code == 0) {
+                location.href = "accountManagement.html";
+                console.log(data.msg);
+              } else {
+                console.log(data.msg);
+              }
+            } else {
+              console.log(data.msg);
+            }
+          }
+        });
+      });
+
+//				    重置密码
+      $("body").on("click", ".reset", function () {
+        $("#layer,.resetpw,#rp-step1").show();
+        $("#rp-step2").hide();
+      })
+
+      $("body").on("click", ".rpb-right", function () {
+        $.ajax({
+          url: publicPath + "/api/user/resetPassword",
+          type: "post",
+          data: {
+            id: id
+          },
+          dataType: "json",
+          success: function success(data) {
+            if (data.success) {
+              if (data.code == 0) {
+                $("#rp-step2").show();
+                $("#rp-step1").hide();
+                console.log(data.msg);
+              } else {
+                console.log(data.msg);
+              }
+            } else {
+              if (data.code == "100014") {
+                onError('账号已存在', $("input[name='loginAccount']"));
+              }
+              console.log(data.msg);
+            }
+          }
+        });
+
+      })
+
+    } else {
+      $.ajax({
+        url: publicPath + "/api/index/getSession.do",
+        type: "post",
+        data: {},
+        dataType: "json",
+        success: function success(data) {
+          if (data.success) {
+            if (data.code == 0) {
+              var dataJD = data.jsonData;
+              $(".account-fn").text(dataJD.loginAccount);
+              console.log(data.msg);
+            } else {
+              console.log(data.msg);
+            }
+          } else {
+            console.log(data.msg);
+          }
+        }
+      });
+
+//					新建账号
+      $(".aafb-right").click(function () {
+        $(".aa-form input").trigger("blur");
+        if ($(".aa-form .validation").length > 0) {
+          return false;
+        }
+        ;
+        var userType = $(".userType").find("input[type='radio']:checked").val();
+        var loginAccount = $(".account-fn").text() + $(".aa-form input[name='loginAccount']").val();
+        var loginName = $(".aa-form input[name='loginName']").val();
+        var telephone = $(".aa-form input[name='telephone']").val();
+        var code = $("#code").val();
+        var menuIds = [];
+        $(".aaf-authority").find("input[type='checkbox']:checked").each(function () {
+          menuIds.push($(this).val());
+        })
+        $.ajax({
+          url: publicPath + "/api/user/addTenatsUser",
+          type: "post",
+          data: {
+            id: id,
+            userType: userType,
+            loginAccount: loginAccount,
+            loginName: loginName,
+            telephone: telephone,
+            code: code,
+            menuIds: menuIds.join(",")
+          },
+          dataType: "json",
+          success: function success(data) {
+            if (data.success) {
+              if (data.code == 0) {
+                $("#layer,.createSuccess").show();
+                console.log(data.msg);
+              } else {
+                console.log(data.msg);
+
+              }
+            } else {
+              if (data.code == "100014") {
+                onError('账号已存在', $("input[name='loginAccount']"));
+              } else if (data.code == "100013") {
+                $("#layer,.upperLimit").show();
+              }else if(data.code=="100012"){
+                $("#code").val("");
+                toast_tip("验证码错误,请重新输入")
+              }else if (data.code=="100017"){
+                toast_tip("未发送验证码，请发送验证码后进行注册")
+              }else if (data.code=="100018"){
+                toast_tip("该手机已经注册")
+              }
+              console.log(data.msg);
+            }
+          }
+        });
+      });
+    }
+
+    //表单验证
+    var regNum = /^[0-9]*$/;
+    var regPhone = /^1[3|4|5|7|8][0-9]{9}$/;
+    //发送验证码
+    $("#smsBtn").click(function () {
+      var telephone = $(".aa-form input[name='telephone']").val();
+      if(telephone==""){
+        toast_tip("手机号不能为空")
+        return;
+      }
+      var btn=$("#smsBtn")
+      console.log(btn);
+      $.ajax({
+        url: publicPath + "/api/system/sysUser/check/send?telephone=" + telephone,
+        type: "get",
+        dataType: "json",
+        //验证码成功失败都要作出提示
+        success: function (data) {
+          if(data.success){
+            sendCode(btn);
+            toast_tip("发送成功");
+          }else {
+            if(data.code==100010){
+              toast_tip("验证码超出发送上限,请隔天重试");
+            }else {
+              toast_tip(data.jsonData);
+            }
+          }
+        },
+        error: function (data) {
+
+        }
+      })
+      return false;
+    })
+    //倒计时
+    var countDown = 60;
+
+    function sendCode(btn) {
+      if (countDown <= 0) {
+        btn.removeAttr('disabled').val('重获验证码').removeClass('noClickAble');
+        countDown = 60;
+      }
+      else {
+        btn.attr('disabled', true).val(countDown + "秒").addClass('noClickAble')
+        countDown--;
+        setTimeout(function () {
+          sendCode(btn);
+        }, 1000)
+      }
+    }
+    //账号类型切换
+    $(".userType input[name='userType']").change(function () {
+      var check = $(".ut1").prop("checked");
+      if (check) {
+        $(".aaf-authority").find("input").prop("checked", true).attr("disabled", "disabled");
+        $(".aaf-authority p").eq(5).find("img").attr("src", "img/authority1.png");
+      } else {
+        $(".aaf-authority").find("input").prop("checked", false).removeAttr("disabled")
+        $(".aaf-authority p").eq(5).find("img").attr("src", "img/authority2.png");
+      }
+    })
+
+
+    $(".aa-form input").blur(function () {
+      var self = $(this);
+      var name = $(this).attr("name");
+      switch (name) {
+        case "loginAccount":
+          if (self.val() == "") {
+            onError('账号不能为空', self);
+          } else if (!regNum.test(self.val())) {
+            onError('只能填写数字', self);
+          } else if (self.val().length != 3) {
+            onError('必须输入三位数字', self);
+          } else {
+            onSuccess(self);
+          }
+          break;
+        case "loginName":
+          if (self.val() == "") {
+            onError('姓名不能为空', self);
+          } else {
+            onSuccess(self);
+          }
+          break;
+        case "telephone":
+          if (self.val() == "") {
+            onError('手机号不能为空', self);
+          } else if (!regPhone.test(self.val())) {
+            onError('请输入正确手机号', self);
+          } else {
+            onSuccess(self);
+          }
+          break;
+        default:
+          break;
+      }
+    });
+  })
+
+  function onError(msg, self) {
+    if (self.parents("td").find(".tipTxt").hasClass('validation')) {
+      self.parents("td").find(".tipTxt").text(msg);
+      return;
+    }
+    self.parents("td").find(".tipTxt").text(msg).addClass('validation')
+  }
+
+  function onSuccess(self) {
+    self.parents("td").find(".tipTxt").text("").removeClass('validation');
+  }
+</script>
+</body>
+</html>

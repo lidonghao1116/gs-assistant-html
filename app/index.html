@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+    	<meta http-equiv="Pragma" CONTENT="no-cache">
+		<title>您身边的，家政好帮手</title>
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css?v=0.01"/>
+	</head>
+	<body>
+		<div id="header" class="clearfix">
+			<div class="h-frame">
+				<div class="logo"><img src="img/logo.png"/></div>
+				<div class="h-right">
+					<div class="account">
+						<ul class="clearfix">
+							<!-- <li class="login"><a href="login.html">登录</a></li>
+							<li><a href="accountManagement.html">系统管理</a></li>
+							<li><a>退出</a></li> -->
+						</ul>
+					</div>
+					<div class="navigator">
+						<ul class="clearfix">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="frame">
+				<p class="title"><i>我的站点</i></p>
+				<table class="my-site">
+					<tbody>
+						<tr>
+							<td width="34%">
+								<div class="mode clearfix">
+									<div class="pc">
+										<img src="img/PC.png"/>
+										<p>PC端</p>
+									</div>
+									<div class="wap">
+										<div>
+										</div>
+										<p>移动端二维码</p>
+									</div>
+								</div>
+							</td>
+							<td width="33%">
+								<table>
+									<tbody>
+										<tr>
+											<td width="20%">门店名称:</td>
+											<td width="80%"><span class="storeName"></span></td>
+										</tr>
+										<tr class="ms-validation">
+											<td colspan="2"></td>
+										</tr>
+										<tr>
+											<td>联系地址:</td>
+											<td><span class="contactAddress"></span></td>
+										</tr>
+										<tr class="ms-validation">
+											<td colspan="2"></td>
+										</tr>
+										<tr>
+											<td>联系方式:</td>
+											<td><span class="tenantsPhone"></span><em class="revise"></em></td>
+										</tr>
+										<tr class="ms-validation">
+											<td colspan="2"></td>
+										</tr>
+										<tr>
+											<td>网站地址:</td>
+											<td><span class="websiteUrl"></span></td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+							<td class="exp-date" width="33%">
+								服务有效期：<span class="dueDate"></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="frame my_account_box">
+				<p class="title"><i>我的账户</i></p>
+
+				<div class="my-account clearfix">
+					<div class="eCharts">
+						<div id="eCharts" style="width: 180px;height: 180px;margin: 0 auto;">
+						</div>
+						<p></p>
+					</div>
+					<div class="ma-data">
+						<p class="mad1">
+							账户总额（元）
+							<span></span>
+						</p>
+						<p class="mad2">
+							冻结金额（元）
+							<span></span>
+						</p>
+						<p class="mad3">
+							可用金额（元）
+							<span data-actual=""></span>
+						</p>
+					</div>
+					<div class="money-btn">
+						<div class="mb-frame clearfix">
+							<a class="withdraw">提现</a>
+							<a class="deposit">充值</a>
+						</div>
+					</div>
+				</div>
+				<div class="credit-card">
+					<img src="img/credit card.png"/>
+					<i>银行卡号</i>
+					<span></span>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/echarts.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.qrcode.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function info(){
+				$.ajax({
+			        url: publicPath+"/api/index/info",
+			        type: "post",
+			        data: {},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	if (dataJD.dueDate!=null) {
+				                	var oDate = new Date(dataJD.dueDate),
+							            oYear = oDate.getFullYear(),
+							            oMonth = oDate.getMonth()+1,
+							            oDay = oDate.getDate(),
+							            oTime = oYear +'-'+ getzf(oMonth) +'-'+ getzf(oDay);
+						        } else {
+						        	oTime = "永久";
+						        }
+			                	if(dataJD.storeName!=null){
+			                		$(".storeName").text(dataJD.storeName);
+			                	} else {
+			                		$(".storeName").text("");
+			                	}
+			                	if(dataJD.contactAddress!=null){
+			                		$(".contactAddress").text(dataJD.contactAddress);
+			                	} else {
+			                		$(".contactAddress").text("");
+			                	}
+			                	if(dataJD.tenantsPhone!=null){
+			                		$(".tenantsPhone").text(dataJD.tenantsPhone);
+			                	} else {
+			                		$(".tenantsPhone").text("");
+			                	}
+			                	if(dataJD.websiteUrl!=null){
+			                		$(".websiteUrl").text(dataJD.websiteUrl);
+			                	} else {
+			                		$(".websiteUrl").text("");
+			                	}
+			                	$(".dueDate").text(oTime);
+			                	if(dataJD.totalAmount!=null){
+			                		$(".mad1 span").text(RetainedDecimalPlaces(dataJD.totalAmount));
+			                		$(".eCharts p").text(RetainedDecimalPlaces(dataJD.totalAmount));
+			                	} else {
+			                		$(".mad1 span").text("0.00");
+			                		$(".eCharts p").text("0.00");
+			                	}
+			                	if(dataJD.totalAmount!=null){
+			                		$(".mad2 span").text(RetainedDecimalPlaces(dataJD.frozenAmount));
+			                	} else {
+			                		$(".mad2 span").text("0.00");
+			                	}
+			                	if(dataJD.totalAmount!=null){
+									if(dataJD.totalAmount==0){
+										$(".mad3 span").text("0.00");
+										$(".mad3 span").attr("data-actual",dataJD.availableAmount);
+										myChart(0,0,100);
+										$(".eCharts p").text("0.00");
+									}else{
+										$(".mad3 span").text(RetainedDecimalPlaces(dataJD.availableAmount));
+										$(".mad3 span").attr("data-actual",dataJD.availableAmount);
+										myChart(dataJD.frozenAmount,dataJD.availableAmount);
+									}
+			                	} else {
+			                		$(".mad3 span").text("0.00");
+			                		$(".mad3 span").attr("data-actual","0");
+			                		myChartZ(100);
+			                	}
+
+
+//			                	$(".credit-card img").attr("src",dataJD.bankLogo);
+								if(dataJD.bankName!=null){
+			                		$(".credit-card i").text(dataJD.bankName);
+			                	} else {
+			                		$(".credit-card i").text("");
+			                	}
+			                	if(dataJD.bankTailNumber!=null){
+			                		$(".credit-card span").text(dataJD.bankTailNumber);
+			                	} else {
+			                		$(".credit-card span").text("");
+			                	}
+
+			                	if(dataJD.moblieQrUrl!=null&&dataJD.domain!=null){
+			                		$(".wap div").find("canvas").remove();
+			                		var Qrcode = "http://"+dataJD.moblieQrUrl+"/"+dataJD.domain;
+			                		$(".wap div").qrcode(Qrcode);
+			                	}
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+
+//			    $.ajax({
+//			        url: publicPath+"/api/index/getQrCode",
+//			        type: "post",
+//			        data: {},
+//			        dataType: "json",
+//			        success: function success(data) {
+//			            if(data.success){
+//			                if(data.code == 0){
+//			                	var dataJD = data.jsonData;
+//			                	$(".mode .wap img").attr("src",dataJD);
+//			                	console.log(data.msg);
+//			                }else{
+//			                    console.log(data.msg);
+//			                }
+//			            }else{
+//			                console.log(data.msg);
+//			            }
+//			        }
+//			    });
+			};
+
+			function getzf(num){
+	            if(parseInt(num) < 10){
+	                num = '0'+num;
+	            }
+	            return num;
+	        }
+
+//			图表
+			function myChart(frozenAmount,availableAmount,other){
+				var myChart = echarts.init(document.getElementById('eCharts'));
+				var option = {
+					animation: false,
+				    tooltip: {
+				    	trigger: 'item',
+				        formatter: "{a} <br/>{b}: {c} ({d}%)"
+				    },
+				    series: [
+				        {
+				            name:'',
+				            type:'pie',
+				            radius: ['50%', '80%'],
+				            avoidLabelOverlap: false,
+				            label: {
+				                normal: {
+				                    show: false,
+				                    position: 'center'
+				                },
+				                emphasis: {
+				                    show: true,
+				                    textStyle: {
+				                        fontSize: '10',
+				                        fontWeight: 'bold'
+				                    }
+				                }
+				            },
+				            labelLine: {
+				                normal: {
+				                    show: false
+				                }
+				            },
+				            data:[
+				                {
+				                	value:availableAmount,name:'',itemStyle:{
+				                		normal:{color:'#A7ABD6'}
+				                	}
+				                },
+				                {
+				                	value:frozenAmount,name:'',itemStyle:{
+				                		normal:{color:'#79E096'}
+				                	}
+				                },
+				                {
+				                	value:other,name:'',itemStyle:{
+				                		normal:{color:'#E6E6E6'}
+				                	}
+				                }
+				            ]
+				        }
+				    ]
+				};
+
+		        myChart.setOption(option);
+			};
+
+			function myChartZ(zero){
+				var myChart = echarts.init(document.getElementById('eCharts'));
+				var option = {
+					animation: false,
+				    tooltip: {
+				    	trigger: 'item',
+				        formatter: "{a} <br/>{b}: {c} ({d}%)"
+				    },
+				    series: [
+				        {
+				            name:'',
+				            type:'pie',
+				            radius: ['50%', '80%'],
+				            avoidLabelOverlap: false,
+				            label: {
+				                normal: {
+				                    show: false,
+				                    position: 'center'
+				                },
+				                emphasis: {
+				                    show: true,
+				                    textStyle: {
+				                        fontSize: '10',
+				                        fontWeight: 'bold'
+				                    }
+				                }
+				            },
+				            labelLine: {
+				                normal: {
+				                    show: false
+				                }
+				            },
+				            data:[
+				                {
+				                	value:zero,name:'',itemStyle:{
+				                		normal:{color:'#E6E6E6'}
+				                	}
+				                }
+				            ]
+				        }
+				    ]
+				};
+
+		        myChart.setOption(option);
+			};
+
+			$(function(){
+//				头部引入
+//				$('#header').load('header.html?v=0.01');
+
+
+				info();
+
+				$(".my-site").on("click",".revise",function(){
+					var cont = $(this).siblings("span").text();
+					$(this).siblings("span").html("<input class='revision' type='text' value='"+cont+"'>");
+					if ($(this).siblings("span").attr("class")=="storeName") {
+						$(this).siblings("span").children().attr("name","websiteName");
+					} else if ($(this).siblings("span").attr("class")=="contactAddress") {
+						$(this).siblings("span").children().attr("name","contactAddress");
+					} else if ($(this).siblings("span").attr("class")=="tenantsPhone") {
+						$(this).siblings("span").children().attr("name","tenantsPhone");
+					}
+					$(this).hide();
+					$("input").focus();
+				});
+
+				var regTel = /^[0-9 -]+$/;
+				$(".my-site").on("blur",".revision",function(){
+					var cont = $(this).val();
+					var cName = $(this).parent().attr("class");
+					var inpName = $(this).attr("name");
+					var $this=$(this);
+					$(this).parents("tr").next(".ms-validation").find("td").text("");
+						switch (cName){
+//							case "storeName":
+//								if (cont==""){
+//									$(this).parents("tr").next(".ms-validation").find("td").text("门店名称不能为空！");
+//									return;
+//								}
+//								$.ajax({
+//							        url: publicPath+"/api/index/modify",
+//							        type: "post",
+//							        data: {propertyName:inpName,propertyValue:cont},
+//							        dataType: "json",
+//							        success: function success(data) {
+//							            if(data.success){
+//							                if(data.code == 0){
+//							                	$this.parent().siblings().show();
+//												$this.parent().html(cont);
+//							                	console.log(data.msg);
+//							                }else{
+//							                    console.log(data.msg);
+//							                }
+//							            }else{
+//							                console.log(data.msg);
+//							            }
+//							        }
+//							    });
+//								break;
+//							case "contactAddress":
+//								if (cont==""){
+//									$(this).parents("tr").next(".ms-validation").find("td").text("联系地址不能为空！");
+//									return;
+//								}
+//								$.ajax({
+//							        url: publicPath+"/api/index/modify",
+//							        type: "post",
+//							        data: {propertyName:inpName,propertyValue:cont},
+//							        dataType: "json",
+//							        success: function success(data) {
+//							            if(data.success){
+//							                if(data.code == 0){
+//							                	$this.parent().siblings().show();
+//												$this.parent().html(cont);
+//							                	console.log(data.msg);
+//							                }else{
+//							                    console.log(data.msg);
+//							                }
+//							            }else{
+//							                console.log(data.msg);
+//							            }
+//							        }
+//							    });
+//								break;
+							case "tenantsPhone":
+								if (cont==""){
+									$(this).parents("tr").next(".ms-validation").find("td").text("联系方式不能为空！");
+									return;
+								} else if (!regTel.test(cont)){
+									$(this).parents("tr").next(".ms-validation").find("td").text("请填写正确的联系方式！");
+									return;
+								} else if (cont.length>13) {
+									$(this).parents("tr").next(".ms-validation").find("td").text("请填写正确的联系方式！");
+									return;
+								}
+								$.ajax({
+							        url: publicPath+"/api/index/modify",
+							        type: "post",
+							        data: {propertyName:inpName,propertyValue:cont},
+							        dataType: "json",
+							        success: function success(data) {
+							            if(data.success){
+							                if(data.code == 0){
+							                	$this.parent().siblings().show();
+												$this.parent().html(cont);
+							                	console.log(data.msg);
+							                }else{
+							                    console.log(data.msg);
+							                }
+							            }else{
+							                console.log(data.msg);
+							            }
+							        }
+							    });
+								break;
+							default:
+								break;
+						}
+				});
+
+				$(".my-site").on("keydown",".revision",function(event){
+					if (event.keyCode == "13") {
+						$(this).trigger("blur");
+					}
+				});
+
+				$(".withdraw").click(function(){
+					var available = $(".ma-data .mad3 span").data("actual");
+					var creditCard = $(".credit-card i").text();
+					var endNumber = $(".credit-card span").text();
+					var Url = "withdraw.html"+"?"+"available="+available+"&creditCard="+creditCard+"&endNumber="+endNumber;
+					location.assign(encodeURI(Url));
+				});
+
+				$(".deposit").click(function(){
+					var available = $(".ma-data .mad3 span").data("actual");
+					var Url = "deposit.html"+"?"+"available="+available;
+					location.assign(encodeURI(Url));
+				});
+			});
+		</script>
+	</body>
+</html>

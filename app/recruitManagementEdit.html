@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+    	<meta http-equiv="Pragma" CONTENT="no-cache">
+		<title>您身边的，家政好帮手</title>
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/ordermenu.css?v=0.01"/>		
+		<link rel="stylesheet" type="text/css" href="css/orderManagement.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/recruitManagement.css?v=0.01"/>
+	<body>
+		<div id="layer"></div>
+		<div id="header" class="clearfix">
+			<div class="h-frame">
+				<div class="logo"><img src="img/logo.png"/></div>
+				<div class="h-right">
+					<div class="account">
+						<ul class="clearfix">
+						</ul>
+					</div>
+					<div class="navigator">
+						<ul class="clearfix">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="naviLeft">
+			<ul>
+				<li><a class="ddgl" href="orderManagement.html"><em></em>我的订单</a></li>
+				<li><a class="hzqd" href="ordering.html"><em></em>合作抢单</a></li>
+				<li class="nl_on"><a class="zpgl" href="recruitManagement.html"><em></em>我的招聘</a></li>
+				<li><a class="jlx" href="orderingReceive.html"><em></em>简历箱</a></li>
+			</ul>
+		</div>
+
+		<div class="particulars">
+			<p class="paths">当前页面：订单管理 > 我的招聘 > 招聘详情 </p>
+			<div class="frame">
+				<p class="title"><i>招聘详情</i></p>
+				<div class="postEdit">
+					<form action="" method="post">
+						<table>
+						</table>
+						<!-- <div class="clearfix">
+							<p class="bt_box">
+								<a class="pe-cancel" href="recruitManagement.html">取消</a>
+								<a class="pe-save">发布</a>
+							</p>
+						</div> -->
+					</form>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+		<!-- <script src="js/squire-raw.js" type="text/javascript" charset="utf-8"></script> -->
+		<script type="text/javascript">
+		function getzf(num){  
+					if(parseInt(num) < 10){  
+						num = '0'+num;  
+					}  
+					return num;  
+				};
+
+			function getTenantsJobsDetail(id){
+				$.ajax({
+			        url: publicPath+"/api/job/"+id,
+			        type: "get",
+			        data: {},
+			        dataType: "json",
+			        async:false,
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+								var dataJD = data.jsonData;
+								var modifyTime= new Date(dataJD.modifyTime),
+										oYear = modifyTime.getFullYear(),  
+										oMonth = modifyTime.getMonth()+1,  
+										oDay = modifyTime.getDate();
+										oTime = oYear +'-'+ getzf(oMonth) +'-'+ getzf(oDay);
+								var serviceAdd="";
+								if(dataJD.serviceArea==""){
+									serviceAdd=dataJD.serviceProvinceValue+"-"+dataJD.serviceCityValue;
+								}else{
+									serviceAdd=dataJD.serviceProvinceValue+"-"+dataJD.serviceCityValue+"-"+dataJD.serviceAreaValue;
+								}
+								if(dataJD.serviceType=="01" || dataJD.serviceType=="01" || dataJD.serviceType=="06"){
+									serviceType=dataJD.serviceTypeValue;
+								}else{
+									serviceType=dataJD.serviceTypeValue+"（"+dataJD.serviceMoldValue+"）";
+								}
+								html="<tbody>"+
+											"<tr>"+
+												"<td width='92px'>刷新日期</td>"+
+												"<td>"+oTime+"</td>"+
+											"</tr>"+
+											"<tr>"+
+												"<td>业务员</td>"+
+												"<td>"+dataJD.contactName+"</td>"+
+											"</tr>"+
+											"<tr>"+
+												"<td>岗位名称</td>"+
+												"<td class='positionName'>"+dataJD.positionName+"</td>"+
+											"</tr>"+
+											"<tr>"+
+												"<td>服务工种</td>"+
+												"<td>"+serviceType+"</td>"+
+											"</tr>"+
+											"<tr>"+
+												"<td>年龄要求</td>"+
+												"<td>"+dataJD.ageValue+"</td>"+
+											"</tr>"+
+											"<tr>"+
+												"<td>薪资要求</td>"+
+												"<td>"+dataJD.salary+dataJD.salaryTypeValue+"</td>"+
+											"</tr>"+
+											"<tr>"+
+												"<td>服务区域</td>"+
+												"<td>"+serviceAdd+"</td>"+
+											"</tr>"+
+											"<tr class='demand'>"+
+												"<td>岗位要求</td>"+
+												"<td>"+
+													"<div id='demand_sp'>"+dataJD.demand+"</div>"+
+												"</td>"+
+											"</tr>"+
+										"</tbody>";
+			                	$(".postEdit").find("table").html(html);
+								if(dataJD.emsSign=="01"){
+									$(".positionName").append("<span>急</span>");
+								}
+								// var div = document.getElementById('editor');
+								// var editor = new Squire( div, {
+								// 	blockTag: 'p',
+								// 	blockAttributes: {'class': 'paragraph'},
+								// 	tagAttributes: {
+								// 		ul: {'class': 'UL'},
+								// 		ol: {'class': 'OL'},
+								// 		li: {'class': 'listItem'},
+								// 		a: {'target': '_blank'}
+								// 	}
+								// });
+								// $("#editor").html(dataJD.demand);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			};
+
+			$(function(){
+				//   var div = document.getElementById( 'editor' );
+				// 	var editor = new Squire( div, {
+				// 		blockTag: 'p',
+				// 		blockAttributes: {'class': 'paragraph'},
+				// 		tagAttributes: {
+				// 			ul: {'class': 'UL'},
+				// 			ol: {'class': 'OL'},
+				// 			li: {'class': 'listItem'},
+				// 			a: {'target': '_blank'}
+				// 		}
+				// 	});
+				// 	Squire.prototype.makeHeader = function() {
+				// 		return this.modifyBlocks( function( frag ) {
+				// 		var output = this._doc.createDocumentFragment();
+				// 		var block = frag;
+				// 		while ( block = Squire.getNextBlock( block ) ) {
+				// 			output.appendChild(
+				// 			this.createElement( 'h2', [ Squire.empty( block ) ] )
+				// 			);
+				// 		}
+				// 		return output;
+				// 		});
+				// 	};
+
+				// 	document.addEventListener( 'click', function ( e ) {
+				// 		var id = e.target.id,
+				// 			value;
+				// 		if ( id && editor && editor[ id ] ) {
+				// 		if ( e.target.className === 'prompt' ) {
+				// 			value = prompt( 'Value:' );
+				// 		}
+				// 		editor[ id ]( value );
+				// 		}
+				// 	}, false );
+
+				var url = window.location.search;
+					var str = url.substr(1);
+					var id = str.split("=")[1];
+					getTenantsJobsDetail(id);
+			});
+		</script>
+	</body>
+</html>

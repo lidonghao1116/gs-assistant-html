@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="Cache-Control" CONTENT="max-age=3600">
+    <meta http-equiv="Pragma" CONTENT="max-age=3600"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache"> 
+    <title>您身边的，家政好帮手</title>
+    <link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" type="text/css" href="css/global.css?v=0.01" />
+    <link rel="stylesheet" type="text/css" href="css/housekeepingStaffManagement.css?v=0.01" />
+    <script src="card/test.js"></script>
+</head>
+<body>
+    <!-- 家政员已存在 -->
+    <div id="layer">
+
+    </div>
+    <div class="cunzai has">
+        <div class="cunzai_title">
+            <p>新增家政员</p>
+        </div>
+        <div class="cunzai_content">
+            <p>该用户已存在</p>
+        </div>
+        <div class="cunzai_bt">
+            <a class="ok" href="housekeepingStaffManagement.html">确定</a>
+        </div>
+    </div>
+    <div class="cunzai duqu">
+        <div class="cunzai_title">
+            <p>新增家政员</p>
+        </div>
+        <div class="cunzai_content">
+            <p>请读取身份证</p>
+        </div>
+        <div class="cunzai_bt">
+            <a class="confirm">确定</a>
+        </div>
+    </div>
+    <div id="header" class="clearfix">
+        <div class="h-frame">
+            <div class="logo"><img src="img/logo.png" /></div>
+            <div class="h-right">
+                <div class="account">
+                    <ul class="clearfix">
+                        <!-- <li class="login"><a href="login.html">登录</a></li>
+                       <li><a href="accountManagement.html">系统管理</a></li>
+                        <li><a>退出</a></li> -->
+                    </ul>
+                </div>
+                <div class="navigator">
+                    <ul class="clearfix">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="paths">当前页面：家政员管理 > 新增家政员</p>
+    <div id="readID" style="height: 186px;overflow: hidden;margin: 18px 20px 20px 20px;position: relative;">
+        <div style="position: absolute;left: -20px;right: -20px;top: -18px;bottom: -20px;">
+            <form id="formCard">
+                <input type="hidden" size="30" name="born2" />
+                <div class="add-hs-ID clearfix">
+                    <div class="ID-photo">
+                        <div>家政员</div>
+                        <input id="getImage" type="hidden" name="getImage" />
+                        <img class="idImage" src="img/idImage.png">
+                    </div>
+                    <div class="ID-info">
+                        <p class="ID-no">
+                            <label><i>身份证号：</i><input type="text" name="idnum" size="20" value="" placeholder="请通过身份证读取器读取" disabled="disabled"/></label>
+                            <a class="b-sbtn">读取</a>
+                        </p>
+                        <ul class="info_read clearfix">
+                            <li>
+                                <p><span><i class="required">*</i>家政员姓名：</span><input type="text" size="20" name="nameL" disabled="disabled" value="" />
+                                <p>
+                                <p><span>性别：</span><input type="text" size="20" name="sexL" disabled="disabled" /></p>
+                                <p><span><i class="required">*</i>年龄：</span><input type="text" size="20" name="age" disabled="disabled" /></p>
+                                <p><span>户籍地址：</span><input type="text" size="40" name="address" disabled="disabled" /></p>
+                            </li>
+                            <li>
+                                <p><span>民族：</span><input type="text" size="20" name="nationL" disabled="disabled" /></p>
+                                <p><span><i class="required">*</i>属相：</span><input type="text" size="20" name="zodiac" disabled="disabled" /></p>
+                                <p><span><i class="required">*</i>星座：</span><input type="text" size="20" name="constellation" disabled="disabled" /></p>
+                                <p><span><i class="required">*</i>籍贯：</span><input type="text" size="20" name="native" disabled="disabled" /></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+            <!--<embed type="application/x-meadco-neptune-ax"
+				  pluginspage="http://www.meadroid.com/neptune/download/"
+				  width="100%" height="224"
+				  id="embed"
+				  param-location="">
+				</embed>-->
+        </div>
+    </div>
+
+
+    <!--基本资料-->
+    <div class="workingCondition clearfix" data-staffid="">
+        <input type="hidden" name="onOff" value="1" />
+        <div class="basic-info">
+            <div class="frame">
+                <form enctype="multipart/form-data" id="ahs1-form">
+                    <div class="clearfix">
+                        <p class="title"><i>基本资料</i></p>
+                    </div>
+                    <ul class="basic_ul clearfix">
+                        <li>
+                            <p>
+                                <label><i class="required">*</i>学历：</label>
+                                <select name="education">
+									<option value=""></option>
+								</select>
+                            </p>
+                            <p>
+                                <label><i class="required">*</i>血型：</label>
+                                <select name="bloodType">
+									<option value=""></option>
+								</select>
+                            </p>
+                            <p>
+                                <label><i class="required">*</i>手机号码：</label>
+                                <input type="text" name="mobile" value="" />
+                            </p>
+                            <p>&nbsp;</p>
+                            <p>
+                                <label>体重(kg)：</label>
+                                <input type="text" name="weight" value="" />
+                            </p>
+                            <p>
+                                <label>现居住地：</label>
+                                <input type="text" name="liveAddress" value="" />
+                            </p>
+                            <!-- <div class="notFamily" style="display:none;">
+								<label>不做家庭：</label>
+								<div class="li_right">
+									<div class="checkbox_box petFeeding">
+										 <input type="checkbox" name="petFeeding" value="" />
+										 <div class="check-box">
+												 <img src="img/checked.png" alt="">
+										 </div>
+									 </div>
+									 <i>饲养动物</i>
+									 <div class="checkbox_box elderlySupport">
+ 										 <input type="checkbox" name="elderlySupport" value="" />
+ 										 <div class="check-box">
+ 												 <img src="img/checked.png" alt="">
+ 										 </div>
+ 									 </div>
+ 									 <i>有老人</i>
+								</div>
+
+							</div> -->
+                            <!-- <em class="petFeeding"><input type="checkbox" name="serviceItems[0].petFeeding" value="0" /></em>
+						 <em class="elderlySupport"><input type="checkbox" name="serviceItems[0].elderlySupport" value="0" />有老人</em> -->
+                        </li>
+                        <li>
+                            <p>
+                                 <label><i class="required">*</i>身高(cm)：</label>
+                                <input type="text" name="height" value="" /> 
+                            </p>
+                            <p>
+                                <label><i class="required">*</i>婚姻状况：</label>
+                                <select name="maritalStatus">
+									<option value="">请选择</option>
+									<option value="01">已婚</option>
+									<option value="02">未婚</option>
+								</select>
+                            </p>
+                            <p></p>
+                            <p>&nbsp;</p>
+                            <p>
+                                <label>生育情况：</label>
+                                <select name="fertilitySituation">
+									<option value=""></option>
+								</select>
+                            </p>
+                            <p>
+                                <label>紧急联系电话：</label>
+                                <input type="text" name="contactPhone" value="" />
+                            </p>
+                        </li>
+                    </ul>
+                    <div class="info_morebox"><span id="info_more" class="zhankai">展开更多信息</span></div>
+                </form>
+            </div>
+        </div>
+
+        <!--求职信息-->
+        <form enctype="multipart/form-data" id="ahs2-form">
+            <div class="job-info">
+                <div class="frame">
+                    <p class="title"><i>求职意向</i></p>
+                    <div class="serviceItem_box"> 
+                        <ul class="serviceItem_info">
+                            <li>
+                                <label><i class="required">*</i>期望薪资：</label>
+                                <input type="text" name="price" value="" />
+                                <select name="salaryType"  style="width:90px;margin-left:10px">
+                                  <option value=''></option>
+                                </select>
+                            </li>
+                            <li>
+                                <label><i class="required">*</i>管理方式：</label>
+                                <select name="manageWay">
+                                    <option value="">请选择</option>
+                                    <option value="01">员工制</option>
+                                    <option value="02">中介制</option>
+                                </select>
+                            </li>
+                            <li>
+                                <span>
+                                    <label><i class="required">*</i>从业经验：</label>
+                                    <select name="experience">
+                                        <option value=""></option>
+                                    </select>
+                                </span>
+                            </li>
+                            <li>
+                                <div class="serviceArea">
+                                    <label><i class="required">*</i>服务区域：</label>
+                                    <div class="li_right">
+                                        <div class="radio_box">
+                                            <input type="radio" name="areaRadio" class="ar1" value="" checked="checked">
+                                            <div class="circle-box active">
+                                                <span class="circle"></span>
+                                            </div>
+                                        </div>
+                                        <i>不限</i>
+                                        <div class="radio_box">
+                                            <input type="radio" name="areaRadio" class="ar2" value="">
+                                            <div class="circle-box">
+                                                <span class="circle"></span>
+                                            </div>
+                                        </div>
+                                        <i>指定区域</i>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <h2 class="service_add"><a class="addPostBtn">添加工种</a></h2>
+                    <ul class="postList">
+                        <li>
+                            <a class="postBtn "></a>
+                            <p>
+                                <span class="serviceItemCode">
+                                    <label><i class="required">*</i>服务工种：</label>
+                                    <select class="fwgz" name="serviceItems[0].serviceItemCode">
+                                        <option value=""></option>
+                                    </select>
+                                    <select class="leixing" name="serviceItems[0].serviceNature" style="width:90px;">
+                                        <option value="">请选择</option>
+                                    </select>
+                                </span>
+                            </p>
+                            <div class="skills clearfix">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="skill-info">
+                <div class="frame">
+                    <!-- <form enctype="multipart/form-data" id="ahs3-form"> -->
+                        <p class="title"><i>能力特点</i></p>
+                        <ul class="postSkills">
+                            <li class="clearfix">
+                                <label>性格特点：</label>
+                                <div class="li_right clearfix">
+                                    <i>形象好<input type="checkbox" name="characerFeature" value="02" /></i>
+                                    <i>气质佳<input type="checkbox" name="characerFeature" value="03" /></i>
+                                    <i>热情直爽<input type="checkbox" name="characerFeature" value="01" /></i>
+                                    <i>好沟通<input type="checkbox" name="characerFeature" value="05" /></i>
+                                    <i>面善微笑<input type="checkbox" name="characerFeature" value="06" /></i>
+                                    <i>话不多实在<input type="checkbox" name="characerFeature" value="04" /></i>
+                                </div>
+                            </li>
+                            <li style="height:24px;">&nbsp;</li>
+                            <li class="clearfix">
+                                <label>烹饪特点：</label>
+                                <div class="li_right clearfix">
+                                    <i>西点<input type="checkbox" name="cookingFeature" value="01" /></i>
+                                    <i>面点<input type="checkbox" name="cookingFeature" value="02" /></i>
+                                    <i>本帮菜<input type="checkbox" name="cookingFeature" value="03" /></i>
+                                    <i>川菜<input type="checkbox" name="cookingFeature" value="04" /></i>
+                                    <i>粤菜<input type="checkbox" name="cookingFeature" value="05" /></i>
+                                    <i>东北菜<input type="checkbox" name="cookingFeature" value="06" /></i>
+                                    <i>淮扬菜<input type="checkbox" name="cookingFeature" value="07" /></i>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <label>语言特点：</label>
+                                <div class="li_right clearfix">
+                                    <i>普通话<input type="checkbox" name="languageFeature" value="01" /></i>
+                                    <i>英语<input type="checkbox" name="languageFeature" value="02" /></i>
+                                    <i>上海话<input type="checkbox" name="languageFeature" value="03" /></i>
+                                    <i>广东话<input type="checkbox" name="languageFeature" value="04" /></i>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="skill_morebox">
+                            <span id="skill_more" class="zhankai">展开更多特点</span>
+                        </div>
+                </div>
+            </div>
+        </form>
+        <a class="ahs-sub">保存阿姨信息</a>
+    </div>
+
+
+    <script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+    <script src="time/lhgcore.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="time/lhgcalendar.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+    <script src="js/SigWebTablet.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+      if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};
+
+      const path = require('path');
+      const fs = require('fs');
+
+      function byId(id) {
+        return document.getElementById(id);
+      }
+//      上传图片
+      function uploadImage(url) {
+        $.ajax({
+          url: "http://test.jiacersxy.com:8000/image/upload",
+          type: "post",
+          data: url,
+          async: false,
+          cache: false,
+          contentType: false,
+          processData: false,
+          success: function success(data) {
+            if (data.status == 0) {
+              console.log(data)
+            } else {
+              console.log(data.message);
+            }
+          },
+          error: function (err) {
+            console.log(err);
+          }
+        });
+      }
+      function readCard() {
+        var card=__dirname.split("electron.asar")[0];
+        var cardUrl=path.join(card,'app.asar/card_read.js').replace("/","\\");
+        console.log(cardUrl);
+        var card_read = require(cardUrl);
+//        var timestamp = Date.parse(new Date());
+//        console.log(timestamp);
+//        var imgurl="zp.bmp?"+timestamp;
+//        console.log(imgurl);
+//        var obj = card_read.readIdInfo(imgurl);
+        var obj = card_read.readIdInfo();
+        console.log(process.cwd());
+        var imgPath=path.join(`${process.cwd()}`,"/resources/app/card/zp.bmp");
+//        var imgPath=__dirname.split("app")[0]+"app\\card\\zp.bmp";
+        console.log(imgPath);
+        console.log(JSON.stringify(obj));
+
+        var form1 = byId("formCard");
+        if(obj===65||obj===272||obj==-1002){
+          alert("未读取到身份证，请移走身份证并重新放置后读取")
+          form1.getImage.value="";
+          form1.nameL.value = "";
+          form1.sexL.value = "";
+          form1.nationL.value = "";
+          form1.address.value = "";
+          form1.idnum.value = "";
+          form1.born2.value = "";
+          form1.age.value = "";
+          form1.zodiac.value = "";
+          form1.constellation.value = "";
+          form1.native.value = "";
+          $('.idImage').attr('src','img/idImage.png');
+        }else {
+          fs.readFile(imgPath, (err, data) => {
+            //get image file extension name
+            let extensionName = path.extname(imgPath);
+
+            //convert image file to base64-encoded string
+            let base64Image = new Buffer(data, 'binary').toString('base64');
+//      console.log(base64Image);
+            //combine all strings
+            let imgSrcString = `data:image/${extensionName.split('.').pop()};base64,${base64Image}`;
+//          console.log(imgSrcString);
+
+            $(".idImage").attr("src", imgSrcString)
+            $("#getImage").val(imgSrcString)
+          })
+          var sexArr= new Array("未知","男","女");
+          var ethnicArr = {
+            "01": "汉族",
+            "02": "蒙古族", "03": "回族",
+            "04": "藏族", "05": "维吾尔族", "06": "苗族",
+            "07": "彝族", "08": "壮族", "09": "布依族",
+            "10": "朝鲜族", "11": "满族", "12": "侗族",
+            "13": "瑶族", "14": "白族", "15": "土家族",
+            "16": "哈尼族", "17": "哈萨克族", "18": "傣族",
+            "19": "黎族", "20": "傈僳族", "21": "佤族",
+            "22": "畲族", "23": "高山族", "24": "拉祜族",
+            "25": "水族", "26": "东乡族", "27": "纳西族",
+            "28": "景颇族", "29": "柯尔克孜族", "30": "土族",
+            "31": "达斡尔族", "32": "仫佬族", "33": "羌族",
+            "34": "布朗族", "35": "撒拉族", "36": "毛难族",
+            "37": "仡佬族", "38": "锡伯族", "39": "阿昌族",
+            "40": "普米族", "41": "塔吉克族", "42": "怒族",
+            "43": "乌孜别克族", "44": "俄罗斯族", "45": "鄂温克族",
+            "46": "德昂族", "47": "保安族", "48": "裕固族",
+            "49": "京族", "50": "塔塔尔族", "51": "独龙族",
+            "52": "鄂伦春族", "53": "赫哲族", "54": "门巴族",
+            "55": "珞巴族", "56": "基诺族"
+          }
+          console.log(obj.ethnicCode)
+          var ethnic=ethnicArr[obj.ethnicCode];
+          var sex=sexArr[obj.sexCode];
+          form1.nameL.value = obj.name;
+          form1.sexL.value = sex;
+          form1.nationL.value = ethnic;
+          form1.address.value = obj.address;
+          form1.idnum.value = obj.idNumber;
+          form1.born2.value = obj.birthDate;
+          var birthday = $("input[name='born2']").val();
+          var b1 = birthday.substr(0, 4);
+          var b2 = birthday.substr(4, 2);
+          var b3 = birthday.substr(6, 2);
+          var birth = b1 + "/" + b2 + "/" + b3;
+          var date = new Date(birth);
+          var con = getxingzuo(date.getMonth() + 1, date.getDate());
+          $("input[name='constellation']").val(con);
+          var zodiac = year[(parseInt(date.getFullYear()) + 9) % 12];
+          $("input[name='zodiac']").val(zodiac);
+          var age = new Date().getFullYear() - date.getFullYear();
+          $("input[name='age']").val(age);
+
+          //				判断地区
+          var cityCode = parseInt($("input[name='idnum']").val().substr(0, 2));
+          $("input[name='native']").val(CityArray[cityCode]);
+          var certNo = $("input[name='idnum']").val();
+          var certImage = $("input[name='getImage']").val();
+          var staffName = $("input[name='nameL']").val();
+          var nation = $("input[name='nationL']").val();
+          var houseAddress = $("input[name='address']").val();
+          var nativePlace = $("input[name='native']").val();
+        }
+      }
+            //      var publicPath = "http://" + window.location.host + "/fbeeConsole_web";
+      var year = new Array("猪", "鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗");
+      var CityArray = {
+        11: "北京",
+        12: "天津",
+        13: "河北",
+        14: "山西",
+        15: "内蒙古",
+        21: "辽宁",
+        22: "吉林",
+        23: "黑龙江",
+        31: "上海",
+        32: "江苏",
+        33: "浙江",
+        34: "安徽",
+        35: "福建",
+        36: "江西",
+        37: "山东",
+        41: "河南",
+        42: "湖北",
+        43: "湖南",
+        44: "广东",
+        45: "广西",
+        46: "海南",
+        50: "重庆",
+        51: "四川",
+        52: "贵州",
+        53: "云南",
+        54: "西藏",
+        61: "陕西",
+        62: "甘肃",
+        63: "青海",
+        64: "宁夏",
+        65: "新疆",
+        71: "台湾",
+        81: "香港",
+        82: "澳门",
+        91: "国外"
+      }
+
+      function getTenantId() {
+        $.ajax({
+          url: publicPath + "/api/index/getSession.do",
+          type: "post",
+          async: false,
+          data: {},
+          dataType: "json",
+          success: function success(data) {
+            if (data.success) {
+              if (data.code == 0) {
+                var dataJD = data.jsonData;
+                if (dataJD != null) {
+                  sessionStorage.setItem('tenantId',dataJD.tenantId)
+//                  return dataJD.tenantId;
+                    /*var embed = '<embed type="application/x-meadco-neptune-ax"' +
+                     'pluginspage="http://www.meadroid.com/neptune/download/"' +
+                     'width="100%" height="224"' +
+                     'id="embed"' +
+                     'wmode="opaque"' +
+                     'param-location="http://' + window.location.host + '/personInfo.html?'+ dataJD.loginAccount + '&' + dataJD.tenantId + '">'
+                     '</embed>';
+                     $("#readID div").html(embed);*/
+                }
+                console.log(data.msg);
+              } else {
+                console.log(data.msg);
+              }
+            } else {
+              console.log(data.msg);
+            }
+          }
+        });
+      }
+      function getxingzuo(month, day) {
+        var d = new Date(1999, month - 1, day, 0, 0, 0);
+        var arr = [];
+        arr.push(["魔羯座", new Date(1999, 0, 1, 0, 0, 0)])
+        arr.push(["水瓶座", new Date(1999, 0, 20, 0, 0, 0)])
+        arr.push(["双鱼座", new Date(1999, 1, 19, 0, 0, 0)])
+        arr.push(["牡羊座", new Date(1999, 2, 21, 0, 0, 0)])
+        arr.push(["金牛座", new Date(1999, 3, 21, 0, 0, 0)])
+        arr.push(["双子座", new Date(1999, 4, 21, 0, 0, 0)])
+        arr.push(["巨蟹座", new Date(1999, 5, 22, 0, 0, 0)])
+        arr.push(["狮子座", new Date(1999, 6, 23, 0, 0, 0)])
+        arr.push(["处女座", new Date(1999, 7, 23, 0, 0, 0)])
+        arr.push(["天秤座", new Date(1999, 8, 23, 0, 0, 0)])
+        arr.push(["天蝎座", new Date(1999, 9, 23, 0, 0, 0)])
+        arr.push(["射手座", new Date(1999, 10, 22, 0, 0, 0)])
+        arr.push(["魔羯座", new Date(1999, 11, 22, 0, 0, 0)])
+        for (var i = arr.length - 1; i >= 0; i--) {
+          if (d >= arr[i][1])
+            return arr[i][0];
+        }
+      }
+      function onErrorSp(msg, self) {
+            if (self.nextAll().hasClass('promptSp')) {
+                self.nextAll('.promptSp').text(msg);
+                return;
+            }
+            self.parent().append("<span class='promptSp'>" + msg + "</span>");
+        }
+
+        function onSuccessSp(self) {
+            self.nextAll('.promptSp').remove();
+        }
+
+        function getSessionStaffId() {
+            $.ajax({
+                url: publicPath + "/api/staffs/getSessionStaffId",
+                type: "post",
+                data: {},
+                dataType: "json",
+                async: false,
+                success: function success(data) {
+                    if (data.success) {
+                        if (data.code == 0) {
+                            var dataJD = data.jsonData;
+                            if (dataJD != null) {
+                                $(".workingCondition").attr("data-staffid", dataJD);
+                            }
+                            console.log(data.msg);
+                        } else {
+                            console.log(data.msg);
+                        }
+                    } else {
+                        alert(data.msg);
+                        console.log(data.msg);
+                    }
+                }
+            });
+        }
+
+        function getObjectURL(file) {
+            var url = null;
+            if (window.createObjectURL != undefined) { // basic
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) { // mozilla(firefox)
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) { // webkit or chrome
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        }
+        //			区域选择
+        function serviceArea(name, n) {
+            $.ajax({
+                url: publicPath + "/api/common/getAreaData/c001",
+                type: "post",
+                data: {},
+                dataType: "json",
+                async: false,
+                success: function success(data) {
+                    if (data.success) {
+                        if (data.code == 0) {
+                            var dataJD = data.jsonData;
+                            var html = "";
+                            $.each(dataJD, function(i, item) {
+                                html += "<option data-parentCode='" + item.parentCode + "' data-areaLevel='" + item.areaLevel + "' value='" + item.areaCode + "'>" + item.areaName + "</option>";
+                            });
+                            $("select[name='" + name + "']").eq(n).html("<option value=''>请选择</option>" + html);
+                            console.log(data.msg);
+                        } else {
+                            console.log(data.msg);
+                        }
+                    } else {
+                        console.log(data.msg);
+                    }
+                }
+            });
+        }
+//			服务类型
+			function getServiceNature(serverType,n){
+				$.ajax({
+						url:publicPath+"/api/website/getServiceMold",
+						type:"post",
+						data:{
+							serverType:serverType
+						},
+						dataType:"json",
+						async:false,
+						success:function success(data){
+							if(data.success){
+								var dataJD = data.jsonData;
+								var html = "";
+								$.each(dataJD, function(i,item) {
+									html += "<option value='"+item.id+"'>"+item.value+"</option>";
+								});
+								if(serverType==""){
+									$("select[name='serviceItems["+n+"].serviceNature']").html("<option value=''>请选择</option>").hide();
+								}else if(serverType==01||serverType==02||serverType==06){
+									$("select[name='serviceItems["+n+"].serviceNature']").html("<option selected='selected' value='01'>住家</option>").hide();
+								}else{
+									$("select[name='serviceItems["+n+"].serviceNature']").html("<option value=''>请选择</option>"+html).show().addClass("grey_i");
+								}
+								console.log(data.msg);
+							}else{
+								console.log(data.msg);
+							}
+						},
+					})
+			}
+      //判断是否为空
+      function isEmpty(param) {
+        if ($.trim(param) != "" && $.trim(param) != null) {
+          return false;
+        } else {
+          return true;
+        }
+      };
+
+
+        function onError(msg, self) {
+            if (self.nextAll().hasClass('validation')) {
+                self.nextAll('.validation').text(msg);
+                return;
+            }
+            self.parent().append("<i class='validation'>" + msg + "</i>")
+        }
+
+        function onSuccess(self) {
+            self.nextAll('.validation').remove();
+        }
+      $(function() {
+        var url = location.search;
+//        var loginAccount = url.split("?")[1].split("&")[0];
+//        var tenantId = url.split("?")[1].split("&")[1];
+
+        $("#getImage").change(function() {
+          if ($(this).val() != "") {
+            $(this).siblings("img").hide();
+          } else {
+            $(this).siblings("img").show();
+          }
+        })
+        getTenantId();
+        var tenantId=sessionStorage.getItem('tenantId')
+        console.log(tenantId)
+        //				保存
+        $(".ahs-sub").click(function() {
+          //				判断地区
+          var certNo = $("input[name='idnum']").val();
+          var certImage = $("input[name='getImage']").val();
+          var staffName = $("input[name='nameL']").val();
+          var nation = $("input[name='nationL']").val();
+          var houseAddress = $("input[name='address']").val();
+          var nativePlace = $("input[name='native']").val();
+//            getSessionStaffId();
+          if (isEmpty(certNo)||isEmpty(certImage)||isEmpty(staffName)||isEmpty(nation)||isEmpty(houseAddress)||isEmpty(nativePlace)) {
+            $("#layer,.duqu").show();
+            return false;
+          }
+          $("#ahs1-form input,#ahs1-form select,#ahs2-form input,#ahs2-form select").trigger("blur");
+          if ($("#ahs1-form .validation,#ahs2-form .validation").length > 0) {
+            return false;
+          };
+
+//            var staffId = $(".workingCondition").data("staffid");
+          var onOff = $("input[name='onOff']").val();
+
+          $("#ahs1-form").ajaxSubmit({
+            url: publicPath + "/api/staffs/add/baseInfo",
+            type: "post",
+            data: {
+//                staffId: staffId,
+              isAdd:1,
+              certNo: certNo,
+              certImage: certImage,
+              staffName: staffName,
+              nation: nation,
+              houseAddress: houseAddress,
+              nativePlace: nativePlace,
+              tenantId:tenantId
+            },
+            dataType: "json",
+            async: false,
+            success: function success(data) {
+              var staffId=data.jsonData.staffId;
+              console.log(staffId);
+              if (data.success) {
+                if (data.code == 0) {
+                  $("#ahs2-form").ajaxSubmit({
+                    url: publicPath + "/api/staffs/add/saveItemsInfo",
+                    type: "post",
+                    data: {
+                      staffId: staffId
+                    },
+                    dataType: "json",
+                    async: false,
+                    success: function success(data) {
+                      if (data.success) {
+                        if (data.code == 0) {
+                          $.ajax({
+                            url: publicPath + "/api/staffs/add/onOffShelf",
+                            type: "post",
+                            data: {
+                              staffId: staffId,
+                              onOff: onOff
+                            },
+                            dataType: "json",
+                            async: false,
+                            success: function success(data) {
+                              if (data.success) {
+                                if (data.code == 0) {
+                                  alert("添加成功");
+                                  location.href = "housekeepingStaffManagement.html";
+                                  console.log(data.msg);
+                                } else {
+                                  console.log(data.msg);
+                                }
+                              } else {
+                                console.log(data.msg);
+                              }
+                            }
+                          });
+
+                          // $("#ahs3-form").ajaxSubmit({
+                          //     url: publicPath + "/api/staffs/add/jobInfo",
+                          //     type: "post",
+                          //     data: {
+                          //         staffId: staffId
+                          //     },
+                          //     dataType: "json",
+                          //     async: false,
+                          //     success: function success(data) {
+                          //         if (data.success) {
+                          //             if (data.code == 0) {
+                          //                 console.log(data.msg);
+                          //             } else {
+                          //                 console.log(data.msg);
+                          //             }
+                          //         } else {
+                          //             console.log(data.msg);
+                          //         }
+                          //     }
+                          // });
+
+
+                          console.log(data.msg);
+                        } else {
+                          console.log(data.msg);
+                        }
+                      } else {
+                        console.log(data.msg);
+                      }
+                    }
+                  });
+
+
+                  console.log(data.msg);
+                } else {
+                  console.log(data.msg);
+                }
+              } else {
+                if (data.code = 999112) {
+                  $(".has,#layer").show();
+                }
+                console.log(data.msg);
+              }
+            }
+          });
+
+        });
+//        读卡
+        $('.b-sbtn').click(function () {
+          readCard();
+        });
+        //薪资要求
+        $.ajax({
+          url:publicPath+"/api/website/getSalaryRange",
+          type:"post",
+          data:{},
+          dataType:"json",
+          success:function success(data){
+            if(data.success){
+              var dataJD = data.jsonData;
+              var html = "";
+              $.each(dataJD, function(i,item) {
+                html += "<option value='"+item.id+"'>"+item.value+"</option>";
+              });
+              $("select[name='salaryType']").html("<option value=''>请选择</option>"+html);
+              console.log(data.msg);
+            }else{
+              console.log(data.msg);
+            }
+          },
+        })
+
+
+
+
+        J('#certificationDate').calendar();
+
+        $(".addCertificate a").click(function() {
+          $(".ac-info").show();
+          $(".promptSp").remove();
+          $(this).hide().parent().css("border-bottom", "none");
+          $(".ac-info .certImage").attr("data-haspic", 0);
+          $(".ac-info select[name='certType']").val("");
+          $(".ac-info select[name='authenticateGrade']").val("");
+          $(".ac-info input[name='certNo']").val("");
+          $(".ac-info input[name='certificationDate']").val("");
+          $(".ac-info select[name='certificationBody']").val("");
+          $(".ac-info input[name='otherCertificationBody']").val("");
+          $(".ac-info input[name='certImage']").val("");
+          $(".ac-info .certImage img").attr("src", "");
+        });
+
+        $(".ac-info").on("mouseenter mouseleave", ".certImage", function(e) {
+          if ($(this).attr("data-haspic") == 1) {
+            if (e.type == "mouseenter") {
+              $(this).children(".cover,.deletePic").show();
+            } else {
+              $(this).children(".cover,.deletePic").hide();
+            }
+          }
+        });
+
+        $(".ac-info").on("mouseenter mouseleave", ".certImage .deletePic", function(e) {
+          if ($(this).parent().attr("data-haspic") == 1) {
+            if (e.type == "mouseenter") {
+              $(this).siblings(".deleteCover").show();
+            } else {
+              $(this).siblings(".deleteCover").hide();
+            }
+          }
+        });
+
+        $(".certImage .deletePic").click(function() {
+          $(this).siblings("img").attr("src", "").parent().attr("data-haspic", 0);
+          $(this).hide().siblings("div").hide();
+        });
+
+        $(".aci-btn .acib-cancel").click(function() {
+          $(".ac-info").hide();
+          $(".addCertificate").css("border-bottom", "2px solid #F5F5F5");
+          $(".addCertificate a").show();
+        });
+        //隐藏 展示
+        $("#info_more").click(function() {
+          if ($(this).hasClass("shouqi")) {
+            $(this).removeClass("shouqi");
+            $(this).parent().siblings("ul").css("height", "128px");
+            $(this).text("展开更多信息");
+          } else {
+            $(this).addClass("shouqi");
+            $(this).parent().siblings("ul").css("height", "auto");
+            $(this).text("收起更多信息");
+          }
+        })
+        //隐藏 展示
+        $("#skill_more").click(function() {
+          if ($(this).hasClass("shouqi")) {
+            $(this).removeClass("shouqi");
+            $(this).parent().siblings("ul").css("height", "58px");
+            $(this).text("展开更多特点");
+          } else {
+            $(this).addClass("shouqi");
+            $(this).parent().siblings("ul").css("height", "auto");
+            $(this).text("收起更多特点");
+          }
+        })
+        //证书是否有等级
+        $("select[name='certType']").change(function() {
+          if ($(this).val() == "18" || $(this).val() == "19") {
+            $(".authenticateGrade_box").hide();
+            $("select[name='authenticateGrade']").val("");
+
+          } else {
+            $(".authenticateGrade_box").show();
+          }
+        });
+        //发证机构
+        $("select[name='certificationBody']").change(function() {
+          var certificationBodyVal = $(this).val();
+          if (certificationBodyVal == "03") {
+            $(this).siblings("input").show();
+          } else {
+            $(this).siblings("input").hide();
+            $(this).siblings("input").val("");
+          }
+        })
+        //能力特点 工种服务技能
+        $(".postSkills,.postList").on("click", "input[type='checkbox']", function() {
+            var check = $(this).prop("checked");
+            if (check) {
+              $(this).parent().addClass("active");
+            } else {
+              $(this).parent().removeClass("active");
+            }
+        });
+        
+        $(".aci-btn .acib-save").click(function(e) {
+          e.preventDefault();
+
+          $(".cdList li p select,.cdList li p input[type='text']").each(function() {
+            var self = $(this);
+            var name = $(this).attr("name");
+            switch (name) {
+              case "certType":
+                if (self.val() == "") {
+                  onErrorSp('*请选择证书', self);
+                } else {
+                  onSuccessSp(self);
+                }
+                break;
+              case "authenticateGrade":
+                if ($("select[name='certType']").val() != "18" && $("select[name='certType']").val() != "19" && self.val() == "") {
+                  onErrorSp('*请选择等级', self);
+                } else {
+                  onSuccessSp(self);
+                }
+                break;
+              case "certificationBody":
+                if (self.val() == "") {
+                  onErrorSp('*请选择发证机构', self);
+                } else if (self.val() == "03" && $("#otherCertificationBody").val() == "") {
+                  onErrorSp('*请填写发证机构', self);
+                } else {
+                  onSuccessSp(self);
+                }
+                break;
+              case "certNo":
+                if (self.val() == "") {
+                  onErrorSp('*请填写证书编号', self);
+                } else {
+                  onSuccessSp(self);
+                }
+                break;
+              case "certificationDate":
+                if (self.val() == "") {
+                  onErrorSp('*请选择发证日期', self);
+                } else {
+                  onSuccessSp(self);
+                }
+                break;
+              default:
+                break;
+            }
+          })
+
+          if ($(".promptSp").length > 0) {
+            return;
+          }
+
+          getSessionStaffId();
+          if ($(".workingCondition").data("staffid") == "") {
+            $("#layer,.duqu").show();
+            return false;
+          } else {
+            $("input[name='staffId']").val($(".workingCondition").data("staffid"));
+          }
+
+          var staffId = $(".workingCondition").data("staffid");
+          var certType = $("select[name='certType']").val();
+          var authenticateGrade = $("select[name='authenticateGrade']").val();
+          $.ajax({
+            url: publicPath + "/api/staffs/certValid",
+            type: "post",
+            data: {
+              valid: 0,
+              staffId: staffId,
+              certType: certType,
+              authenticateGrade: authenticateGrade
+            },
+            dataType: "json",
+            asyn: false,
+            success: function success(data) {
+              if (data.success) {
+                if (data.code == 0) {
+                  $("#aciForm").submit();
+                  $(".ac-info").hide();
+                  $(".addCertificate").css("border-bottom", "2px solid #F5F5F5");
+                  var certTypeName = $("select[name='certType']").find("option:selected").text();
+                  var authenticateGradeName = "";
+                  if (certType != "18" && certType != "19") {
+                    authenticateGradeName = "(" + $("select[name='authenticateGrade']").find("option:selected").text() + ")";
+                  }
+
+                  var certNo = $("input[name='certNo']").val();
+                  var certificationDate = $("input[name='certificationDate']").val();
+                  var certificationBody = "";
+                  if ($("select[name='certificationBody']").val() == "03") {
+                    certificationBody = $("input[name='otherCertificationBody']").val();
+                  } else {
+                    certificationBody = $("select[name='certificationBody']").find("option:selected").text()
+                  }
+                  var certImage = "";
+                  if ($("input[name='certImage']").val() != "") {
+                    certImage = "有";
+                  } else {
+                    certImage = "无";
+                  }
+                  $(".addCertificate a").show();
+                  var html = "<tr>" +
+                      "<td>" + certTypeName + authenticateGradeName + "</td>" +
+                      "<td>" + certificationDate + "</td>" +
+                      "<td>" + certificationBody + "</td>" +
+                      "<td>" + certNo + "</td>" +
+                      "<td>" + certImage + "</td>" +
+                      "<td>未认证</td>" +
+                      "</tr>";
+                  $(".certificate-info tbody").append(html);
+                } else {
+                  console.log(data.msg);
+                }
+              } else {
+                if (data.code == "300017") {
+                  self = $("select[name='certType']");
+                  onErrorSp('*证书已存在', self);
+                }
+              }
+            },
+            error: function(err) {
+              console.log(err);
+            }
+          });
+
+
+        });
+
+        $(".confirm").click(function() {
+          $("#layer,.duqu").hide();
+        })
+
+        $(".certImage input[name='certImage']").change(function() {
+          $(".certImage").attr("data-haspic", 1);
+          var objUrl = getObjectURL(this.files[0]);
+          var fileSize = this.files[0].size;
+          var size = fileSize / 1024;
+          var filepath = $(this).val();
+          var extStart = filepath.lastIndexOf(".");
+          var ext = filepath.substring(extStart, filepath.length).toUpperCase();
+
+          if (ext != ".BMP" && ext != ".PNG" && ext != ".JPG") {
+            alert("图片限于bmp,png,jpg格式");
+            $(this).val("");
+            return;
+          };
+          if (size > 500) {
+            alert("上传的图片大小不能超过500K！");
+            $(this).val("");
+            return;
+          };
+
+          if (objUrl) {
+            $(this).siblings("img").attr("src", objUrl);
+          };
+        });
+
+
+        //				求职信息
+
+        $(".job-info").on("click", ".addPostBtn", function() {
+          if ($(".postList li").length > 2) {
+            if(!($(this).nextAll().hasClass("no_add"))){
+              $(this).after("<span class='no_add'>每个家政员最多可录入3个工种</span>");
+            }
+          } else {
+            $(".no_add").remove();
+            var cl = $(this).parent().siblings("ul").children("li:first-child").clone(),
+                num = $(".postList li").length;
+            cl.find("input[type='checkbox']").prop("checked", false);
+            cl.find("select").val("");
+            cl.find("input[type='text']").val("");
+            cl.find("select").eq(0).attr("name", "serviceItems[" + num + "].serviceItemCode").addClass("grey_i");
+            cl.find("select").eq(1).attr("name", "serviceItems[" + num + "].serviceNature").addClass("grey_i");
+            cl.find(".skills input[type='checkbox']").attr("name", "serviceItems[" + num + "].skills");
+            cl.find(".ar1").prop("checked", true);
+            cl.find(".ar2").prop("checked", false);
+            cl.find(".areaSel").remove();
+            cl.find(".skills .li_right").hide();
+            cl.find(".leixing").hide();
+            cl.find(".check-box").removeClass("active").parent().siblings("i").css("color", "#333");
+
+            $(".postList").append(cl);
+            $(".postList li").each(function() {
+              if ($(this).index() != 0) {
+                $(this).find(".postBtn").addClass("deletePostBtn_sp");
+              }
+            });
+          }
+        });
+
+        $(".postList").on("click", ".deletePostBtn_sp", function() {
+          $(this).parent().remove();
+          if ($(".postList li").length < 3) {
+            $(".no_add").remove();
+          }
+          for (i = 0; i < $(".postList li").length; i++) {
+            $(".postList li").eq(i).find("select").eq(0).attr("name", "serviceItems[" + i + "].serviceItemCode");
+            // $(".postList li").eq(i).find("select").eq(1).attr("name", "serviceItems[" + i + "].manageWay");
+            $(".postList li").eq(i).find("select").eq(1).attr("name", "serviceItems[" + i + "].serviceNature");
+            // $(".postList li").eq(i).find("select").eq(3).attr("name", "serviceItems[" + i + "].experience");
+            // $(".postList li").eq(i).find(".serviceArea input[type='radio']").attr("name", "serviceItems[" + i + "].areaRadio");
+            // $(".postList li").eq(i).find(".areaSel select").attr("name", "serviceItems[" + i + "].serviceArea");
+            // $(".postList li").eq(i).find("input[type='text']").attr("name", "serviceItems[" + i + "].price");
+            $(".postList li").eq(i).find(".skills input[type='checkbox']").attr("name", "serviceItems[" + i + "].skills");
+            // $(".postList li").eq(i).find(".notFamily input").eq(0).attr("name","serviceItems["+i+"].petFeeding");
+            // $(".postList li").eq(i).find(".notFamily input").eq(1).attr("name","serviceItems["+i+"].elderlySupport");
+          }
+        });
+
+        $(".postList").on("change", ".serviceItemCode select.fwgz", function() {
+          var n = $(this).parents("li").index();
+          var val = $(this).val();
+          var repeat = false;
+          if ($(this).val()=="") {
+						$(this).addClass("grey_i");
+					}else{
+						$(this).removeClass("grey_i");
+					}
+          for (var i = 0; i < $(".postList .serviceItemCode select.fwgz").length; i++) {
+            if ($(".postList .serviceItemCode select.fwgz").eq(i).val() == val && i != n) {
+              repeat = true;
+              alert("服务工种不能重复！");
+              $(".postList .serviceItemCode select.fwgz").eq(n).val("");
+              return false;
+            } else {
+              repeat = false;
+            }
+          }
+
+          if (!repeat) {
+            getServiceNature(val,n);
+            $.ajax({
+              url: publicPath + "/api/common/getSKillsData/c005",
+              type: "post",
+              data: {
+                itemCode: val,
+                level: 1
+              },
+              dataType: "json",
+              async: false,
+              success: function success(data) {
+                if (data.success) {
+                  if (data.code == 0) {
+                    var dataJD = data.jsonData;
+                    var skillsList = "";
+                    $.each(dataJD, function(i, item) {
+                      skillsList +=  "<i><input type='checkbox' name='serviceItems["+n+"].skills' value='"+item.skillsKey+"'>"+item.skillsValue+"</i>";
+                      // "<div class='checkbox_box'>" +
+                      //     "<input type='checkbox' name='serviceItems[" + n + "].skills' value='" + item.skillsKey + "'>" +
+                      //     "<div class='check-box'>" +
+                      //     "<img src='img/checked.png'>" +
+                      //     "</div>" +
+                      //     " </div>" +
+                      //     "<i>" + item.skillsValue + "</i>";
+                      
+                    });
+                    $(".postList li").eq(n).find(".skills").html("<div class='li_right clearfix'>" + skillsList + "</div>");
+                    console.log(data.msg);
+                  } else {
+                    console.log(data.msg);
+                  }
+                } else {
+                  console.log(data.msg);
+                }
+              }
+            });
+
+          }
+        });
+
+        //				服务工种列表获取
+        $.ajax({
+          url: publicPath + "/api/common/getDictionaryData/c004",
+          type: "post",
+          data: {},
+          dataType: "json",
+          async: false,
+          success: function success(data) {
+            if (data.success) {
+              if (data.code == 0) {
+                var dataJD = data.jsonData;
+                var html = "";
+                $.each(dataJD, function(i, item) {
+                  html += "<option value='" + item.code + "'>" + item.name + "</option>";
+                });
+                for (i = 0; i < $(".postList li").length; i++) {
+                  $("select[name='serviceItems[" + i + "].serviceItemCode']").html("<option value=''>请选择</option>" + html);
+                }
+                console.log(data.msg);
+              } else {
+                console.log(data.msg);
+              }
+            } else {
+              console.log(data.msg);
+            }
+          }
+        });
+
+        //			    从业经验列表获取
+        $.ajax({
+          url: publicPath + "/api/common/getDictionaryData/c007",
+          type: "post",
+          data: {},
+          dataType: "json",
+          async: false,
+          success: function success(data) {
+            if (data.success) {
+              if (data.code == 0) {
+                var dataJD = data.jsonData;
+                var html = "";
+                $.each(dataJD, function(i, item) {
+                  if (item.name == "0,1") {
+                    name = "一年以下";
+                  } else if (item.name == "1,2") {
+                    name = "1-2年";
+                  } else if (item.name == "3,5") {
+                    name = "3-5年";
+                  } else if (item.name == "5,") {
+                    name = "5年以上";
+                  }
+                  html += "<option value='" + item.code + "'>" + name + "</option>";
+                });
+                for (i = 0; i < $(".postList li").length; i++) {
+                  $("select[name='serviceItems[" + i + "].experience']").html("<option value=''>请选择</option>" + html);
+                }
+                console.log(data.msg);
+              } else {
+                console.log(data.msg);
+              }
+            } else {
+              console.log(data.msg);
+            }
+          }
+        });
+
+
+        $(".hit1").click(function() {
+          $(".basic-info").show();
+          $(".job-info,.workingCondition div").hide();
+          $(".hit1 img").attr("src", "img/jbzl1.png");
+          $(".hit2 img").attr("src", "img/qzxx1.png");
+        });
+
+        //				学历变更
+        $("select[name='education']").change(function() {
+          var educationCode = $(this).val();
+          if (educationCode == "05" || educationCode == "06" || educationCode == "07") {
+            $("input[name='specialty']").remove();
+            $(this).after("<input type='text' name='specialty' value='' style='width: 132px;margin-left: 4px;' placeholder='请输入所学专业'>")
+          } else {
+            $("input[name='specialty']").remove();
+          }
+        })
+
+        //				不做家庭
+        $("body").on("change", ".notFamily .petFeeding input", function() {
+          if ($(this).prop("checked") == true) {
+            $(this).val(1);
+            $(this).siblings(".check-box").addClass("active");
+          } else {
+            $(this).val(0);
+            $(this).siblings(".check-box").removeClass("active");
+          }
+        })
+
+        $("body").on("change", ".notFamily .elderlySupport input", function() {
+          if ($(this).prop("checked") == true) {
+            $(this).val(1);
+            $(this).siblings(".check-box").addClass("active");
+          } else {
+            $(this).val(0);
+            $(this).siblings(".check-box").removeClass("active");
+          }
+        })
+
+        //				服务区域选择
+        $("body").on("change", ".serviceArea input[type='radio']", function() {
+          var check = $(this).parents(".serviceArea").find(".ar2").prop("checked");
+          // var index = $(this).parents("li").index();
+          if (check) {
+            // $(this).siblings(".circle-box").addClass("active");
+            // $(this).parent().siblings(".radio_box").children(".circle-box").removeClass("active");
+            var areaSel = "<b class='areaSel'><select name='serviceArea' class='grey_i' style='width:90px;'></select><a class='addArea'></a></b>";
+            $(this).parents(".li_right").append(areaSel);
+            // var name = "serviceItems[" + index + "].serviceArea";
+            serviceArea("serviceArea", 0);
+          } else {
+            $(this).parents(".li_right").find(".areaSel").remove();
+          }
+        });
+        $("body").on("click", ".serviceArea input[type='radio']", function() {
+          $(this).siblings(".circle-box").addClass("active");
+          $(this).parent().siblings(".radio_box").children(".circle-box").removeClass("active");
+        });
+
+        //				添加服务区域
+        $("body").on("click", ".addArea", function() {
+          var index = $(this).parents("li").index();
+          var len = $(this).parent().find("select").length;
+          // var name = "serviceItems[" + index + "].serviceArea";
+          if (len == 1) {
+            $(this).before("<select name='serviceArea' class='grey_i'></select><a class='decArea'></a>");
+            serviceArea("serviceArea", 1)
+          } else if (len == 2) {
+            $(this).parent().find(".decArea").before("<select name='serviceArea' class='grey_i'></select>");
+            $(this).remove();
+            serviceArea("serviceArea", 2)
+          }
+        });
+
+        //				减少服务区域
+        $("body").on("click", ".decArea", function() {
+          var index = $(this).parents("li").index();
+          var len = $(this).parent().find("select").length;
+          if (len == 3) {
+            $(this).parent().find("select").eq(2).remove();
+            $(this).after("<a class='addArea'></a>");
+          } else if (len == 2) {
+            $(this).parent().find("select").eq(1).remove();
+            $(this).remove();
+          }
+        });
+
+
+
+
+
+        var emT = $("#readID").offset().top;
+        $(document).scroll(function() {
+          var dTop = $(document).scrollTop();
+          if (dTop - emT > -106) {
+            $("#readID").css("visibility", "hidden");
+          } else {
+            $("#readID").css("visibility", "visible");
+          }
+        });
+
+
+        //				表单验证
+        var regChar = /^([\u4e00-\u9fa5]+|[a-zA-Z0-9]+)$/; //特殊字符
+        var regNum = /^[0-9]*$/;
+        var regPhone = /^1[3|4|5|7|8][0-9]{9}$/;
+
+        $(".frame").on("blur", "#ahs1-form input,#ahs1-form select", function() {
+          var self = $(this);
+          var name = $(this).attr("name");
+          switch (name) {
+            case "education":
+              if (self.val() == "") {
+                onError('学历不能为空', self);
+              } else {
+                onSuccess(self);
+              }
+              break;
+            case "specialty":
+              if (self.val() == "") {
+                onError('专业不能为空', self);
+              } else {
+                onSuccess(self);
+              }
+              break;
+            case "height":
+              if (self.val() == "") {
+                onError('身高不能为空', self);
+              } else if (!regNum.test(self.val())) {
+                onError('只能填写数字', self);
+              } else {
+                onSuccess(self);
+              }
+              break;
+            case "weight":
+              if (!regNum.test(self.val())) {
+                onError('只能填写数字', self);
+              } else {
+                onSuccess(self);
+              }
+              break;
+            case "bloodType":
+              if (self.val() == "") {
+                onError('血型不能为空', self);
+              } else {
+                onSuccess(self);
+              }
+              break;
+            case "maritalStatus":
+              if (self.val() == "") {
+                onError('婚姻状况不能为空', self);
+              } else {
+                onSuccess(self);
+              }
+              break;
+            case "mobile":
+              if (self.val() == "") {
+                onError('手机号码不能为空', self);
+              } else if (!regPhone.test(self.val())) {
+                onError('手机号码格式错误', self);
+              } else {
+                onSuccess(self);
+              }
+              break;
+            case "contactPhone":
+              if (!regPhone.test(self.val())&&self.val()!="") {
+                onError('手机号码格式错误', self);
+              } else {
+                onSuccess(self);
+              }
+              break;
+            default:
+              break;
+          }
+        });
+        $("body").on("blur", "#ahs2-form input,#ahs2-form select", function() {
+          var self = $(this);
+          var name = $(this).attr("name");
+          switch (name) {
+            case "price":
+              if (self.val() == "") {
+                onError('服务价格不能为空',self);
+              } else if (!regNum.test(self.val())){
+                onError('只能填写数字',self);
+              }else if($(this).siblings("select[name='salaryType']").val()==""){
+                onError('薪资类型不能为空',self);
+              }else{
+                onSuccess(self);
+              }
+              break;
+            case "salaryType":
+              if (self.val() == "") {
+                onError('薪资类型不能为空',self);
+              }else if($(this).siblings("input[name='price']").val()==""){
+                onError('服务价格不能为空',self);
+              }else if(!regNum.test($(this).siblings("input[name='price']").val())){
+                onError('只能填写数字',self);
+              }else{
+                onSuccess(self);
+              }
+              break;
+            case "experience":
+              if (self.val() == "") {
+                onError('从业经验不能为空', self);
+              } else {
+                onSuccess(self);
+              }
+              break;
+            case "manageWay":
+              if (self.val() == "") {
+                onError('管理方式不能为空', self);
+              } else {
+                onSuccess(self);
+              }
+              break;
+            default:
+              break;
+          }
+        });
+
+        $(".frame").on("blur", ".postList input,.postList select", function() {
+          var self = $(this);
+          var name = $(this).attr("name").substring(16);
+          switch (name) {
+            case "serviceItemCode":
+              if (self.val() == "") {
+                onError('服务工种不能为空', self);
+              } else {
+                onSuccess(self);
+              }
+              break;
+            case "serviceNature":
+              if (self.val() == "") {
+                onError('服务类型不能为空', self);
+              } else {
+                onSuccess(self);
+              }
+              break;
+            default:
+              break;
+          }
+        });
+        $("#ahs2-form select[name='salaryType'],#ahs2-form select[name='manageWay'],#ahs2-form select[name='experience'],#ahs1-form select").change(function(){
+					if ($(this).val()=="") {
+						$(this).addClass("grey_i");
+					}else{
+						$(this).removeClass("grey_i");
+					}
+				});
+				$("#ahs2-form").on("change","select[name='serviceArea'],.leixing",function(){
+					if ($(this).val()=="") {
+						$(this).addClass("grey_i");
+					}else{
+						$(this).removeClass("grey_i");
+					}
+				});
+        grey();
+        
+      });
+      function grey(){
+				$("select").each(function(){
+					if($(this).val()==""){
+						$(this).addClass("grey_i");
+					}else{
+						$(this).removeClass("grey_i");
+					}
+				})
+			}
+</script>
+
+</body>
+
+</html>

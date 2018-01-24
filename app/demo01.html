@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <style>
+    </style>
+  </head>
+  <body>
+<!--  <div class="preview-container">
+    <img>
+  </div>-->
+    <button>读卡</button>
+    <div id="show"></div>
+    <script>
+      const path = require('path')
+      if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};
+      $('button').click(function () {
+        var card=__dirname.split("electron.asar")[0];
+
+        var cardUrl=path.join(card,'app.asar/card_read.js').replace("/","\\");
+        console.log(cardUrl);
+        var card_read = require(cardUrl);
+        var timestamp = Date.parse(new Date());
+        console.log(timestamp);
+//        $('#show').html(JSON.stringify(results));
+        var imgSrc = path.join(card,"123.bmp?"+timestamp)
+        var results = card_read.readIdInfo(imgSrc);
+        console.log(JSON.stringify(results));
+//        imgurl.replace("/","\\")
+        console.log(imgSrc);
+//        $('img').attr('src',imgurl)
+        getBase64(imgSrc)
+            .then(function(base64){
+              console.log(base64);
+            },function(err){
+              console.log(err);
+            });
+      })
+      function getBase64(img){//传入图片路径，返回base64
+        function getBase64Image(img,width,height) {//width、height调用时传入具体像素值，控制大小 ,不传则默认图像大小
+          var canvas = document.createElement("canvas");
+          canvas.width = width ? width : img.width;
+          canvas.height = height ? height : img.height;
+
+          var ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          var dataURL = canvas.toDataURL();
+          return dataURL;
+        }
+        var image = new Image();
+        image.crossOrigin = '';
+        image.src = img;
+        var deferred=$.Deferred();
+        if(img){
+          image.onload =function (){
+            deferred.resolve(getBase64Image(image));//将base64传给done上传处理
+          }
+          return deferred.promise();//问题要让onload完成后再return sessionStorage['imgTest']
+        }
+      }
+
+    </script>
+    <script>
+ /*     const btn=document.querySelector('.b-sbtn')
+      btn.addEventListener("click", function (e) {
+        console.log("webwiew")
+      }, false);
+      onload = () => {
+        const webview = document.getElementById('foo')
+        console.log(webview);
+        webview.addEventListener("dom-ready", function(){
+          webview.openDevTools() // 这里！ 打开 webview的控制台
+        });
+      /!*  const loadstart = () => {
+          indicator.innerText = 'loading...'
+        }
+
+        const loadstop = () => {
+          indicator.innerText = ''
+        }
+
+        webview.addEventListener('did-start-loading', loadstart)
+        webview.addEventListener('did-stop-loading', loadstop)*!/
+      }*/
+    </script>
+   <!--<script>
+     var previewrWidth = 200;
+     var previewrHeight = 200;
+
+     var $img = $('img');
+     $('input[type=file]').change(function() {
+       var reader = new FileReader();
+       reader.onload = function(e) {
+         $img.prop('src', e.target.result);
+         console.log(e.target.result);
+       }
+       reader.readAsDataURL(this.files[0]);
+
+       $('img').load(function() {
+         var size = autoSize(this.naturalWidth, this.naturalHeight);
+         $(this).css({
+           width: size.width,
+           height: size.height,
+           top: (previewrHeight - size.height) / 2,
+           left: (previewrWidth - size.width) / 2
+         }).show();
+       });
+
+         var file = this.files[0];
+         var objUrl = getObjectURL(this.files[0]);
+         var fileSize = this.files[0].size;
+         var size = fileSize / (1024 * 1024);
+         var filepath = $(this).val();
+         if (size > 2) {
+           alert("上传的图片大小不能超过2M！");
+           $(this).val("");
+           return;
+         }
+         ;
+         if (objUrl) {
+           var formData = new FormData();
+           formData.append('file', file);
+           uploadImage(formData);
+         };
+     });
+
+     function autoSize(width, height) {
+       var scale = width / height;
+       if (scale >= previewrWidth / previewrHeight) {
+         height = previewrWidth / scale;
+         width = previewrWidth;
+       } else {
+         width = previewrHeight * scale;
+         height = previewrHeight;
+       }
+       return {
+         width: width,
+         height: height
+       }
+     }
+
+     //上传图片
+     function uploadImage(formData) {
+       $.ajax({
+         url: "http://test.jiacersxy.com:8000/image/upload",
+         type: "post",
+         data: formData,
+         async: false,
+         cache: false,
+         contentType: false,
+         processData: false,
+         success: function success(data) {
+           if (data.status == 0) {
+             console.log(data)
+              alert("上传成功");
+           } else {
+             console.log(data.message);
+           }
+         },
+         error: function (err) {
+           console.log(err);
+         }
+       });
+     }
+
+     //获取路径
+     function getObjectURL(file) {
+       var url = null;
+       if (window.createObjectURL != undefined) { // basic
+         url = window.createObjectURL(file);
+       } else if (window.URL != undefined) { // mozilla(firefox)
+         url = window.URL.createObjectURL(file);
+       } else if (window.webkitURL != undefined) { // webkit or chrome
+         url = window.webkitURL.createObjectURL(file);
+       }
+       return url;
+     }
+   </script>-->
+  </body>
+</html>

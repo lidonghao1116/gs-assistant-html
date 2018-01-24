@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+    	<meta http-equiv="Pragma" CONTENT="no-cache">
+		<title>您身边的，家政好帮手</title>
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/orderManagement.css?v=0.01"/>
+	</head>
+	<body>
+		<div id="layer"></div>
+		<!--退回理由-->
+		<div class="returnReason">
+			<p>退回理由：</p>
+			<textarea name="reason"></textarea>
+			<span></span>
+			<div class="clearfix">
+				<a class="rr-cancel">取消</a>
+				<a class="rr-confirm">确认</a>
+			</div>
+		</div>
+
+		<div id="header" class="clearfix">
+			<div class="h-frame">
+				<div class="logo"><img src="img/logo.png"/></div>
+				<div class="h-right">
+					<div class="account">
+						<ul class="clearfix">
+							<!-- <li class="login"><a href="login.html">登录</a></li>
+							<li><a href="accountManagement.html">系统管理</a></li>
+							<li><a>退出</a></li> -->
+						</ul>
+					</div>
+					<div class="navigator">
+						<ul class="clearfix">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="naviLeft">
+			<ul>
+				<!-- <li><a class="yygl" href="bookingManagement.html"><em></em>预约订单</a></li> -->
+				<li><a class="ddgl" href="orderManagement.html"><em></em>我的订单</a></li>
+				<li class="beeshare-btn nl_on">
+					<a class="tfx"><em></em><span style="padding-right: 16px;">淘分享</span></a>
+					<div style="display: block;">
+						<a href="beeShare.html">&gt; 分享池</a>
+						<a href="dropBox.html" style="color: #0A7EE3;">&gt; 投递箱</a>
+					</div>
+				</li>
+				<li><a class="zpgl" href="recruitManagement.html"><em></em>职位发布</a></li>
+			</ul>
+		</div>
+
+		<div class="particulars">
+			<p class="paths">当前页面：订单管理 > 投递箱</p>
+			<div class="frame" style="padding-top: 18px;">
+				<table class="dropBox">
+					<thead>
+						<tr>
+							<td>序号</td>
+							<td>家政员图片</td>
+							<td>家政员姓名</td>
+							<td>家政员信息</td>
+							<td>匹配度</td>
+							<td>订单名称</td>
+							<td>处理结果</td>
+							<td>投递时间</td>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+				<div class="clearfix">
+					<div id="pagination">
+					</div>
+					<p class="records">共<span></span>条</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="orderDetails">
+			<p class="od-title clearfix">
+				<span>张阿姨信息详情</span>
+				<a></a>
+			</p>
+
+			<div id="ic-frame">
+
+			<div class="infoCard" data-staffid="" data-id="">
+				<div class="db-personal-info clearfix">
+					<div class="dpi-photo">
+						<img src="img/img.png"/>
+					</div>
+					<div class="dpi-detail">
+						<h1></h1>
+						<p>
+							<i class="sex">
+								<label>性别：</label>
+								<span></span>
+							</i>
+							<i class="age">
+								<label>年龄：</label>
+								<span></span>
+							</i>
+						</p>
+						<p>
+							<i class="nation">
+								<label>民族：</label>
+								<span></span>
+							</i>
+							<i class="zodiac">
+								<label>属相：</label>
+								<span></span>
+							</i>
+						</p>
+						<p>
+							<i class="nativePlace">
+								<label>籍贯：</label>
+								<span></span>
+							</i>
+							<i class="constellation">
+								<label>星座：</label>
+								<span></span>
+							</i>
+						</p>
+					</div>
+					<div class="dpi-QR">
+						<div>
+
+						</div>
+						<!--<img src="img/QR Code.png"/>-->
+						<p>扫一扫二维码</p>
+						<p>用手机查看他的信息</p>
+					</div>
+				</div>
+
+				<div>
+					<p class="title"><i>基本资料</i></p>
+					<div class="db-basic-info">
+						<p>
+							<i class="educarion">
+								<label>学历</label>
+								<span></span>
+							</i>
+							<i class="maritalStatus">
+								<label>婚姻状况</label>
+								<span></span>
+							</i>
+							<i class="fertilitySituation">
+								<label>生育情况</label>
+								<span></span>
+							</i>
+						</p>
+
+						<p>
+							<i class="height">
+								<label>身高</label>
+								<span></span>
+							</i>
+							<i class="weight">
+								<label>体重</label>
+								<span></span>
+							</i>
+							<i class="bloodType">
+								<label>血型</label>
+								<span></span>
+							</i>
+						</p>
+					</div>
+				</div>
+
+				<div>
+					<p class="title"><i>求职信息</i></p>
+					<div class="db-job-info">
+						<p>
+							<i class="serviceType">
+								<label>服务工种</label>
+								<span></span>
+							</i>
+							<i class="serviceProvice">
+								<label>服务区域</label>
+								<span></span>
+							</i>
+							<i class="doHomeWork">
+								<label>不做家庭</label>
+								<span></span>
+							</i>
+						</p>
+						<p class="skills">
+							<label>技能特点</label>
+							<span>
+							</span>
+						</p>
+						<p class="personality">
+							<label>个人特点</label>
+							<span>
+							</span>
+						</p>
+						<p class="specialRequirements workExperience">
+							<label>工作经历</label>
+							<span></span>
+						</p>
+						<p class="specialRequirements selfEvaluation">
+							<label>自我评价</label>
+							<span></span>
+						</p>
+						<p class="specialRequirements teacherEvaluation">
+							<label>老师评价</label>
+							<span></span>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			</div>
+
+			<div class="bottom-navi">
+				<ul class="clearfix">
+					<li class="adopt">
+						<a>通过</a>
+					</li>
+					<li class="refuse">
+						<a>拒绝</a>
+					</li>
+					<li class="return">
+						<a>退回</a>
+					</li>
+					<li class="back">
+						<a>返回</a>
+					</li>
+				</ul>
+				<div class="clearfix">
+					<p class="brief">
+					</p>
+					<p class="waiting">
+						<img src=""/>
+						<span></span>
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.pagination.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+		<script src="js/scroller.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//			分页
+			var pageNumber = 1;
+			var pageSize = 8;
+
+			function pagination(records){
+				$("#pagination").siblings(".records").children().text(records);
+				$("#pagination").pagination(records, {
+				    num_edge_entries: 1,
+				    num_display_entries: 4,
+				    current_page:pageNumber-1,
+				    items_per_page:pageSize,
+				    prev_text:"上一页",
+				    next_text:"下一页",
+				    callback: getDeliveryBoxInfoList
+				});
+			};
+
+//			投递箱信息获取
+			function getDeliveryBoxInfoList(page_index){
+				var pageNumber = page_index+1;
+				$.ajax({
+			        url: publicPath+"/api/orderShare/getDeliveryBoxInfoList",
+			        type: "post",
+			        data: {pageNumber:pageNumber,pageSize:pageSize},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData.rows;
+			                	var html = "";
+								var n = 0;
+								$.each(dataJD, function(i,item) {
+									n++;
+									html += "<tr data-id='"+item.id+"' data-staffid='"+item.staffId+"'>"+
+										"<td>"+n+"</td>"+
+										"<td><img src='/images"+item.headImage+"'/></td>"+
+										"<td>"+item.staffName+"</td>"+
+										"<td>"+
+											"<p>"+item.baseSituation+"</p>"+
+//											"<p>本科（母婴护理）</p>"+
+										"</td>"+
+										"<td>"+item.matchingDegree+"%</td>"+
+										"<td>"+item.orderName+"</td>"+
+										"<td class='handleResult'>"+item.handleResult+"</td>"+
+										"<td>"+
+											"<p>"+item.deliveryDate+"</p>"+
+//											"<p>12:24:45</p>"+
+										"</td>"+
+									"</tr>";
+								});
+								$(".dropBox tbody").html(html);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			};
+
+
+			$(function(){
+//				头部引入
+//				$('#header').load('header.html?v=0.01',function(){
+//					$(".navigator ul li a").removeClass("navi-on");
+//					$(".navigator ul li").eq(3).children().addClass("navi-on");
+//				});
+
+
+				//				总条数获取
+				$.ajax({
+			        url: publicPath+"/api/orderShare/getDeliveryBoxInfoList",
+			        type: "post",
+			        data: {},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	pagination(dataJD.records);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+
+
+//				var STop = $(document).scrollTop();
+//				$(".orderDetails").css("top",92-STop);
+//				$(document).scroll(function(){
+//					var sTop = $(document).scrollTop();
+//					if (92-sTop>0) {
+//						$(".orderDetails").css("top",92-sTop);
+//					} else {
+//						$(".orderDetails").css("top",0);
+//					}
+//				});
+
+				$(".frame").on("click",".dropBox tbody tr",function(){
+					var id=$(this).data("id");
+					$(".infoCard").attr("data-id",id);
+					$(".bottom-navi ul li,.bottom-navi .waiting").hide();
+					$(".infoCard .doHomeWork span").text("")
+					if($(this).hasClass("slideBlue")){
+						$(this).removeClass("slideBlue");
+						$(".orderDetails").animate({"right":-1020})
+						return;
+					} else {
+						$(this).addClass("slideBlue").siblings().removeClass("slideBlue");
+						$(".orderDetails").animate({"right":0},function(){
+							$(".bottom-navi .brief").hide();
+
+//					获取租户ID
+							$.ajax({
+						        url: publicPath+"/api/index/getSession.do",
+						        type: "post",
+						        data: {},
+						        dataType: "json",
+						        async:false,
+						        success: function success(data) {
+						            if(data.success){
+						                if(data.code == 0){
+						                	var dataJD = data.jsonData;
+						                	$(".infoCard").attr("data-domain",dataJD.domain);
+						                	console.log(data.msg);
+						                }else{
+						                    console.log(data.msg);
+						                }
+						            }else{
+						                console.log(data.msg);
+						            }
+						        }
+						    });
+
+
+
+							$.ajax({
+						        url: publicPath+"/api/orderShare/getStaffDetailInfo",
+						        type: "post",
+						        data: {id:id},
+						        dataType: "json",
+						        async:false,
+						        success: function success(data) {
+						            if(data.success){
+						                if(data.code == 0){
+						                	$(".infoCard").attr("data-id",id)
+						                	var dataTI = data.jsonData.tenantsInfo;
+						                	var dataBI = data.jsonData.baseInfo;
+						                	var dataJI = data.jsonData.jobInfo;
+
+						                	//				    阿姨二维码
+											var domain=$(".infoCard").data("domain");
+											var serviceItemCode=dataJI.serviceItemCode;
+											var staffId=dataJI.staffId;
+											$.ajax({
+									        	url: publicPath+"/api/common/getTwoDimensionCode",
+										        type: "post",
+										        data: {
+										        	info:"staffId:"+staffId+",serviceItemCode:"+serviceItemCode+",dropBox:1",
+										        	domain:domain,
+										        	code:"05"
+										        },
+										        dataType: "json",
+										        async:false,
+										        success: function success(data) {
+										            if(data.success){
+										                if(data.code == 0){
+										                	var dataJD = data.jsonData;
+										                	var img = "data:image/jpeg;base64,"+dataJD;
+										                	$(".dpi-QR div").find("img").remove();
+										                	$(".dpi-QR div").append("<img src='"+img+"'/>")
+										                	console.log(data.msg);
+										                }else{
+										                    console.log(data.msg);
+										                }
+										            }else{
+										                console.log(data.msg);
+										            }
+										        }
+										    });
+
+
+
+						                	$(".infoCard .dpi-photo img").attr("src","/images"+dataBI.headImage);
+						                	$(".infoCard .dpi-detail h1").text(dataBI.staffName);
+						                	$(".infoCard .sex span").text(dataBI.sex);
+						                	$(".infoCard .age span").text(dataBI.age);
+						                	$(".infoCard .nation span").text(dataBI.nation);
+						                	$(".infoCard .zodiac span").text(dataBI.zodiac);
+						                	$(".infoCard .nativePlace span").text(dataBI.nativePlace);
+						                	$(".infoCard .constellation span").text(dataBI.constellation);
+						                	$(".infoCard .educarion span").text(dataBI.educarion);
+						                	$(".infoCard .maritalStatus span").text(dataBI.maritalStatus);
+						                	$(".infoCard .fertilitySituation span").text(dataBI.fertilitySituation);
+						                	$(".infoCard .height span").text(dataBI.height);
+						                	if (dataBI.weight!=null){
+						                		$(".infoCard .weight span").text(dataBI.weight);
+						                	} else {
+						                		$(".infoCard .weight span").text("");
+						                	}
+
+						                	$(".infoCard .bloodType span").text(dataBI.bloodType);
+						                	$(".infoCard .serviceType span").text(dataJI.serviceType);
+						                	$(".infoCard .serviceProvice span").text(dataJI.serviceProvice);
+
+						                	$(".infoCard .doHomeWork span").text(dataJI.doHomeWork);
+
+						                	if (dataJI.petFeeding==1){
+												$(".infoCard .doHomeWork span").append("饲养动物 ");
+											}
+
+											if (dataJI.elderlySupport==1){
+												$(".infoCard .doHomeWork span").append("有老人");
+											}
+
+						                	$(".infoCard .skills span").empty();
+						                	$(".infoCard .personality span").empty();
+						                	if (dataJI.skills.indexOf(",") != -1) {
+												var skills = dataJI.skills.split(",");
+												for (var i=0;i<skills.length;i++) {
+													if (skills[i]!="") {
+														$(".infoCard .skills span").append("<em>"+skills[i]+"</em>");
+													}
+												}
+											} else {
+												if (dataJI.skills!=""){
+													$(".infoCard .skills span").append("<em>"+dataJI.skills+"</em>");
+												}
+											};
+
+											if (dataJI.languageFeature!=null) {
+												if (dataJI.languageFeature.indexOf(",") != -1) {
+													var languageFeature = dataJI.languageFeature.split(",");
+													for (var i=0;i<languageFeature.length;i++) {
+														$(".infoCard .personality span").append("<em>"+languageFeature[i]+"</em>");
+													}
+												} else {
+													if (dataJI.languageFeature!=""){
+														$(".infoCard .personality span").append("<em>"+dataJI.languageFeature+"</em>");
+													}
+												}
+											}
+
+											if (dataJI.cookingFeature!=null) {
+												if (dataJI.cookingFeature.indexOf(",") != -1) {
+													var cookingFeature = dataJI.cookingFeature.split(",");
+													for (var i=0;i<cookingFeature.length;i++) {
+														$(".infoCard .personality span").append("<em>"+cookingFeature[i]+"</em>");
+													}
+												} else {
+													if (dataJI.cookingFeature!=""){
+														$(".infoCard .personality span").append("<em>"+dataJI.cookingFeature+"</em>");
+													}
+												}
+											}
+
+											if (dataJI.characerFeature!=null) {
+												if (dataJI.characerFeature.indexOf(",") != -1) {
+													var characerFeature = dataJI.characerFeature.split(",");
+													for (var i=0;i<characerFeature.length;i++) {
+														$(".infoCard .personality span").append("<em>"+characerFeature[i]+"</em>");
+													}
+												} else {
+													if (dataJI.characerFeature!=""){
+														$(".infoCard .personality span").append("<em>"+dataJI.characerFeature+"</em>");
+													}
+												}
+											}
+						                	$(".infoCard .workExperience span").text(dataJI.workExperience);
+						                	$(".infoCard .selfEvaluation span").text(dataJI.selfEvaluation);
+						                	$(".infoCard .teacherEvaluation span").text(dataJI.teacherEvaluation);
+
+		//				                	$(".bottom-navi .brief label").text(dataSI.staffName);
+											$(".bottom-navi .brief").text(dataBI.tenantName+"/"+dataBI.name+"/"+dataBI.phone);
+						                	var handleResult = dataTI.status;
+						                	var id = $(".infoCard").data("id");
+						                	switch (handleResult){
+												case "01":
+													$(".adopt,.refuse,.waiting").show();
+
+		//											倒计时
+													pastTime = parseInt(dataTI.systemTime-dataTI.addTime)/1000;
+													var time = parseInt(60*60*24);
+													surplusTime = time-pastTime;
+
+													timer(surplusTime);
+													$(".waiting img").attr("src","img/waiting.png");
+		//											通过
+													var lock = false;
+													$(".adopt").click(function(){
+														if (!lock) {
+															lock = true;
+															$.ajax({
+														        url: publicPath+"/api/orderShare/staffPass",
+														        type: "post",
+														        data: {id:id},
+														        dataType: "json",
+														        async:false,
+														        success: function success(data) {
+														            if(data.success){
+														                if(data.code == 0){
+														                	location.reload();
+														                	console.log(data.msg);
+														                }else{
+														                    alert(data.msg);
+														                }
+														            }else{
+														                alert(data.msg);
+														            }
+														        }
+														    });
+														};
+													});
+													break;
+												case "02":
+													$(".return,.waiting").show();
+													$(".waiting span").text("待面试");
+													$(".waiting img").attr("src","img/waiting.png");
+													$(".bottom-navi .brief").show();
+													break;
+												case "03":
+													$(".back,.waiting").show();
+													$(".waiting span").text("已拒绝");
+													$(".waiting img").attr("src","img/waiting3.png");
+													break;
+												case "04":
+													$(".back,.waiting").show();
+													$(".waiting span").text("已退回");
+													$(".waiting img").attr("src","img/waiting3.png");
+													$(".bottom-navi .brief").show();
+													break;
+												case "05":
+													$(".back,.waiting").show()
+													$(".waiting span").text("已通过");
+													$(".waiting img").attr("src","img/waiting2.png");
+													$(".bottom-navi .brief").show();
+													break;
+												case "06":
+													$(".back,.waiting").show();
+													$(".waiting span").text("已取消");
+													$(".waiting img").attr("src","img/waiting3.png");
+													$(".bottom-navi .brief").show();
+													break;
+												default:
+													break;
+											}
+
+						                	console.log(data.msg);
+						                }else{
+						                    console.log(data.msg);
+						                }
+						            }else{
+						                console.log(data.msg);
+						            }
+						        }
+						    });
+						    $("#ic-frame").scroller();
+						})
+					}
+
+				});
+				$(".od-title a,.back,.naviLeft").click(function(){
+					$(".dropBox tr").removeClass("slideBlue");
+					$(".orderDetails").animate({"right":-1020});
+				});
+
+
+//				拒绝
+				$(".refuse").click(function(){
+					var id = $(".infoCard").data("id");
+					$.ajax({
+				        url: publicPath+"/api/orderShare/rejectStaff",
+				        type: "post",
+				        data: {id:id},
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	location.reload();
+				                	console.log(data.msg);
+				                }else{
+				                    alert(data.msg);
+				                }
+				            }else{
+				                alert(data.msg);
+				            }
+				        }
+				    });
+				});
+
+				$(".return").click(function(){
+					$("#layer,.returnReason").show();
+				});
+
+				$(".returnReason .rr-confirm").click(function(){
+					var id = $(".infoCard").data("id");
+					var reason = $("textarea[name='reason']").val();
+					if (reason==""){
+						$(".returnReason span").text("退回理由不能为空!");
+						return false;
+					} else {
+						$(".returnReason span").text("");
+					}
+					$.ajax({
+				        url: publicPath+"/api/orderShare/staffReturn",
+				        type: "post",
+				        data: {id:id,reason:reason},
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	location.reload();
+				                	console.log(data.msg);
+				                }else{
+				                    alert(data.msg);
+				                }
+				            }else{
+				                alert(data.msg);
+				            }
+				        }
+				    });
+				});
+
+				$(".returnReason .rr-cancel").click(function(){
+					$("#layer,.returnReason").hide();
+				});
+			});
+
+			function timer(intDiff){
+				window.setInterval(function () {
+					var hour = 0;
+					var minute = 0;
+					var second = 0;
+					if (intDiff > 0) {
+				      hour = Math.floor(intDiff / (60 * 60))
+				      minute = Math.floor(intDiff / 60)-(hour * 60);
+				      second = Math.floor(intDiff)-(hour * 60 * 60)-(minute * 60);
+				    }
+					if (minute <= 9) minute = '0' + minute;
+				    if (second <= 9) second = '0' + second;
+				    $(".waiting span").text("待处理（"+hour+":"+minute+":"+second+"）");
+				    if (hour=="00"&&minute=="00"&&second=="00") {
+				    	location.reload();
+				    }
+				    intDiff--;
+				},1000);
+			}
+		</script>
+	</body>
+</html>

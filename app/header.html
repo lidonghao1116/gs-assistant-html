@@ -1,0 +1,297 @@
+<meta charset="UTF-8">
+<div class="h-frame">
+	<div class="logo"><img src="img/logo.png"/></div>
+	<div class="h-right">
+		<div class="account">
+			<ul class="clearfix">
+				<!-- <li class="login"><a href="login.html">登录</a></li>
+				<li><a href="accountManagement.html">系统管理</a></li>
+				<li><a>退出</a></li> -->
+			</ul>
+		</div>
+		<div class="navigator">
+			<ul class="clearfix">
+				<!--<li><a class="navi-on" href="index.html">首页</a></li>
+				<li><a href="homeManagement.html">网站管理</a></li>
+				<li><a href="housekeepingStaffManagement.html">家政员管理</a></li>
+				<li><a href="bookingManagement.html">订单管理</a></li>
+				<li><a href="customerManagement.html">客户管理</a></li>
+				<li><a href="financialManagement.html">财务管理</a></li>
+				<li><a href="accountManagement.html">系统管理</a></li>-->
+			</ul>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$(function(){
+	//	登录状态
+	$.ajax({
+        url: publicPath+"/api/index/getSession.do",
+        type: "post",
+        data: {},
+        dataType: "json",
+        success: function success(data) {
+            if(data.success){
+                if(data.code == 0){
+					var dataJD = data.jsonData;
+					var html="";
+                	if (dataJD == null) {
+						html="<li class='login'><a href='login.html'>登录</a></li>";
+                		location.href="login.html";
+                	} else{
+						html="<li class='login'><a data-userid='"+dataJD.userId+"'>欢迎您,"+dataJD.userName+"</a><input type='hidden' name='' id='userId' value='"+dataJD.userId+"' /></li>"+
+							 "<li class='xitong'><a>系统管理</a></li>"+
+							  "<li class='loginOut'><a>退出</a></li>";
+								if(dataJD.userType=="01"||dataJD.userType=="02"){
+									$(".my_account_box").show();
+								}else {
+									$(".my_account_box").hide();
+								}
+							}
+					$(".account ul").html(html);
+                	console.log(data.msg);
+                }else{
+                    console.log(data.msg);
+                }
+            }else{
+                console.log(data.msg);
+            }
+        }
+    });
+	
+	//	退出登录
+	$(".account ul").on("click","li.loginOut",function(){
+		$.ajax({
+	        url: publicPath+"/api/user/logout",
+	        type: "post",
+	        data: {},
+	        dataType: "json",
+	        success: function success(data) {
+	            if(data.success){
+	                if(data.code == 0){
+	                	location.href="login.html"
+	                	console.log(data.msg);
+	                }else{
+	                    console.log(data.msg);
+	                }
+	            }else{
+	                console.log(data.msg);
+	            }
+	        }
+	    });
+	});
+	//系统管理
+	$(".account ul").on("click","li.xitong",function(){
+		$.ajax({
+			url: publicPath+"/api/user/getUserSysSetting",
+			type: "get",
+			data: {},
+			dataType: "json",
+			success: function success(data) {
+					if(data.success){
+						if(data.code == 0){
+						var naviLeft1 = data.jsonData[0].subMenuList;
+						if(naviLeft1.length<2){
+							window.location.href="resetPassword.html";
+						}else{
+							window.location.href="accountManagement.html"
+						}
+					}
+				}
+			}
+		})
+	})
+	//	权限
+
+	$.ajax({
+        url: publicPath+"/api/user/getUserPermission",
+        type: "post",
+        data: {},
+        dataType: "json",
+        success: function success(data) {
+            if(data.success){
+                if(data.code == 0){
+                	var navi = "";
+                	$.each(data.jsonData, function(i,item) {
+                		navi+="<li><a href='"+item.href+"'>"+item.name+"</a></li>";
+                	});
+                	$(".navigator ul").html(navi);
+                	var Url = location.href;
+            		if (Url.indexOf("index")!=-1||Url.indexOf("deposit")!=-1||Url.indexOf("withdraw")!=-1) {
+            			$(".navigator ul li").eq(0).children().addClass("navi-on");
+            		} else if (Url.indexOf("homeManagement")!=-1||Url.indexOf("contactWay")!=-1||Url.indexOf("aboutUs")!=-1||Url.indexOf("serviceManagement")!=-1) {
+            			$(".navigator ul li").eq(1).children().addClass("navi-on");
+            			var naviLeft1 = data.jsonData[1].subMenuList;
+						$(".naviLeft ul").empty();
+						for (var i=0;i<naviLeft1.length;i++) {
+							if (naviLeft1[i].name=="two_module_power") {
+								var hmAuthority = naviLeft1[i].subMenuList;
+								var hmAA = [];
+								$.each(hmAuthority, function(j,item) {
+									hmAA.push(item.id);
+								});
+								if ($.inArray(13,hmAA)!=-1) {
+									$(".jobRecruitment").find(".qu_left").prepend("<a class='addPost' href='recruitManagementEdit.html'>+ 新增岗位</a>")
+								}
+								if ($.inArray(14,hmAA)!=-1) {
+									$("#banner_m .clearfix .title").after("<a class='edit'></a>");
+									$(".recommend_m").attr("data-authority",1);
+									$(".serviceWork table").attr("data-authority",1);
+									$(".contact_m").attr("data-authority",1);
+									$(".jobRecruitment table").attr("data-authority",1);
+									$(".au-list").siblings(".clearfix").append("<a class='edit'></a>")
+								}
+								continue;
+							}
+							$(".naviLeft ul").append("<li><a href='"+naviLeft1[i].href+"'><em></em>"+naviLeft1[i].name+"</a></li>")
+						}
+						$(".naviLeft ul li").each(function(){
+							if ($(this).index()==0) {
+								$(this).children("a").addClass("sygl");
+							} else if ($(this).index()==1) {
+								$(this).children("a").addClass("fwgl");
+							} else if ($(this).index()==2) {
+								$(this).children("a").addClass("lxfs");
+							}  else if ($(this).index()==3) {
+								$(this).children("a").addClass("gywm");
+							}
+						})
+
+            			var UrlLeft = location.href;
+            			if (UrlLeft.indexOf("homeManagement")!=-1) {
+            				$(".naviLeft li").eq(0).addClass("nl_on");
+            			} else if (UrlLeft.indexOf("serviceManagement")!=-1) {
+            				$(".naviLeft li").eq(1).addClass("nl_on");
+            			} else if (UrlLeft.indexOf("contactWay")!=-1) {
+            				$(".naviLeft li").eq(2).addClass("nl_on");
+            			}  else if (UrlLeft.indexOf("aboutUs")!=-1) {
+            				$(".naviLeft li").eq(3).addClass("nl_on");
+            			}
+            		} else if (Url.indexOf("housekeepingStaffManagement")!=-1||Url.indexOf("addHousekeepingStaff")!=-1) {
+            			$(".navigator ul li").eq(2).children().addClass("navi-on");
+            			var hkAuthority = data.jsonData[2].subMenuList[0].subMenuList;
+            			var hkAA = [];
+						$.each(hkAuthority, function(i,item) {
+							hkAA.push(item.id);
+						});
+						if ($.inArray(15,hkAA)!=-1) {
+							$(".hs-sheet .createNew").prepend("<a href='addHousekeepingStaff.html'>+ 新增家政员</a>");
+						}
+						if ($.inArray(16,hkAA)!=-1) {
+							$(".hs-info-detail .infoCard").eq(0).find(".scanCode").prepend("<span class='onOffShelf'>是否上架：<label class='checkbox'>"+
+									"<em></em>"+
+								    "<input type='checkbox'/>"+
+								"</label>"+
+							"</span>");
+							$(".basicData").parent().siblings(".clearfix").append("<a class='edit'></a>");
+							$(".serviceItems").siblings(".clearfix").append("<a class='addPostBtn'>+ 添加工种</a>");
+							$(".resume").parent().siblings(".clearfix").append("<a class='edit'></a>");
+							$(".certification").siblings(".clearfix").append("<a class='addNew'>+ 新增</a>");
+							$(".hs-info-detail .lr-layout1 .l-layout .infoCard .title").after("<a class='edit'></a>");
+							$(".hs-info-detail .lr-layout1 .r-layout .infoCard .title").after("<a class='edit'></a>");
+							$(".hs-info-detail .lr-layout2 .r-layout .infoCard .title").after("<a class='addNew'>+ 新增</a>");
+							$(".hs-info-detail .lr-layout3 .l-layout .infoCard .title").after("<a class='addNew'>+ 新增</a>");
+							$(".hs-info-detail .lr-layout3 .r-layout .infoCard").eq(0).find(".title").after("<a class='addNew'>+ 新增</a>");
+							$(".hs-info-detail").attr("data-authority",1);
+						}
+
+            		} else if (Url.indexOf("bookingManagement")!=-1||Url.indexOf("orderManagement")!=-1||Url.indexOf("beeShare")!=-1||Url.indexOf("dropBox")!=-1||Url.indexOf("createOrder")!=-1||Url.indexOf("recruitManagement")!=-1) {
+						$(".navigator ul li").eq(3).children().addClass("navi-on");
+						// var naviLeft1 = data.jsonData[3].subMenuList;
+						// for (var i=0;i<naviLeft1.length;i++) {
+						// 	if (naviLeft1[i].name=="two_module_power") {
+						// 		var hmAuthority = naviLeft1[i].subMenuList;
+						// 		var hmAA = [];
+						// 		$.each(hmAuthority, function(j,item) {
+						// 			hmAA.push(item.id);
+						// 		});
+						// 		if ($.inArray(25,hmAA)!=-1) {
+						// 			$(".jobRecruitment").find(".qu_left").prepend("<a class='addPost' href='recruitManagementEdit.html'>+ 新增岗位</a>")
+						// 		}
+						// 		if ($.inArray(26,hmAA)!=-1) {
+						// 			$(".jobRecruitment table").attr("data-authority",1);
+						// 		}
+						// 		continue;
+						// 	}
+						// }
+            		} else if (Url.indexOf("customerManagement")!=-1) {
+            			$(".navigator ul li").eq(4).children().addClass("navi-on");
+            		} else if (Url.indexOf("financialManagement")!=-1) {
+            			$(".navigator ul li").eq(5).children().addClass("navi-on");
+					}
+					// else if (Url.indexOf("accountManagement")!=-1||Url.indexOf("accountEdit")!=-1||Url.indexOf("resetPassword")!=-1) {
+            		// 	$(".navigator ul li").eq(6).children().addClass("navi-on");
+            		// }
+
+
+                	console.log(data.msg);
+                }else{
+                    console.log(data.msg);
+                }
+            }else{
+            	if (data.code == "100014") {
+
+            	}
+                console.log(data.msg);
+            }
+        }
+	});
+	
+//	权限管理
+	// $.ajax({
+    //     url: publicPath+"/api/user/getUserPermission",
+    //     type: "post",
+    //     data: {},
+    //     dataType: "json",
+    //     success: function success(data) {
+    //         if(data.success){
+    //             if(data.code == 0){
+    //             	var navi = "";
+    //             	$.each(data.jsonData, function(i,item) {
+    //             		navi+="<li><a href='"+item.href+"'>"+item.name+"</a></li>";
+    //             	});
+    //             	$(".navigator ul").html(navi);
+    //             	var Url = location.href;
+    //         		if (Url.indexOf("index")!=-1||Url.indexOf("deposit")!=-1||Url.indexOf("dropBox")!=-1||Url.indexOf("withdraw")!=-1||Url.indexOf("resetPassword")!=-1) {
+    //         			$(".navigator ul li").eq(0).children().addClass("navi-on");
+    //         		} else if (Url.indexOf("homeManagement")!=-1||Url.indexOf("contactWay")!=-1||Url.indexOf("aboutUs")!=-1||Url.indexOf("createOrder")!=-1||Url.indexOf("recruitManagement")!=-1||Url.indexOf("serviceManagement")!=-1) {
+    //         			$(".navigator ul li").eq(1).children().addClass("navi-on");
+    //         			var naviLeft1 = data.jsonData[1].subMenuList;
+//          			$.each(data.jsonData[1].subMenuList, function() {
+//          				
+//          			});
+						// for (var i=0;i<naviLeft1;i++) {
+//							if (naviLeft1[i].name=="two_module_power") {
+//								continue;
+//							}
+	// 						$(".naviLeft ul").append("<li><a href='"+naviLeft1[i].href+"'><em></em>"+naviLeft1[i].name+"</a></li>")
+	// 					}
+	// 					alert("1")
+            			
+    //         		} else if (Url.indexOf("housekeepingStaffManagement")!=-1||Url.indexOf("addHousekeepingStaff")!=-1) {
+    //         			$(".navigator ul li").eq(2).children().addClass("navi-on");
+    //         		} else if (Url.indexOf("bookingManagement")!=-1||Url.indexOf("orderManagement")!=-1||Url.indexOf("beeShare")!=-1||Url.indexOf("dropBox")!=-1||Url.indexOf("createOrder")!=-1) {
+    //         			$(".navigator ul li").eq(3).children().addClass("navi-on");
+    //         		} else if (Url.indexOf("customerManagement")!=-1) {
+    //         			$(".navigator ul li").eq(4).children().addClass("navi-on");
+    //         		} else if (Url.indexOf("financialManagement")!=-1) {
+    //         			$(".navigator ul li").eq(5).children().addClass("navi-on");
+    //         		} else if (Url.indexOf("accountManagement")!=-1||Url.indexOf("accountEdit")!=-1) {
+    //         			$(".navigator ul li").eq(6).children().addClass("navi-on");
+    //         		}
+            		
+            		
+    //             	console.log(data.msg);
+    //             }else{
+    //                 console.log(data.msg);
+    //             }
+    //         }else{
+    //         	if (data.code == "100014") {
+            		
+    //         	}
+    //             console.log(data.msg);
+    //         }
+    //     }
+    // });
+})
+</script>

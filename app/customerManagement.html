@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+    	<meta http-equiv="Pragma" CONTENT="no-cache">
+		<title>您身边的，家政好帮手</title>
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/customerManagement.css?v=0.01"/>
+	</head>
+	<body>
+		<div id="layer"></div>
+		<div class="addFilePop">
+			<div class="afp-title clearfix">
+				<p>新增客户档案</p>
+				<a></a>
+			</div>
+			<div class="afp-content">
+				<form id="afpcForm">
+				<div>
+					<p class="title"><i>个人信息</i></p>
+					<div>
+						<p>
+							<i>
+								<label>姓名</label>
+								<span>
+									<input type="text" name="customerName" value="" />
+								</span>
+							</i>
+							<i>
+								<label>性别</label>
+								<span>
+									<select name="sex" style="width: 60px;">
+										<option value=""></option>
+									</select>
+								</span>
+							</i>
+							<i>
+								<label>手机号</label>
+								<span>
+									<input type="text" name="customerMobile" value="" />
+								</span>
+							</i>
+						</p>
+						<p>
+							<i>
+								<label>服务区域</label>
+								<span>
+									<select name="serviceProvice" style="width: 70px;">
+										<option value=""></option>
+									</select>
+									<select name="serviceCity" style="width: 70px;">
+										<option value=""></option>
+									</select>
+									<select name="serviceCounty" style="width: 70px;">
+										<option value=""></option>
+									</select>
+								</span>
+							</i>
+							<i>
+								<label>服务地址</label>
+								<span>
+									<input type="text" name="contactAddress" value="" />
+								</span>
+							</i>
+						</p>
+					</div>
+				</div>
+				<div>
+					<p class="title"><i>家庭信息</i></p>
+					<div>
+						<p>
+							<i>
+								<label>家庭人数</label>
+								<span>
+									<input type="text" name="familyCount" value="" />
+								</span>
+							</i>
+							<i>
+								<label>住宅类型</label>
+								<span>
+									<select name="houseType">
+										<option value=""></option>
+									</select>
+								</span>
+							</i>
+							<i>
+								<label>住宅面积</label>
+								<span>
+									<input type="text" name="houseArea" value="" />㎡
+								</span>
+							</i>
+						</p>
+						<p>
+							<i>
+								<label>儿童数</label>
+								<span>
+									<input type="text" name="childrenCount" value="" />
+								</span>
+							</i>
+							<i>
+								<label>儿童年龄</label>
+								<span>
+									<select name="childrenAgeRange">
+										<option value=""></option>
+									</select>
+								</span>
+							</i>
+						</p>
+						<p>
+							<i>
+								<label>老人数</label>
+								<span>
+									<input type="text" name="olderCount" value="" />
+								</span>
+							</i>
+							<i style="width: 300px;">
+								<label>老人年龄段</label>
+								<span>
+									<select name="olderAgeRange">
+										<option value=""></option>
+									</select>
+								</span>
+							</i>
+							<i>
+								<label style="width: 84px;">老人能否自理</label>
+								<span>
+									<select name="selfCares">
+										<option value=""></option>
+									</select>
+								</span>
+							</i>
+						</p>
+					</div>
+				</div>
+				</form>
+				<div class="btnCass-b clearfix">
+					<a class="bcb-cancel">取消</a>
+					<a class="bcb-save">保存</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="header" class="clearfix">
+			<div class="h-frame">
+				<div class="logo"><img src="img/logo.png"/></div>
+				<div class="h-right">
+					<div class="account">
+						<ul class="clearfix">
+							<!-- <li class="login"><a href="login.html">登录</a></li>
+							<li><a href="accountManagement.html">系统管理</a></li>
+							<li><a>退出</a></li> -->
+						</ul>
+					</div>
+					<div class="navigator">
+						<ul class="clearfix">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="frame">
+			<div class="cm-filter">
+				<p>
+					<label>客户姓名</label>
+					<input type="text" name="customerName" value="" placeholder="请输入姓名" />
+				</p>
+				<p>
+					<label>联系方式</label>
+					<input type="text" name="customerMobile" value="" placeholder="请输入手机号" />
+				</p>
+				<p>
+					<label>服务区域</label>
+					<select name="serviceProvice">
+						<option value="">请选择</option>
+					</select>
+					<select name="serviceCity">
+						<option value="">请选择</option>
+					</select>
+					<select name="serviceCounty">
+						<option value="">请选择</option>
+					</select>
+				</p>
+				<a>查询</a>
+			</div>
+			<div class="createNew">
+				<a class="addFile">+ 新增客户档案</a>
+				<p>客户信息总数：<span></span>人</p>
+			</div>
+
+			<table class="clientFile">
+				<thead>
+					<tr>
+						<td>序号</td>
+						<td>客户姓名</td>
+						<td>性别</td>
+						<td>联系方式</td>
+						<td>服务区域</td>
+						<td>地址</td>
+						<td>订单数</td>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			<div class="clearfix">
+				<div id="pagination">
+				</div>
+				<p class="records">共<span></span>条</p>
+			</div>
+		</div>
+		<div class="orderDetails">
+			<p class="od-title clearfix">
+				<span>客户信息</span>
+				<a></a>
+			</p>
+			<div class="infoCard">
+				<input type="hidden" name="customerId" id="" value="" />
+				<div id="system-info">
+					<p class="title"><i>系统信息</i></p>
+					<div class="system-info">
+						<p>
+							<i class="addTime">
+								<label>创建时间</label>
+								<span>2016122800011</span>
+							</i>
+							<i class="modifyTime">
+								<label style="width: 84px;">最后修改时间</label>
+								<span>2016-12-28 12：24：45</span>
+							</i>
+						</p>
+					</div>
+				</div>
+
+				<div id="personal-info">
+					<div class="clearfix">
+						<p class="title"><i>个人信息</i></p>
+						<a class="edit"></a>
+					</div>
+					<div class="personal-info">
+						<form enctype="multipart/form-data" id="pi-form">
+						<p>
+							<i class="customerName">
+								<label>姓名</label>
+								<span class="beforeEditing">李珊珊</span>
+								<span class="afterEditing">
+									<input type="text" name="customerName" value="" />
+								</span>
+							</i>
+							<i class="sex">
+								<label>性别</label>
+								<span class="beforeEditing">女</span>
+								<span class="afterEditing">
+									<select name="sex" style="width: 60px;">
+										<option value=""></option>
+									</select>
+								</span>
+							</i>
+							<i class="customerMobile">
+								<label>手机号</label>
+								<span class="beforeEditing">13412134552</span>
+								<span class="afterEditing">
+									<input type="text" name="customerMobile" id="" value="" />
+								</span>
+							</i>
+						</p>
+						<p>
+							<i class="serviceArea">
+								<label>服务区域</label>
+								<span class="beforeEditing">
+									<em class="serviceProvice">上海市</em>
+									<em class="serviceCity">徐汇区</em>
+									<em class="serviceCounty">虹桥镇</em>
+								</span>
+								<span class="afterEditing">
+									<select name="serviceProvice" style="width: 70px;">
+										<option value=""></option>
+									</select>
+									<select name="serviceCity" style="width: 70px;">
+										<option value=""></option>
+									</select>
+									<select name="serviceCounty" style="width: 70px;">
+										<option value=""></option>
+									</select>
+								</span>
+							</i>
+							<i class="contactAddress">
+								<label>服务地址</label>
+								<span class="beforeEditing">凯旋路3500号华苑大厦19楼A座1901</span>
+								<span class="afterEditing">
+									<input type="text" name="contactAddress" id="" value="" />
+								</span>
+							</i>
+						</p>
+
+						<div class="btnCass-b clearfix">
+							<a class="bcb-cancel">取消</a>
+							<a class="bcb-save">保存</a>
+						</div>
+						</form>
+					</div>
+				</div>
+
+				<div id="family-info">
+					<div class="clearfix">
+						<p class="title"><i>家庭信息</i></p>
+						<a class="edit"></a>
+					</div>
+					<div class="family-info">
+						<form enctype="multipart/form-data" id="fi-form">
+						<p>
+							<i class="familyCount">
+								<label>家庭人数</label>
+								<span class="beforeEditing">3人</span>
+								<span class="afterEditing">
+									<input type="text" name="familyCount" id="" value="" />
+								</span>
+							</i>
+							<i class="houseType">
+								<label>住宅类型</label>
+								<span class="beforeEditing">普通住宅</span>
+								<span class="afterEditing">
+									<select name="houseType">
+										<option value=""></option>
+									</select>
+								</span>
+							</i>
+							<i class="houseArea">
+								<label>住宅面积</label>
+								<span class="beforeEditing">108㎡</span>
+								<span class="afterEditing">
+									<input type="text" name="houseArea" id="" value="" />㎡
+								</span>
+							</i>
+						</p>
+						<p>
+							<i class="childrenCount">
+								<label>儿童数</label>
+								<span class="beforeEditing">1</span>
+								<span class="afterEditing">
+									<input type="text" name="childrenCount" id="" value="" />
+								</span>
+							</i>
+							<i class="childrenAgeRange">
+								<label>儿童年龄</label>
+								<span class="beforeEditing">3个月</span>
+								<span class="afterEditing">
+									<select name="childrenAgeRange">
+										<option value=""></option>
+									</select>
+								</span>
+							</i>
+						</p>
+						<p>
+							<i class="olderCount">
+								<label>老人数</label>
+								<span class="beforeEditing">1</span>
+								<span class="afterEditing">
+									<input type="text" name="olderCount" id="" value="" />
+								</span>
+							</i>
+							<i style="width: 300px;" class="olderAgeRange">
+								<label>老人年龄段</label>
+								<span class="beforeEditing"></span>
+								<span class="afterEditing">
+									<select name="olderAgeRange">
+										<option value=""></option>
+									</select>
+								</span>
+							</i>
+							<i class="selfCares">
+								<label style="width: 84px;">老人能否自理</label>
+								<span class="beforeEditing"></span>
+								<span class="afterEditing">
+									<select name="selfCares">
+										<option value=""></option>
+									</select>
+								</span>
+							</i>
+						</p>
+
+						<div class="btnCass-b clearfix">
+							<a class="bcb-cancel">取消</a>
+							<a class="bcb-save">保存</a>
+						</div>
+						</form>
+					</div>
+				</div>
+
+				<a class="cusCreatOrder">创建订单</a>
+
+			</div>
+		</div>
+
+		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.pagination.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+
+
+//			页面交互
+
+//			分页
+			var pageNumber = 1;
+			var pageSize = 10;
+
+			function pagination(records){
+				$("#pagination").siblings(".records").children().text(records);
+				$("#pagination").pagination(records, {
+				    num_edge_entries: 1,
+				    num_display_entries: 4,
+				    current_page:pageNumber-1,
+				    items_per_page:pageSize,
+				    prev_text:"上一页",
+				    next_text:"下一页",
+				    callback: querycustomers
+				});
+			};
+
+			function querycustomers(page_index){
+				var pageNumber = page_index+1;
+				var customerName = $(".cm-filter input[name='customerName']").val();
+				var customerMobile = $(".cm-filter input[name='customerMobile']").val();
+				var serviceProvice = $(".cm-filter select[name='serviceProvice']").val();
+				var serviceCity = $(".cm-filter select[name='serviceCity']").val();
+				var serviceCounty = $(".cm-filter select[name='serviceCounty']").val();
+				$.ajax({
+			        url: publicPath+"/api/customers/querycustomers",
+			        type: "post",
+			        data: {pageNumber:pageNumber,pageSize:pageSize,customerName:customerName,customerMobile:customerMobile,serviceProvice:serviceProvice,serviceCity:serviceCity,serviceCounty:serviceCounty},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData.rows;
+			                	var html = "";
+			                	var n = 0;
+			                	$.each(dataJD, function(i,item) {
+			                		n++;
+			                		html += "<tr data-customerid='"+item.customerId+"'>"+
+										"<td>"+n+"</td>"+
+										"<td>"+item.customerName+"</td>"+
+										"<td>"+item.sex+"</td>"+
+										"<td>"+item.customerMobile+"</td>"+
+										"<td>"+item.serviceProvice+item.serviceCity+item.serviceCounty+"</td>"+
+										"<td>"+item.contactAddress+"</td>"+
+										"<td>"+item.orderscount+"</td>"+
+									"</tr>"
+			                	});
+			                	$(".clientFile tbody").html(html);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			};
+
+
+			$(function(){
+//				头部引入
+//				$('#header').load('header.html?v=0.01',function(){
+//					$(".navigator ul li a").removeClass("navi-on");
+//					$(".navigator ul li").eq(4).children().addClass("navi-on");
+//				});
+
+
+
+//				var STop = $(document).scrollTop();
+//				$(".orderDetails").css("top",92-STop);
+//				$(document).scroll(function(){
+//					var sTop = $(document).scrollTop();
+//					if (92-sTop>0) {
+//						$(".orderDetails").css("top",92-sTop);
+//					} else {
+//						$(".orderDetails").css("top",0);
+//					}
+//				});
+
+//				var TenantId = sessionStorage.getItem("TenantId");
+
+//				获取总页数
+				$.ajax({
+			        url: publicPath+"/api/customers/querycustomers",
+			        type: "post",
+			        data: {},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	pagination(dataJD.records);
+			                	$(".createNew p span").text(dataJD.records);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+
+//			    条件查询
+				$(".cm-filter a").click(function(){
+					var customerName = $(".cm-filter input[name='customerName']").val();
+					var customerMobile = $(".cm-filter input[name='customerMobile']").val();
+					var serviceProvice = $(".cm-filter select[name='serviceProvice']").val();
+					var serviceCity = $(".cm-filter select[name='serviceCity']").val();
+					var serviceCounty = $(".cm-filter select[name='serviceCounty']").val();
+					$.ajax({
+				        url: publicPath+"/api/customers/querycustomers",
+				        type: "post",
+				        data: {customerName:customerName,customerMobile:customerMobile,serviceProvice:serviceProvice,serviceCity:serviceCity,serviceCounty:serviceCounty},
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	var dataJD = data.jsonData;
+				                	pagination(dataJD.records);
+				                	console.log(data.msg);
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				                console.log(data.msg);
+				            }
+				        }
+				    });
+				});
+
+//				客户查看
+				$(".frame").on("click",".clientFile tbody tr",function(){
+					if($(this).hasClass("slideBlue")){
+						$(this).removeClass("slideBlue");
+						setTimeout('$(".orderDetails").animate({"right":-1020})',500);
+						return;
+					} else {
+						$(this).addClass("slideBlue").siblings().removeClass("slideBlue");
+						$(".orderDetails").animate({"right":0});
+						setTimeout('$(".orderDetails").animate({"right":0})',500);
+					}
+					var customerid = $(this).data("customerid");
+					$(".infoCard").attr("data-code",customerid);
+					$("input[name='customerId']").val(customerid);
+					$(".orderDetails input[type='checkbox']").prop("checked",false);
+					$(".orderDetails .beforeEditing").text("");
+					$(".bcb-cancel").trigger("click");
+					$(".serviceArea .afterEditing select").val("");
+					$.ajax({
+				        url: publicPath+"/api/customers/getcustomer",
+				        type: "get",
+				        data: {customerid:customerid},
+				        dataType: "json",
+				        async:false,
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	var dataJD = data.jsonData;
+				                	if(dataJD.serviceProvice!=""){
+				                		var serviceProviceCode=dataJD.serviceProvice.split(",")[0];
+				                	}
+				                	if(dataJD.serviceCityCode!=""){
+				                		var serviceCityCode=dataJD.serviceCity.split(",")[0];
+				                	}
+				                	if(dataJD.serviceCountyCode!=""){
+				                		var serviceCountyCode=dataJD.serviceCounty.split(",")[0];
+				                	}
+									$(".orderDetails .serviceArea .afterEditing select[name='serviceProvice']").val(serviceProviceCode);
+									$.ajax({
+								        url: publicPath+"/api/common/getAreaData/c002",
+								        type: "post",
+								        data: {pcode:serviceProviceCode},
+								        dataType: "json",
+								        async:false,
+								        success: function success(data) {
+								            if(data.success){
+								                if(data.code == 0){
+								                	var dataJD = data.jsonData;
+								                	var html = "";
+								                	$.each(dataJD, function(i,item) {
+								                		html += "<option data-parentCode='"+item.parentCode+"' data-areaLevel='"+item.areaLevel+"' value='"+item.areaCode+"'>"+item.areaName+"</option>";
+								                	});
+								                	$(".personal-info select[name='serviceCity']").html("<option value=''>请选择</option>"+html);
+								                	$(".personal-info select[name='serviceCity']").val(serviceCityCode);
+								                	console.log(data.msg);
+								                }else{
+								                    console.log(data.msg);
+								                }
+								            }else{
+								                console.log(data.msg);
+								            }
+								        }
+								    });
+
+								    $.ajax({
+								        url: publicPath+"/api/common/getAreaData/c003",
+								        type: "post",
+								        data: {pcode:serviceCityCode},
+								        dataType: "json",
+								        async:false,
+								        success: function success(data) {
+								            if(data.success){
+								                if(data.code == 0){
+								                	var dataJD = data.jsonData;
+								                	var html = "";
+								                	$.each(dataJD, function(i,item) {
+								                		html += "<option data-parentCode='"+item.parentCode+"' data-areaLevel='"+item.areaLevel+"' value='"+item.areaCode+"'>"+item.areaName+"</option>";
+								                	});
+								                	$(".personal-info select[name='serviceCounty']").html("<option value=''>请选择</option>"+html);
+								                	$(".personal-info select[name='serviceCounty']").val(serviceCountyCode);
+								                	console.log(data.msg);
+								                }else{
+								                    console.log(data.msg);
+								                }
+								            }else{
+								                console.log(data.msg);
+								            }
+								        }
+								    });
+				                	console.log(data.msg);
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				                console.log(data.msg);
+				            }
+				        }
+				    });
+
+					$.ajax({
+				        url: publicPath+"/api/customers/getcustomer",
+				        type: "get",
+				        data: {customerid:customerid},
+				        dataType: "json",
+				        async:false,
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	var dataJD = data.jsonData;
+				                	$(".orderDetails .addTime span").text(dataJD.addTime);
+				                	$(".orderDetails .modifyTime span").text(dataJD.modifyTime);
+				                	$(".orderDetails .customerName .beforeEditing").text(dataJD.customerName);
+
+				                	if (dataJD.sex!=null){
+					                	var sexCode=dataJD.sex.split(",")[0];
+										var sexVal=dataJD.sex.split(",")[1];
+										$(".orderDetails .sex .beforeEditing").text(sexVal);
+										$(".orderDetails .sex .afterEditing select[name='sex']").val(sexCode);
+				                	} else {
+										$(".orderDetails .sex .beforeEditing").text("");
+									}
+
+				                	$(".orderDetails .customerMobile .beforeEditing").text(dataJD.customerMobile);
+
+				                	if(dataJD.serviceProvice!=""){
+				                		var serviceProviceVal=dataJD.serviceProvice.split(",")[1];
+				                	} else {
+				                		var serviceProviceVal="";
+				                	}
+				                	if(dataJD.serviceCity!=""){
+				                		var serviceCityVal=dataJD.serviceCity.split(",")[1];
+				                	} else {
+				                		var serviceCityVal="";
+				                	}
+				                	if(dataJD.serviceCounty!=""){
+				                		var serviceCountyVal=dataJD.serviceCounty.split(",")[1];
+				                	} else {
+				                		var serviceCountyVal="";
+				                	}
+
+
+
+									$(".orderDetails .serviceArea .beforeEditing").text(serviceProviceVal+" "+serviceCityVal+" "+serviceCountyVal);
+
+				                	$(".orderDetails .contactAddress .beforeEditing").text(dataJD.contactAddress);
+				                	$(".orderDetails .familyCount .beforeEditing").text(dataJD.familyCount);
+
+				                	if (dataJD.houseType!=null){
+					                	var houseTypeCode=dataJD.houseType.split(",")[0];
+										var houseTypeVal=dataJD.houseType.split(",")[1];
+										$(".orderDetails .houseType .beforeEditing").text(houseTypeVal);
+										$(".orderDetails .houseType .afterEditing select[name='houseType']").val(houseTypeCode);
+				                	} else {
+										$(".orderDetails .houseType .beforeEditing").text("");
+									}
+
+				                	$(".orderDetails .houseArea .beforeEditing").text(dataJD.houseArea);
+				                	$(".orderDetails .childrenCount .beforeEditing").text(dataJD.childrenCount);
+
+				                	if (dataJD.childrenAgeRange!=null){
+					                	var childrenAgeRangeCode=dataJD.childrenAgeRange.split(",")[0];
+										var childrenAgeRangeVal=dataJD.childrenAgeRange.split(",")[1];
+										$(".orderDetails .childrenAgeRange .beforeEditing").text(childrenAgeRangeVal);
+										$(".orderDetails .childrenAgeRange .afterEditing select[name='childrenAgeRange']").val(childrenAgeRangeCode);
+				                	} else {
+										$(".orderDetails .childrenAgeRange .beforeEditing").text("");
+									}
+
+				                	$(".orderDetails .olderCount .beforeEditing").text(dataJD.olderCount);
+
+				                	if (dataJD.olderAgeRange!=null){
+					                	var olderAgeRangeCode=dataJD.olderAgeRange.split(",")[0];
+										var olderAgeRangeVal=dataJD.olderAgeRange.split(",")[1];
+										$(".orderDetails .olderAgeRange .beforeEditing").text(olderAgeRangeVal);
+										$(".orderDetails .olderAgeRange .afterEditing select[name='olderAgeRange']").val(olderAgeRangeCode);
+									} else {
+										$(".orderDetails .olderAgeRange .beforeEditing").text("");
+									}
+
+				                	$(".orderDetails .selfCares .beforeEditing").text(dataJD.selfCares);
+
+				                	if (dataJD.selfCares!=null){
+					                	var selfCaresCode=dataJD.selfCares.split(",")[0];
+										var selfCaresVal=dataJD.selfCares.split(",")[1];
+										$(".orderDetails .selfCares .beforeEditing").text(selfCaresVal);
+										$(".orderDetails .selfCares .afterEditing select[name='selfCares']").val(selfCaresCode);
+									} else {
+										$(".orderDetails .selfCares .beforeEditing").text("");
+									}
+				                	console.log(data.msg);
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				                console.log(data.msg);
+				            }
+				        }
+				    });
+				});
+				$(".od-title a").click(function(){
+					$(".clientFile tr").removeClass("slideBlue");
+					$(".orderDetails").animate({"right":-1020});
+				});
+
+
+				$(".edit").click(function(){
+					$(this).parent().siblings("div").addClass("ae-frame").find("input[type='text'],textarea").each(function(){
+						var cont = $(this).parent().siblings(".beforeEditing").text();
+						$(this).val(cont);
+					});
+					$(this).parent().siblings("div").find(".beforeEditing").hide();
+					$(this).parent().siblings("div").find(".afterEditing,.btnCass-b").show();
+				});
+
+//				修改信息
+				$(".bcb-save").click(function(){
+					var customerid = $("input[name='customerId']").val();
+					if ($(this).parents("form").attr("id")=="pi-form") {
+						$("#pi-form input,#pi-form select").trigger("blur");
+						if ($("#pi-form .validation").length>0) {
+							return false;
+						};
+						$("#pi-form").ajaxSubmit({
+							url: publicPath+"/api/customers/updatecustomer",
+							data:{customerid:customerid},
+					        type: "post",
+					        dataType: "json",
+					        success: function success(data) {
+					            if(data.success){
+					                if(data.code == 0){
+					                	toast();
+					                	$(".clientFile tbody tr").each(function(){
+					                		if ($(this).attr("data-customerid")==customerid) {
+					                			$(this).removeClass("slideBlue");
+					                			$(this).trigger("click");
+					                		}
+					                	})
+//					                	location.reload();
+					                	console.log(data.msg);
+					                }else{
+					                    console.log(data.msg);
+					                }
+					            }else{
+					            	if (data.code == '999012') {
+					            		alert("该号码已存在，请更换其他号码！");
+					            	}
+					                console.log(data.msg);
+					            }
+					        }
+						});
+					} else{
+						$("#fi-form").ajaxSubmit({
+							url: publicPath+"/api/customers/updateCustomerHomeInfo",
+							data:{customerid:customerid},
+					        type: "post",
+					        dataType: "json",
+					        success: function success(data) {
+					            if(data.success){
+					                if(data.code == 0){
+					                	toast();
+					                	$(".clientFile tbody tr").each(function(){
+					                		if ($(this).attr("data-customerid")==customerid) {
+					                			$(this).removeClass("slideBlue");
+					                			$(this).trigger("click");
+					                		}
+					                	})
+					                	console.log(data.msg);
+					                }else{
+					                    console.log(data.msg);
+					                }
+					            }else{
+					                console.log(data.msg);
+					            }
+					        }
+						});
+					}
+				});
+
+
+				$(".orderDetails .bcb-cancel").click(function(){
+					$(this).parent().hide();
+					$(this).parents("div").removeClass("ae-frame");
+					$(this).parents("form").find(".validation").remove();
+					$(this).parent().siblings("p").find(".beforeEditing").show();
+					$(this).parent().siblings("p").find(".afterEditing").hide();
+					$(this).parent().siblings(".beforeEditing").show();
+					$(this).parent().siblings(".afterEditing").hide();
+				});
+
+				$(".addFile").click(function(){
+					$("#layer,.addFilePop").show();
+				});
+
+//				客户新增保存
+
+				$(".addFilePop .bcb-save").click(function(){
+					$("#afpcForm input,#afpcForm select").trigger("blur");
+					if ($("#afpcForm .validation").length>0) {
+						return false;
+					};
+					$("#afpcForm").ajaxSubmit({
+						url: publicPath+"/api/customers/savecustomer",
+				        type: "post",
+				        dataType: "json",
+				        async:false,
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	location.reload();
+//				                	toast();
+//				                	$("#layer,.addFilePop").hide();
+				                	console.log(data.msg);
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				            	if (data.code == '999012') {
+				            		alert("该号码已存在，请更换其他号码！")
+				            	}
+				                console.log(data.msg);
+				            }
+				        }
+					});
+				});
+
+				$(".addFilePop .afp-title a,.addFilePop .bcb-cancel").click(function(){
+					$("#layer,.addFilePop").hide();
+				});
+
+//				客户生成订单
+				$(".cusCreatOrder").click(function(){
+					var customerId = $("input[name='customerId']").val();
+					$.ajax({
+				        url: publicPath+"/api/orders/createOrderInfo",
+				        type: "post",
+				        data: {orderSource:"01"},
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	var dataJD = data.jsonData;
+				                	var Url = "createOrder.html"+"?"+"code=03&orderNo="+dataJD.orderNo+"&orderSource="+dataJD.orderSource+"&orderTime="+dataJD.orderTime+"&customerId="+customerId;;
+									location.assign(encodeURI(Url));
+				                	console.log(data.msg);
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				                console.log(data.msg);
+				            }
+				        }
+				    });
+				})
+
+//				表单验证
+				var regChar=/^([\u4e00-\u9fa5]+|[a-zA-Z0-9]+)$/;				//特殊字符
+				var regNum= /^[0-9]*$/;
+				var regPhone= /^1[3|4|5|7|8][0-9]{9}$/;
+
+				$("#pi-form input,#pi-form select").blur(function(){
+					var self = $(this);
+					var name = $(this).attr("name");
+					switch (name){
+						case "customerName":
+							if ($.trim(self.val()) == "") {
+								onError('姓名不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "sex":
+							if (self.val() == "") {
+								onError('性别不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "customerMobile":
+							if ($.trim(self.val()) == "") {
+								onError('手机号不能为空',self);
+							} else if (!regPhone.test(self.val())){
+								onError('手机号码格式错误',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "serviceProvice":
+							if (self.val() == "") {
+								onError('服务区域不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "serviceCity":
+							if (self.val() == "") {
+								onError('服务区域不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "serviceCounty":
+							if (self.val() == "") {
+								onError('服务区域不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						default:
+							break;
+					}
+				});
+
+
+				$("#afpcForm input,#afpcForm select").blur(function(){
+					var self = $(this);
+					var name = $(this).attr("name");
+					switch (name){
+						case "customerName":
+							if ($.trim(self.val()) == "") {
+								onError('姓名不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "sex":
+							if (self.val() == "") {
+								onError('性别不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "customerMobile":
+							if ($.trim(self.val()) == "") {
+								onError('手机号不能为空',self);
+							} else if (!regPhone.test(self.val())){
+								onError('手机号码格式错误',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "serviceProvice":
+							if (self.val() == "") {
+								onError('服务区域不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "serviceCity":
+							if (self.val() == "") {
+								onError('服务区域不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "serviceCounty":
+							if (self.val() == "") {
+								onError('服务区域不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						default:
+							break;
+					}
+				});
+
+			});
+
+			function onError (msg,self) {
+				if(self.parent().nextAll().hasClass('validation')){
+					self.parent().nextAll('.validation').text(msg);
+					return;
+				}
+				self.parent().after("<p class='validation'>"+msg+"</p>")
+			}
+
+			function onSuccess(self) {
+				self.parent().nextAll('.validation').remove();
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>您身边的，家政好帮手</title>
+    <link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" type="text/css" href="css/global.css?v=0.01" />
+    <link rel="stylesheet" type="text/css" href="css/housekeepingStaffManagement.css?v=0.01" />
+    <script>
+      var card_read = require('../card_read');
+
+      var results = card_read.readIdInfo('../xxx.bmp');
+
+
+      function readCard() {
+        console.log(JSON.stringify(results));
+      }
+  /*      function byId(id) {
+            return document.getElementById(id);
+        }
+
+        var isInit = false;
+
+        function readCard() {
+            var obj = byId("CardReader1");
+            var form1 = byId("formCard");
+            if (false == isInit) {
+                obj.setPortNum(0);
+                isInit = true;
+            }
+            obj.Flag = 0;
+            var rst = obj.ReadCard();
+            if (0x90 == rst) {
+                form1.getImage.value = obj.GetImage();
+                form1.nameL.value = obj.NameL();
+                form1.sexL.value = obj.SexL();
+                form1.nationL.value = obj.NationL();
+                form1.address.value = obj.Address();
+                form1.idnum.value = obj.CardNo();
+                form1.born2.value = obj.Born();
+            } else {
+                form1.nameL.value = "";
+                form1.sexL.value = "";
+                form1.nationL.value = "";
+                form1.address.value = "";
+                form1.idnum.value = "";
+                form1.born2.value = "";
+
+            }
+        }
+
+        function GetState() {
+            var obj = byId("CardReader1");
+            obj.GetState();
+        }*/
+    </script>
+</head>
+
+<body style="padding: 0;">
+    <form id="formCard">
+        <input type="hidden" size="30" name="born2" />
+        <div class="add-hs-ID clearfix">
+            <div class="ID-photo">
+                <!--<object id="CardReader1" codebase="FirstActivex.cab#version=1,4,0,1" classid="CLSID:F225795B-A882-4FBA-934C-805E1B2FBD1B" width="120" height="140">
+					<param name="_Version" value="65536"/>
+					<param name="_ExtentX" value="2646"/>
+					<param name="_ExtentY" value="1323"/>
+					<param name="_StockProps" value="0"/>
+				</object>-->
+                <div>家政员</div>
+                <input id="getImage" type="hidden" name="getImage" />
+                <img class="idImage" src="img/idImage.png">
+            </div>
+            <div class="ID-info">
+                <p class="ID-no">
+                    <label><i>身份证号：</i><input type="text" name="idnum" size="20" value="" placeholder="请通过身份证读取器读取" disabled="disabled"/></label>
+                    <a class="b-sbtn" onclick="readCard()">读取</a>
+                </p>
+                <ul class="info_read clearfix">
+                    <li>
+                        <p><span><i class="required">*</i>家政员姓名：</span><input type="text" size="20" name="nameL" disabled="disabled" value="" />
+                            <p>
+                                <p><span>性别：</span><input type="text" size="20" name="sexL" disabled="disabled" /></p>
+                                <p><span><i class="required">*</i>年龄：</span><input type="text" size="20" name="age" disabled="disabled" /></p>
+                                <p><span>户籍地址：</span><input type="text" size="40" name="address" disabled="disabled" /></p>
+                    </li>
+                    <li>
+                        <p><span>民族：</span><input type="text" size="20" name="nationL" disabled="disabled" /></p>
+                        <p><span><i class="required">*</i>属相：</span><input type="text" size="20" name="zodiac" disabled="disabled" /></p>
+                        <p><span><i class="required">*</i>星座：</span><input type="text" size="20" name="constellation" disabled="disabled" /></p>
+                        <p><span><i class="required">*</i>籍贯：</span><input type="text" size="20" name="native" disabled="disabled" /></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </form>
+    <script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        function brushCard(certNo, certImage, staffName, nation, houseAddress, nativePlace, tenantId) {
+            $.ajax({
+                url: publicPath + "/api/staffs/brushCard",
+                type: "post",
+                data: {
+                    certNo: certNo,
+                    certImage: certImage,
+                    staffName: staffName,
+                    nation: nation,
+                    houseAddress: houseAddress,
+                    nativePlace: nativePlace,
+                    tenantId:tenantId
+                },
+                dataType: "json",
+                success: function(data) {
+                    if (data.success) {
+                        if (data.code == 0) {
+                            alert(data.msg);
+                            // $(".ID-no .promptSp").remove();
+                        } else {
+                            alert(data.msg);
+
+                        }
+                    } else {
+                        // if(data.code == 999012){
+                        // 	$(".ID-no .promptSp").remove();
+                        // 	$(".ID-no").append("<span class='promptSp'>家政员已存在</span>");
+                        // }
+                    }
+                }
+            });
+        }
+
+        var publicPath = "http://" + window.location.host + "/fbeeConsole_web";
+        var year = new Array("猪", "鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗");
+        var CityArray = {
+            11: "北京",
+            12: "天津",
+            13: "河北",
+            14: "山西",
+            15: "内蒙古",
+            21: "辽宁",
+            22: "吉林",
+            23: "黑龙江",
+            31: "上海",
+            32: "江苏",
+            33: "浙江",
+            34: "安徽",
+            35: "福建",
+            36: "江西",
+            37: "山东",
+            41: "河南",
+            42: "湖北",
+            43: "湖南",
+            44: "广东",
+            45: "广西",
+            46: "海南",
+            50: "重庆",
+            51: "四川",
+            52: "贵州",
+            53: "云南",
+            54: "西藏",
+            61: "陕西",
+            62: "甘肃",
+            63: "青海",
+            64: "宁夏",
+            65: "新疆",
+            71: "台湾",
+            81: "香港",
+            82: "澳门",
+            91: "国外"
+        }
+
+        $(function() {
+
+            var url = location.search;
+            var loginAccount = url.split("?")[1].split("&")[0];
+            var tenantId = url.split("?")[1].split("&")[1];
+
+            $.ajax({
+                url: publicPath + "/api/user/controlLogin",
+                type: "post",
+                data: {
+                    loginAccount: loginAccount
+                },
+                dataType: "json",
+                success: function success(data) {
+                    if (data.success) {
+                        if (data.code == 0) {
+
+                        }
+                    }
+                }
+            });
+
+            $("#getImage").change(function() {
+                if ($(this).val() != "") {
+                    $(this).siblings("img").hide();
+                } else {
+                    $(this).siblings("img").show();
+                }
+            })
+
+            $(".ID-no .b-sbtn").click(function() {
+                var birthday = $("input[name='born2']").val();
+                var b1 = birthday.substr(0, 4);
+                var b2 = birthday.substr(4, 2);
+                var b3 = birthday.substr(6, 2);
+                var birth = b1 + "/" + b2 + "/" + b3;
+                var date = new Date(birth);
+                var con = getxingzuo(date.getMonth() + 1, date.getDate());
+                $("input[name='constellation']").val(con);
+                var zodiac = year[(parseInt(date.getFullYear()) + 9) % 12];
+                $("input[name='zodiac']").val(zodiac);
+                var age = new Date().getFullYear() - date.getFullYear();
+                $("input[name='age']").val(age);
+
+                //				判断地区
+                var cityCode = parseInt($("input[name='idnum']").val().substr(0, 2));
+                $("input[name='native']").val(CityArray[cityCode]);
+
+                var certNo = $("input[name='idnum']").val();
+                var certImage = $("input[name='getImage']").val();
+                var staffName = $("input[name='nameL']").val();
+                var nation = $("input[name='nationL']").val();
+                var houseAddress = $("input[name='address']").val();
+                var nativePlace = $("input[name='native']").val();
+
+                if (certNo != "") {
+                    brushCard(certNo, certImage, staffName, nation, houseAddress, nativePlace, tenantId);
+                }
+
+            });
+
+        });
+
+        function getxingzuo(month, day) {
+            var d = new Date(1999, month - 1, day, 0, 0, 0);
+            var arr = [];
+            arr.push(["魔羯座", new Date(1999, 0, 1, 0, 0, 0)])
+            arr.push(["水瓶座", new Date(1999, 0, 20, 0, 0, 0)])
+            arr.push(["双鱼座", new Date(1999, 1, 19, 0, 0, 0)])
+            arr.push(["牡羊座", new Date(1999, 2, 21, 0, 0, 0)])
+            arr.push(["金牛座", new Date(1999, 3, 21, 0, 0, 0)])
+            arr.push(["双子座", new Date(1999, 4, 21, 0, 0, 0)])
+            arr.push(["巨蟹座", new Date(1999, 5, 22, 0, 0, 0)])
+            arr.push(["狮子座", new Date(1999, 6, 23, 0, 0, 0)])
+            arr.push(["处女座", new Date(1999, 7, 23, 0, 0, 0)])
+            arr.push(["天秤座", new Date(1999, 8, 23, 0, 0, 0)])
+            arr.push(["天蝎座", new Date(1999, 9, 23, 0, 0, 0)])
+            arr.push(["射手座", new Date(1999, 10, 22, 0, 0, 0)])
+            arr.push(["魔羯座", new Date(1999, 11, 22, 0, 0, 0)])
+            for (var i = arr.length - 1; i >= 0; i--) {
+                if (d >= arr[i][1])
+                    return arr[i][0];
+            }
+        }
+    </script>
+</body>
+
+</html>

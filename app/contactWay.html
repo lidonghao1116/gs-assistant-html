@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta http-equiv="Cache-Control" CONTENT="no-cache">
+<meta http-equiv="Pragma" CONTENT="no-cache">
+
+<title>您身边的，家政好帮手</title>
+<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+<link rel="stylesheet" type="text/css" href="css/base.css"/>
+<link rel="stylesheet" type="text/css" href="css/siteManagement.css"/>
+</head>
+<body>
+<div id="header" class="clearfix">
+  <div class="h-frame">
+    <div class="logo"><img src="img/logo.png"/></div>
+    <div class="h-right">
+      <div class="account">
+        <ul class="clearfix">
+          <li class="login"><a href="login.html">登录</a></li>
+          <li><a href="resetPassword.html">修改密码</a></li>
+          <li><a>退出</a></li>
+        </ul>
+      </div>
+      <div class="navigator">
+        <ul class="clearfix">
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="naviLeft">
+  <ul>
+    <!-- <li><a class="sygl" href="homeManagement.html"><em></em>首页管理</a></li>
+     &lt;!&ndash;<li><a class="fwgl" href="serviceManagement.html"><em></em>服务管理</a></li>&ndash;&gt;
+     <li class="nl_on"><a class="lxfs" href="contactWay.html"><em></em>联系方式</a></li>
+     <li><a class="zpgl" href="recruitManagement.html"><em></em>招聘管理</a></li>-->
+    <!--<li><a class="gywm" href="aboutUs.html"><em></em>关于我们</a></li>-->
+  </ul>
+</div>
+
+<div class="particulars">
+  <p class="paths">当前页面：网站管理 > 联系方式</p>
+  <div class="container ">
+    <div class="showL showContact">
+      <div class="contactCtn pb30">
+        <img src="img/siteManagement/service.png" alt="" class="contactAvatar">
+        <ul class="contactContainer g3">
+          <li class="showHotLine" id="hotLineShow">
+            <p class=" f20 mt15">服务热线</p>
+            <p class="mt15 lineTel"></p>
+            <div class="noShow dn">暂不展示</div>
+          </li>
+          <li class="showQQ" id="qqShow">
+            <div class="qqLine mt28" id="qq01"><i class=""></i>QQ交谈</div>
+            <div class="qqLine" id="qq02"><i></i>QQ交谈</div>
+            <div class="qqLine" id="qq03"><i></i>QQ交谈</div>
+            <div class="noShow dn">暂不展示</div>
+          </li>
+          <li class="showQR" id="weChatShow">
+            <img src="" class="mt20 wx-code" alt="">
+            <div class="noShow dn">暂不展示</div>
+          </li>
+          <li class="returnTop">
+            <a>返回顶部
+              <i></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="controlR ovh contact_m" data-authority="0">
+      <div class="box" id="hotLine">
+        <h3>
+          <a href="#hotLineSetting" data-id="#hotLineShow">
+            服务热线
+            <i class=""></i>
+          </a>
+        </h3>
+        <div class="contentBox dn cm-content" id="hotLineSetting">
+          <div class="subContent ovh">
+            <form id="hotLineForm" enctype="multipart/form-data">
+              <ul class="fix">
+                <li>
+                  <h4 class="dib">
+                    是否展示
+                  </h4>
+                  <div class="formRt">
+                    <label><input class="mui-switch mui-switch-animbg" type="checkbox" name="isOpenMobile"
+                                  value=""></label>
+                  </div>
+                </li>
+                <li>
+                  <h4 class="dib">
+                    服务热线
+                  </h4>
+                  <div class="formRt">
+                    <label class="contactPhone">
+                      <input type="text" maxlength="15" class="inpQQ" name="contactPhone"></label>
+                    <span class="cm-validation"></span>
+                  </div>
+                </li>
+              </ul>
+            </form>
+            <div class="btnBox mt40 mb100">
+              <a class="btnBack btnBase">返回</a>
+              <a class="btnSave btnBase ml20">保存</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box" id="QQ">
+        <h3>
+          <a href="#qqSetting" data-id="#qqShow">
+            QQ
+            <i class=""></i>
+          </a>
+        </h3>
+        <div class="contentBox cm-content dn" id="qqSetting">
+          <div class="subContent ovh p0">
+            <form id="qqForm">
+              <ul class="fix">
+                <li>
+                  <h4 class="dib">
+                    是否展示
+                  </h4>
+                  <div class="formRt">
+                    <label><input class="mui-switch mui-switch-animbg" type="checkbox" name="isOpenQq"></label>
+                  </div>
+                </li>
+                <li>
+                  <h4 class="dib">
+                    <label>
+                      <input type="checkbox" id="" class="chkBase mr20 vi" name="isOpenQqOne">
+                      QQ
+                    </label>
+                  </h4>
+                  <div class="formRt">
+                    <label class="qqOne">
+                      <input type="text" maxlength="15" class="inpQQ" name="qqOne">
+                      <span class="f12 g80 ml10">（勾选与否可控制单个qq是否展示）</span>
+                    </label>
+                    <span class='cm-validation'></span>
+                  </div>
+                </li>
+                <li>
+                  <h4 class="dib">
+                    <label>
+                      <input type="checkbox" id="" class="chkBase mr20 vi" name="isOpenQqTwo">
+                      QQ
+                    </label>
+                  </h4>
+                  <div class="formRt">
+                    <label class="qqTwo">
+                      <input type="text" maxlength="15" class="inpQQ" name="qqTwo">
+                      <span class="f12 g80 ml10">（勾选与否可控制单个qq是否展示）</span>
+                    </label>
+                    <span class='cm-validation'></span>
+                  </div>
+                </li>
+                <li>
+                  <h4 class="dib">
+                    <label>
+                      <input type="checkbox" class="chkBase mr20 vi" name="isOpenQqThree">
+                      QQ
+                    </label>
+                  </h4>
+                  <div class="formRt">
+                    <label class="qqThree">
+                      <input type="text" maxlength="15" class="inpQQ" name="qqThree">
+                      <span class="f12 g80 ml10">（勾选与否可控制单个qq是否展示）</span>
+                    </label>
+                    <span class='cm-validation'></span>
+                  </div>
+                </li>
+              </ul>
+            </form>
+            <div class="btnBox mt60">
+              <a class="btnBack btnBase">返回</a>
+              <a class="btnSave btnBase ml20">保存</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box" id="weChat">
+        <h3>
+          <a href="#weChatSetting" data-id="#weChatShow">
+            微信
+            <i class=""></i>
+          </a>
+        </h3>
+        <div class="contentBox cm-content dn" id="weChatSetting">
+          <div class="subContent ovh p0">
+            <form action="">
+              <ul class="fix">
+                <li>
+                  <h4 class="dib">
+                    是否展示
+                  </h4>
+                  <div class="formRt">
+                    <label><input class="mui-switch mui-switch-animbg" type="checkbox" name="isOpenQrCode"></label>
+                  </div>
+                </li>
+                <li class="uploadImg fix">
+                  <h4 class="dib">
+                    微信二维码
+                  </h4>
+                  <div class="formRt">
+                    <div class="">
+                      <div class="dib uploadBox mr15">
+                        <a class="upload">点击上传</a>
+                        <input type="file" accept="image/gif,image/png,image/bmp,image/jpeg" name='qrCode'>
+                      </div>
+                      <span class="desc f12 g80">（二维码尺寸不超过200*200像素，大小50K以内）</span>
+
+                    </div>
+
+                    <img src="" class="qrImg wx-code">
+                    </img>
+                    <span class="cm-validation"></span>
+                  </div>
+                </li>
+              </ul>
+              <div class="btnBox mt60">
+                <button class="btnBack btnBase">返回</button>
+                <button class="btnSave btnBase ml20">保存</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/utils/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/contactWay.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+.frame .my-site {width: 100%;min-width: 1000px;margin-top: 34px;/*296px*/}
+.frame .my-site .mode {width: 330px;margin: 0 auto;}
+.frame .my-site .mode div p {width: 110px;height: 24px;line-height: 24px;text-align: center;margin: 14px auto 0 auto;color: #FFF;border-radius: 30px;}
+.frame .my-site .mode .pc {float: left;}
+.frame .my-site .mode .pc p {background-color: #6DAFE3;}
+.frame .my-site .mode .wap {float: right;}
+.frame .my-site .mode .wap div {width: 130px;height: 115px;}
+.frame .my-site .mode .wap canvas {width: 100%;height: 100%;}
+.frame .my-site .mode .wap p {background-color: #69DE5A;}
+.frame .my-site table {width: 340px;margin: 0 auto;}
+.frame .my-site table tr {height: 20px;}
+.frame .my-site table td {vertical-align: top;}
+.frame .my-site table tr td:first-child {color: #808080;}
+.frame .my-site table .ms-validation td {color: #FF411B!important;padding-left: 68px;}
+.frame .my-site .exp-date {border-left: 2px solid #F0F0F0;text-align: center;}
+
+
+.frame .my-account {padding-bottom: 35px;}
+.frame .my-account .eCharts {position: relative;float: left;width: 25%;}
+.frame .my-account .eCharts p {position: absolute;z-index: 10;top: 0;bottom: 0;left: 0;right: 0;line-height: 180px;text-align: center;}
+.frame .my-account .ma-data {width: 46%;float: left;}
+.frame .my-account .ma-data p {width: 354px;padding-left: 42px;border-bottom: 2px solid;height: 34px;line-height: 34px;margin: 17px auto 0 auto ;}
+.frame .my-account .ma-data .mad1 {background: url(../img/ma1.jpg) no-repeat left;border-color: #6DAFE3;font-weight: bold;}
+.frame .my-account .ma-data .mad2 {background: url(../img/ma2.jpg) no-repeat left;border-color: #79E096;}
+.frame .my-account .ma-data .mad3 {background: url(../img/ma3.jpg) no-repeat left;border-color: #A7ABD6;}
+.frame .my-account .ma-data p span {text-align: right;display: inline-block;width: 70%;}
+.frame .my-account .money-btn {float: left; height: 104px;width: 28%;border-left: 2px solid #F0F0F0;margin-top: 42px;}
+.frame .my-account .money-btn .mb-frame {margin: 35px auto 0 auto;width: 218px;height: 34px;}
+.frame .my-account .money-btn .mb-frame a {border-radius: 4px;border: 1px solid #0A7EE3;color: #0A7EE3;display: block;width: 88px;height: 32px;line-height: 32px;text-align: center;font-size: 16px;cursor: pointer;}
+.frame .my-account .money-btn .mb-frame .withdraw {float: left;}
+.frame .my-account .money-btn .mb-frame .deposit {float: right;background-color: #0A7EE3;color: #FFFFFF;}
+
+.frame .credit-card {padding-top: 28px;margin:0 50px;border-top: 2px solid #F0F0F0;}
+.frame .credit-card img {width: 33px;height: 25px;}
+.frame .credit-card i {margin-left: 20px;}
+.frame .credit-card span {margin-left: 20px;}
+
+/*登录页面*/
+.login {padding: 0;}
+.login .loginBg {background: url(../img/loginbg.jpg) no-repeat;background-size: 100% 100%; position: fixed;left: 0;top: 88px;z-index: -1;width: 100%;height: 100%;}
+.login .loginBg img {position: absolute;margin-top: -235px;top:50%;left: 10%;}
+.loginLogo {width: 100%;height: 88px;background-color: #30314E;box-shadow:0 0 25px 1px #30314E;}
+.loginLogo img {margin: 12px 0 0 26px;}
+.loginCase {width: 340px;height: 360px;border-radius: 3px;position: absolute;margin-top: -150px; top: 50%;right: 12.5%;background-color: #FFFFFF;-moz-opacity: 0.9;opacity:.90;filter: alpha(opacity=90);}
+.loginCase h1 {font-size: 20px;color: #323232;text-align: center;margin-top: 30px;}
+.loginCase .lc-validation {width: 280px;margin: 0 auto;height: 32px;line-height: 32px;color: #FF411B;}
+.loginCase .lc-inp {width: 280px;margin: 0 auto;}
+.loginCase .lc-inp p {width: 278px;height: 22px;border: 1px solid #B3B3B3;padding: 6px 0;margin-bottom: 16px;border-radius: 2px;}
+.loginCase .lc-inp p em {display: inline-block;width: 40px;height: 100%;border-right: 1px solid #B3B3B3;}
+.loginCase .lc-inp p input {border: none;height: 100%;vertical-align: top;width: 220px;padding-left: 10px;background: none;}
+/*.loginCase .lc-inp p input::-webkit-input-placeholder {color: #FFFFFF!important;}
+.loginCase .lc-inp p input::-moz-placeholder {color: #FFFFFF!important;}
+.loginCase .lc-inp p input:-ms-input-placeholder {color: #FFFFFF!important;}*/
+.loginCase .lc-inp .lc-account em {background: url(../img/login1.png) no-repeat center;}
+.loginCase .lc-inp .lc-password em {background: url(../img/login2.png) no-repeat center;}
+.loginCase .lc-inp .lc-code {width: 100%;height: 36px;}
+.loginCase .lc-inp .lc-code p {width: 178px;float: left;}
+.loginCase .lc-inp .lc-code p em {background: url(../img/login3.png) no-repeat center;}
+.loginCase .lc-inp .lc-code p input {width: 120px;}
+.loginCase .lc-inp .lc-code img {float: right;width: 90px;height: 100%;}
+.loginCase .login-btn {border: none;width: 280px;height: 36px;background-color: #0A7EE3;color: #FFFFFF;font-size: 20px;}
+
+span.prompt_sp {
+    color: red;
+}
+.remember_me {
+    height: 32px;
+    margin-top: 16px;
+}
+.remember_me input {
+    width: 14px;
+    height: 14px;
+    float: left;
+    margin-top: 1px;
+    cursor: pointer;
+}
+.remember_me label {
+    float: left;
+    padding: 0 6px;
+    font-size: 12px;
+    cursor: pointer;
+}

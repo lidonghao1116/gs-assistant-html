@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+    	<meta http-equiv="Pragma" CONTENT="no-cache">
+		<title>您身边的，家政好帮手</title>
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/orderManagement.css?v=0.01"/>
+	</head>
+	<body>
+		<div id="layer"></div>
+
+		<!--更换家政员弹窗-->
+		<div class="changeAunt" id="bs-ca">
+			<div class="ca-head clearfix">
+				<div>
+					<a class="cancel-ca" style="background-color: #DBDBDB;margin-right: 22px;">取消</a>
+					<a class="cas-btn">确认</a>
+				</div>
+			</div>
+			<div class="ca-inquiry">
+				<p>
+					<span>
+						<label>姓名</label>
+						<input type="text" name="staffName" value="" />
+					</span>
+					<span>
+						<label>学历</label>
+						<select name="education">
+							<option value="">请选择</option>
+						</select>
+					</span>
+					<span>
+						<label>年龄</label>
+						<select name="age">
+							<option value="">请选择</option>
+						</select>
+					</span>
+					<span>
+						<label>属相</label>
+						<select name="zodiac">
+							<option value="">请选择</option>
+						</select>
+					</span>
+					<span>
+						<label>籍贯</label>
+						<select name="nativePlace">
+							<option value="">请选择</option>
+						</select>
+					</span>
+				</p>
+				<p>
+					<span>
+						<label>服务经验</label>
+						<select name="experience">
+							<option value="">请选择</option>
+						</select>
+					</span>
+					<span>
+						<label>工作状态</label>
+						<select name="workStatus">
+							<option value="">请选择</option>
+							<option value="02">空闲</option>
+							<option value="01">服务中</option>
+						</select>
+					</span>
+					<span>
+						<label>指定区域</label>
+						<select name="serviceProvice">
+							<option value="">请选择</option>
+						</select>
+					</span>
+					<a class="ca-inquiry-search">查询</a>
+				</p>
+			</div>
+			<table class="changeAunt_m">
+				<thead>
+					<tr>
+						<td>选择</td>
+						<td>照片</td>
+						<td>姓名</td>
+						<td>基本信息</td>
+						<td>学历</td>
+						<td>服务工种</td>
+						<td>工作经验</td>
+						<td>服务区域</td>
+						<td>服务状态</td>
+						<td>匹配度</td>
+						<td>分享状态</td>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			<div class="clearfix">
+				<div id="paginationS">
+				</div>
+				<p class="records">共<span></span>条</p>
+			</div>
+		</div>
+
+		<div id="header" class="clearfix">
+			<div class="h-frame">
+				<div class="logo"><img src="img/logo.png"/></div>
+				<div class="h-right">
+					<div class="account">
+						<ul class="clearfix">
+							<!-- <li class="login"><a href="login.html">登录</a></li>
+							<li><a href="accountManagement.html">系统管理</a></li>
+							<li><a>退出</a></li> -->
+						</ul>
+					</div>
+					<div class="navigator">
+						<ul class="clearfix">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="naviLeft">
+			<ul>
+				<!-- <li><a class="yygl" href="bookingManagement.html"><em></em>预约订单</a></li> -->
+				<li><a class="ddgl" href="orderManagement.html"><em></em>我的订单</a></li>
+				<li class="beeshare-btn nl_on">
+					<a class="tfx"><em></em><span style="padding-right: 16px;">淘分享</span></a>
+					<div style="display: block;">
+						<a href="beeShare.html" style="color: #0A7EE3;">&gt; 分享池</a>
+						<a href="dropBox.html">&gt; 投递箱</a>
+					</div>
+				</li>
+				<li><a class="zpgl" href="recruitManagement.html"><em></em>职位发布</a></li>
+			</ul>
+		</div>
+
+		<div class="particulars">
+			<p class="paths">当前页面：订单管理 > 分享池</p>
+			<div class="frame" style="padding-top: 18px;">
+				<table class="beeSharePool">
+					<thead>
+						<tr>
+							<td>序号</td>
+							<td>订单名称</td>
+							<td>年龄</td>
+							<td>工资</td>
+							<td>备注</td>
+							<td>状态</td>
+							<td>成单奖励</td>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+				<div class="clearfix">
+					<div id="pagination">
+					</div>
+					<p class="records">共<span></span>条</p>
+				</div>
+			</div>
+		</div>
+
+		<!--<div class="orderDetails">
+			<p class="od-title clearfix">
+				<span>订单详情</span>
+				<a></a>
+			</p>
+			<div class="infoCard" data-order="">
+				<div>
+					<div class="clearfix">
+						<p class="title"><i>订单信息</i></p>
+						<span class="orderState">可抢单</span>
+					</div>
+					<div class="bs-order-info">
+						<div class="singleReward">
+							<i></i>
+						</div>
+						<p class="shareTime">
+							<label>分享时间</label>
+							<span>2016-12-28 12：24：45</span>
+						</p>
+						<p class="orderSource">
+							<label>订单来源</label>
+							<span>*********<b>（家政员通过之后可看订单来源信息）</b></span>
+						</p>
+					</div>
+				</div>
+
+				<div>
+					<p class="title"><i>服务信息</i></p>
+					<div class="bs-service-info">
+						<p>
+							<i class="serviceType">
+								<label>服务工种</label>
+								<span></span>
+							</i>
+							<i class="serviceNature">
+								<label>服务类型</label>
+								<span></span>
+							</i>
+							<i class="serviceTime">
+								<label>服务时间</label>
+								<span></span>
+							</i>
+						</p>
+						<p>
+							<i class="wageRequirement">
+								<label>年龄要求</label>
+								<span></span>
+							</i>
+							<i class="salaryRequirement">
+								<label>工资要求</label>
+								<span></span>
+							</i>
+							<i class="petRaising">
+								<label>饲养动物</label>
+								<span></span>
+							</i>
+						</p>
+						<p class="serviceArea">
+							<label>服务区域</label>
+							<span></span>
+						</p>
+						<p class="salarySkills">
+							<label>服务内容</label>
+							<span>
+							</span>
+						</p>
+						<p class="personality">
+							<label>个人特点</label>
+							<span>
+							</span>
+						</p>
+						<p class="specialRequirements">
+							<label>特殊要求</label>
+							<span></span>
+						</p>
+						<p class="remark">
+							<label>备注</label>
+							<span></span>
+						</p>
+					</div>
+				</div>
+
+				<div>
+					<p class="title"><i>客户信息</i></p>
+					<div class="bs-customer-info">
+						<p>
+							<i class="familyCount">
+								<label>家庭人数</label>
+								<span></span>
+							</i>
+							<i class="houseType">
+								<label>住宅类型</label>
+								<span></span>
+							</i>
+							<i class="houseArea">
+								<label>住宅面积</label>
+								<span></span>
+							</i>
+						</p>
+						<p>
+							<i class="childrenCount">
+								<label>儿童数</label>
+								<span></span>
+							</i>
+							<i class="childrenAgeRange">
+								<label>儿童年龄</label>
+								<span></span>
+							</i>
+						</p>
+						<p>
+							<i class="olderCount">
+								<label>老人数</label>
+								<span></span>
+							</i>
+							<i style="width: 300px;" class="olderAgeRange">
+								<label>老人年龄段</label>
+								<span></span>
+							</i>
+							<i class="selfCares">
+								<label style="width: 84px;">老人能否自理</label>
+								<span></span>
+							</i>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="beeshare-bn">
+				<ul class="clearfix">
+					<li class="hs-sel">
+						<a>+选择家政员</a>
+					</li>
+					<li class="return">
+						<a>返回</a>
+					</li>
+				</ul>
+				<div class="clearfix">
+					<p class="brief">
+						<label></label>
+						<span></span>
+					</p>
+					<p class="waiting">
+						<img src=""/>
+						<span></span>
+					</p>
+				</div>
+			</div>
+		</div>-->
+
+		<div class="orderDetails">
+			<p class="od-title clearfix">
+				<span>订单详情</span>
+				<a></a>
+			</p>
+
+			<div id="ic-frame">
+
+			<div class="infoCard">
+				<input type="hidden" name="orderNo" value="" />
+				<div>
+					<div class="clearfix">
+						<p class="title"><i>订单信息</i></p>
+						<span class="orderState"></span>
+					</div>
+					<div class="bs-order-info">
+						<div class="singleReward">
+							<i></i>
+						</div>
+						<p class="shareTime">
+							<label>分享时间</label>
+							<span></span>
+						</p>
+						<p class="orderSource">
+							<label>订单来源</label>
+							<span><b></b></span>
+						</p>
+					</div>
+				</div>
+
+				<div>
+					<p class="title"><i>服务信息</i></p>
+					<div class="bs-service-info">
+						<p>
+							<i class="serviceType">
+								<label>服务工种</label>
+								<span></span>
+							</i>
+							<i class="serviceNature">
+								<label>服务类型</label>
+								<span></span>
+							</i>
+							<i class="serviceTime">
+								<label>服务时间</label>
+								<span></span>
+							</i>
+						</p>
+						<p>
+							<i class="wageRequirement">
+								<label>年龄要求</label>
+								<span></span>
+							</i>
+							<i class="salaryRequirement">
+								<label>工资要求</label>
+								<span></span>
+							</i>
+							<i class="petRaising">
+								<label>饲养动物</label>
+								<span></span>
+							</i>
+						</p>
+						<p class="serviceArea">
+							<label>服务区域</label>
+							<span></span>
+						</p>
+						<p class="salarySkills">
+							<label>服务内容</label>
+							<span>
+							</span>
+						</p>
+						<p class="personality">
+							<label>个人特点</label>
+							<span>
+							</span>
+						</p>
+						<p class="specialRequirements">
+							<label>特殊要求</label>
+							<span></span>
+						</p>
+						<p class="remark">
+							<label>备注</label>
+							<span></span>
+						</p>
+					</div>
+				</div>
+
+				<div>
+					<p class="title"><i>客户信息</i></p>
+					<div class="bs-customer-info">
+						<p>
+							<i class="familyCount">
+								<label>家庭人数</label>
+								<span></span>
+							</i>
+							<i class="houseType">
+								<label>住宅类型</label>
+								<span></span>
+							</i>
+							<i class="houseArea">
+								<label>住宅面积</label>
+								<span></span>
+							</i>
+						</p>
+						<p>
+							<i class="childrenCount">
+								<label>儿童数</label>
+								<span></span>
+							</i>
+							<i class="childrenAgeRange">
+								<label>儿童年龄</label>
+								<span></span>
+							</i>
+						</p>
+						<p>
+							<i class="olderCount">
+								<label>老人数</label>
+								<span></span>
+							</i>
+							<i style="width: 300px;" class="olderAgeRange">
+								<label>老人年龄段</label>
+								<span></span>
+							</i>
+							<i class="selfCares">
+								<label style="width: 84px;">老人能否自理</label>
+								<span></span>
+							</i>
+						</p>
+					</div>
+				</div>
+			</div>
+
+
+			</div>
+
+			<div class="beeshare-bn">
+				<ul class="clearfix">
+					<li class="hs-sel">
+						<a>+选择家政员</a>
+					</li>
+					<li class="return">
+						<a>返回</a>
+					</li>
+				</ul>
+				<div class="clearfix">
+					<p class="brief">
+						<label></label>
+						<span></span>
+					</p>
+					<p class="waiting">
+						<img src=""/>
+						<span></span>
+					</p>
+				</div>
+			</div>
+		</div>
+
+
+		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.pagination.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+		<script src="js/scroller.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//			分页
+//			蜂享池信息获取
+			var pageNumber = 1;
+			var pageSize = 10;
+
+			function pagination(records){
+				$("#pagination").siblings(".records").children().text(records);
+				$("#pagination").pagination(records, {
+				    num_edge_entries: 1,
+				    num_display_entries: 4,
+				    current_page:pageNumber-1,
+				    items_per_page:pageSize,
+				    prev_text:"上一页",
+				    next_text:"下一页",
+				    callback: getOrderShareInfoList
+				});
+			};
+
+			function getOrderShareInfoList(page_index){
+				var pageNumber = page_index+1;
+				$.ajax({
+			        url: publicPath+"/api/orderShare/getOrderShareInfoList",
+			        type: "post",
+			        data: {pageNumber:pageNumber,pageSize:pageSize},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData.rows;
+			                	var html = "";
+								var n = 0;
+								$.each(dataJD, function(i,item) {
+									n++;
+									var remark = "";
+									if (item.remark!=null) {
+										remark = item.remark;
+									} else{
+										remark = "";
+									}
+									var singleReward = "";
+									if (item.singleReward!=0){
+										singleReward = item.singleReward
+									} else {
+										singleReward = "/";
+									}
+									html += "<tr data-sourcetenantid='"+item.sourceTenantId+"' data-orderno='"+item.orderNo+"'>"+
+										"<td>"+n+"<img data-rewardflag='"+item.rewardFlag+"' class='rewardPic' src='img/reward.png'/></td>"+
+										"<td>"+item.orderName+"</td>"+
+										"<td>"+item.age+"</td>"+
+										"<td>"+item.salary+"</td>"+
+										"<td>"+remark+"</td>"+
+										"<td class='orderStatusFont'>"+item.status+"</td>"+
+										"<td class='singleReward'>"+singleReward+"</td>"+
+									"</tr>";
+								});
+								$(".beeSharePool tbody").html(html);
+								$(".beeSharePool tbody tr").each(function(){
+									if ($(this).find(".rewardPic").data("rewardflag")=="show"&&$(this).find(".singleReward").text()!="/"){
+										$(this).find(".rewardPic").show();
+									};
+								});
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			};
+
+//			阿姨列表获取
+			var pageNumberS = 1;
+			var pageSizeS = 3;
+
+			function paginationS(records){
+				$("#paginationS").siblings(".records").children().text(records);
+				$("#paginationS").pagination(records, {
+				    num_edge_entries: 1,
+				    num_display_entries: 4,
+				    current_page:pageNumberS-1,
+				    items_per_page:pageSizeS,
+				    prev_text:"上一页",
+				    next_text:"下一页",
+				    callback: getStaffsInfo
+				});
+			};
+
+			function getStaffsInfo(page_index){
+				var pageNumberS = page_index+1;
+				var orderNo = $(".infoCard input[name='orderNo']").val();
+				var staffName = $(".ca-inquiry input[name='staffName']").val();
+				var education = $(".ca-inquiry select[name='education']").val();
+				var age = $(".ca-inquiry select[name='age']").val();
+				var zodiac = $(".ca-inquiry select[name='zodiac']").val();
+				var nativePlace = $(".ca-inquiry select[name='nativePlace']").val();
+				var experience = $(".ca-inquiry select[name='experience']").val();
+				var workStatus = $(".ca-inquiry select[name='workStatus']").val();
+				var serviceArea = $(".ca-inquiry select[name='serviceProvice']").val();
+				$.ajax({
+			        url: publicPath+"/api/orderShare/getStaffsInfo",
+			        type: "post",
+			        data: {
+			        	pageNumber:pageNumberS,
+			        	pageSize:pageSizeS,
+			        	orderNo:orderNo,
+			        	staffName:staffName,
+			        	education:education,
+			        	age:age,
+			        	zodiac:zodiac,
+			        	nativePlace:nativePlace,
+			        	experience:experience,
+			        	workStatus:workStatus,
+			        	serviceArea:serviceArea
+			        },
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData.rows;
+			                	var html = "";
+								$.each(dataJD, function(i,item) {
+//									var shareStatus = "";
+//			                		if (item.shareStatus=="01") {
+//			                			shareStatus="分享中";
+//			                		} else {
+//			                			shareStatus="";
+//			                		}
+
+			                		var workExperience = "";
+			                		if (item.workExperience=="0,1") {
+			                			workExperience = "一年以下";
+			                		} else if (item.workExperience=="1,2") {
+			                			workExperience = "1-2年";
+			                		} else if (item.workExperience=="3,5") {
+			                			workExperience = "3-5年";
+			                		} else {
+			                			workExperience = "5年以上";
+			                		}
+			                		var workStatus = "";
+			                		if (item.workStatus=="待聘"){
+			                			workStatus = "空闲";
+			                		} else {
+			                			workStatus = item.workStatus;
+			                		}
+													var serviceArea="";
+													if (item.serviceArea!=""){
+														serviceArea = item.serviceArea;
+													}else {
+														serviceArea = "不限";
+													}
+									html += "<tr>"+
+										"<td><input type='radio' name='changeAunt' value='"+item.staffId+"' /></td>"+
+										"<td><img src='/images"+item.headImage+"'/></td>"+
+										"<td>"+item.staffName+"</td>"+
+										"<td>"+item.age+"/"+item.zodiac+"/"+item.nativePlace+"</td>"+
+										"<td>"+item.education+"("+item.education+")</td>"+
+										"<td>"+item.serviceType+"</td>"+
+										"<td>"+workExperience+"</td>"+
+										"<td>"+serviceArea+"</td>"+
+										"<td>"+workStatus+"</td>"+
+										"<td class='matchingDegree'>"+item.matchingDegree+"</td>"+
+										"<td>"+item.shareStatus+"</td>"+
+									"</tr>";
+								});
+								$("#bs-ca .changeAunt_m tbody").html(html);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			};
+
+
+
+			$(function(){
+//				头部引入
+//				$('#header').load('header.html?v=0.01',function(){
+//					$(".navigator ul li a").removeClass("navi-on");
+//					$(".navigator ul li").eq(3).children().addClass("navi-on");
+//				});
+
+
+//				总条数获取
+				$.ajax({
+			        url: publicPath+"/api/orderShare/getOrderShareInfoList",
+			        type: "post",
+			        data: {},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	pagination(dataJD.records);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+
+
+
+
+
+//				var STop = $(document).scrollTop();
+//				$(".orderDetails").css("top",92-STop);
+//				$(document).scroll(function(){
+//					var sTop = $(document).scrollTop();
+//					if (92-sTop>0) {
+//						$(".orderDetails").css("top",92-sTop);
+//					} else {
+//						$(".orderDetails").css("top",0);
+//					}
+//				});
+
+				$(".frame").on("click",".beeSharePool tbody tr",function(){
+					$(".beeshare-bn ul li,.beeshare-bn .brief,.beeshare-bn .waiting").hide();
+					$("#ic-frame").css("bottom","64px");
+					var orderNo = $(this).data("orderno");
+					var singleReward = $(this).find(".singleReward").text();
+					var orderStatusFont = $(this).find(".orderStatusFont").text();
+					if($(this).hasClass("slideBlue")){
+						$(this).removeClass("slideBlue");
+						$(".orderDetails").animate({"right":-1020})
+						return;
+					} else {
+						$(this).addClass("slideBlue").siblings().removeClass("slideBlue");
+						var $this = $(this);
+						$(".orderDetails").animate({"right":0},function(){
+							$(".infoCard .orderState").text(orderStatusFont);
+
+							$.ajax({
+						        url: publicPath+"/api/orderShare/getOrderDetailInfo",
+						        type: "post",
+						        data: {orderNo:orderNo},
+						        dataType: "json",
+						        async:false,
+						        success: function success(data) {
+						            if(data.success){
+						                if(data.code == 0){
+						                	$(".infoCard input[name='orderNo']").val(orderNo);
+						                	if (singleReward!="/"&&singleReward!=0) {
+						                		$(".bs-order-info .singleReward").show();
+						                		$(".bs-order-info .singleReward i").text(singleReward+"元");
+						                	} else{
+						                		$(".bs-order-info .singleReward").hide();
+						                	}
+						                	var dataOI = data.jsonData.orderInfo;
+						                	var dataSI = data.jsonData.serviceInfo;
+						                	var dataCI = data.jsonData.custInfo;
+						                	var dataStaffI = data.jsonData.staffInfo;
+											$(".shareTime span").text(dataOI.shareTime);
+											$(".orderState span").text(dataOI.stauts);
+											$(".serviceType span").text(dataSI.serviceType);
+											$(".serviceNature span").text(dataSI.serviceNature);
+											$(".serviceTime span").text(dataSI.serviceStartDate+"-"+dataSI.serviceEndDate);
+											$(".wageRequirement span").text(dataSI.wageRequirement);
+											$(".salaryRequirement span").text(dataSI.salaryRequirement);
+											if (dataSI.petRaising==1) {
+												$(".petRaising span").text("是");
+											} else{
+												$(".petRaising span").text("否");
+											}
+
+											var serviceProvice="";
+											var serviceCity="";
+											var serviceCounty="";
+											if (dataSI.serviceProvice==null){
+												serviceProvice="";
+											}else {
+												serviceProvice=dataSI.serviceProvice;
+											}
+											if (dataSI.serviceCity==null){
+												serviceCity="";
+											}else {
+												serviceCity=dataSI.serviceCity;
+											}
+											if (dataSI.serviceCounty==null){
+												serviceCounty="";
+											}else {
+												serviceCounty=dataSI.serviceCounty;
+											}
+											$(".serviceArea span").text(serviceProvice+" "+serviceCity+" "+serviceCounty);
+
+											$(".salarySkills span").empty();
+											$(".personality span").empty();
+
+											for (var i=0;i<dataSI.salarySkills.length;i++) {
+												$(".salarySkills span").append("<em>"+dataSI.salarySkills[i].skillsValue+"</em>");
+											}
+
+											if (dataSI.languageRequirement!=null&&dataSI.languageRequirement!=""){
+							                	var languageRequirement=dataSI.languageRequirement.split(",");
+							                	for (i=0;i<languageRequirement.length;i++) {
+							                		$(".personality span").append("<em>"+languageRequirement[i]+"</em>");
+							                	}
+											}
+
+											if (dataSI.cookingReqirement!=null&&dataSI.cookingReqirement!=""){
+							                	var cookingReqirement=dataSI.cookingReqirement.split(",");
+							                	for (i=0;i<cookingReqirement.length;i++) {
+							                		$(".personality span").append("<em>"+cookingReqirement[i]+"</em>");
+							                	}
+											}
+
+											if (dataSI.personalityRequirement!=null&&dataSI.personalityRequirement!=""){
+							                	var personalityRequirement=dataSI.personalityRequirement.split(",");
+							                	for (i=0;i<personalityRequirement.length;i++) {
+							                		$(".personality span").append("<em>"+personalityRequirement[i]+"</em>");
+							                	}
+											}
+
+											$(".specialRequirements span").text(dataSI.specialNeed);
+											$(".remark span").text(dataSI.remark);
+											$(".familyCount span").text(dataCI.familyCount);
+											$(".houseType span").text(dataCI.houseType);
+											$(".houseArea span").text(dataCI.houseArea);
+											$(".childrenCount span").text(dataCI.childrenCount);
+											$(".childrenAgeRange span").text(dataCI.childrenAgeRange);
+											$(".olderCount span").text(dataCI.olderCount);
+											$(".olderAgeRange span").text(dataCI.olderAgeRange);
+											$(".selfCares span").text(dataCI.selfCares);
+
+											if (dataOI.flag==true) {
+												$(".beeshare-bn").hide();
+												$("#ic-frame").css("bottom","10px");
+												$(".orderSource span").text(dataOI.websiteName+"/"+dataOI.userName+"/"+dataOI.contactPhone);
+
+											} else {
+												$(".orderSource span").text(dataOI.orderSource);
+												$(".beeshare-bn").show();
+												if (dataStaffI=="") {
+													$(".beeshare-bn ul .hs-sel").show();
+													$(".beeshare-bn ul .hs-sel").removeClass("unableC").addClass("ableC");
+													$(".orderSource span").html("*********<b>（家政员通过之后可看订单来源信息）</b>");
+													if (orderStatusFont=="不可抢单") {
+														$(".beeshare-bn ul .hs-sel").removeClass("ableC").addClass("unableC");
+													}
+												} else {
+													var specialty = "";
+													if(dataStaffI.specialty!=""){
+														specialty = "("+dataStaffI.specialty+")";
+													}
+													$(".beeshare-bn .brief label").text(dataStaffI.staffName);
+													$(".beeshare-bn .brief span").text(dataStaffI.age+"岁/属"+dataStaffI.zodiac+"/"+dataStaffI.nativePlace+"人/"+dataStaffI.education+specialty);
+													var orderStatus = dataStaffI.status;
+													switch (orderStatus){
+														case "01":
+															$(".orderSource span").html("*********<b>（家政员通过之后可看订单来源信息）</b>");
+															$(".beeshare-bn ul .hs-sel,.beeshare-bn .brief,.beeshare-bn .waiting").show();
+															$(".beeshare-bn .waiting span").text("等待对方确认");
+															$(".beeshare-bn div").css("background-color","#0A7EE3");
+															$(".beeshare-bn ul .hs-sel").removeClass("ableC").addClass("unableC");
+															$(".waiting img").attr("src","img/waiting.png");
+															break;
+														case "02":
+															$(".orderSource span").text(dataOI.websiteName+"/"+dataOI.userName+"/"+dataOI.contactPhone);
+															$(".beeshare-bn ul .hs-sel,.beeshare-bn .brief,.beeshare-bn .waiting").show();
+															$(".beeshare-bn .waiting span").text("已通过，待完成");
+															$(".beeshare-bn div").css("background-color","#0A7EE3");
+															$(".beeshare-bn ul .hs-sel").removeClass("ableC").addClass("unableC");
+															$(".waiting img").attr("src","img/waiting2.png");
+															break;
+														case "03":
+															$(".orderSource span").html("*********<b>（家政员通过之后可看订单来源信息）</b>");
+															$(".beeshare-bn ul .hs-sel,.beeshare-bn .brief,.beeshare-bn .waiting").show();
+															$(".beeshare-bn .waiting span").text("已拒绝");
+															$(".beeshare-bn ul .hs-sel").removeClass("ableC").addClass("unableC");
+															$(".waiting img").attr("src","img/waiting3.png");
+															if (orderStatusFont=="可抢单") {
+																$(".beeshare-bn ul .hs-sel").removeClass("unableC").addClass("ableC");
+															}
+															break;
+														case "04":
+															$(".orderSource span").text(dataOI.websiteName+"/"+dataOI.userName+"/"+dataOI.contactPhone);
+															$(".beeshare-bn ul .hs-sel,.beeshare-bn .brief,.beeshare-bn .waiting").show();
+															$(".beeshare-bn .waiting span").text("已退回");
+															$(".beeshare-bn ul .hs-sel").removeClass("ableC").addClass("unableC");
+															$(".waiting img").attr("src","img/waiting3.png");
+															if (orderStatusFont=="可抢单") {
+																$(".beeshare-bn ul .hs-sel").removeClass("unableC").addClass("ableC");
+															}
+								//							查看原因
+															break;
+														case "05":
+															$(".orderSource span").text(dataOI.websiteName+"/"+dataOI.userName+"/"+dataOI.contactPhone);
+															$(".beeshare-bn ul .return,.beeshare-bn .brief,.beeshare-bn .waiting").show();
+															$(".beeshare-bn .waiting span").text("已结单");
+															$(".beeshare-bn ul .hs-sel").removeClass("ableC").addClass("unableC");
+															$(".waiting img").attr("src","img/waiting2.png");
+															break;
+														case "06":
+															$(".orderSource span").text(dataOI.websiteName+"/"+dataOI.userName+"/"+dataOI.contactPhone);
+															$(".beeshare-bn ul .hs-sel,.beeshare-bn .brief,.beeshare-bn .waiting").show();
+															$(".beeshare-bn .waiting span").text("已取消");
+															$(".beeshare-bn ul .hs-sel").removeClass("ableC").addClass("unableC");
+															$(".waiting img").attr("src","img/waiting3.png");
+															break;
+														default:
+															break;
+													}
+												}
+
+											}
+						                	console.log(data.msg);
+						                }else{
+						                    console.log(data.msg);
+						                }
+						            }else{
+						                console.log(data.msg);
+						            }
+						        }
+						    });
+						    $("#ic-frame").scroller();
+						})
+					}
+
+				});
+				$(".od-title a,.naviLeft,.return").click(function(){
+					$(".beeSharePool tr").removeClass("slideBlue");
+					$(".orderDetails").animate({"right":-1020});
+				});
+
+//				选择家政员
+				$(".beeshare-bn").on("click",".ableC",function(){
+						$(".ca-inquiry input,.ca-inquiry select").val("");
+					$("#layer,#bs-ca").show();
+					var orderNo = $(".infoCard input[name='orderNo']").val();
+//					获取总条数
+						$.ajax({
+				        url: publicPath+"/api/orderShare/getStaffsInfo",
+				        type: "post",
+				        data: {orderNo:orderNo},
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	var dataJD = data.jsonData;
+				                	paginationS(dataJD.records);
+				                	console.log(data.msg);
+				                }else{
+				                    alert(data.msg);
+				                }
+				            }else{
+				                alert(data.msg);
+				            }
+				        }
+				    });
+
+				});
+
+//				更换阿姨筛选
+				$(".ca-inquiry-search").click(function(){
+					var orderNo = $(".infoCard input[name='orderNo']").val();
+					var staffName = $(".ca-inquiry input[name='staffName']").val();
+					var education = $(".ca-inquiry select[name='education']").val();
+					var age = $(".ca-inquiry select[name='age']").val();
+					var zodiac = $(".ca-inquiry select[name='zodiac']").val();
+					var nativePlace = $(".ca-inquiry select[name='nativePlace']").val();
+					var experience = $(".ca-inquiry select[name='experience']").val();
+					var workStatus = $(".ca-inquiry select[name='workStatus']").val();
+					var serviceArea = $(".ca-inquiry select[name='serviceProvice']").val();
+
+					$.ajax({
+				        url: publicPath+"/api/orderShare/getStaffsInfo",
+				        type: "post",
+				        data: {
+				        	orderNo:orderNo,
+				        	staffName:staffName,
+				        	education:education,
+				        	age:age,
+				        	zodiac:zodiac,
+				        	nativePlace:nativePlace,
+				        	experience:experience,
+				        	workStatus:workStatus,
+				        	serviceArea:serviceArea
+				        },
+				        dataType: "json",
+				        async:false,
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	var dataJD = data.jsonData;
+				                	paginationS(dataJD.records);
+				                	console.log(data.msg);
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				                console.log(data.msg);
+				            }
+				        }
+				    });
+				    getStaffsInfo(0);
+
+				});
+
+//				确认阿姨
+				$(".changeAunt .cas-btn").click(function(){
+					var orderNo = $(".infoCard input[name='orderNo']").val();
+					var staffId = $(".changeAunt_m input[name='changeAunt']:checked").val();
+					var matchingDegree = $(".changeAunt_m input[name='changeAunt']:checked").parent().siblings(".matchingDegree").text();
+					$.ajax({
+				        url: publicPath+"/api/orderShare/submitStaffInfo",
+				        type: "post",
+				        data: {orderNo:orderNo,staffId:staffId,matchingDegree:matchingDegree},
+				        dataType: "json",
+				        async:false,
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+//				                	$("#layer,.changeAunt").hide();
+//				                	$(".beeSharePool tbody tr").each(function(){
+//				                		if ($(this).data("orderno")==orderNo) {
+//				                			$(this).trigger("click");
+//				                		}
+//				                	})
+//				                	$(".beeshare-bn ul .hs-sel").removeClass("ableC").addClass("unableC");
+									location.reload();
+				                	console.log(data.msg);
+				                }else{
+				                    alert(data.msg);
+				                }
+				            }else{
+				                alert(data.msg);
+				            }
+				        }
+				    });
+				});
+
+				$(".cancel-ca").click(function(){
+					$("#layer,#bs-ca").hide();
+				});
+
+				$(".cas-btn").click(function(){
+					$("#layer,#bs-ca").hide();
+				});
+
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,4074 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+    	<meta http-equiv="Pragma" CONTENT="no-cache">
+		<title>您身边的，家政好帮手</title>
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/housekeepingStaffManagement.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="fullcalendar/fullcalendar.min.css"/>
+		<link rel="stylesheet" type="text/css" href="fullcalendar/fullcalendar.print.min.css"/ media="print">
+	</head>
+	<body>
+		<div id="layer"></div>
+		<div class="photoPanel">
+			<a class="ppc"></a>
+			<div class="ppImg">
+				<img src="" alt="" />
+			</div>
+			<div class="ppArrow">
+				<a class="ppl"></a>
+				<a class="ppr"></a>
+			</div>
+
+		</div>
+
+		<div id="header" class="clearfix">
+			<div class="h-frame">
+				<div class="logo"><img src="img/logo.png"/></div>
+				<div class="h-right">
+					<div class="account">
+						<ul class="clearfix">
+							<!-- <li class="login"><a href="login.html">登录</a></li>
+							<li><a href="accountManagement.html">系统管理</a></li>
+							<li><a>退出</a></li> -->
+						</ul>
+					</div>
+					<div class="navigator">
+						<ul class="clearfix">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="frame">
+			<!--<p class="hs-search">
+				<label>家政员姓名<input type="text" name="QstaffName" value="" placeholder="请输入姓名" /></label>
+				<label>手机号码<input type="text" name="Qmobile" value="" placeholder="请输入手机号" /></label>
+				<a class="b-sbtn">查询</a>
+			</p>-->
+			<div class="hs-filter">
+				<a class="hsf-more">高级筛选<img src="img/down.png"/></a>
+				<!--服务工种-->
+				<div class="sw-filter clearfix">
+					<p>服务工种</p>
+					<dl class="swf1">
+						<dt><a class="hsf-on">不限</a></dt>
+					</dl>
+				</div>
+				<!--证书以及等级筛选-->
+				<div class="sw-filterSp clearfix">
+					<p>证书</p>
+					<dl class="swf0">
+						<dt><a class="hsf-on">不限</a></dt>
+					</dl>
+				</div>
+
+				<!--从业经历-->
+				<div class="hsf-detail clearfix" id="workExp">
+					<p>从业经历</p>
+					<dl class="swf2">
+						<dt><a class="hsf-on">不限</a></dt>
+					</dl>
+				</div>
+
+				<!--学历-->
+				<div class="hsf-detail clearfix">
+					<p>学历</p>
+					<dl class="swf3">
+						<dt><a class="hsf-on">不限</a></dt>
+					</dl>
+				</div>
+
+				<!--年龄-->
+				<div class="hsf-detail clearfix">
+					<p>年龄</p>
+					<dl class="swf4">
+						<dt><a class="hsf-on">不限</a></dt>
+					</dl>
+				</div>
+
+				<!--属相-->
+				<div class="hsf-detail advancedFilter clearfix">
+					<p>属相</p>
+					<dl class="swf5">
+						<dt><a class="hsf-on">不限</a></dt>
+					</dl>
+				</div>
+
+				<!--籍贯-->
+				<div class="hsf-detail advancedFilter clearfix">
+					<p>籍贯</p>
+					<dl class="swf6">
+						<dt><a class="hsf-on">不限</a></dt>
+					</dl>
+				</div>
+
+				<!--工作状态-->
+				<div class="hsf-detail clearfix">
+					<p>工作状态</p>
+					<dl class="swf7">
+						<dt><a class="hsf-on">不限</a></dt>
+						<dd><a data-code="02">空闲</a></dd>
+						<dd><a data-code="01">服务中</a></dd>
+					</dl>
+				</div>
+
+				<!--语言技能-->
+				<div class="hsf-detail advancedFilter clearfix">
+					<p>语言技能</p>
+					<dl class="swf8">
+						<dt><a class="hsf-on">不限</a></dt>
+					</dl>
+				</div>
+
+				<!--烹饪技能-->
+				<div class="hsf-detail advancedFilter clearfix">
+					<p>烹饪技能</p>
+					<dl class="swf9">
+						<dt><a class="hsf-on">不限</a></dt>
+					</dl>
+				</div>
+
+				<!--不做家庭-->
+				<div class="hsf-detail advancedFilter clearfix">
+					<p>不做家庭</p>
+					<dl class="swf10">
+						<dt><a class="hsf-on">不限</a></dt>
+						<dd><label><input type="checkbox" name="petFeeding" value="">饲养宠物</label></dd>
+						<dd><label><input type="checkbox" name="elderlySupport" value="">有老人</label></dd>
+					</dl>
+				</div>
+
+				<!--性格特点-->
+				<div class="hsf-detail advancedFilter clearfix">
+					<p>性格特点</p>
+					<dl class="swf11">
+						<dt><a class="hsf-on">不限</a></dt>
+					</dl>
+				</div>
+
+				<!--是否上架-->
+				<div class="hsf-detail advancedFilter clearfix">
+					<p>是否上架</p>
+					<dl class="swf12">
+						<dt><a class="hsf-on">不限</a></dt>
+						<dd><a data-code="1">已上架</a></dd>
+						<dd><a data-code="0">已下架</a></dd>
+					</dl>
+				</div>
+			</div>
+			<div class="hs-sheet">
+				<div class="createNew clearfix">
+					<p>家政员总数：<span></span>人</p>
+
+					<div class="hs-search">
+						<label>家政员编号<input type="text" name="staffNo" value="" placeholder="请输入编号" /></label>
+						<label>家政员姓名<input type="text" name="QstaffName" value="" placeholder="请输入姓名" /></label>
+						<label>手机号码<input type="text" name="Qmobile" value="" placeholder="请输入手机号" /></label>
+						<a class="b-sbtn">查询</a>
+					</div>
+				</div>
+				<table>
+					<thead>
+						<tr>
+							<td>头像</td>
+							<td>姓名</td>
+							<td>服务工种</td>
+							<td>手机号码</td>
+							<td>学历</td>
+							<td>基本信息</td>
+							<td>工作状态</td>
+							<td>是否上架</td>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+				<div class="clearfix">
+					<div id="pagination">
+					</div>
+					<p class="records">共<span></span>条</p>
+				</div>
+			</div>
+		</div>
+
+		<!--家政员详情-->
+		<div class="hs-info-detail"  data-authority="0">
+			<p class="hid-title clearfix">
+				<input type="hidden" name="staffId" value="">
+				<span class="staff_num"><i></i><em></em></span>
+				<a></a>
+			</p>
+			<div id="ic-frame">
+				<div class="tab_content_box" >
+					<div class="tab_content">
+						<!-- 基本资料 -->
+						<div class="info_list base_list">
+							<!-- <span class="zhankai info_more">展开更多信息</span> -->
+							<div class="clearfix onOffShelf_sp title_box" >
+								<p class="title"><i>基本资料</i></p>
+							</div>
+							<div class="infoCard clearfix" >
+								<div id="id_info">
+								</div>
+								<div class="scanCode">
+									<div class="QR-code">
+									</div>
+								</div>
+							</div>
+
+							<!--基本资料-->
+							<div class="is_revise">
+								<form enctype="multipart/form-data" id="basicDataForm">
+									<div class="infoCard">
+										<div class="basicData clearfix">
+											<p>
+												<i class="certNo">
+													<label>身份证号：</label>
+													<span class=""></span>
+												</i>
+												<i class="mobile">
+													<label><i class="required">*</i>手机号码：</label>
+													<span class="beforeEditing"></span>
+													<span class="afterEditing">
+														<input type="text" name="mobile" value="" />
+													</span>
+												</i>
+											</p>
+											<p>
+												<i class="bloodType">
+													<label><i class="required">*</i>血型：</label>
+													<span class="beforeEditing"></span>
+													<span class="afterEditing">
+														<select name="bloodType">
+															<option value=""></option>
+														</select>
+													</span>
+												</i>
+												<i class="height">
+													<label><i class="required">*</i>身高(cm)：</label>
+													<span class="beforeEditing"></span>
+													<span class="afterEditing">
+														<input type="text" name="height" value="" />
+													</span>
+												</i>
+											</p>
+											<p>
+												<i class="education">
+													<label><i class="required">*</i>学历：</label>
+													<span class="beforeEditing"></span>
+													<span class="afterEditing">
+														<select name="education">
+															<option value=""></option>
+														</select>
+														<!-- <input type="text" name="specialty" value="" style="width: 88px;" /> -->
+													</span>
+												</i>
+												<i class="maritalStatus">
+													<label><i class="required">*</i>婚姻状况：</label>
+													<span class="beforeEditing"></span>
+													<span class="afterEditing">
+														<select name="maritalStatus">
+															<option value=""></option>
+														</select>
+													</span>
+												</i>
+											</p>
+										</div>
+									</div>
+									<div class="infoCard infoCard_sp">
+										<div class="basicData clearfix">
+											<p>
+												<i class="weight">
+													<label>体重(kg)：</label>
+													<span class="beforeEditing"></span>
+													<span class="afterEditing">
+														<input type="text" name="weight" value=""  />
+													</span>
+												</i>
+												<i class="fertilitySituation" >
+													<label>生育状况：</label>
+													<span class="beforeEditing"></span>
+													<span class="afterEditing">
+														<select name="fertilitySituation">
+															<option value=""></option>
+														</select>
+													</span>
+												</i>
+											</p>
+											<p>
+												<i class="liveAddress" >
+													<label>现居地址：</label>
+													<span class="beforeEditing"></span>
+													<span class="afterEditing">
+														<input type="text" name="liveAddress" value="" />
+													</span>
+												</i>
+												<i class="contactPhone" >
+													<label>紧急联系电话：</label>
+													<span class="beforeEditing"></span>
+													<span class="afterEditing">
+														<input type="text" name="contactPhone" value="" />
+													</span>
+												</i>
+											</p>
+										</div>
+									</div>
+									<div class="btnCass-b clearfix">
+										<a class="bcb-cancel">取消</a>
+										<a class="bcb-save">保存</a>
+									</div>
+								</form>
+							</div>
+						</div>
+
+						<!--求职意向-->
+						<div class="info_list qiuzhi_list">
+							<div class="clearfix title_box" >
+								<p class="title"><i>求职意向</i></p>
+								<span class="tip_info">每个阿姨最多可以录入3个工种</span>
+							</div>
+							<form enctype="multipart/form-data" id="serviceItems">
+								<div class="infoCard infoCard_sp">
+									<div class="serviceItems_public">
+										<p>
+											<i class="price">
+												<label><i class="required">*</i>期望薪资：</label>
+												<span class="beforeEditing"></span>
+												<span class="afterEditing">
+													<input type="text" name="price" value="" />
+													<select name="salaryType"  style="width: 90px;">
+													</select>
+												</span>
+											</i>
+											<i class="manageWay">
+												<label>管理方式：</label>
+												<span class="beforeEditing"></span>
+												<span class="afterEditing">
+													<select name="manageWay">
+													</select>
+												</span>
+											</i>
+										</p>
+										<p>
+											<i class="experience">
+												<label><i class="required">*</i>从业经验：</label>
+												<span class="beforeEditing"></span>
+												<span class="afterEditing">
+													<select name="experience">
+													</select>
+												</span>
+											</i>
+											<i class="notFamily">
+												<label>不做家庭：</label>
+												<span class="beforeEditing"></span>
+												<span class="afterEditing">
+													<em><input type="checkbox" name="pet" value="">饲养动物</em>
+													<em><input type="checkbox" name="elderly" value="">有老人</em>
+												</span>
+											</i>
+										</p>
+										<p>
+											<i class="serviceArea" style="width:100%">
+												<label><i class="required">*</i>服务区域：</label>
+												<span class="beforeEditing"></span>
+												<span class="afterEditing">
+													<b><input type="radio" name="areaRadio" class="ar1" value=""> 不限</b>
+													<b><input type="radio" name="areaRadio" class="ar2" value=""> 指定区域</b>
+												</span>
+											</i>
+										</p>
+									</div>
+									<ul class="serviceItems_info beforeEditing">
+										
+									</ul>
+									<h1 class="afterEditing addPostBtn_box">
+										<a class="addPostBtn">添加工种</a>
+									</h1>
+									<ul class="serviceItems afterEditing">
+										<!-- <li>
+											<a class="postBtn "></a>
+											<p>
+												<span class="serviceItemCode">
+													<label>服务工种：</label>
+													<select class="fwgz" name="serviceItems[0].serviceItemCode">
+													</select>
+													<select class="leixing" name="serviceItems[0].serviceNature" style="width: 90px; display: inline-block;">
+
+													</select>
+												</span>
+											</p>
+											<div class="skills">
+												<div class="li_right">
+													<div class="checkbox_box">
+														<input type="checkbox" name="serviceItems[0].skills" value="01">
+														<div class="check-box"><img src="img/checked.png"></div> 
+													</div>
+													<i>辅食制作</i>
+												</div>
+											</div>
+										</li> -->
+									</ul>
+									<div class="btnCass-b clearfix">
+										<a class="bcb-cancel">取消</a>
+										<a class="bcb-save si-save">保存</a>
+									</div>
+								</div>
+							</form>
+						</div>
+
+						<!--能力评价-->
+						<div class="info_list pingjia_list">
+							<div class="clearfix title_box">
+								<p class="title"><i>能力评价</i></p>
+								<span class="tip_info">阿姨信息越完善，与订单的匹配度越精准，成单机会更大</span>
+							</div>
+							<div class="infoCard infoCard_sp">
+								<form enctype="multipart/form-data" id="resumeForm">
+								<div class="resume">
+									<ul class="postSkills_sp">
+										<li class="characerFeature">
+											<label>性格特点：</label>
+											<div class="li_right clearfix">
+												<div class="beforeEditing">
+												</div>
+												<div class="afterEditing">
+													<div class="skill_box">
+														<i> <input type="checkbox" name="characerFeature" value="02" /> 形象好 </i>
+														<i><input type="checkbox" name="characerFeature" value="03" />气质佳</i>
+														<i><input type="checkbox" name="characerFeature" value="01" />热情直爽</i>
+														<i><input type="checkbox" name="characerFeature" value="05" />好沟通</i>
+														<i><input type="checkbox" name="characerFeature" value="06" />面善微笑</i>
+														<i><input type="checkbox" name="characerFeature" value="04" />话不多实在</i>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li class="cookingFeature">
+											<label>烹饪特点：</label>
+											<div class="li_right clearfix">
+												<div class="beforeEditing">
+												</div>
+												<div class="afterEditing">
+													<div class="skill_box">
+														<i><input type="checkbox" name="cookingFeature" value="01" />西点</i>
+														<i><input type="checkbox" name="cookingFeature" value="02" />面点</i>
+														<i><input type="checkbox" name="cookingFeature" value="03" />本帮菜</i>
+														<i><input type="checkbox" name="cookingFeature" value="04" />川菜</i>
+														<i><input type="checkbox" name="cookingFeature" value="05" />粤菜</i>
+														<i><input type="checkbox" name="cookingFeature" value="06" />东北菜</i>
+														<i><input type="checkbox" name="cookingFeature" value="07" />淮扬菜</i>
+													</div>
+												</div>
+											</div>
+										</li>
+										<li class="languageFeature">
+											<label>语言特点：</label>
+											<div class="li_right clearfix">
+												<div class="beforeEditing">
+												</div>
+												<div class="afterEditing">
+													<div class="skill_box">
+														<i><input type="checkbox" name="languageFeature" value="01" />普通话</i>
+														<i><input type="checkbox" name="languageFeature" value="02" />英语</i>
+														<i><input type="checkbox" name="languageFeature" value="03" />上海话</i>
+														<i><input type="checkbox" name="languageFeature" value="04" />广东话</i>
+													</div>
+												</div>
+											</div>
+										</li>
+										<!-- <li>
+											<div class="skill_morebox_sp">
+												<span id="skill_more" class="zhankai">展开更多特点</span>
+											</div>
+										</li> -->
+										<li class="workExperience">
+											<label>工作经历：</label>
+											<div class="li_right clearfix">
+												<p class="beforeEditing"></p>
+												<p class="afterEditing">
+													<textarea name="workExperience"></textarea>
+												</p>
+											</div>
+										</li>
+										<li class="selfEvaluation">
+											<label>自我评价：</label>
+											<div class="li_right clearfix">
+												<p class="beforeEditing"></p>
+												<p class="afterEditing">
+													<textarea name="selfEvaluation"></textarea>
+												</p>
+											</div>
+										</li>
+										<li class="teacherEvaluation">
+											<label>老师评价：</label>
+											<div class="li_right clearfix">
+												<p class="beforeEditing"></p>
+												<p class="afterEditing">
+													<textarea name="teacherEvaluation"></textarea>
+												</p>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="btnCass-b clearfix">
+									<a class="bcb-cancel">取消</a>
+									<a class="bcb-save">保存</a>
+								</div>
+								</form>
+							</div>
+						</div>
+
+						<!-- 服务认证 -->
+						<div class="info_list fuwu_list">
+							<div class="clearfix title_box">
+								<p class="title"><i>服务认证</i></p>
+								<span class="renzheng">已认证</span>
+								<span class="daishen">待审核</span>
+								<span class="bohui">被驳回</span>
+								<!-- <div class="certification-QR scanUpload">
+									<img src="img/QR Code.png"/>
+									<p>
+										微信扫码<br />
+										上传证书
+									</p>
+									<div class="cq-img">
+										<img src=""/>
+									</div>
+								</div> -->
+							</div>
+							<div class="infoCard c">
+								<div class="certification-detail">
+									<form action="/fbeeConsole_web/api/staffs/add/certInfo" method="post" enctype="multipart/form-data" id="cd-form">
+									<input type="hidden" name="staffId" value="" />
+									<input type="hidden" name="id" value="" />
+									<input type="hidden" name="callbackUrl" id="" value="" />
+									<ul class="cdList clearfix">
+										<li>
+											<p class="certType">
+												<label>证书名称：</label>
+												<select name="certType">
+													<option value=""></option>
+												</select>
+												<input type="text" name="certTypeRead" id="certTypeRead" readonly="readonly" value="">
+											</p>
+											<p class="authenticateGrade_box">
+												<label>鉴定等级：</label>
+												<select name="authenticateGrade">
+													<option value=""></option>
+												</select>
+												<input type="text" name="gradeRead" id="gradeRead" readonly="readonly" value="">
+											</p>
+											<p>
+												<label>证书编号：</label>
+												<input type="text" name="certNo" value="" />
+											</p>
+										</li>
+										<li>
+											<p>
+												<label>发证日期：</label>
+												<input type="text" name="certificationDate" class="runcode" id="certificationDate" value="" readonly="readonly"/>
+											</p>
+											
+											<p style="width:66%">
+												<label>发证机构：</label>
+												<select name="certificationBody">
+													<option value=""></option>
+												</select>
+												<input type="text" class="other_certificationBody" name="otherCertificationBody" id="otherCertificationBody"/>
+											</p>
+										</li>
+									</ul>
+									<div class="btnCass-b btnCass-b-sp clearfix">
+										<a class="bcb-cancel">取消</a>
+										<input type="submit" value="提交" class="bcb-sub"/>
+										<a class="bcb-delete">删除</a>
+									</div>
+									</form>
+								</div>
+
+								<div class="certification">
+									<div class="relatedCertification">
+										<label>相关证件：</label>
+										<div class="cert_right clearfix"></div>
+									</div>
+									<div class="skillsCertification">
+										<label>技能证书：</label>
+										<div class="cert_right clearfix"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!--视频照片-->
+					<div class="tab_content" style="display:none">
+						<div class="info_list">
+							<div class="clearfix title_box">
+								<p class="title"><i>视频秀</i></p>
+								<span class="tip_info">视频格式限制mp4/avi/mov/wmv/rmvb/rm/flv，大小不超过10M</span>
+								<!-- <div class="scanUpload video_upload">
+									<img src="img/QR Code.png"/>
+									<p>
+										微信扫码<br />
+										上传视频
+									</p>
+									<div class="scanPic scanPic0">
+									</div>
+								</div> -->
+							</div>
+							<div class="infoCard infoCard_sp">
+								<form enctype="multipart/form-data" id="videoShowForm">
+								<div class="videoShow">
+								</div>
+								</form>
+							</div>
+						</div>
+						<div class="info_list">
+							<div class="clearfix title_box">
+								<p class="title"><i>照片墙</i></p>
+								<span class="tip_info">最多可以上传4张照片，格式限制jpg/png/bmp/jpeg，大小不超过2M</span>
+								<!-- <div class="scanUpload pic_upload">
+									<img src="img/QR Code.png"/>
+									<p>
+										微信扫码<br />
+										上传照片
+									</p>
+									<div class="scanPic scanPic1">
+									</div>
+								</div> -->
+							</div>
+							<div class="infoCard infoCard_sp">
+								<form enctype="multipart/form-data" id="picWallForm">
+								<div class="pic-wall">
+									<ul class="clearfix">
+										<li>
+											<div class="no_pic">
+												<p>点击上传照片</p>
+												<input type="file" name="file" value="" >
+											</div>
+										</li>
+									</ul>
+								</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<!-- 派工记录财务记录 -->
+					
+					<div class="tab_content" style="display:none">
+						<div class="info_list caiwu_list">
+							<div class="clearfix title_box">
+								<p class="title"><i>财务记录</i></p>
+								<span class="tip_info">最多显示5笔财务记录</span>
+								<a class="addNew">新增</a>
+							</div>
+							<div class="infoCard infoCard_sp">
+								<table class="financialRecord">
+									<thead>
+										<tr>
+											<td style="width:125px">日期</td>
+											<td style="width:130px">类目</td>
+											<td style="width:120px">收付金额</td>
+											<td style="width:120px">业务员</td>
+											<td style="width:310px">备注</td>
+										</tr>
+									</thead>
+									<tbody>
+										<!-- <tr>
+											<td>2017-06-27</td>
+											<td>报名费</td>
+											<td>1000</td>
+											<td>张三</td>
+											<td>张阿姨报7月份月嫂班的报名费</td>
+										</tr>
+										<tr><td colspan="5">该阿姨暂无财务记录</td></tr> -->
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="info_list baoxian_list">
+							<div class="clearfix title_box">
+								<p class="title"><i>保险信息</i></p>
+								<span class="tip_info">最多显示4条保险信息</span>
+								<a class="addNew">新增</a>
+							</div>
+							<div class="infoCard infoCard_sp">
+								<ul class="insuranceRecord">
+									<!-- <p>该家政员还未录入保险信息</p>
+									<li>
+										<h1>保单号：158724650001</h1>
+										<p>保险名称<span>人身意外伤害保险</span></p>
+										<p>保额<span>￥2000</span></p>
+										<p>保单机构<span>中国人寿</span></p>
+									</li>
+									<li>
+										<h1>保单号：158724650001</h1>
+										<p>保险名称<span>人身意外伤害保险</span></p>
+										<p>保额<span>￥2000</span></p>
+										<p>保单机构<span>中国人寿</span></p>
+									</li> -->
+								</ul>
+							</div>
+						</div>
+						<div class="info_list bank_list">
+							<div class="clearfix title_box">
+								<p class="title"><i>银行卡信息</i></p>
+								<span class="tip_info">每个阿姨只能添加一张银行卡</span>
+							</div>
+							<div class="infoCard infoCard_sp">
+								<div class="bankCard_info_box">
+									<!-- <p>该家政员还未录入保险信息</p>
+									<div class="bankCard-info">
+										<h1>中国农业银行<span>储蓄卡</span></h1>
+										<p>1567868798790878</p>
+										<p>张三</p>
+										<input type="hidden" value="" />
+									</div> -->
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab_content" style="display:none">
+						<div class="info_list dispatching_list">
+							<div class="clearfix title_box">
+								<p class="title"><i>派工记录</i></p>
+								<span class="tip_info">最多显示5笔订单记录</span>
+							</div>
+							<div class="infoCard infoCard_sp">
+								<table class="dispatchingRecord">
+									<thead>
+										<tr>
+											<td style="width:130px">服务工种</td>
+											<td style="width:120px">订单状态</td>
+											<td style="width:120px">薪资</td>
+											<td style="width:100px">客户姓名</td>
+											<td style="width:200px">上单/面试时间</td>
+											<td style="width:200px">下单时间</td>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- 工作安排表 -->
+						<div class="info_list workSchedule_list">
+							<div class="clearfix title_box">
+								<p class="title"><i>工作安排表</i></p>
+								<span class="tip_info">根据阿姨的订单记录自动更新</span>
+							</div>
+							<div class="infoCard infoCard_sp">
+								<div class="workSchedule">
+									<div id='calendar'></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 底部tab标签 -->
+			<div class="bottom-navi">
+				<ul class="clearfix">
+					<li class="active">
+						<a>求职信息</a>
+					</li>
+					<li>
+						<a>视频照片</a>
+					</li>
+					<li>
+						<a>财务信息</a>
+					</li>
+					<li>
+						<a>工作记录</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!--财务、保险、银行信息增改-->
+		<div class="fdb-alter financialAlter" id="financialAlter">
+			<div class="fdb-title">
+				<p>财务记录</p>
+			</div>
+			<form enctype="multipart/form-data" id="fa-form">
+			<!--<input type="hidden" name="inOutObject" value="" />-->
+			<p>
+				<label>日期</label>
+				<input type="text" name="financeTime" class="runcode" id="financeTime" value="" readonly="readonly"/>
+			</p>
+			<p>
+				<label>类目</label>
+				<select name="payType">
+					<option value="">请选择</option>
+					<option value="07">报名费</option>
+					<option value="08">住宿费</option>
+					<option value="09">佣金费</option>
+				</select>
+			</p>
+			<p>
+				<label>收付金额</label>
+				<input type="text" name="inOutAmount" value="" />
+			</p>
+			<p>
+				<label>备注</label>
+				<textarea name="remarks"></textarea>
+			</p>
+			<div class="btnCass-s clearfix">
+				<a class="bcs-cancel">取消</a>
+				<a class="bcs-save">保存</a>
+			</div>
+			</form>
+		</div>
+
+		<div class="fdb-alter insuranceAlter" id="insuranceAlter">
+			<div class="fdb-title">
+				<p>保险信息</p>
+			</div>
+			<form enctype="multipart/form-data" id="ia-form">
+			<p>
+				<label>保险名称</label>
+				<input type="text" name="policyName" value="" />
+			</p>
+			<p>
+				<label>保单号</label>
+				<input type="text" name="policyNo" value="" />
+			</p>
+			<p>
+				<label>保额</label>
+				<input type="text" name="policyAmount" value="" />
+			</p>
+			<p>
+				<label>保单机构</label>
+				<input type="text" name="policyAgency" value="" />
+			</p>
+			<div class="btnCass-s clearfix">
+				<a class="bcs-cancel">取消</a>
+				<a class="bcs-save">保存</a>
+			</div>
+			</form>
+		</div>
+
+		<div class="fdb-alter bankCardAlter" id="bankCardAlter">
+			<div class="fdb-title clearfix">
+				<p>银行卡信息</p>
+			</div>
+			<form enctype="multipart/form-data" id="bca-form">
+			<p>
+				<label>账号名称</label>
+				<input type="text" name="accountName" value="" />
+			</p>
+			<p>
+				<label>所属银行</label>
+				<select name="bankCode">
+				</select>
+			</p>
+			<p>
+				<label>银行卡号</label>
+				<input type="text" name="cardNo" value="" />
+			</p>
+			<div class="btnCass-s clearfix">
+				<a class="bcs-cancel">取消</a>
+				<a class="bcs-save">保存</a>
+			</div>
+			</form>
+		</div>
+
+
+		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="time/lhgcore.min.js"></script>
+    	<script type="text/javascript" src="time/lhgcalendar.min.js"></script>
+		<script src="js/jquery.pagination.js" type="text/javascript" charset="utf-8"></script>
+		<script src="fullcalendar/moment.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="fullcalendar/fullcalendar.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="fullcalendar/locale-all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/scroller.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+
+//			家政员列表分页
+			var pageNumber = 1;
+			var pageSize = 8;
+//编辑 加载
+			var dataBI ="";
+			var dataJI ="";
+			var dataSIL ="";
+			var dataSL ="";
+//加载基本资料
+			function getDataBI(dataBI){
+				// 基本资料
+				var workStatus="";
+				if(dataBI.workStatusValue=="待聘"){
+						workStatus="空闲"
+					}else {
+						workStatus=dataBI.workStatusValue;
+					}
+				$(".hid-title .staff_num").html("<i>"+dataBI.staffName+"</i>（编号："+dataBI.staffNo+"）——<em>"+workStatus+"</em>")
+				var education="";
+				if(dataBI.education!=""&&dataBI.education!=null){
+					education=dataBI.education.split(",")[1];
+				}
+				var html0="<div class='hs-photo'>"+
+							"<img src='"+dataBI.headImage+"'/>"+
+						"</div>"+
+						"<div class='IDc-info'>"+
+							"<h1>"+dataBI.staffName+"<span>"+dataBI.age+"岁/属"+dataBI.zodiac+"/"+dataBI.nativePlace+"人</span></h1>"+
+							"<p><span class='sex'>"+dataBI.sex+"</span><span class='nation'>"+dataBI.nation+"</span><span class='constellation'>"+dataBI.constellation+"</span></p>"+
+							"<p><span class='xueli'>"+education+"</span><span class='phone'>"+dataBI.mobile+"</span></p>"+
+						"</div>";
+					$("#id_info").html(html0);
+					dataBI.onOffShelf==1?$(".onOffShelf input").prop("checked",true).val(1).siblings("em").css("left","17px").parent().css("background-color","#0A7EE3"):$(".onOffShelf input").prop("checked",false).val(0).siblings("em").css("left","1px").parent().css("background-color","#B3B3B3");
+
+					$(".infoCard .certNo span").text(dataBI.certNo);
+					$(".infoCard .mobile .beforeEditing").text(dataBI.mobile);
+					$(".infoCard .mobile input[name='mobile']").val(dataBI.mobile);
+					var bloodTypeCode=dataBI.bloodType.split(",")[0];
+					var bloodTypeVal=dataBI.bloodType.split(",")[1];
+					$(".infoCard .bloodType .beforeEditing").text(bloodTypeVal);
+					$(".infoCard .bloodType .afterEditing select[name='bloodType']").val(bloodTypeCode);
+					$(".infoCard .height .beforeEditing").text(dataBI.height);
+					$(".infoCard .height input[name='height']").val(dataBI.height);
+
+					var educationCode=dataBI.education.split(",")[0];
+					var educationVal=dataBI.education.split(",")[1];
+					$(".infoCard .education .beforeEditing").text(educationVal);
+					$(".infoCard .education .afterEditing select[name='education']").val(educationCode);
+
+					var maritalStatusCode=dataBI.maritalStatus.split(",")[0];
+					var maritalStatusVal=dataBI.maritalStatus.split(",")[1];
+					$(".infoCard .maritalStatus .beforeEditing").text(maritalStatusVal);
+					$(".infoCard .maritalStatus .afterEditing select[name='maritalStatus']").val(maritalStatusCode);
+
+					if (dataBI.weight!=null) {
+						$(".infoCard .weight .beforeEditing").text(dataBI.weight);
+						$(".infoCard .weight .afterEditing input[name='weight']").val(dataBI.weight);
+
+					} else{
+						$(".infoCard .weight .beforeEditing").text("");
+						$(".infoCard .weight .afterEditing input[name='weight']").val("");
+					}
+
+					if (dataBI.fertilitySituation!=""){
+						var fertilitySituationCode=dataBI.fertilitySituation.split(",")[0];
+						var fertilitySituationVal=dataBI.fertilitySituation.split(",")[1];
+						$(".infoCard .fertilitySituation .beforeEditing").text(fertilitySituationVal);
+						$(".infoCard .fertilitySituation .afterEditing select[name='fertilitySituation']").val(fertilitySituationCode);
+					} else {
+						$(".infoCard .fertilitySituation .beforeEditing").text("");
+						$(".infoCard .fertilitySituation .afterEditing select[name='fertilitySituation']").val("");
+					}
+
+					$(".infoCard .liveAddress .beforeEditing").text(dataBI.liveAddress);
+					$(".infoCard .liveAddress input[name='liveAddress']").val(dataBI.liveAddress);
+
+					$(".infoCard .contactPhone .beforeEditing").text(dataBI.contactPhone);
+					$(".infoCard .contactPhone input[name='contactPhone']").val(dataBI.contactPhone);
+			}
+//加载求职意向
+			function getDataSIL(dataJI){
+				dataSIL = dataJI.serviceItemList;
+				//  工种列表
+				// var manageWay="";
+				// if(dataJI.manageWay!=null){
+				// 	manageWay=dataJI.manageWay;
+				// }
+				// var manageWayValue="";
+				// if(dataJI.manageWayValue!=null){
+				// 	manageWayValue=dataJI.manageWayValue;
+				// }
+				$(".price .beforeEditing").text(dataJI.price+dataJI.unitValue);
+				$(".price .afterEditing input[name='price']").val(dataJI.price);
+				$(".price .afterEditing select[name='salaryType']").val(dataJI.unit);
+				$(".manageWay .beforeEditing").text(dataJI.manageWayValue||'');
+				$(".manageWay .afterEditing select[name='manageWay']").val(dataJI.manageWay||'');
+				$(".experience .beforeEditing").text(dataJI.experienceValue);
+				$(".experience .afterEditing select[name='experience']").val(dataJI.experience);
+			
+				if (dataJI.petFeeding==1){
+					$(".notFamily .afterEditing input[name='pet']").prop("checked",true).val(1);
+					$(".notFamily .beforeEditing").text("饲养动物 ");
+				} else {
+					$(".notFamily .beforeEditing").text("");
+					$(".notFamily .afterEditing input[name='pet']").prop("checked",false).val(0);
+				}
+				if (dataJI.elderlySupport==1){
+					$(".notFamily .afterEditing input[name='elderly']").prop("checked",true).val(1);
+					$(".notFamily .beforeEditing").append("有老人");
+				} else {
+					$(".notFamily .afterEditing input[name='elderly']").prop("checked",false).val(0);
+				}
+				if(dataJI.serviceAreaValue!=null && dataJI.serviceAreaValue!=""){
+					$(".serviceArea .beforeEditing").text(dataJI.serviceAreaValue);
+				}else{
+					$(".serviceArea .beforeEditing").text("不限");
+				}
+				var sa=dataJI.serviceArea;
+				if (sa!=null && sa!="") {
+							$(".serviceArea .afterEditing .ar2").prop("checked",true);
+							if (sa.indexOf(",")!=-1){
+								var saList = sa.split(",");
+								var saListLen = saList.length;
+								if (saListLen==2) {
+									var saCode1 = saList[0];
+									var saCode2 = saList[1];
+									$(".serviceArea .afterEditing").find(".areaSel").remove();
+									$(".serviceArea .afterEditing").append("<b class='areaSel'><select name='serviceArea'></select><select name='serviceArea'></select><a class='decArea'></a><a class='addArea'></a></b>");
+									serviceArea(0);
+									serviceArea(1);
+									$(".serviceArea").find("select").eq(0).val(saCode1);
+									$(".serviceArea").find("select").eq(1).val(saCode2);
+								} else if (saListLen==3) {
+									var saCode1 = saList[0];
+									var saCode2 = saList[1];
+									var saCode3 = saList[2];
+									$(".serviceArea .afterEditing").find(".areaSel").remove();
+									$(".serviceArea .afterEditing").append("<b class='areaSel'><select name='serviceArea'></select><select name='serviceArea'></select><select name='serviceArea'></select><a class='decArea'></a></b>");
+									serviceArea(0);
+									serviceArea(1);
+									serviceArea(2);
+									$(".serviceArea").find("select").eq(0).val(saCode1);
+									$(".serviceArea").find("select").eq(1).val(saCode2);
+									$(".serviceArea").find("select").eq(2).val(saCode3);
+								}
+							} else {
+								var saCode = sa;
+								$(".serviceArea .afterEditing").find(".areaSel").remove();
+								$(".serviceArea .afterEditing").append("<b class='areaSel'><select name='serviceArea'></select><a class='addArea'></a></b>");
+								serviceArea(0);
+								$(".serviceArea").find("select").val(saCode);
+							}
+
+						} else{
+							$(".serviceArea .afterEditing .ar1").prop("checked",true);
+						}
+
+					var silist = "";
+					var silistInfo="";
+					var n=0;
+					for(var i=0;i<dataSIL.length;i++) {
+						var serviceItemCodeCode=dataSIL[i].serviceItemCode.split(",")[0];
+						var serviceItemCodeVal=dataSIL[i].serviceItemCode.split(",")[1];
+						var serviceNatureCode=dataSIL[i].serviceNature.split(",")[0];
+						var serviceNatureVal=dataSIL[i].serviceNature.split(",")[1];
+						var skills="";
+						var skillsList = dataSIL[i].skills;
+						if(skillsList!= null && skillsList!=""){
+							for(var j=0;j<skillsList.length;j++) {
+								skills+="<span>"+skillsList[j].skillsValue+"</span>";
+							}
+						}
+						
+						silistInfo+="<li>"+
+									"<div class='items_list'>"+
+										"<div class='items_left'>"+
+											"<h2>"+serviceItemCodeVal+"</h2>"+
+											"<h3>（"+serviceNatureVal+"）</h3>"+
+										"</div>"+
+										"<div class='skills'>"+skills+"</div>"+
+									"</div>"+
+								"</li>";
+							
+						silist+="<li>"+
+									"<input type='hidden' name='serviceItems["+n+"].serviceItemCodeId' readonly='readonly' value='"+dataSIL[i].id+"'/>"+
+									"<p>"+
+										"<span class='serviceItemCode'>"+
+											"<label>服务工种：</label>"+
+											"<select class='fwgz disable' disabled='disabled' name='serviceItems["+n+"].serviceItemCode'>"+
+											"</select>"+
+											"<select class='leixing' name='serviceItems["+n+"].serviceNature' style='width: 90px; display: inline-block;'>"+
+											"</select>"+
+										"</span>"+
+									"</p>"+
+									"<div class='skills'>"+
+										"<div class='li_right clearfix'>"+
+											"<div class='skill_box'>"+
+											"</div>"+
+										"</div>"+
+									"</div>"+
+								"</li>";
+							n++;
+						}
+						$(".serviceItems").html(silist);
+						$(".serviceItems_info").html(silistInfo);
+				// 工种列表技能特点
+					for (i=0;i<$(".serviceItems li").length;i++) {
+						var serviceItemCodeCode=dataSIL[i].serviceItemCode.split(",")[0];
+						$.ajax({
+							url: publicPath+"/api/common/getSKillsData/c005",
+							type: "post",
+							data: {itemCode:serviceItemCodeCode,level:1},
+							dataType: "json",
+							async:false,
+							success: function success(data) {
+								if(data.success){
+									if(data.code == 0){
+										var dataJD = data.jsonData;
+										var skillsList = "";
+										$.each(dataJD, function(j,item) {
+											skillsList += "<i>"+
+															"<input type='checkbox' name='serviceItems[" + i + "].skills' value='" + item.skillsKey + "'>" +
+															item.skillsValue + 
+														"</i>";
+										});
+										$(".serviceItems li").eq(i).find(".skills .li_right .skill_box").html(skillsList);
+
+										console.log(data.msg);
+									}else{
+										console.log(data.msg);
+									}
+								}else{
+									console.log(data.msg);
+								}
+							}
+						});
+					}
+
+					// 技能特点赋值
+					for(var i=0;i<dataSIL.length;i++) {
+							var check = dataSIL[i].skills;
+							var skills = "";
+							if (check!=null){
+								for (var j=0;j<check.length;j++) {
+									skills+=check[j].skillsKey+",";
+								}
+							}
+							$(".serviceItems li").eq(i).find(".skills .li_right input[name='serviceItems["+i+"].skills']").each(function(){
+								if(skills.indexOf($(this).val())!=-1) {
+									$(this).prop("checked",true).parent().addClass("active");
+								}
+							})
+						}
+											
+					// 工种列表
+					// var serviceItemListSel = dataSIL;
+						$.ajax({
+							url: publicPath+"/api/common/getDictionaryData/c004",
+							type: "post",
+							data: {},
+							dataType: "json",
+							async:false,
+							success: function success(data) {
+								if(data.success){
+									if(data.code == 0){
+										var dataJD = data.jsonData;
+										var html = "";
+										$.each(dataJD, function(i,item) {
+											html += "<option value='"+item.code+"'>"+item.name+"</option>";
+										});
+										for (i=0;i<$(".serviceItems li").length;i++) {
+											$("select[name='serviceItems["+i+"].serviceItemCode']").html("<option value=''>请选择</option>"+html);
+										}
+
+										for (var i=0;i<dataSIL.length;i++) {
+											var sel = dataSIL[i].serviceItemCode.split(",")[0];
+											$("select[name='serviceItems["+i+"].serviceItemCode']").val(sel);
+										}
+										console.log(data.msg);
+									}else{
+										console.log(data.msg);
+									}
+								}else{
+									console.log(data.msg);
+								}
+							}
+						});
+
+						//服务类型
+						
+						for (i=0;i<$(".serviceItems li").length;i++) {
+						var serverType=dataSIL[i].serviceItemCode.split(",")[0];
+						var serviceNature=dataSIL[i].serviceNature.split(",")[0];
+							getServiceNature(serverType,i);
+							$("select[name='serviceItems["+i+"].serviceNature']").val(serviceNature);
+						}
+						grey();
+			}
+// 加载能力评价
+			function getDataJI(dataJI){
+// 能力评价
+					var cookingFeature="";
+					var htmlCF="";
+				if(dataJI.cookingFeature!=null && dataJI.cookingFeature!=""){
+					for (var i=0;i<dataJI.cookingFeature.length;i++) {
+						cookingFeature+=dataJI.cookingFeature[i].skillsKey;
+						htmlCF+="<span>"+dataJI.cookingFeature[i].skillsValue+"</span>";
+					}
+					$(".resume").find("input[type='checkbox']").prop("checked",false).parent().removeClass("active");
+					$(".resume").find(".check-box,i").removeClass("active");
+					$(".cookingFeature").find("input[name='cookingFeature']").each(function(){
+						if(cookingFeature.indexOf($(this).val())!=-1) {
+							$(this).prop("checked",true).parent().addClass("active");
+						}
+					})
+				}else{
+					$(".cookingFeature").find("input[name='cookingFeature']").prop("checked",false).parent().removeClass("active");
+				}
+				$(".cookingFeature").find(".beforeEditing").html(htmlCF);
+
+
+					var languageFeature="";
+					var htmlLF="";
+				if(dataJI.languageFeature!=null && dataJI.languageFeature!=""){
+					for (var i=0;i<dataJI.languageFeature.length;i++) {
+						languageFeature+=dataJI.languageFeature[i].skillsKey;
+						htmlLF+="<span>"+dataJI.languageFeature[i].skillsValue+"</span>";
+					}
+					$(".languageFeature").find("input[name='languageFeature']").each(function(){
+						if(languageFeature.indexOf($(this).val())!=-1) {
+							$(this).prop("checked",true).parent().addClass("active");
+						}
+					})
+				}else{
+					$(".languageFeature").find("input[name='languageFeature']").prop("checked",false).parent().removeClass("active");
+				}
+				$(".languageFeature").find(".beforeEditing").html(htmlLF);
+
+				var characerFeature="";
+				var htmlCHF="";
+				if(dataJI.characerFeature!=null && dataJI.characerFeature!=""){
+					for (var i=0;i<dataJI.characerFeature.length;i++) {
+						characerFeature+=dataJI.characerFeature[i].skillsKey;
+						htmlCHF+="<span>"+dataJI.characerFeature[i].skillsValue+"</span>";
+					}
+					$(".characerFeature").find("input[name='characerFeature']").each(function(){
+						if(characerFeature.indexOf($(this).val())!=-1) {
+							$(this).prop("checked",true).parent().addClass("active");
+						}
+					})
+				}else{
+					$(".characerFeature").find("input[name='characerFeature']").prop("checked",false).parent().removeClass("active");
+				}
+				$(".characerFeature").find(".beforeEditing").html(htmlCHF);
+
+				if(dataJI.workExperience!=null){
+					$(".infoCard .workExperience .beforeEditing").text(dataJI.workExperience);
+					$(".infoCard .workExperience .afterEditing textarea").val(dataJI.workExperience);
+				}else{
+					$(".infoCard .workExperience .beforeEditing").text("");
+					$(".infoCard .workExperience .afterEditing textarea").val("");
+				}
+				if(dataJI.selfEvaluation!=null){
+					$(".infoCard .selfEvaluation .beforeEditing").text(dataJI.selfEvaluation);
+					$(".infoCard .selfEvaluation .afterEditing textarea").val(dataJI.selfEvaluation);
+				}else{
+					$(".infoCard .selfEvaluation .beforeEditing").text("");
+					$(".infoCard .selfEvaluation .afterEditing textarea").val("");
+				}
+				if(dataJI.teacherEvaluation!=null){
+					$(".infoCard .teacherEvaluation .beforeEditing").text(dataJI.teacherEvaluation);
+					$(".infoCard .teacherEvaluation .afterEditing textarea").val(dataJI.teacherEvaluation);
+				}else{
+					$(".infoCard .teacherEvaluation .beforeEditing").text("");
+					$(".infoCard .teacherEvaluation .afterEditing textarea").val("");
+				}
+				
+			}
+// 加载证书
+			function getDataSL(dataSL){
+				var staffId=$(".certification-detail input[name='staffId']").val();
+//     服务认证、证书
+					var skillsCertification="";
+					var relatedCertification="<a class='authenticated'>身份证</a>";
+					$.each(dataSL, function(i,item) {
+						var certNameCode=item.certName.split(",")[0];
+						var certNameVal=item.certName.split(",")[1];
+						var authenticateGrade="";
+						var authenticateGradeCode="";
+						if (item.authenticateGrade!=""&&item.authenticateGrade!=null){
+							authenticateGrade="("+item.authenticateGrade.split(",")[1]+")";
+							authenticateGradeCode=item.authenticateGrade.split(",")[0];
+						}
+						var certificationBody="";
+						var otherCertificationBody="";
+						if(item.otherCertificationBody!=""&&item.otherCertificationBody!=null){
+							otherCertificationBody=item.otherCertificationBody;
+						}
+						if(item.certificationBody!=""){
+							certificationBody = item.certificationBody.split(",")[0];
+
+						}
+						if (item.certType=="技能证书") {
+							skillsCertification+="<a data-certifiedStatus='"+item.certifiedStatus+"' data-cerid='"+item.id+"' data-certNameVal='"+certNameVal+"' data-certNameCode='"+certNameCode+"' data-certNo='"+item.certNo+"' data-certImage='"+item.certImage+"' data-certificationBody='"+certificationBody+"' data-certificationDate='"+item.certificationDate+"' data-authenticateGrade='"+authenticateGradeCode+"' data-authenticateGradeName='"+authenticateGrade+"' data-otherCertificationBody='"+otherCertificationBody+"'>"+certNameVal+"<br/><span>"+authenticateGrade+"<span></a>";
+						} else{
+							relatedCertification+="<a data-certifiedStatus='"+item.certifiedStatus+"' data-cerid='"+item.id+"' data-certNameVal='"+certNameVal+"' data-certNameCode='"+certNameCode+"' data-certNo='"+item.certNo+"' data-certImage='"+item.certImage+"' data-certificationBody='"+certificationBody+"' data-certificationDate='"+item.certificationDate+"' data-authenticateGrade='"+authenticateGradeCode+"' data-authenticateGradeName='"+authenticateGrade+"' data-otherCertificationBody='"+otherCertificationBody+"'>"+certNameVal+"<br/><span>"+authenticateGrade+"<span></a>";
+						}
+					});
+					$(".certification .skillsCertification .cert_right").html(skillsCertification);
+					$(".certification .relatedCertification .cert_right").html(relatedCertification);
+					$(".certification a").each(function(){
+						if($(this).data("certifiedstatus")=="审核通过") {
+							$(this).addClass("authenticated");
+						} else if ($(this).data("certifiedstatus")=="未认证") {
+							$(this).addClass("auIng");
+						} else if ($(this).data("certifiedstatus")=="审核不通过") {
+							$(this).addClass("unAu");
+						}
+					});
+
+//											生成二维码 证书上传
+					$.ajax({
+						url: publicPath+"/api/common/getTwoDimensionCode",
+						type: "post",
+						data: {
+							info:"staffId:"+staffId,
+							code:"06"
+						},
+						dataType: "json",
+						async:false,
+						success: function success(data) {
+							if(data.success){
+								if(data.code == 0){
+									var dataJD = data.jsonData;
+									// var img = "data:image/jpeg;base64,"+dataJD;
+									$(".certification-QR .cq-img").find("img").remove();
+									$(".certification-QR .cq-img").append("<img src='"+dataJD+"'/>");
+									console.log(data.msg);
+								}else{
+									console.log(data.msg);
+								}
+							}else{
+								console.log(data.msg);
+							}
+						}
+					});
+			}
+
+// 视频照片
+		function getVideoPic(){
+			var staffId = $("input[name='staffId']").val();
+			//生成视频上传二维码
+			$.ajax({
+				url: publicPath+"/api/common/getTwoDimensionCode",
+				type: "post",
+				data: {
+					info:"staffId:"+staffId,
+					code:"02"
+				},
+				dataType: "json",
+				async:false,
+				success: function success(data) {
+					if(data.success){
+						if(data.code == 0){
+							var dataJD = data.jsonData;
+							$(".video_upload .scanPic").find("img").remove();
+							$(".video_upload .scanPic").append("<img src='"+dataJD+"'/>");
+							console.log(data.msg);
+						}else{
+							console.log(data.msg);
+						}
+					}else{
+						console.log(data.msg);
+					}
+				}
+			});
+			//生成照片上传二维码
+			$.ajax({
+				url: publicPath+"/api/common/getTwoDimensionCode",
+				type: "post",
+				data: {
+					info:"staffId:"+staffId,
+					code:"03"
+				},
+				dataType: "json",
+				async:false,
+				success: function success(data) {
+					if(data.success){
+						if(data.code == 0){
+							var dataJD = data.jsonData;
+							$(".pic_upload .scanPic").find("img").remove();
+							$(".pic_upload .scanPic").append("<img src='"+dataJD+"'/>");
+							console.log(data.msg);
+						}else{
+							console.log(data.msg);
+						}
+					}else{
+						console.log(data.msg);
+					}
+				}
+			});
+			$.ajax({
+				url: publicPath+"/api/staffs/getDetails/part/media",
+				type: "get",
+				data: {staffId:staffId},
+				dataType: "json",
+				async:false,
+				success: function success(data) {
+					if(data.success){
+						if(data.code == 0){
+							var dataVM = data.jsonData.videoMedia;
+							var dataIM = data.jsonData.imageMedia;
+
+//									视频秀
+							var html0 ="";
+							if(dataVM.path==null){
+								html0 ="<div class='no_video'>"+
+											"<p>该家政员还未上传视频，点击立即上传</p>"+
+											"<input type='file' name='file' value='' accept='video/mp4,video/avi,video/mov,video/wmv,video/rmvb,video/rm,video/flv'>"+
+										"</div>";
+							}else{
+								html0 = "<div class='cover'></div>"+
+										"<div class='deleteCover'></div>"+
+										"<em class='deletePic'></em>"+
+										"<video data-mediaid='"+dataVM.mediaId+"' controls='controls' src='"+dataVM.path+"'></video>";
+							}
+							$(".videoShow").html(html0);
+							
+
+//									照片墙
+							var html1 = "";
+							if(dataIM.length<1){
+								html1="<li class='append'>"+
+										"<div class='no_pic'>"+
+											"<p>点击上传照片</p>"+
+											"<input type='file' name='file' accept='image/gif,image/png,image/bmp,image/jpeg' value='' />"+
+										 "</div>"+
+									"</li>";
+							}else if(dataIM.length>3){
+								$.each(dataIM, function(i,item) {
+								html1 += "<li data-mediaid='"+item.mediaId+"' data-iddefault='"+item.idDefault+"' class='ordinary'>"+
+										"<div class='cover'></div>"+
+										"<div class='deleteCover'></div>"+
+										"<em class='deletePic'></em>"+
+										"<img src='"+item.path+"'>"+
+									"</li>";
+								});
+							}else{
+								$.each(dataIM, function(i,item) {
+								html1 += "<li data-mediaid='"+item.mediaId+"' data-iddefault='"+item.idDefault+"' class='ordinary'>"+
+										"<div class='cover'></div>"+
+										"<div class='deleteCover'></div>"+
+										"<em class='deletePic'></em>"+
+										"<img src='"+item.path+"'>"+
+									"</li>";
+								});
+								html1 +="<li class='append'>"+
+											"<div class='no_pic'>"+
+												"<p>点击上传照片</p>"+
+												"<input type='file' name='file' accept='image/gif,image/png,image/bmp,image/jpeg' value='' />"+
+											"</div>"+
+										"</li>";
+							}
+							$(".pic-wall ul").html(html1);
+						}
+					}
+				}
+			})
+
+		}
+var dataBank="";
+//    财务信息
+		function getFinance(){
+		var staffId = $("input[name='staffId']").val();
+		  $.ajax({
+				url: publicPath+"/api/staffs/getDetails/part/finance",
+				type: "get",
+				data: {staffId:staffId},
+				dataType: "json",
+				async:false,
+				success: function success(data) {
+					if(data.success){
+						if(data.code == 0){
+							var dataFL = data.jsonData.financeList;
+							var dataPL = data.jsonData.policyList;
+								dataBank = data.jsonData.bankInfo;
+								getBank(dataBank);
+			//									财务记录
+							var html3 = "";
+							if(dataFL!="" && dataFL!=null){
+								$.each(dataFL, function(i,item) {
+									var type = "";
+									var remark = "";
+									var financeTime = "";
+									if (item.type==null){
+										type = "";
+									} else {
+										type = item.type;
+									}
+									if (item.remark==null){
+										remark = "";
+									} else {
+										remark = item.remark;
+									}
+									if (item.financeTime==null){
+										financeTime = "";
+									} else {
+										financeTime = item.financeTime.split(" ")[0];
+									}
+									html3 += "<tr data-inoutno='"+item.inOutNo+"'>"+
+										"<td>"+financeTime+"</td>"+
+										"<td>"+type+"</td>"+
+										"<td>"+item.amount+"</td>"+
+										"<td>"+item.operator+"</td>"+
+										"<td>"+remark+"</td>"+
+									"</tr>";
+									if (i==4){
+										return false;
+									}
+								});
+							}else{
+								html3="<tr><td colspan='5'>该阿姨暂无财务记录</td></tr>";
+							}
+							$(".financialRecord tbody").html(html3);
+
+//									保险信息
+							var html4 = "";
+							if(dataPL!="" && dataPL!=null){
+								$.each(dataPL, function(i,item) {
+									html4 +="<li>"+
+												"<h1>保单号："+item.policyNo+"</h1>"+
+												"<p>保险名称<span>"+item.policyName+"</span></p>"+
+												"<p>保额<span>"+item.amount+"</span></p>"+
+												"<p>保单机构<span>"+item.policyAgency+"</span></p>"+
+											"</li>";
+									if (i==3){
+										return false;
+									}
+								});
+							}else{
+								html4="<p>该家政员还未录入保险信息</p>";
+							}
+							$(".insuranceRecord").html(html4);
+
+						}
+					}
+				}
+		  })
+			
+		}
+
+		// 银行卡信息
+		function getBank(dataBank){
+			var html="";
+				if(dataBank!="" && dataBank!=null && dataBank.bankName!=null){
+					var cardNo = dataBank.cardNo.substring(dataBank.cardNo.length-4);
+						cardNo="***   ****   ****   "+cardNo;
+					html="<div class='bankCard-info'>"+
+						"<h1>"+dataBank.bankName+"</h1>"+
+						"<p>"+cardNo+"</p>"+
+						"<p>"+dataBank.accountName+"</p>"+
+						"<input type='hidden' value='"+dataBank.bankCode+"'>"+
+					"</div>";
+					$(".bank_list").find(".addNew,.edit").remove();
+					$(".bank_list .title_box").append("<a class='edit'>修改</a>");
+					$("#bankCardAlter input[name='accountName']").val(dataBank.accountName);
+					$("#bankCardAlter select[name='bankCode']").val(dataBank.bankCode);
+					$("#bankCardAlter input[name='cardNo']").val(dataBank.cardNo);
+				}else{
+					html="<p>该家政员还未录入银行卡信息</p>";
+					$(".bank_list").find(".addNew,.edit").remove();
+					$(".bank_list .title_box").append("<a class='addNew'>新增</a>");
+					$("#bankCardAlter input[name='accountName']").val("");
+					$("#bankCardAlter select[name='bankCode']").val("");
+					$("#bankCardAlter input[name='cardNo']").val("");
+				}
+				$(".bankCard_info_box").html(html);
+		}
+	// 工作记录
+			function getRecord(){
+				var staffId = $("input[name='staffId']").val();
+				var initialLocaleCode = 'zh-cn';
+				$.ajax({
+						url: publicPath+"/api/staffs/getDetails/part/record",
+						type: "get",
+						data: {staffId:staffId},
+						dataType: "json",
+						async:false,
+						success: function success(data) {
+							if(data.success){
+								if(data.code == 0){
+									var dataWL = data.jsonData.workList;
+									var html = "";
+									if(dataWL!="" && dataWL!=null){
+										$.each(dataWL, function(i,item) {
+											var orderStatus = "";
+											if (item.orderStatus=="01"){
+												orderStatus = "待支付定金";
+											} else if (item.orderStatus=="02") {
+												orderStatus = "待面试";
+											} else if (item.orderStatus=="03") {
+												orderStatus = "待支付尾款";
+											} else if (item.orderStatus=="04") {
+												orderStatus = "已完成";
+											} else if (item.orderStatus=="05") {
+												orderStatus = "已取消";
+											} else if (item.orderStatus=="06") {
+												orderStatus = "待完成";
+											} else if (item.orderStatus=="07") {
+												orderStatus = "已结单";
+											} else if (item.orderStatus=="08") {
+												orderStatus = "接单后阿姨更换处理";
+											}
+											html += "<tr>"+
+												"<td>"+item.serviceItem+"</td>"+
+												"<td>"+orderStatus+"</td>"+
+												"<td>"+item.salary+"</td>"+
+												"<td>"+item.customer+"</td>"+
+												"<td>"+item.beginWorkTime+"</td>"+
+												"<td>"+item.endWorkTime+"</td>"+
+											"</tr>";
+											if (i==4){
+												return false;
+											}
+										});
+									}else{
+										html="<tr><td colspan='5'>该阿姨暂无派工记录</td></tr>";
+									}
+									$(".dispatchingRecord tbody").html(html);
+
+								}
+							}
+						}
+				});
+
+				 $('#calendar').fullCalendar({
+						header: {
+							left: 'prev,next today',
+							center: 'title',
+							right: 'month,agendaWeek,agendaDay,listMonth'
+						},
+						locale: initialLocaleCode,
+						buttonIcons: false, // show the prev/next text
+						weekNumbers: true,
+						navLinks: true, // can click day/week names to navigate views
+						editable: false,
+						eventLimit: true, // allow "more" link when too many events
+						refetchEvents:true,
+						events:ev
+					});
+					var ev = function (start,end,timezone,callback) {
+							$.ajax({
+								url: publicPath+"/api/staffs/staffWorkList",
+								type: "post",
+								data: {staffId:staffId},
+								dataType: "json",
+								success: function success(data) {
+									if(data.success){
+										if(data.code == 0){
+											var dataWL = data.jsonData;
+											var events = [];
+											$.each(dataWL, function(i,item) {
+												if (item.beginWorkTime!=null) {
+													events.push({
+														title: '服务中',
+														start: item.beginWorkTime.split(" ")[0]+"T"+item.beginWorkTime.split(" ")[1], // will be parsed
+														end: item.endWorkTime.split(" ")[0]+"T"+item.endWorkTime.split(" ")[1]
+													});
+												}
+
+											});
+											console.log(data.msg);
+										}else{
+											console.log(data.msg);
+										}
+									}else{
+										console.log(data.msg);
+									}
+									callback(events);
+								}
+							});
+						}
+				$('#calendar').fullCalendar( 'removeEvents');
+				$('#calendar').fullCalendar( 'removeEventSource',ev);
+				// 暂时注释
+				$('#calendar').fullCalendar( 'addEventSource',ev);
+			}
+
+			function pagination(records){
+				$("#pagination").siblings(".records").children().text(records);
+				$("#pagination").pagination(records, {
+				    num_edge_entries: 1,
+				    num_display_entries: 4,
+				    current_page:pageNumber-1,
+				    items_per_page:pageSize,
+				    prev_text:"上一页",
+				    next_text:"下一页",
+				    callback: queryStaff
+				});
+			};
+
+			function queryStaff(page_index){
+				var pageNumber = page_index+1;
+				var staffNo = $("input[name='staffNo']").val();
+				var staffName = $("input[name='QstaffName']").val();
+			    var mobile = $("input[name='Qmobile']").val();
+			    var serviceItemCode = $(".swf1 dd").find(".swf-on").data("code");
+		    	var skills = [];
+		    	$(".swf1").find("input[type='checkbox']:checked").each(function(){
+					skills.push($(this).val());
+				});
+				var certType = $(".swf0 dd").find(".swf-on").data("code");
+				var authenticateGrade ="";
+				if($(".swf0").find("input[type='radio']:checked").length>0){
+					authenticateGrade = $(".swf0").find("input[type='radio']:checked").val();
+				}
+
+				var experience = $(".swf2 dd").find(".hsf-on").data("code");
+				var education = $(".swf3 dd").find(".hsf-on").data("code");
+				var age = $(".swf4 dd").find(".hsf-on").data("code");
+				var zodiac = $(".swf5 dd").find(".hsf-on").data("code");
+				var nativePlace = $(".swf6 dd").find(".hsf-on").data("code");
+				var workStatus = $(".swf7 dd").find(".hsf-on").data("code");
+				var languageFeature = [];
+		    	$(".swf8").find("input[type='checkbox']:checked").each(function(){
+					languageFeature.push($(this).val());
+				});
+				var cookingFeature = [];
+				$(".swf9").find("input[type='checkbox']:checked").each(function(){
+					cookingFeature.push($(this).val());
+				});
+				var petFeeding = $("input[name='petFeeding']").val();
+				var elderlySupport = $("input[name='elderlySupport']").val();
+				var characerFeature = [];
+		    	$(".swf11").find("input[type='checkbox']:checked").each(function(){
+					characerFeature.push($(this).val());
+				});
+				var onOffShelf = $(".swf12 dd").find(".hsf-on").data("code");
+				$.ajax({
+			        url: publicPath+"/api/staffs/queryStaff",
+			        type: "get",
+			        data: {
+			        	pageNumber:pageNumber,
+						pageSize:pageSize,
+						staffNo:staffNo,
+			        	staffName:staffName,
+			        	mobile:mobile,
+			        	serviceItemCode:serviceItemCode,
+						certType:certType,
+						authenticateGrade:authenticateGrade,
+			        	skills:skills.join(","),
+			        	experience:experience,
+			        	education:education,
+			        	age:age,
+			        	zodiac:zodiac,
+			        	nativePlace:nativePlace,
+			        	workStatus:workStatus,
+			        	languageFeature:languageFeature.join(","),
+				        cookingFeature:cookingFeature.join(","),
+			        	petFeeding:petFeeding,
+			        	elderlySupport:elderlySupport,
+			        	characerFeature:characerFeature.join(","),
+			        	onOffShelf:onOffShelf
+			        },
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData.rows;
+								var html = "";
+								$.each(dataJD, function(i,item) {
+									var workStatus = "";
+									if(item.workStatus=="待聘"){
+										workStatus="空闲"
+									}else {
+										workStatus=item.workStatus;
+									}
+
+									var education = item.education;
+									// if (item.education=="大专"||item.education=="本科"||item.education=="本科以上") {
+									// 	education = item.education+"("+item.specialty+")";
+									// } else {
+									// 	education = item.education
+									// }
+
+
+									html += "<tr data-staffid='"+item.staffId+"'>"+
+										"<td><img src='"+item.headImage+"'/></td>"+
+										"<td>"+item.staffName+"</td>"+
+										"<td>"+item.serviceItems+"</td>"+
+										"<td>"+item.mobile+"</td>"+
+										"<td>"+education+"</td>"+
+										"<td>"+item.age+"岁/属"+item.zodiac+"/"+item.nativePlace+"人</td>"+
+										"<td>"+workStatus+"</td>"+
+										"<td>"+item.onOffShelf+"</td>"+
+									"</tr>";
+								});
+								$(".hs-sheet table tbody").html(html);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			};
+
+
+//			筛选列表
+//证书列表
+$.ajax({
+			url: publicPath+"/api/common/getDictionaryData/c028",
+			type: "post",
+			data: {},
+			dataType: "json",
+			success: function success(data) {
+					if(data.success){
+							if(data.code == 0){
+								var dataJD = data.jsonData;
+								var html = "";
+									$.each(dataJD, function(i, item) {
+										if(item.code=="18"||item.code=="19"){
+											html = "<dd>"+
+												"<a class='noDengJi' data-code='"+item.code+"'>"+item.name+"</a>"+
+											"</dd>";
+										}else {
+											html = "<dd>"+
+												"<a class='yesDengJi' data-code='"+item.code+"'>"+item.name+"<img src='img/xia.png'/></a>"+
+												"<ul>"+
+												"<li><input type='radio' name='authenticateGrade' value='01'>专项职业能力</li>"+
+												"<li><input type='radio' name='authenticateGrade' value='02'>初级/五级</li>"+
+												"<li><input type='radio' name='authenticateGrade' value='03'>中级/四级</li>"+
+												"<li><input type='radio' name='authenticateGrade' value='04'>高级/三级</li>"+
+												"</ul>"+
+											"</dd>";
+										}
+										$(".swf0").append(html);
+									})
+
+							}else{
+									console.log(data.msg);
+							}
+					}else{
+							console.log(data.msg);
+					}
+			}
+	});
+// 薪资单位
+	function salaryType(){
+            $.ajax({
+                url:publicPath+"/api/website/getSalaryRange",
+                type:"post",
+                data:{},
+                dataType:"json",
+                success:function success(data){
+                        if(data.success){
+                        var dataJD = data.jsonData;
+                        var html = "";
+                        $.each(dataJD, function(i,item) {
+                            html += "<option value='"+item.id+"'>"+item.value+"</option>";
+                        });
+                        $("select[name='salaryType']").html("<option value=''>请选择</option>"+html);
+                        console.log(data.msg);
+                    }else{
+                        console.log(data.msg);
+                    }
+                },
+            });
+	}
+//			服务工种
+			function serviceType(){
+				$.ajax({
+			        url: publicPath+"/api/common/getDictionaryData/c004",
+			        type: "post",
+			        data: {},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	var html = "";
+								$.each(dataJD, function(i,item) {
+									html += "<dd>"+
+										"<a data-code='"+item.code+"'>"+item.name+"<img src='img/xia.png'/></a>"+
+										"<ul>"+
+										"</ul>"+
+									"</dd>"
+								});
+								$(".swf1").append(html);
+
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			};
+
+//			服务类型
+			function getServiceNature(serverType,n){
+				$.ajax({
+						url:publicPath+"/api/website/getServiceMold",
+						type:"post",
+						data:{
+							serverType:serverType
+						},
+						dataType:"json",
+						async:false,
+						success:function success(data){
+							if(data.success){
+								var dataJD = data.jsonData;
+								var html = "";
+								$.each(dataJD, function(i,item) {
+									html += "<option value='"+item.id+"'>"+item.value+"</option>";
+								});
+								if(serverType==""){
+									$("select[name='serviceItems["+n+"].serviceNature']").html("<option value=''>请选择</option>").hide();
+								}else if(serverType==01||serverType==02||serverType==06){
+									$("select[name='serviceItems["+n+"].serviceNature']").html("<option selected='selected' value='01'>住家</option>").hide();
+								}else{
+									$("select[name='serviceItems["+n+"].serviceNature']").html("<option value=''>请选择</option>"+html).show().addClass("grey_i");
+								}
+								console.log(data.msg);
+							}else{
+								console.log(data.msg);
+							}
+						},
+					})
+			}
+
+			function filter1(typeCode,num){
+				$.ajax({
+			        url: publicPath+"/api/common/getDictionaryData/"+typeCode,
+			        type: "post",
+			        data: {},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	var html = "";
+								$.each(dataJD, function(i,item) {
+									html += "<dd>"+
+										"<a data-code='"+item.code+"'>"+item.name+"</a>"+
+									"</dd>"
+								});
+								$(".swf"+num).append(html);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			};
+
+			function filter2(typeCode,num,itemCode){
+				$.ajax({
+			        url: publicPath+"/api/common/getSKillsData/"+typeCode,
+			        type: "post",
+			        data: {itemCode:itemCode,level:1},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	var html = "";
+								$.each(dataJD, function(i,item) {
+									html += "<dd>"+
+										"<label><input type='checkbox' name='' value='"+item.skillsKey+"' />"+item.skillsValue+"</label>"+
+									"</dd>"
+								});
+								$(".swf"+num).append(html);
+
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			};
+
+//			信息保存
+//			function saveData(formName,lurl,staffId){
+//				$("#"+formName+"").ajaxSubmit({
+//					url: publicPath+"/api/staffs/add/"+lurl,
+//					data:{staffId:staffId},
+//			        type: "post",
+//			        dataType: "json",
+//			        success: function success(data) {
+//			            if(data.success){
+//			                if(data.code == 0){
+//			                	$(".hs-sheet table tbody tr").each(function(){
+//			                		if ($(this).attr("data-staffid")==staffId) {
+//			                			$(this).removeClass("slideBlue");
+//			                			$(this).trigger("click");
+//			                		}
+//			                	})
+//			                	console.log(data.msg);
+//			                }else{
+//			                    console.log(data.msg);
+//			                }
+//			            }else{
+//			                console.log(data.msg);
+//			            }
+//			        }
+//				});
+//			};
+
+			function saveDataS(formName,lurl,staffId){
+				$("#"+formName+"").ajaxSubmit({
+					url: publicPath+"/api/staffs/add/"+lurl,
+					data:{staffId:staffId},
+			        type: "post",
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+								
+			                	$(".bottom-navi ul li").eq(2).trigger("click");
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+				});
+			};
+
+			function getObjectURL(file) {
+				var url = null ;
+				if (window.createObjectURL!=undefined) { // basic
+					url = window.createObjectURL(file) ;
+				} else if (window.URL!=undefined) { // mozilla(firefox)
+					url = window.URL.createObjectURL(file) ;
+				} else if (window.webkitURL!=undefined) { // webkit or chrome
+					url = window.webkitURL.createObjectURL(file) ;
+				}
+				return url ;
+			}
+
+//			区域选择
+			function serviceArea(n){
+				$.ajax({
+			        url: publicPath+"/api/common/getAreaData/c001",
+			        type: "post",
+			        data: {},
+			        dataType: "json",
+			        async:false,
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	var html = "";
+			                	$.each(dataJD, function(i,item) {
+			                		html += "<option data-parentCode='"+item.parentCode+"' data-areaLevel='"+item.areaLevel+"' value='"+item.areaCode+"'>"+item.areaName+"</option>";
+			                	});
+			                	$("select[name='serviceArea']").eq(n).html("<option value=''>请选择</option>"+html);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			}
+
+
+			$(function(){
+//				头部引入
+//				$('#header').load('header.html?v=0.01',function(){
+//					$(".navigator ul li a").removeClass("navi-on");
+//					$(".navigator ul li").eq(2).children().addClass("navi-on");
+//				});
+
+				J('#certificationDate').calendar();
+				J('#financeTime').calendar();
+//      		 薪资单位
+				salaryType();
+
+//				获取家政员总条数
+				$.ajax({
+			        url: publicPath+"/api/staffs/queryStaff",
+			        type: "get",
+			        data: {},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+								pagination(dataJD.records);
+								$(".createNew p span").text(dataJD.records);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+
+//			    银行名称
+				$.ajax({
+			        url: publicPath+"/api/common/getBank",
+			        type: "post",
+			        data: {},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	var html = "";
+			                	$.each(dataJD, function(i,item) {
+			                		html += "<option value='"+item.bankCode+"'>"+item.bankName+"</option>";
+			                	});
+			                	$("select[name='bankCode']").html("<option value=''>请选择</option>"+html);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+
+//			   	不做家庭选择框
+				$(".swf10").find("input[type=checkbox]").click(function(){
+					if ($(this).prop("checked")==true) {
+						$(this).val(1);
+					} else{
+						$(this).val(0);
+					}
+				});
+
+
+//			    家政员条件查询
+				$(".hs-search .b-sbtn").click(function(){
+			    	var staffNo = $("input[name='staffNo']").val();
+			    	var staffName = $("input[name='QstaffName']").val();
+			    	var mobile = $("input[name='Qmobile']").val();
+			    	var serviceItemCode = $(".swf1 dd").find(".swf-on").data("code");
+			    	var skills = [];
+			    	$(".swf1").find("input[type='checkbox']:checked").each(function(){
+						skills.push($(this).val());
+					});
+					var certType = $(".swf0 dd").find(".swf-on").data("code");
+					var authenticateGrade ="";
+					if($(".swf0").find("input[type='radio']:checked").length>0){
+						authenticateGrade = $(".swf0").find("input[type='radio']:checked").val();
+					}
+					var experience = $(".swf2 dd").find(".hsf-on").data("code");
+					var education = $(".swf3 dd").find(".hsf-on").data("code");
+					var age = $(".swf4 dd").find(".hsf-on").data("code");
+					var zodiac = $(".swf5 dd").find(".hsf-on").data("code");
+					var nativePlace = $(".swf6 dd").find(".hsf-on").data("code");
+					var workStatus = $(".swf7 dd").find(".hsf-on").data("code");
+					var languageFeature = [];
+			    	$(".swf8").find("input[type='checkbox']:checked").each(function(){
+						languageFeature.push($(this).val());
+					});
+					var cookingFeature = [];
+					$(".swf9").find("input[type='checkbox']:checked").each(function(){
+						cookingFeature.push($(this).val());
+					});
+					var petFeeding = $("input[name='petFeeding']").val();
+					var elderlySupport = $("input[name='elderlySupport']").val();
+					var characerFeature = [];
+			    	$(".swf11").find("input[type='checkbox']:checked").each(function(){
+						characerFeature.push($(this).val());
+					});
+					var onOffShelf = $(".swf12 dd").find(".hsf-on").data("code");
+			    	$.ajax({
+				        url: publicPath+"/api/staffs/queryStaff",
+				        type: "get",
+				        data: {
+							staffNo:staffNo,
+				        	staffName:staffName,
+				        	mobile:mobile,
+				        	serviceItemCode:serviceItemCode,
+							certType:certType,
+							authenticateGrade:authenticateGrade,
+				        	skills:skills.join(","),
+				        	experience:experience,
+				        	education:education,
+				        	age:age,
+				        	zodiac:zodiac,
+				        	nativePlace:nativePlace,
+				        	workStatus:workStatus,
+				        	languageFeature:languageFeature.join(","),
+				        	cookingFeature:cookingFeature.join(","),
+				        	petFeeding:petFeeding,
+				        	elderlySupport:elderlySupport,
+				        	characerFeature:characerFeature.join(","),
+				        	onOffShelf:onOffShelf
+				        },
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	var dataJD = data.jsonData;
+				                	pagination(dataJD.records);
+				                	console.log(data.msg);
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				                console.log(data.msg);
+				            }
+				        }
+				    });
+				    queryStaff(0);
+			    });
+
+//				家政员详情
+//				var STop = $(document).scrollTop();
+//				$(".hs-info-detail").css("top",92-STop);
+//				$(document).scroll(function(){
+//					var sTop = $(document).scrollTop();
+//					if (92-sTop>0) {
+//						$(".hs-info-detail").css("top",92-sTop);
+//					} else {
+//						$(".hs-info-detail").css("top",0);
+//					}
+//				});
+
+
+
+				$(".hsf-more").click(function(){
+					if ($(".advancedFilter").css("display") == "none") {
+						$(this).html("收起<img src='img/up.png'/>");
+						$(".advancedFilter").show();
+					} else {
+						$(this).html("高级筛选<img src='img/down.png'/>");
+						$(".advancedFilter").hide();
+					}
+
+				});
+
+				serviceType();
+//证书选择以及等级展示
+$(".hs-filter").on("click",".sw-filterSp dl dd a",function(){
+		$(".sw-filterSp").find("input[type='radio']").prop("checked",false);
+		if($(this).data("code")=="18"||$(this).data("code")=="19"){
+			if($(this).hasClass("swf-on")){
+				$(".sw-filterSp dl dd a.yesDengJi").children("img").attr("src","img/xia.png").parent().siblings("ul").hide();
+				$(".sw-filterSp dl dd a").removeClass("swf-on");
+				$(".sw-filterSp").css("margin-bottom",0);
+				$(".sw-filterSp dl dt a").addClass("hsf-on");
+			}else {
+				$(".sw-filterSp dl dd a.yesDengJi").children("img").attr("src","img/xia.png").parent().siblings("ul").hide();
+				$(".sw-filterSp dl dd a").removeClass("swf-on");
+				$(this).addClass("swf-on");
+				$(".sw-filterSp dl dt a").removeClass("hsf-on");
+				$(".sw-filterSp").css("margin-bottom",0);
+			}
+
+		}else {
+			if ($(this).siblings("ul").css("display")=="none") {
+				var hsfW = $(".hs-filter").width();
+				$(".swf0 ul").css("width",hsfW-102);
+				$(".sw-filterSp dl dd a.yesDengJi").children("img").attr("src","img/xia.png").parent().siblings("ul").hide();
+				$(".sw-filterSp dl dd a").removeClass("swf-on");
+				$(this).addClass("swf-on").children("img").attr("src","img/shang.png").parent().siblings("ul").show();
+				$(".sw-filterSp dl dt a").removeClass("hsf-on");
+				$(".sw-filterSp").css("margin-bottom",50);
+				} else{
+					$(".sw-filterSp dl dd a.yesDengJi").children("img").attr("src","img/xia.png").parent().siblings("ul").hide();
+					$(".sw-filterSp dl dd a").removeClass("swf-on");
+				$(".sw-filterSp").css("margin-bottom",0);
+				$(".sw-filterSp dl dt a").addClass("hsf-on");
+			}
+		}
+
+//				    queryStaff(0)
+	$(".hs-search .b-sbtn").trigger("click");
+});
+
+
+//				服务工种子集
+				$(".hs-filter").on("click",".sw-filter dl dd a",function(){
+						$(".sw-filter").find("input[type='checkbox']").prop("checked",false);
+						if ($(this).siblings("ul").css("display")=="none") {
+							var hsfW = $(".hs-filter").width();
+							$(".swf1 ul").css("width",hsfW-102);
+							$(".sw-filter dl dd a").removeClass("swf-on").children("img").attr("src","img/xia.png").parent().siblings("ul").hide();
+							$(".sw-filter dl dt a").removeClass("hsf-on");
+							$(this).addClass("swf-on").children("img").attr("src","img/shang.png").parent().siblings("ul").show();
+							$("#workExp").show();
+							var itemCode = $(this).data("code");
+							$.ajax({
+					        	url: publicPath+"/api/common/getSKillsData/c005",
+						        type: "post",
+						        data: {itemCode:itemCode,level:1},
+						        dataType: "json",
+						        success: function success(data) {
+						            if(data.success){
+						                if(data.code == 0){
+						                	var dataJD = data.jsonData;
+						                	var html = "";
+											$.each(dataJD, function(i,item) {
+												html += "<li><input type='checkbox' name='' value='"+item.skillsKey+"' />"+item.skillsValue+"</li>"
+											});
+											$(".swf1 dd ul").html(html);
+												$(".sw-filter").css("margin-bottom",50);
+
+						                	console.log(data.msg);
+						                }else{
+						                    console.log(data.msg);
+						                }
+						            }else{
+						                console.log(data.msg);
+						            }
+						        }
+						    });
+					    } else{
+							$(".sw-filter dl dd a").removeClass("swf-on").children("img").attr("src","img/xia.png").parent().siblings("ul").hide();
+							$(".sw-filter").css("margin-bottom",0);
+							$(".sw-filter dl dt a").addClass("hsf-on");
+							$("#workExp").hide();
+						}
+//				    queryStaff(0)
+					$(".hs-search .b-sbtn").trigger("click");
+				});
+
+
+
+				$(".sw-filter dl dt a").click(function(){
+					$(".sw-filter dl dd a").removeClass("swf-on").children("img").attr("src","img/xia.png").parent().siblings("ul").hide();
+					$(this).addClass("hsf-on");
+					$(".sw-filter").css("margin-bottom",0);
+					$("#workExp").hide();
+//					queryStaff(0)
+					$(".hs-search .b-sbtn").trigger("click");
+					$(".sw-filter").find("input[type='checkbox']").prop("checked",false);
+				});
+
+
+				$(".sw-filterSp dl dt a").click(function(){
+					$(".sw-filterSp dl dd a.yesDengJi").children("img").attr("src","img/xia.png").parent().siblings("ul").hide();
+					$(".sw-filterSp dl dd a").removeClass("swf-on");
+					$(this).addClass("hsf-on");
+					$(".sw-filterSp").css("margin-bottom",0);
+					$(".hs-search .b-sbtn").trigger("click");
+					$(".sw-filterSp").find("input[type='radio']").prop("checked",false);
+				});
+
+
+//				$(".hs-filter").on("click",".cross",function(){
+//					$(".sw-filter dl dd a").removeClass("swf-on").children("img").attr("src","img/xia.png").parent().siblings("ul").hide();
+//					$(".sw-filter").css("margin-bottom",0);
+//				});
+
+				$(".hsf-detail").each(function(){
+					var className = $(this).find("dl").attr("class");
+					var num = className.substr(3);
+					var typeCode;
+					var itemCode;
+					if (num==2) {
+						$.ajax({
+					        url: publicPath+"/api/common/getDictionaryData/c007",
+					        type: "post",
+					        data: {},
+					        dataType: "json",
+					        success: function success(data) {
+					            if(data.success){
+					                if(data.code == 0){
+					                	var dataJD = data.jsonData;
+					                	var html = "";
+										$.each(dataJD, function(i,item) {
+											var name = "";
+											if (item.name=="0,1") {
+					                			name = "一年以下";
+					                		} else if (item.name=="1,2") {
+					                			name = "1-2年";
+					                		} else if (item.name=="3,5") {
+					                			name = "3-5年";
+					                		} else {
+					                			name = "5年以上";
+					                		}
+
+											html += "<dd>"+
+												"<a data-code='"+item.code+"'>"+name+"</a>"+
+											"</dd>"
+										});
+										$(".swf2").append(html);
+					                	console.log(data.msg);
+					                }else{
+					                    console.log(data.msg);
+					                }
+					            }else{
+					                console.log(data.msg);
+					            }
+					        }
+					    });
+					} else if (num==3){
+						typeCode="c012";
+						filter1(typeCode,num);
+					} else if (num==4){
+						$.ajax({
+					        url: publicPath+"/api/common/getDictionaryData/c008",
+					        type: "post",
+					        data: {},
+					        dataType: "json",
+					        success: function success(data) {
+					            if(data.success){
+					                if(data.code == 0){
+					                	var dataJD = data.jsonData;
+					                	var html = "";
+										$.each(dataJD, function(i,item) {
+											var name = "";
+											if (item.name=="0,29") {
+					                			name = "29岁以下";
+					                		} else if (item.name=="29,39") {
+					                			name = "29-39岁";
+					                		} else if (item.name=="39,49") {
+					                			name = "39-49岁";
+					                		} else {
+					                			name = "50岁以上";
+					                		}
+											html += "<dd>"+
+												"<a data-code='"+item.code+"'>"+name+"</a>"+
+											"</dd>"
+										});
+										$(".swf4").append(html);
+					                	console.log(data.msg);
+					                }else{
+					                    console.log(data.msg);
+					                }
+					            }else{
+					                console.log(data.msg);
+					            }
+					        }
+					    });
+					} else if (num==5){
+						typeCode="c009";
+						filter1(typeCode,num);
+					} else if (num==6){
+						typeCode="c010";
+						filter1(typeCode,num);
+					} else if (num==8){
+						typeCode="c013";
+						itemCode="01";
+						filter2(typeCode,num,itemCode);
+					} else if (num==9){
+						typeCode="c013";
+						itemCode="02";
+						filter2(typeCode,num,itemCode);
+					} else if (num==11){
+						typeCode="c013";
+						itemCode="03";
+						filter2(typeCode,num,itemCode);
+					}
+
+				});
+
+				$(".hs-filter").on("change","input[type='checkbox']",function(){
+					var check = $(this).prop("checked");
+					if ($(this).parents("dl").find("input[type='checkbox']:checked").length>=1) {
+						$(this).parents("dd").siblings("dt").children("a").removeClass("hsf-on");
+					}
+					if ($(this).parents("dl").find("input[type='checkbox']:checked").length==0) {
+						$(this).parents("dd").siblings("dt").children("a").addClass("hsf-on");
+					}
+//					queryStaff(0);
+					$(".hs-search .b-sbtn").trigger("click");
+				});
+
+			//证书等级查询
+			$(".hs-filter").on("click","input[type='radio']",function(){
+				$(".hs-search .b-sbtn").trigger("click");
+			});
+
+				$(".hs-filter").on("click",".hsf-detail dl a",function(){
+					$(this).parents("dl").find("a").removeClass("hsf-on");
+					$(this).addClass("hsf-on");
+					var classNum=parseInt($(this).parents("dl").attr("class").substr(3));
+					if (classNum>7&&classNum<13){
+						$(this).parents("dl").find("input[type='checkbox']").prop("checked",false);
+					}
+					if (classNum==10) {
+						$(this).parents("dl").find("input[type='checkbox']").val("");
+					}
+//					queryStaff(0);
+					$(".hs-search .b-sbtn").trigger("click");
+				});
+
+
+//				家政员详情
+				$(".frame").on("click",".hs-sheet table tbody tr",function(){
+					if($(this).hasClass("slideBlue")){
+						$(this).removeClass("slideBlue");
+						$(".hs-info-detail").animate({"right":-1020})
+						return;
+					} else {
+						
+						$(this).addClass("slideBlue").siblings().removeClass("slideBlue");
+						var $this = $(this);
+						$(".hs-info-detail").animate({"right":0},function(){
+							$(".resume").find("input[type='checkbox']").removeAttr("checked");
+							$(".resume").find("textarea").val("");
+							$(".btnCass-b .bcb-cancel,.btnCass-s .bcs-cancel").trigger("click");
+							// $(".notFamily span").text("");
+							// $(".featureValue span").text("");
+							$(".certification .cert_right a").remove();
+							var staffId = $this.data("staffid");
+							$(".certification-detail input[name='staffId']").val(staffId);
+							$(".hid-title  input[name='staffId']").val(staffId);
+							$(".cd-pic").attr("data-haspic",0);
+							$(".videoShow video").remove();
+							$(".bankCard-info input[type='hidden']").val("");
+
+
+		//					获取租户ID
+							$.ajax({
+						        url: publicPath+"/api/index/getSession.do",
+						        type: "post",
+						        data: {},
+						        dataType: "json",
+						        async:false,
+						        success: function success(data) {
+						            if(data.success){
+						                if(data.code == 0){
+						                	var dataJD = data.jsonData;
+						                	$(".hid-title").attr("data-tenantid",dataJD.tenantId);
+						                	$(".hid-title").attr("data-domain",dataJD.domain);
+						                	console.log(data.msg);
+						                }else{
+						                    console.log(data.msg);
+						                }
+						            }else{
+						                console.log(data.msg);
+						            }
+						        }
+							});
+					// 基础信息
+						$.ajax({
+							url: publicPath+"/api/staffs/getDetails/part/base",
+							type: "get",
+							data: {staffId:staffId},
+							dataType: "json",
+							async:false,
+							success: function success(data) {
+								if(data.success){
+									if(data.code == 0){
+										 dataBI=data.jsonData.baseInfo;
+										 dataJI=data.jsonData.jobInfo;
+										 dataSL = data.jsonData.serviceList;
+										  dataSIL = data.jsonData.jobInfo.serviceItemList;
+											$(".bottom-navi ul li").eq(0).trigger("click");
+									}else{
+										console.log(data.msg);
+									}
+								}else{
+									console.log(data.msg);
+								}
+							}
+						});
+
+					
+//阿姨二维码
+							var domain=$(".hid-title").data("domain");
+							var serviceItemCode=$("select[name='serviceItems[0].serviceItemCode']").val();
+							$.ajax({
+					        	url: publicPath+"/api/common/getTwoDimensionCode",
+						        type: "post",
+						        data: {
+						        	info:"staffId:"+staffId+",serviceItemCode:"+serviceItemCode,
+						        	domain:domain,
+						        	code:"05"
+						        },
+						        dataType: "json",
+						        async:false,
+						        success: function success(data) {
+						            if(data.success){
+						                if(data.code == 0){
+						                	var dataJD = data.jsonData;
+						                	$(".scanCode .QR-code").find("img").remove();
+						                	$(".scanCode .QR-code").append("<img src='"+dataJD+"'>")
+						                	console.log(data.msg);
+						                }else{
+						                    console.log(data.msg);
+						                }
+						            }else{
+						                console.log(data.msg);
+						            }
+						        }
+						    });
+								$("#ic-frame").scroller(0);
+
+		//				    
+						})
+					}
+
+
+				});
+
+				$(".hid-title a").click(function(){
+					$(".hs-sheet table tr").removeClass("slideBlue");
+					$(".hs-info-detail").animate({"right":-1020});
+				});
+
+//				是否上架
+				$("body").on("change",".onOffShelf input",function(){
+					var onOffShelf = $(this).val();
+					var staffId = $("input[name='staffId']").val();
+					$.ajax({
+				        url: publicPath+"/api/staffs/add/onOffShelf",
+				        type: "post",
+				        data: {staffId:staffId,onOff:onOffShelf},
+				        dataType: "json",
+				        async:false,
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	console.log(data.msg);
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				                console.log(data.msg);
+				            }
+				        }
+				    });
+				});
+
+//				服务区域选择
+				$(".serviceArea").on("change","input[type='radio']",function(){
+					var check = $(this).parents(".serviceArea").find(".ar2").prop("checked");
+					if (check) {
+						var areaSel = "<b class='areaSel'><select name='serviceArea' class='grey_i'></select><a class='addArea'></a></b>";
+						$(this).parent().after(areaSel);
+						serviceArea(0);
+					} else{
+						$(this).parents(".serviceArea").find(".areaSel").remove();
+					}
+				});
+
+//				添加服务区域
+				$("body").on("click",".addArea",function(){
+					var len = $(this).parent().find("select").length;
+					if (len==1) {
+						$(this).before("<select name='serviceArea' class='grey_i'></select><a class='decArea'></a>");
+						serviceArea(1);
+					} else if (len==2){
+						$(this).parent().find(".decArea").before("<select name='serviceArea' class='grey_i'></select>");
+						$(this).remove();
+						serviceArea(2);
+					}
+				});
+
+//				减少服务区域
+				$("body").on("click",".decArea",function(){
+					var len = $(this).parent().find("select").length;
+					if (len==3) {
+						$(this).parent().find("select").eq(2).remove();
+						$(this).after("<a class='addArea'></a>");
+					} else if (len==2){
+						$(this).parent().find("select").eq(1).remove();
+						$(this).remove();
+					}
+				});
+
+
+//				不做家庭
+				$(".qiuzhi_list").on("change","input[name='pet']",function(){
+					if ($(this).prop("checked")==true) {
+						$(this).val(1);
+					} else{
+						$(this).val(0)
+					}
+				})
+
+				$(".qiuzhi_list").on("change","input[name='elderly']",function(){
+					if ($(this).prop("checked")==true) {
+						$(this).val(1);
+					} else{
+						$(this).val(0)
+					}
+				})
+
+//				工种变更
+				$(".serviceItems").on("change",".fwgz",function(){
+					var n=$(this).parents("li").index();
+					var val=$(this).val();
+					var repeat = false;
+					if ($(this).val()=="") {
+						$(this).addClass("grey_i");
+					}else{
+						$(this).removeClass("grey_i");
+					}
+					for (var i=0;i<$(".serviceItems li").length;i++){
+
+						if ($(".serviceItems li").eq(i).find(".serviceItemCode select").val()==val && i!=n) {
+							repeat = true;
+							alert("服务工种不能重复！");
+							$(".serviceItems li").eq(n).find(".serviceItemCode select").val("");
+							return false;
+						} else{
+							repeat = false;
+						}
+
+					}
+					
+					if (!repeat) {
+					//获取服务类型
+						getServiceNature(val,n);
+
+					//技能特点
+						  $.ajax({
+							url: publicPath + "/api/common/getSKillsData/c005",
+							type: "post",
+							data: {
+								itemCode: val,
+								level: 1
+							},
+							dataType: "json",
+							async: false,
+							success: function success(data) {
+								if (data.success) {
+									if (data.code == 0) {
+										var dataJD = data.jsonData;
+										var skillsList = "";
+										$.each(dataJD, function(i, item) {
+											skillsList +=
+												"<i>"+
+													"<input type='checkbox' name='serviceItems[" + n + "].skills' value='" + item.skillsKey + "'>" +
+													item.skillsValue + 
+												"</i>";
+										});
+										$(".serviceItems li").eq(n).find(".skills .li_right .skill_box").html(skillsList).show();
+										console.log(data.msg);
+									} else {
+										console.log(data.msg);
+									}
+								} else {
+									console.log(data.msg);
+								}
+							}
+						});
+
+						// $.ajax({
+				        // 	url: publicPath+"/api/common/getSKillsData/c005",
+					    //     type: "post",
+					    //     data: {itemCode:val,level:1},
+					    //     dataType: "json",
+					    //     async:false,
+					    //     success: function success(data) {
+					    //         if(data.success){
+					    //             if(data.code == 0){
+					    //             	var dataJD = data.jsonData;
+					    //             	var skillsList = "";
+						// 				$.each(dataJD, function(i,item) {
+						// 					skillsList += "<div class='checkbox_box'>"+
+						// 									"<input type='checkbox' name='serviceItems["+n+"].skills' value='"+item.skillsKey+"'>"+
+						// 									"<div class='check-box'><img src='img/checked.png'></div> "+
+						// 								"</div>"+
+						// 								"<i>"+item.skillsValue+"</i>";
+						// 					// "<em><input type='checkbox' name='serviceItems["+n+"].skills' value='"+item.skillsKey+"'>"+item.skillsValue+"</em>"
+						// 				});
+						// 				$(".serviceItems li").eq(n).find(".skills .li_right").html(skillsList);
+					    //             	console.log(data.msg);
+					    //             }else{
+					    //                 console.log(data.msg);
+					    //             }
+					    //         }else{
+					    //             console.log(data.msg);
+					    //         }
+					    //     }
+					    // });
+
+	                	// if (val=="01"||val=="06") {
+						// 	$("select[name='serviceItems["+n+"].serviceNature").html("<option value=''>请选择</option><option value='01'>住家</option>");
+	                	// } else if (val=="02"||val=="03"||val=="04") {
+						// 	$("select[name='serviceItems["+n+"].serviceNature").html("<option value=''>请选择</option><option value='01'>住家</option><option value='02'>不住家</option>");
+	                	// } else if (val=="05") {
+						// 	$("select[name='serviceItems["+n+"].serviceNature").html("<option value=''>请选择</option><option value='01'>临时</option><option value='02'>长期</option>");
+	                	// }
+
+	                }
+				});
+
+
+
+//				编辑家政员详情
+				$("body").on("click",".edit",function(){
+					var staffId = $("input[name='staffId']").val();
+					var $this = $(this);
+					if($this.parent().hasClass("base_list")){
+						// 基本资料
+						getDataBI(dataBI);
+						$(".base_list").find(".beforeEditing").hide();
+						$(".base_list").find(".afterEditing").show();
+						$(".base_list").find(".btnCass-b").show();
+						$(this).hide();
+					}else if($this.parents().hasClass("qiuzhi_list")){
+						//工种列表
+						getDataSIL(dataJI)
+						$(".qiuzhi_list").find(".beforeEditing").hide();
+						$(".qiuzhi_list").find(".afterEditing").show();
+						$(".qiuzhi_list").find(".btnCass-b").show();
+						$(this).hide();
+					}else if($(this).parents().hasClass("pingjia_list")){
+						//能力评价
+						getDataJI(dataJI)
+						$(".pingjia_list").find(".beforeEditing").hide();
+						$(".pingjia_list").find(".afterEditing").show();
+						$(".pingjia_list").find(".btnCass-b").show();
+						$(this).hide();
+					}else if($(this).parents().hasClass("bank_list")){
+						getBank(dataBank);
+						$("#bankCardAlter,#layer").show();
+						$(".fdb-alter .promptSp").remove();
+					}else{
+						$(this).parent().siblings("form").find(".beforeEditing").hide();
+						$(this).parent().siblings("form").find(".afterEditing").css("display","inline-block");
+						$(this).parent().siblings("form").find(".btnCass-b").show();
+						$(this).parent().siblings("form").find(".btnCass-s").show();
+						// $(this).parent().siblings("#resumeForm").find(".postBtn").show();
+					}
+					//                   滚动定位
+					var infoTop = $(this).parents(".info_list").position().top;
+					$("#ic-frame").scroller(infoTop);
+					grey();
+				});
+
+
+				$(".bcb-save").click(function(){
+					var infoTop = $(this).parents(".info_list").position().top;					
+					var formName = $(this).parents("form").attr("id");
+					var staffId = $("input[name='staffId']").val();
+					var lurl;
+					switch (formName){
+						case "basicDataForm":
+							$("#basicDataForm input,#basicDataForm select").trigger("blur");
+							if ($("#basicDataForm .validation").length>0) {
+								return false;
+							};
+							lurl="baseInfo";
+							$("#"+formName+"").ajaxSubmit({
+								url: publicPath+"/api/staffs/add/"+lurl,
+								data:{staffId:staffId},
+						        type: "post",
+						        dataType: "json",
+						        success: function success(data) {
+						            if(data.success){
+						                if(data.code == 0){
+						                	$(".hs-sheet table tbody tr").each(function(){
+						                		if ($(this).attr("data-staffid")==staffId) {
+						                			$(this).removeClass("slideBlue");
+						                			$(this).trigger("click");
+						                		}
+						                	})
+						                	console.log(data.msg);
+											$("#ic-frame").scroller(infoTop);
+						                }else{
+						                    console.log(data.msg);
+						                }
+						            }else{
+						                console.log(data.msg);
+						            }
+						        }
+							});
+							break;
+						case "resumeForm":
+							$("#resumeForm input[type='text'],#resumeForm select,#resumeForm textarea").trigger("blur");
+							if ($("#resumeForm .validation").length>0) {
+								return false;
+							};
+							var repeat = false;
+							lurl="jobInfo";
+							$("#"+formName+"").ajaxSubmit({
+								url: publicPath+"/api/staffs/add/"+lurl,
+								data:{staffId:staffId},
+						        type: "post",
+						        dataType: "json",
+						        success: function success(data) {
+						            if(data.success){
+						                if(data.code == 0){
+						                	$(".hs-sheet table tbody tr").each(function(){
+						                		if ($(this).attr("data-staffid")==staffId) {
+						                			$(this).removeClass("slideBlue");
+						                			$(this).trigger("click");
+						                		}
+						                	})
+											$("#ic-frame").scroller(infoTop);
+						                	console.log(data.msg);
+						                }else{
+						                    console.log(data.msg);
+						                }
+						            }else{
+						                console.log(data.msg);
+						            }
+						        }
+							});
+							break;
+						default:
+							break;
+					}
+				});
+
+
+				$(".bcs-save").click(function(){
+					var formName = $(this).parents("form").attr("id");
+					var staffId = $("input[name='staffId']").val();
+					var lurl;
+					switch (formName){
+						case "fa-form":
+							$("#fa-form input,#fa-form select,#fa-form textarea").trigger("blur");
+							if ($("#fa-form .promptSp").length>0) {
+								return false;
+							}else{
+								lurl="financialRecord";
+								$(".bank_list,.baoxian_list,.caiwu_list").find(".addNew,.edit").show();
+								$(".fdb-alter,#layer").hide();
+								saveDataS(formName,lurl,staffId);
+							};
+							break;
+						case "ia-form":
+							$("#ia-form input").trigger("blur");
+							if ($("#ia-form .promptSp").length>0) {
+								return false;
+							}else{
+								lurl="policyInfo";
+								$(".bank_list,.baoxian_list,.caiwu_list").find(".addNew,.edit").show();
+								$(".fdb-alter,#layer").hide();
+								saveDataS(formName,lurl,staffId);
+							};
+							break;
+						case "bca-form":
+							$("#bca-form input,#bca-form select").trigger("blur");
+							if ($("#bca-form .promptSp").length>0) {
+								return false;
+							}else{
+								lurl="bankInfo";
+								$(".bank_list,.baoxian_list,.caiwu_list").find(".addNew,.edit").show();
+								$(".fdb-alter,#layer").hide();
+								saveDataS(formName,lurl,staffId);
+							};
+							
+							break;
+						
+						default:
+							break;
+					}
+					// $(".fdb-alter,#layer").hide();
+					
+				});
+
+
+
+//				服务工种保存
+				$("body").on("click",".si-save",function(){
+					var staffId = $("input[name='staffId']").val();
+					$(".qiuzhi_list input[type='text'],.qiuzhi_list select").trigger("blur");
+					if ($(".qiuzhi_list .validation").length>0) {
+						return false;
+					};
+					$(".fwgz").removeAttr("disabled");
+					$("#serviceItems").ajaxSubmit({
+						url: publicPath+"/api/staffs/add/saveItemsInfo",
+						// data:data,
+						data:{
+							staffId:staffId,
+              characerFeature:"",
+              languageFeature:"",
+              cookingFeature:""
+						},
+				        type: "post",
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	$(".hs-sheet table tbody tr").each(function(){
+				                		if ($(this).attr("data-staffid")==staffId) {
+				                			$(this).removeClass("slideBlue");
+				                			$(this).trigger("click");
+				                		}
+				                	})
+				                	console.log(data.msg);
+				                }else{
+									$(".serviceItems li").attr("disabled","disabled");
+									$(".serviceItems li.newSI").removeAttr("disabled");
+				                    console.log(data.msg);
+				                }
+				            }else{
+								$(".serviceItems li").attr("disabled","disabled");
+								$(".serviceItems li.newSI").removeAttr("disabled");
+				                console.log(data.msg);
+				            }
+				        }
+					});
+				});
+
+				$("body").on("click",".btnCass-b .bcb-cancel",function(){
+					$(this).parents("form").find(".validation").remove();
+					if ($(this).parents("div").hasClass("fdb-alter")) {
+						$(this).parents(".fdb-alter").animate({"right":-400});
+					} else {
+						$(this).parent().hide();
+						$(this).parent().siblings("ul").find(".afterEditing").hide();
+						$(this).parent().siblings("ul").find(".beforeEditing").show();
+						$(this).parent().siblings(".resume").find(".postBtn").hide();
+						if ($(this).parents().hasClass("base_list")) {
+							// 基本信息
+							$(".base_list").find(".afterEditing").hide();
+							$(".base_list").find(".beforeEditing,.edit").show();
+						} else if ($(this).parents().hasClass("qiuzhi_list")) {
+							// 服务工种
+							$("li.newSI").remove();
+							$(".qiuzhi_list").find(".afterEditing").hide();
+							$(".qiuzhi_list").find(".beforeEditing,.edit").show();
+						} else if ($(this).parents().hasClass("pingjia_list")) {
+							// 评价
+							$(".pingjia_list").find(".afterEditing").hide();
+							$(".pingjia_list").find(".beforeEditing,.edit").show();
+						} else if ($(this).parents().hasClass("fuwu_list")) {
+							// 证书
+							$(".fuwu_list").find(".certification-detail").hide();
+							$(".fuwu_list").find(".promptSp").remove();
+							$(".fuwu_list").find(".addNew").show();
+							$(".certification a").removeClass("active");
+						}
+
+					}
+					var infoTop = $(this).parents(".info_list").position().top;
+					$("#ic-frame").scroller(infoTop);
+				});
+				$(".fdb-alter").on("click",".btnCass-s .bcs-cancel",function(){
+					if($(this).parents().hasClass("financialAlter")){
+						// 财务
+						$(".fdb-alter,#layer").hide();
+						$(".caiwu_list").find(".addNew").show();
+					}else if($(this).parents().hasClass("insuranceAlter")){
+						// 保险
+						$(".fdb-alter,#layer").hide();
+						$(".baoxian_list").find(".addNew").show();
+					}else if($(this).parents().hasClass("bankCardAlter")){
+						// 银行卡
+						$(".bank_list").find(".addNew,.edit").show();
+						$(".fdb-alter,#layer").hide();
+					}
+				});
+
+			
+
+//				添加工种
+
+				$(".hs-info-detail").on("click",".addPostBtn",function(){
+					 if ($(".serviceItems li").length > 2) {
+							if(!($(this).nextAll().hasClass("no_add"))){
+							$(this).after("<span class='no_add'>每个家政员最多可录入3个工种</span>");
+							}
+						} else {
+							$(".no_add").remove();
+							var cl = $(this).parent().siblings(".serviceItems").find("li").eq(0).clone();
+							num = $(".serviceItems li").length;
+							// cl.find("input[type='checkbox']").prop("checked",false).attr("name","serviceItems["+num+"].skills");
+							// cl.find("i,.check-box").removeClass("active");
+							cl.find(".skills .li_right .skill_box").html("").hide();
+							cl.find(".fwgz").removeAttr("disabled").removeClass("disable");
+							cl.find(".leixing").html("").hide();
+							cl.find("select").val("");
+							cl.find("input").eq(0).attr("name","serviceItems["+num+"].serviceItemCodeId").val("");
+							cl.find("select").eq(0).attr("name","serviceItems["+num+"].serviceItemCode").addClass("grey_i");
+							cl.find("select").eq(1).attr("name","serviceItems["+num+"].serviceNature").addClass("grey_i");
+							$(".serviceItems").append(cl);
+							$(".serviceItems li").eq(num).addClass("newSI").prepend('<a class="postBtn deletePostBtn"></a>');
+						}
+						var infoTop = $(this).parents(".info_list").position().top;
+						$("#ic-frame").scroller(infoTop);
+				});
+
+				$(".hs-info-detail").on("click",".deletePostBtn",function(){
+					 $(this).parent().remove();
+						if ($(".serviceItems li").length < 3) {
+							$(".no_add").remove();
+						}
+						for (i = 0; i < $(".serviceItems li").length; i++) {
+							$(".serviceItems li").eq(i).find("input").eq(0).attr("name","serviceItems["+i+"].serviceItemCodeId").val("");
+							$(".serviceItems li").eq(i).find("select").eq(0).attr("name", "serviceItems[" + i + "].serviceItemCode");
+							$(".serviceItems li").eq(i).find("select").eq(1).attr("name", "serviceItems[" + i + "].serviceNature");
+							$(".serviceItems li").eq(i).find(".skills input[type='checkbox']").attr("name", "serviceItems[" + i + "].skills");
+						}
+
+				});
+// 能力评价选择 技能特点
+            // $(".infoCard").on("change", ".li_right .checkbox_box input", function() {
+            //         if ($(this).is(":checked")) {
+            //             $(this).parent().next("i").addClass("active");
+            //             $(this).siblings(".check-box").addClass("active");
+            //         } else {
+            //             $(this).parent().next("i").removeClass("active");
+            //             $(this).siblings(".check-box").removeClass("active");
+            //         }
+            //     })
+
+//				编辑证书
+					$(".certification").on("click",".unAu",function(){
+					if ($(".hs-info-detail").data("authority")==1){
+						$(".promptSp").remove();
+						$(".certType span").remove();
+						$(".certification a").removeClass("active");
+						$(this).addClass("active");
+						$(".certification-detail").show().find(".btnCass-b").show();
+						$(".fuwu_list").find(".addNew").hide();
+						var id = $(this).data("cerid");
+						var certType = $(this).data("certnamecode");
+						var certNameVal = $(this).data("certnameval");
+
+						var certNo = $(this).data("certno");
+						var certificationDate = $(this).data("certificationdate").split(" ")[0];
+						var certificationBody = $(this).data("certificationbody");
+						var otherCertificationBody = $(this).data("othercertificationbody");
+						if(certType=="18"||certType=="19"){
+							$(".certification-detail select[name='authenticateGrade']").val("").hide();
+							$(".certification-detail input[name='gradeRead']").val("").show();
+							$(".authenticateGrade_box").hide();
+						}else {
+								$(".authenticateGrade_box").show();
+							var authenticateGrade=$(this).data("authenticategrade");
+							var authenticateGradeName= $(this).data("authenticategradename");
+							$(".certification-detail select[name='authenticateGrade']").val(authenticateGrade).hide();
+							$(".certification-detail input[name='gradeRead']").val(authenticateGradeName).show();
+						}
+						if(certificationBody=="03"){
+							$(".other_certificationBody").show();
+							$(".other_certificationBody").val(otherCertificationBody);
+						}else {
+							$(".other_certificationBody").hide();
+						}
+						// var certImage = $(this).data("certimage");
+						// if (certImage!=null){
+						// 	$(".certification-detail .cd-pic").attr("data-haspic",1);
+						// } else {
+						// 	$(".certification-detail .cd-pic").attr("data-haspic",0);
+						// }
+						$(".certification-detail select[name='certType']").val(certType).hide();
+						$(".certification-detail input[name='certTypeRead']").val(certNameVal).show();
+
+						$(".certification-detail input[name='certNo']").val(certNo);
+						$(".certification-detail input[name='certificationDate']").val(certificationDate);
+						$(".certification-detail select[name='certificationBody']").val(certificationBody);
+
+						// $(".certification-detail .cd-pic img").attr("src",certImage);
+						$(".certification-detail input[name='id']").val(id);
+						$(".bcb-delete").show();
+						$(".certType").append("<span class='tishi'>证书被驳回</span>")
+					}
+					var infoTop = $(this).parents(".info_list").position().top;
+					$("#ic-frame").scroller(infoTop);
+				});
+
+				$("body").on("click",".addNew",function(){
+					if ($(this).parents().hasClass("fuwu_list")) {
+						$(".bcb-delete").hide();
+						$(".certification-detail").show().find(".btnCass-b").show();
+						$(".other_certificationBody").hide().val("");
+						// $(".certification-detail .cd-pic").attr("data-haspic",0);
+						$(".certification-detail select[name='certType']").val("").show();
+						$(".certification-detail input[name='certTypeRead']").val("").hide();
+						$(".certification-detail input[name='gradeRead']").val("").hide();
+						$(".certification-detail input[name='certNo']").val("");
+						$(".certification-detail input[name='certificationDate']").val("");
+						$(".certification-detail select[name='certificationBody']").val("");
+						$(".certification-detail select[name='authenticateGrade']").val("").show();
+						$("input[name='id']").val("");
+						$(".certType span").remove();
+					} else if ($(this).parents().hasClass("caiwu_list")) {
+						$("#financialAlter").find("input,select,textarea").val("");
+						$(".fdb-alter .promptSp").remove();
+						$("#financialAlter,#layer").show();
+					} else if ($(this).parents().hasClass("baoxian_list")) {
+						$("#insuranceAlter").find("input,select,textarea").val("");
+						$("#insuranceAlter,#layer").show();
+						$(".fdb-alter .promptSp").remove();
+					} else if ($(this).parents().hasClass("bank_list")) {
+						$("#bankCardAlter").find("input,select,textarea").val("");
+						$("#bankCardAlter,#layer").show();
+						$(".fdb-alter .promptSp").remove();
+					}
+					$(this).hide();
+					var infoTop = $(this).parents(".info_list").position().top;
+					$("#ic-frame").scroller(infoTop);
+				});
+		//证书是否有等级
+				$("select[name='certType']").change(function(){
+						if ($(this).val()=="") {
+							$(this).addClass("grey_i");
+						}else if ($(this).val()=="18"||$(this).val()=="19") {
+							$(".authenticateGrade_box").hide();
+							$(".certification-detail select[name='authenticateGrade']").val("");
+							$(".certification-detail input[name='gradeRead']").val("");
+							$(this).removeClass("grey_i");
+						}else {
+							$(".authenticateGrade_box").show();
+							$("select[name='authenticateGrade']").addClass("grey_i");
+							$(this).removeClass("grey_i");
+						}
+				});
+				$("select[name='certificationBody']").change(function(){
+					var certificationBodyVal = $(this).val();
+					if ($(this).val()=="") {
+							$(this).addClass("grey_i");
+					}else if(certificationBodyVal=="03"){
+						$(this).siblings("input").show();
+						$(this).removeClass("grey_i");
+					}else {
+						$(this).siblings("input").hide();
+						$(this).siblings("input").val("");
+						$(this).removeClass("grey_i");
+					}
+				})
+
+				$(".certification-detail").on("mouseenter mouseleave",".cd-pic",function(e){
+					if ($(this).attr("data-haspic")==1) {
+						if (e.type == "mouseenter") {
+							$(this).children(".cover,.deletePic").show();
+						} else {
+							$(this).children(".cover,.deletePic").hide();
+						}
+					}
+				});
+
+				$(".certification-detail").on("mouseenter mouseleave",".cd-pic .deletePic",function(e){
+					if ($(this).parent().attr("data-haspic")==1) {
+						if (e.type == "mouseenter") {
+							$(this).siblings(".deleteCover").show();
+						} else {
+							$(this).siblings(".deleteCover").hide();
+						}
+					}
+				});
+
+				$(".cd-pic .deletePic").click(function(){
+					$(this).siblings("img").attr("src","").parent().attr("data-haspic",0);
+					$(this).hide().siblings("div").hide();
+				});
+
+				// $(".cd-pic input[name='certImage']").change(function(){
+				// 	$(".certification-detail .cd-pic").attr("data-haspic",1);
+				// 	var objUrl = getObjectURL(this.files[0]);
+				// 	var fileSize = this.files[0].size;
+				// 	var size = fileSize/1024;
+				// 	var filepath = $(this).val();
+				// 	var extStart = filepath.lastIndexOf(".");
+				// 	var ext = filepath.substring(extStart, filepath.length).toUpperCase();
+
+				// 	if (ext != ".BMP" && ext != ".PNG" && ext != ".JPG") {
+	            //         alert("图片限于bmp,png,jpg格式");
+	            //         $(this).val("");
+	            //         return;
+	            //    	};
+	            //    	if (size > 500){
+	            //    		alert("上传的图片大小不能超过500K！");
+	            //    		$(this).val("");
+	            //    		return;
+	            //    	};
+
+	            //    	if (objUrl) {
+				// 		$(this).siblings("img").attr("src",objUrl);
+				// 	};
+				// });
+
+
+				$("#videoShowForm").on("mouseenter mouseleave",".videoShow",function(e){
+						if ($(".videoShow video").length>0) {
+							if (e.type == "mouseenter") {
+								$(this).children(".deleteCover,.deletePic").show();
+							} else {
+								$(this).children(".deleteCover,.deletePic").hide();
+							}
+						}
+				});
+
+				// $("#videoShowForm").on("mouseenter mouseleave",".videoShow .deletePic",function(e){
+				// 	if (e.type == "mouseenter") {
+				// 		$(this).siblings(".deleteCover").show();
+				// 	} else {
+				// 		$(this).siblings(".deleteCover").hide();
+				// 	}
+				// });
+
+
+				$(".pic-wall").on("mouseenter mouseleave",".ordinary",function(e){
+					if (e.type == "mouseenter") {
+						$(this).children(".deleteCover,.deletePic").show();
+
+					} else {
+						$(this).children(".deleteCover,.deletePic").hide();
+					}
+				});
+
+				// $(".pic-wall").on("mouseenter mouseleave",".ordinary .deletePic",function(e){
+				// 	if (e.type == "mouseenter") {
+				// 		$(this).siblings(".deleteCover").show().siblings(".setWords").hide();
+				// 	} else {
+				// 		$(this).siblings(".deleteCover").hide().siblings(".setWords").show();
+				// 	}
+				// });
+
+//				添加图片墙
+				$(".pic-wall").on("change","input[type=file]",function(){
+					var staffId = $("input[name='staffId']").val();
+					var $this = $(this);
+					var objUrl = getObjectURL(this.files[0]);
+					var fileSize = this.files[0].size;
+					var size = fileSize/1024;
+					var filepath = $(this).val();
+					var extStart = filepath.lastIndexOf(".");
+					var ext = filepath.substring(extStart, filepath.length).toUpperCase();
+
+					if (ext != ".BMP" && ext != ".PNG" && ext != ".JPG" && ext != ".JPEG") {
+	                    alert("图片限于bmp,png,jpg,jpeg格式");
+	                    $(this).val("");
+	                    return;
+	               	};
+	               	if (size > 2048){
+	               		alert("上传的图片大小不能超过2M！");
+	               		$(this).val("");
+	               		return;
+					   };
+
+					   $("#picWallForm").ajaxSubmit({
+				        url: publicPathSP+"/image/upload",
+				        type: "post",
+				        data: {},
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.message){
+				                if(data.status == 0){
+									// var imagePath =data.result.url;
+									var imagePath=[data.result.url]
+									var videoPath=[""];
+				                	 $.ajax({
+										url: publicPath+"/api/staffs/uploadMediaPath",
+										type: "post",
+										data: {videoPath:videoPath,imagePath:imagePath,staffId:staffId},
+										traditional: true,
+										dataType: "json",
+										success: function success(data) {
+											if(data.success){
+												if(data.code == 0){
+													$(".bottom-navi ul li").eq(1).trigger("click");
+												}else{
+													console.log(data.msg);
+												}
+											}else{
+												console.log(data.msg);
+											}
+										}
+									});
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				                console.log(data.msg);
+				            }
+				        }
+				    });
+					
+				});
+
+//				删除照片墙
+				$(".pic-wall").on("click",".deletePic",function(){
+						var id = $(this).parent().data("mediaid");
+						var $this = $(this);
+						var staffId = $("input[name='staffId']").val();
+						$.ajax({
+					        url: publicPath+"/api/staffs/deleteMediaPath",
+					        type: "get",
+					        data: {id:id},
+					        dataType: "json",
+					        success: function success(data) {
+					            if(data.success){
+					                if(data.code == 0){
+					                	$this.parent("li").remove();
+										if($(".pic-wall ul li.ordinary").length<4 && $(".pic-wall ul li.append").length<1){
+											html="<li class='append'>"+
+													"<div class='no_pic'>"+
+														"<p>点击上传照片</p>"+
+														"<input type='file' name='file' accept='image/gif,image/png,image/bmp,image/jpeg' value='' />"+
+													"</div>"+
+												"</li>";
+											$(".pic-wall ul").append(html);
+										}
+					                	console.log(data.msg);
+					                }else{
+					                    console.log(data.msg);
+					                }
+					            }else{
+					                console.log(data.msg);
+					            }
+					        }
+					    });
+				});
+
+//				设置封面
+				$(".pic-wall").on("click",".setWords",function(){
+					var id = $(this).parent().data("mediaid");
+					var staffId = $("input[name='staffId']").val();
+					var $this = $(this);
+					$.ajax({
+				        url: publicPath+"/api/staffs/setCover",
+				        type: "post",
+				        data: {id:id,staffId:staffId},
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	$this.parent("li").siblings().removeClass("headPortrait");
+				                	$this.parent("li").addClass("headPortrait");
+				                	console.log(data.msg);
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				                console.log(data.msg);
+				            }
+				        }
+				    });
+				});
+
+//				添加视频
+				$(".videoShow").on("change","input[name='file']",function(){
+					var objUrl = getObjectURL(this.files[0]);
+					var fileSize = this.files[0].size;
+					var size = fileSize/1024;
+					var filepath = $(this).val();
+					var extStart = filepath.lastIndexOf(".");
+					var ext = filepath.substring(extStart, filepath.length).toUpperCase();
+
+					if (ext != ".AVI" && ext != ".MP4" && ext != ".WMV" && ext != ".mov" && ext != ".rmvb" && ext != ".rm" && ext != ".flv") {
+	                    alert("视频限于mp4,avi,mov,wmv,rmvb,rm,flv格式");
+	                    $(this).val("");
+	                    return;
+	               	};
+
+	               	if (size > 10240){
+	               		alert("上传的视频大小不能超过10M！");
+	               		$(this).val("");
+	               		return;
+	               	};
+					
+					if(objUrl){
+						$(".uploading").remove();
+						$(".videoShow").append("<div class='uploading'><img src='img/loading.gif'><p>视频正在上传...</p></div>");
+						$(".no_video p").remove();
+					}
+					var staffId = $("input[name='staffId']").val();
+					$("#videoShowForm").ajaxSubmit({
+				        url: publicPathSP+"/video/upload",
+				        type: "post",
+				        data: {},
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.message){
+				                if(data.status == 0){
+									var imagePath=[""]
+									var videoPath=[data.result.url];
+				                	$.ajax({
+										url: publicPath+"/api/staffs/uploadMediaPath",
+										type: "post",
+										data: {videoPath:videoPath,imagePath:imagePath,staffId:staffId},
+										dataType: "json",
+										traditional: true,
+										success: function success(data) {
+											if(data.success){
+												if(data.code == 0){
+													$(".bottom-navi ul li").eq(1).trigger("click");
+													console.log(data.msg);
+												}else{
+													console.log(data.msg);
+												}
+											}else{
+												console.log(data.msg);
+											}
+										}
+									});
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				                console.log(data.msg);
+				            }
+				        }
+				    });
+				});
+
+
+
+//				删除视频
+				$(".videoShow").on("click",".deletePic",function(){
+						var id = $(this).siblings("video").data("mediaid");
+						var $this = $(this);
+						var staffId = $("input[name='staffId']").val();
+						$.ajax({
+					        url: publicPath+"/api/staffs/deleteMediaPath",
+					        type: "get",
+					        data: {id:id},
+					        dataType: "json",
+					        success: function success(data) {
+					            if(data.success){
+					                if(data.code == 0){
+										var html="<div class='no_video'>"+
+												"<p>该家政员还未上传视频，点击立即上传</p>"+
+												"<input type='file' name='file' value='' accept='video/mp4,video/avi,video/mov,video/wmv,video/rmvb,video/rm,video/flv' >"+
+											"</div>";
+										$(".videoShow").html(html)
+					                	console.log(data.msg);
+					                }else{
+					                    console.log(data.msg);
+					                }
+					            }else{
+					                console.log(data.msg);
+					            }
+					        }
+					    });
+				});
+
+
+//				工作安排表
+
+				J('#scheduleTime').calendar();
+
+
+				$(".slide .sLeft").click(function(){
+					var cl = $(".workSchedule ul li:first-child").clone();
+					$(".workSchedule ul").prepend(cl);
+					if ($(".workSchedule ul").css("left") == 0+'px')  {
+						$(".workSchedule ul").css("left",-136);
+						$(".workSchedule ul").animate({"left":0},function(){
+							$(".workSchedule ul li:last-child").remove();
+						});
+					}
+
+
+				});
+				$(".slide .sRight").click(function(){
+					var cl = $(".workSchedule ul li:last-child").clone();
+					$(".workSchedule ul").append(cl);
+					if ($(".workSchedule ul").css("left") == 0+'px')  {
+						$(".workSchedule ul").animate({"left":-136},function(){
+							$(".workSchedule ul li:first-child").remove();
+							$(".workSchedule ul").css("left",0);
+						});
+					}
+				});
+
+//				上传证书
+//				$(".bcb-sub").click(function(e){
+//					e.preventDefault();
+//					$(".certification-detail form").ajaxSubmit({
+//				        url: publicPath+"/api/staffs/add/certInfo",
+//				        type: "post",
+//				        enctype:"multipart/form-data",
+//                   	contentType: "application/x-www-form-urlencoded; charset=utf-8",
+//				        dataType: "json",
+//				        success: function success(data) {
+//				            if(data.success){
+//				                if(data.code == 0){
+//				                	$(".hs-sheet tbody tr").each(function(){
+//				                		if ($(this).attr("data-staffid")==staffId) {
+//				                			$(this).removeClass("slideBlue");
+//				                			$(this).trigger("click");
+//				                		}
+//				                	})
+//				                	console.log(data.msg);
+//				                }else{
+//				                    console.log(data.msg);
+//				                }
+//				            }else{
+//				                console.log(data.msg);
+//				            }
+//				        }
+//				    });
+//				})
+
+				$(".bcb-sub").click(function(e){
+					e.preventDefault();
+					//校验
+					$(".cdList li p select,.cdList li p input[type='text']").each(function(){
+						var self = $(this);
+						var name = $(this).attr("name");
+						switch (name){
+							case "certType":
+								if (self.val() == ""){
+									onErrorSp('*请选择证书',self);
+								}else {
+									onSuccessSp(self);
+								}
+								break;
+							case "authenticateGrade":
+								if ($("select[name='certType']").val()!="18"&&$("select[name='certType']").val()!="19"&&self.val() == ""){
+									onErrorSp('*请选择等级',self);
+								}else {
+									onSuccessSp(self);
+								}
+								break;
+							case "certificationBody":
+								if (self.val() == ""){
+									onErrorSp('*请选择发证机构',self);
+								}else if(self.val() == "03" && $("#otherCertificationBody").val()==""){
+										onErrorSp('*请填写发证机构',self);
+								}else {
+									onSuccessSp(self);
+								}
+								break;
+							case "certNo":
+									if (self.val() == ""){
+										onErrorSp('*请填写证书编号',self);
+									}else {
+										onSuccessSp(self);
+									}
+								break;
+							case "certificationDate":
+									if (self.val() == ""){
+										onErrorSp('*请选择发证日期',self);
+									}else {
+										onSuccessSp(self);
+									}
+								break;
+							default:
+								break;
+						}
+					})
+
+
+				if($(".cdList .promptSp").length>0){
+					return;
+				}
+				var staffId = $(".certification-detail input[name='staffId']").val();
+				var certType = $(".certification-detail select[name='certType']").val();
+				var authenticateGrade = $(".certification-detail select[name='authenticateGrade']").val();
+	//临时
+				// var callbackUrl = location.href;
+				// $("input[name='callbackUrl']").val(callbackUrl);
+				// $("#cd-form").submit();
+				$.ajax({
+					url: publicPath+"/api/staffs/certValid",
+					type: "post",
+					data: {
+						valid:0,
+						staffId:staffId,
+						certType:certType,
+						authenticateGrade:authenticateGrade
+					},
+					dataType: "json",
+					asyn:false,
+					success: function success(data) {
+						if(data.success){
+							if(data.code == 0){
+								var callbackUrl = location.href;
+								$("input[name='callbackUrl']").val(callbackUrl);
+								$("#cd-form").submit();
+							}else {
+								console.log(data.msg);
+							}
+						}else {
+							if(data.code =="300017"){
+								self=$(".certification-detail select[name='certType']");
+								onErrorSp('*证书已存在',self);
+							}
+						}
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				});
+
+				})
+
+			//删除证书
+			$(".bcb-delete").click(function(){
+				var id=$(".certification-detail input[name='id']").val();
+				var staffId=$("input[name='staffId']").val();
+				$.ajax({
+					url: publicPath+"/api/staffs/logicDeleteCert",
+					type: "post",
+					data: {
+						staffId:staffId,
+						id:id
+					},
+					dataType: "json",
+					asyn:false,
+					success: function success(data) {
+						if(data.success){
+										if(data.code == 0){
+											$(".hs-sheet table tbody tr").each(function(){
+												if ($(this).attr("data-staffid")==staffId) {
+													$(this).removeClass("slideBlue");
+													$(this).trigger("click");
+												}
+											})
+										}else {
+											console.log(data.msg);
+										}
+						}
+					},
+					error: function(err) {
+						console.log(err);
+					}
+				});
+			})
+
+//				放大图片
+				var img_index = "";
+				var img_src = "";
+
+				//下一张
+				$(".photoPanel .ppr").click(function() {
+					img_index++;
+					if(img_index >= $(".pic-wall ul li").length) {
+						img_index = 0;
+					}
+					var img_src =  $(".pic-wall ul li").eq(img_index).find("img").attr('src');
+					$(".photoPanel img").attr("src", img_src);
+				});
+				$(".photoPanel .ppl").click(function() {
+					img_index--;
+					if(img_index < 0) {
+						img_index = $(".pic-wall ul li").length - 1;
+					}
+					var img_src =  $(".pic-wall ul li").eq(img_index).find("img").attr('src');
+					$(".photoPanel img").attr("src", img_src);
+				});
+				$(".pic-wall").on("click","img",function(){
+					img_index = $(".pic-wall ul li").index($(this).parent("li"));
+					$("#layer,.photoPanel").show();
+					var img_src =  $(".pic-wall ul li").eq(img_index).find("img").attr('src');
+					$(".photoPanel img").attr("src", img_src);
+
+				});
+
+//				关闭
+				$(".photoPanel .ppc").click(function(){
+					$("#layer,.photoPanel").hide();
+				})
+
+
+//				表单验证
+				var regChar=/^([\u4e00-\u9fa5]+|[a-zA-Z0-9]+)$/;				//特殊字符
+				var regNum= /^[0-9]*$/;
+				var regPhone= /^1[3|4|5|7|8][0-9]{9}$/;
+
+				$("#basicDataForm input,#basicDataForm select").blur(function(){
+					var self = $(this);
+					var name = $(this).attr("name");
+					switch (name){
+						case "education":
+							if (self.val() == "") {
+								onError('学历不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						// case "specialty":
+						// 	if (self.val() == "") {
+						// 		onError('专业不能为空',self);
+						// 	} else {
+						// 		onSuccess(self);
+						// 	}
+						// 	break;
+						case "height":
+							if (self.val() == "") {
+								onError('身高不能为空',self);
+							} else if (!regNum.test(self.val())){
+								onError('只能填写数字',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+            case "contactPhone":
+              if (!regPhone.test(self.val())&&self.val()!="") {
+                onError('手机号码格式错误', self);
+              } else {
+                onSuccess(self);
+              }
+              break;
+            case "weight":
+              if (!regNum.test(self.val())) {
+                onError('只能填写数字', self);
+              } else {
+                onSuccess(self);
+              }
+              break;
+						case "maritalStatus":
+							if (self.val() == "") {
+								onError('婚姻状况不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "mobile":
+							if (self.val() == "") {
+								onError('手机号码不能为空',self);
+							} else if (!regPhone.test(self.val())){
+								onError('手机号码格式错误',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "bloodType":
+							if (self.val() == "") {
+								onError('血型不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						// case "expectedSalary":
+						// 	if (!regNum.test(self.val())){
+						// 		onError('只能填写数字',self);
+						// 	} else {
+						// 		onSuccess(self);
+						// 	}
+						// default:
+						// 	break;
+						default:
+							break;
+					}
+				});
+				$(".serviceItems_public").on("blur","input,select",function(){
+					var self = $(this);
+					var name = $(this).attr("name");
+					switch (name){
+						case "salaryType":
+							if (self.val() == "") {
+								onError('薪资类型不能为空',self);
+							}else if($(this).siblings("input[name='price']").val()==""){
+								onError('服务价格不能为空',self);
+							}else if(!regNum.test($(this).siblings("input[name='price']").val())){
+								onError('只能填写数字',self);
+							}else{
+								onSuccess(self);
+							}
+							break;
+						case "price":
+							if (self.val() == "") {
+								onError('服务价格不能为空',self);
+							} else if (!regNum.test(self.val())){
+								onError('只能填写数字',self);
+							}else if($(this).siblings("select[name='salaryType']").val()==""){
+								onError('薪资类型不能为空',self);
+							}else{
+								onSuccess(self);
+							}
+							break;
+						case "experience":
+							if (self.val() == "") {
+								onError('从业经验不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "serviceItemCode":
+							if (self.val() == "") {
+								onError('服务工种不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "serviceArea":
+							if (self.val() == "") {
+								onError('服务区域不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						default:
+							break;
+					}
+				});
+				$(".serviceItems").on("blur","input,select",function(){
+					var self = $(this);
+					name = $(this).attr("name").substring(16);
+
+					switch (name){
+						case "serviceItemCode":
+							if (self.val() == "") {
+								onError('服务工种不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "serviceNature":
+							if (self.val() == "") {
+								onError('服务类型不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						default:
+							break;
+					}
+				});
+				$(".fdb-alter").on("blur","input,select,textarea",function(){
+					var self = $(this);
+					name = $(this).attr("name");
+					switch (name){
+						case "financeTime":
+							if (self.val() == "") {
+								onErrorSp('日期不能为空',self);
+							} else {
+								onSuccessSp(self);
+							}
+							break;
+						case "payType":
+							if (self.val() == "") {
+								onErrorSp('类目不能为空',self);
+							} else {
+								onSuccessSp(self);
+							}
+							break;
+						case "inOutAmount":
+							if (self.val() == "") {
+								onErrorSp('收付金额不能为空',self);
+							} else if (!regNum.test(self.val())){
+								onErrorSp('只能填写数字',self);
+							} else {
+								onSuccessSp(self);
+							}
+							break;
+						case "remarks":
+							if (self.val().length>50) {
+								onErrorSp('备注不能超过50字',self);
+							} else {
+								onSuccessSp(self);
+							}
+							break;
+						case "policyName":
+							if (self.val() == "") {
+								onErrorSp('保险名称不能为空',self);
+							} else {
+								onSuccessSp(self);
+							}
+							break;
+						case "policyNo":
+							if (self.val() == "") {
+								onErrorSp('保单号不能为空',self);
+							}else if (!regNum.test(self.val())){
+								onErrorSp('只能填写数字',self);
+							} else {
+								onSuccessSp(self);
+							}
+							break;
+						case "policyAmount":
+							if (self.val() == "") {
+								onErrorSp('保额不能为空',self);
+							}else if (!regNum.test(self.val())){
+								onErrorSp('只能填写数字',self);
+							} else {
+								onSuccessSp(self);
+							}
+							break;
+						case "policyAgency":
+							if (self.val() == "") {
+								onErrorSp('保单机构不能为空',self);
+							} else {
+								onSuccessSp(self);
+							}
+							break;
+						case "accountName":
+							if (self.val() == "") {
+								onErrorSp('账号名称不能为空',self);
+							} else {
+								onSuccessSp(self);
+							}
+							break;
+						case "bankCode":
+							if (self.val() == "") {
+								onErrorSp('银行不能为空',self);
+							} else {
+								onSuccessSp(self);
+							}
+							break;
+						case "cardNo":
+							if (self.val() == "") {
+								onErrorSp('银行卡号不能为空',self);
+							}else if (!regNum.test(self.val())){
+								onErrorSp('只能填写数字',self);
+							} else {
+								onSuccessSp(self);
+							}
+							break;
+						default:
+							break;
+					}
+				})
+				var $div_li=$(".bottom-navi ul li");
+				$(".bottom-navi").on("click","ul li",function(){
+					var index=$div_li.index(this);
+					$(this).addClass("active").siblings().removeClass("active");
+					$(".tab_content").eq(index).show().siblings().hide();
+					if(index==0){
+						getDataBI(dataBI);
+						getDataSIL(dataJI);
+						getDataJI(dataJI);
+						getDataSL(dataSL);
+					}else if(index == 1){
+						getVideoPic();
+					}else if(index == 2){
+						getFinance();
+					}else if(index == 3){
+						getRecord();
+					}
+					$("#ic-frame").scroller(0);
+				})
+				$("#basicDataForm select,.serviceItems_public select,#cd-form select[name='authenticateGrade'],#cd-form select[name='authenticateGrade']").change(function(){
+					if ($(this).val()=="") {
+						$(this).addClass("grey_i");
+					}else{
+						$(this).removeClass("grey_i");
+					}
+				});
+				$("#serviceItems").on("change","select[name='serviceArea'],.leixing",function(){
+					if ($(this).val()=="") {
+						$(this).addClass("grey_i");
+					}else{
+						$(this).removeClass("grey_i");
+					}
+				});
+				//技能特点
+				$("ul.serviceItems, ul.postSkills_sp").on("click","input[type='checkbox']",function(){
+				 	var check = $(this).prop("checked");
+					if (check) {
+						$(this).parent().addClass("active");
+					} else {
+						$(this).parent().removeClass("active");
+					}
+				});
+			});
+
+			function onError (msg,self) {
+				if(self.parent().nextAll().hasClass('validation')){
+					self.parent().nextAll('.validation').text(msg);
+					return;
+				}
+				self.parent().after("<p class='validation'>"+msg+"</p>")
+			}
+
+			function onSuccess(self) {
+				self.parent().nextAll('.validation').remove();
+			}
+			function onErrorSp (msg,self) {
+				if(self.nextAll().hasClass('promptSp')){
+					self.nextAll('.promptSp').text(msg);
+					return;
+				}
+				self.parent().append("<span class='promptSp'>"+msg+"</span>");
+			}
+
+			function onSuccessSp(self) {
+				self.nextAll('.promptSp').remove();
+			}
+			function grey(){
+				$("select").each(function(){
+					if($(this).val()==""){
+						$(this).addClass("grey_i");
+					}else{
+						$(this).removeClass("grey_i");
+					}
+				})
+			}
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta http-equiv="Cache-Control" CONTENT="no-cache">
+  <meta http-equiv="Pragma" CONTENT="no-cache">
+  
+  <title>您身边的，家政好帮手</title>
+  <link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+  <link rel="stylesheet" type="text/css" href="css/base.css"/>
+  <link rel="stylesheet" type="text/css" href="css/siteManagement.css"/>
+  <!--<link rel="stylesheet" type="text/css" href="editor/themes/simple/simple.css"/>-->
+  <link rel="stylesheet" type="text/css" href="css/aboutUs.css"/>
+  <!--<script src="https://unpkg.com/vue"></script>-->
+  <script src="js/utils/mapping.js"></script>
+  <script src="js/vue.js"></script>
+  <script src="js/axios.min.js"></script>
+
+  <!--<script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
+  <script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+  <script src="js/utils/common.js"></script>
+  <script src="https://unpkg.com/wangeditor/release/wangEditor.min.js"></script>
+  <script src="js/siteManagement.js"></script>
+  <script src="js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/jquery.pagination.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<div id="header" class="clearfix">
+  <div class="h-frame">
+    <div class="logo"><img src="img/logo.png"/></div>
+    <div class="h-right">
+      <div class="account">
+        <ul class="clearfix">
+          <li class="login"><a href="login.html">登录</a></li>
+          <li><a href="resetPassword.html">修改密码</a></li>
+          <li><a>退出</a></li>
+        </ul>
+      </div>
+      <div class="navigator">
+        <ul class="clearfix">
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--左侧导航-->
+<div class="naviLeft">
+  <ul>
+    <!-- <li class="nl_on"><a class="sygl" href="homeManagement.html"><em></em>网站管理</a></li>
+     <li><a class="lxfs" href="contactWay.html"><em></em>联系方式</a></li>
+     <li><a class="zpgl" href="recruitManagement.html"><em></em>招聘管理</a></li>-->
+  </ul>
+</div>
+<div id="app">
+  <div id="layer"></div>
+  <div id="mask" v-if="isLayer" v-cloak></div>
+  <!--提示信息-->
+  <div class="shangjia_alert" v-cloak v-show="isTips">
+    <div class="oi-title clearfix">
+      <p>温馨提示</p>
+      <a @click="cancelTips"></a>
+    </div>
+    <h1>确定要离开此页面吗?
+      <br>
+      <p class="f12 mt10">现在离开不会保存您所做的修改</p>
+    </h1>
+    <div class="shangjai_bt">
+      <a class="sj_cancel" @click="cancelTips">取消</a>
+      <a class="sj_ok" @click="confirmTips">确定</a>
+    </div>
+  </div>
+  <!--手机预览-->
+  <div id="maskBox" v-cloak v-show="isPreview">
+    <div class="phoneBox">
+      <div class="phonePreview rel">
+        <div class="btnWrapper">
+        <div>
+          <span class="btnFill btnMd previewBtn mb50">手机预览</span>
+        </div>
+        <div>
+          <button class="btnClose" @click="closeMask">关闭</button>
+        </div>
+        </div>
+        <div class="showL">
+          <div class="showHead fix">
+            <h4 class="show-title">
+              {{initInfo.websiteName}}
+            </h4>
+            <div class="banner rel" id="" name="showBanner">
+              <!-- <img :src="banner.bannerUrl" v-if="banner.isDefault=='1'">
+              <img :src="banner.defaultUrl" v-else>   -->
+              <img :src="banner.bannerUrl" alt="" id="imgCustom" class="imgCustom" v-if="banner.isDefault=='1'">
+              <img :src="systemBanners.bannerUrl" alt="" id="imgDefault" v-else> 
+            </div>
+            <div class="iconWrapper">
+              <dl>
+                <dt><img src="img/icon/fw.png" alt=""></dt>
+                <dd>家政服务</dd>
+              </dl>
+              <dl>
+                <dt><img src="img/icon/dz.png" alt=""></dt>
+                <dd>自由定制</dd>
+              </dl>
+              <dl class="iconAboutUs rel">
+                <dt><img src="img/icon/aboutUs.png" alt=""></dt>
+                <dd>关于我们</dd>
+                <div class="frameSmSel abs" id="" name="showAboutUs"></div>
+              </dl>
+            </div>
+          </div>
+          <div class="hotService">
+            <h4><img src="img/indexgz.png"/>优质服务</h4>
+              <div class="showContent">
+                <div class="box_big">
+                  <div class="showBoxBig f0 rel " data-index="01" v-if="siteObj.jobs[0].isShow">
+                    <img :src="siteObj.jobs[0].defaultImageUrl" alt="" v-if="siteObj.jobs[0].isDefault=='0'">
+                    <img :src="siteObj.jobs[0].imageUrl" v-else>
+                    <div class="r ctnRtBox">
+                      <h5 class="f16"><span class="rel dib">{{siteObj.jobs[0].serviceItemName}} <i class="hot"
+                                                                                                  v-show="siteObj.jobs[0].isHot"></i></span>
+                      </h5>
+                      <p class="f10 g80 mt10 mb22">{{siteObj.jobs[0].serviceDesc}}</p>
+                      <div class="dib priceBox">
+                        <span class="price">{{siteObj.jobs[0].servicePrice}}</span>
+                        {{siteObj.jobs[0].priceValue}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="box_box" v-for="(job,idx) in siteObj.jobs" v-if="idx>0&&job.isShow" >
+                    <div class="showBoxSm " >
+                      <div class="descR dib">
+                        <h6><span>{{job.serviceItemName}}<i v-show="job.isHot"></i></span></h6>
+                        <div class="priceWrapper">
+                          <span class="price">{{job.servicePrice}}</span> {{job.priceValue}}
+                        </div>
+                      </div>
+                      <img :src="job.defaultImageUrl" alt="" v-if="job.isDefault=='0'" class="r">
+                      <img :src="job.imageUrl" v-else class="r">
+                    </div>
+                </div>
+                <div class="more_gz" v-if="siteObj.isMore==1">
+                  <div class="showBoxSm" >
+                      <p>更多服务</p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="aboutUsPreview">
+            <h4 class="show-title">
+              {{initInfo.websiteName}}
+            </h4>
+            <div class="aboutUsCtn"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pcBox dn"></div>
+  </div>
+  <!--更换阿姨弹窗-->
+  <div class="changeAunt">
+    <div class="ca-head clearfix">
+      <p><span></span><i data-id=""></i></p>
+      <div>
+        <a class="b-btn cancel-ca" style="background-color: #DBDBDB;margin-right: 22px;">取消</a>
+        <a class="b-btn cas-btn" @click="switchAunt">保存并发布</a>
+      </div>
+    </div>
+    <p class="ca-inquiry"><label>姓名<input type="text" @keyup.enter="inquiry"/></label><a class="b-btn" @click="inquiry">查询</a></p>
+    <table class="changeAunt_m">
+      <thead>
+      <tr>
+        <td>选择</td>
+        <td>照片</td>
+        <td>姓名</td>
+        <td>基本信息</td>
+        <td>学历</td>
+        <td>服务工种</td>
+        <td>服务状态</td>
+      </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <div class="clearfix">
+      <div id="pagination">
+      </div>
+      <p class="records">共<span></span>条</p>
+    </div>
+  </div>
+  <div class="particulars">
+    <p class="paths">当前页面：网站管理 > 首页管理</p>
+    <div class="container">
+      <div class="showL">
+        <div class="showHead fix">
+          <h4 class="show-title">
+            {{initInfo.websiteName}}
+          </h4>
+          <div class="banner rel" id="showBanner" data-id="#banner" @click="switchRtBar">
+              <img :src="banner.bannerUrl" alt="" v-if="initInfo.bannnerImage==''"> 
+            <img :src="initInfo.bannnerImage" alt="" v-else>  
+             <!-- <img :src="banner.bannerUrl" alt="">  -->
+          </div>
+          <div class="iconWrapper">
+            <dl>
+              <dt><img src="img/icon/fw.png" alt=""></dt>
+              <dd>家政服务</dd>
+            </dl>
+            <dl>
+              <dt><img src="img/icon/dz.png" alt=""></dt>
+              <dd>自由定制</dd>
+            </dl>
+            <dl class="iconAboutUs rel">
+              <dt><img src="img/icon/aboutUs.png" alt=""></dt>
+              <dd>关于我们</dd>
+              <div class="frameSmSel abs" id="showAboutUs" name="showAboutUs" @click="switchRtBar"
+                   data-id="#aboutUs"></div>
+            </dl>
+          </div>
+        </div>
+        <div class="hotService">
+            <h4><img src="img/indexgz.png"/>优质服务</h4>
+            <div class="showContent" data-id="#service">
+                <div class="box_big">
+                  <div @click="switchPannel" class="showBoxBig f0 rel " data-index="0"
+                      v-if="initInfo.sIndexInfoJsons[0].isShow=='1'">
+                      <img :src="initInfo.sIndexInfoJsons[0].imageUrl" alt="">
+                      <!--<img :src="initInfo.sIndexInfoJsons[0].defaultImageUrl" alt="" v-else>-->
+                      <div class="r ctnRtBox">
+                          <h5 class="f16"><span class="rel dib">{{initInfo.sIndexInfoJsons[0].serviceItemName}} <i class="hot"
+                                                                                                                  v-show="initInfo.sIndexInfoJsons[0].isHot=='1'"></i></span>
+                          </h5>
+                          <p class="f10 g80 mt10 mb22">{{initInfo.sIndexInfoJsons[0].serviceDesc}}</p>
+                          <div class="dib priceBox">
+                            <span class="price">{{initInfo.sIndexInfoJsons[0].servicePrice}}</span>
+                            {{initInfo.sIndexInfoJsons[0].priceValue}}
+                          </div>
+                      </div>
+                      <i class="bgIndex">1</i>
+                  </div>
+                </div>
+                <!-- <div class="showBoxSm  rel " @click="switchPannel" data-index="1"
+                    v-if="initInfo.sIndexInfoJsons[1].isShow=='1'"> -->
+                  <!--<img :src="initInfo.sIndexInfoJsons[1].defaultImageUrl" alt="" v-else>-->
+                  <!-- <div class="descR dib">
+                    <h6><span class="rel dib">{{initInfo.sIndexInfoJsons[1].serviceItemName}}<i class="hot"
+                                                                                                v-show="initInfo.sIndexInfoJsons[1].isHot=='1'"></i></span>
+                    </h6>
+                    <div class="priceWrapper">
+                      <span class="price">{{initInfo.sIndexInfoJsons[1].servicePrice}}</span>
+                      {{initInfo.sIndexInfoJsons[1].priceValue}}
+                    </div>
+                  </div>
+                  <img :src="initInfo.sIndexInfoJsons[1].imageUrl" alt="">
+                  <i class="bgIndex">2</i>
+                </div> -->
+              <div class="box_box" v-for="(job,idx) in initInfo.sIndexInfoJsons" v-if="idx>0&&job.isShow=='1'" >
+                <div class="showBoxSm " :data-index="idx" @click="switchPannel">
+                  <div class="descR dib">
+                    <h6><span class="rel dib">{{job.serviceItemName}}<i class="hot"
+                                                                        v-show="initInfo.sIndexInfoJsons[idx].isHot=='1'"></i></span>
+                    </h6>
+                    <div class="priceWrapper">
+                      <span class="price">{{job.servicePrice}}</span> {{job.priceValue}}
+                    </div>
+                  </div>
+                  <img :src="job.imageUrl" alt="" class="r">
+                  <!--<img :src="job.defaultImageUrl" alt="" v-else>-->
+                  <i class="bgIndex">{{idx+1}}</i>
+                </div>
+              </div>
+               <div class="more_gz" v-if="initInfo.isMore==1">
+                <div class="showBoxSm">
+                    <p>更多服务</p>
+                </div>
+              </div> 
+            </div>
+        </div>
+      </div>
+      <div class="controlR ovh" class="panel-group" id="accordion" data-authority="0">
+        <div class="box" id="banner">
+          <!--<form id="banner_m" action="" enctype="multipart/form-data">-->
+          <h3>
+            <a href="#bannerSetting" data-id="#showBanner" @click="switchBar" id="bannerTap">
+              banner管理
+              <i class=""></i>
+            </a>
+          </h3>
+          <div class="contentBox dn" id="bannerSetting">
+            <div class="subContent ovh">
+              <div class="rdoGroup pic-manage">
+                <div class="mb10">
+                  <label>
+                    <input type="radio" name="isDefault" id="" class="rdoBase default" value="0"
+                           v-model="banner.isDefault">系统默认
+                  </label>
+                </div>
+                <div>
+                  <label>
+                    <input type="radio" name="isDefault" id="" class="rdoBase custom" value="1"
+                           v-model="banner.isDefault">自定义</label>
+                  <div class="limit dib vb" :class="[banner.isDefault=='1'?'limCust':'']">
+                    <div class="dib uploadBox ml24">
+                      <a class="upload">选择上传</a>
+                      <input type="file" accept="image/gif,image/png,image/bmp,image/jpeg" class="bannerUpload"
+                             name="file" @change="switchBannerImg" :disabled="banner.isDefault=='0'">
+                      <!--<input name="bannerPath" type="text" hidden value="">-->
+                    </div>
+                    <span class="desc">（建议尺寸 <em>1170*404</em>  px，大小不超过 <em>10M</em>，格式限制 <em>jpg/png/bmp</em>）</span>
+                  </div>
+                </div>
+              </div>
+              <div class="imgBox">
+                  <!-- <img :src="banner.bannerUrl" alt="" id="imgCustom" class="imgCustom" v-if="banner.isDefault=='1'">
+                <img :src="banner.defaultUrl" alt="" id="imgDefault" v-else>   -->
+                <img :src="banner.bannerUrl" alt="" id="imgCustom" class="imgCustom" v-if="banner.isDefault=='1'">
+                <img :src="systemBanners.bannerUrl" alt="" id="imgDefault" v-else>  
+              </div>
+            </div>
+            <div class="btnBox mt40 mb100">
+              <a class="btnPreview btnBase" @click="preview">预览</a>
+              <a href="#showImg" class="btnSave btnBase ml20 save-es" @click="saveBanner">保存并发布</a>
+            </div>
+          </div>
+          <!--</form>-->
+        </div>
+        <div class="box" id="aboutUs">
+          <h3>
+            <a href="#aboutUsSetting" data-id="#showAboutUs" @click="switchBar" id="aboutUsTap">
+              关于我们
+              <i class=""></i>
+            </a>
+          </h3>
+          <div class="contentBox dn" id="aboutUsSetting" >
+            <div class="subContent ovh p0">
+            </div>
+            <div class="btnBox mt40">
+              <a class="btnBack btnBase" @click="previewAboutUs">预览</a>
+              <a class="btnSave btnBase ml20" href="#showAboutUs" id="saveAboutUs">保存并发布</a>
+            </div>
+          </div>
+        </div>
+        <div class="box" id="service" >
+          <h3>
+            <a href="#serviceSetting" @click="switchBar" id="serviceTap">
+              服务管理
+              <i class=""></i>
+            </a>
+          </h3>
+          <div class="contentBox dn" id="serviceSetting">
+            <div class="btnBar">
+              <a v-for="(t,index) in siteObj.jobs" @click="selectTab(index)"
+                 :class="[t.isShow?'btnMd':'btnDisabled',tabindex==index ? 'btnFill': '']" :href="'#tab'+index">{{t.serviceItemName}}</a>
+            </div>
+            <div class="typeWrapper" v-for="(item,index) in siteObj.jobs" v-show="tabindex==index">
+              <!--月嫂-->
+              <div id="" class="subContent" :data-index="index">
+                <form id="serviceEdit">
+                  <ul class="fix">
+                    <li>
+                      <h4 class="dib">
+                        服务工种
+                      </h4>
+                      <div class="formRt">
+                        <span class="mr90">{{item.serviceItemName}}</span>
+                        <label>是否展示<input class="mui-switch mui-switch-animbg ml24" type="checkbox"
+                                          v-model="item.isShow" @change="isShowMore"></label>
+                      </div>
+                    </li>
+                    <li class="lHot">
+                      <h4 class="dib">
+                        Hot标签
+                      </h4>
+                      <div class="formRt">
+                        <input type="checkbox" class="mr15 chkBase" v-model="item.isHot">
+                        <img src="img/icon/hot.png" alt="">
+                        <span class="f12 g80">（勾选后工种显示“hot”标识）</span>
+                      </div>
+                    </li>
+                    <!--<li>
+                      <h4 class="dib">
+                        排序
+                      </h4>
+                      <div class="formRt">
+                        <input type="number" maxlength="1" v-model="item.serialNumber" min=1 max=9>
+                      </div>
+                    </li>-->
+                    <li>
+                      <h4 class="dib">
+                        服务价格
+                      </h4>
+                      <div class="formRt rel">
+                        <label>
+                          <input type="text" class="mr8" maxlength="8"
+                                 onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+                                 onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"
+                                 v-model="item.servicePrice" name="servicePrice" @blur="checkInputData">
+                          <select name="" id="" class="bdc" v-model="item.servicePriceUnit">
+                            <option value="01">元起/月</option>
+                            <option value="02">元起/小时</option>
+                            <option value="03">元起/26天</option>
+                            <option value="04">元起/天</option>
+                          </select>
+                        </label>
+                        <!--<span class='cm-validation'></span>-->
+                      </div>
+                    </li>
+                    <li class="serviceDesc">
+                      <h4 class="dib">
+                        服务描述
+                      </h4>
+                      <div class="formRt rel">
+                        <label>
+                          <em class="g80 f12">{{item.serviceDesc.length}}/15</em>
+                          <input type="text" class="intBig" maxlength="15" v-model="item.serviceDesc" name="serviceDesc"
+                                 @blur="checkInputData">
+                        </label>
+                        <!--<span class='cm-validation'></span>-->
+                      </div>
+                    </li>
+                    <li class="uploadImg fix">
+                      <h4 class="dib">
+                        工种图片
+                      </h4>
+                      <div class="formRt">
+                        <div class="rdoGroup">
+                          <div class="">
+                            <label>
+                              <input type="radio" name="setting" class="rdoBase" v-model="item.isDefault" value="0">系统默认
+                            </label>
+                            <!--<label for="defaultType" class="f14"></label>-->
+                          </div>
+                          <div class="">
+                            <label>
+                              <input type="radio" name="setting" class="rdoBase isRdoed custom" v-model="item.isDefault"
+                                     value="1">自定义
+                            </label>
+                            <!--<label for="customType" class="f14"></label>-->
+                            <div class="limit dib vb" :class="[item.isDefault=='1'?'limCust':'']">
+                              <div class="dib uploadBox ml20 mr15">
+                                <a class="upload">选择上传</a>
+                                <input type="file" accept="image/gif,image/png,image/bmp,image/jpeg"
+                                       class="jobImgUpload" @change="switchImg" :disabled="item.isDefault=='0'">
+                              </div>
+                              <span class="desc">（图片大小限制 <em>2M</em>以内，格式限制 <em>jpg/png/bmp</em>）</span>
+                            </div>
+                          </div>
+                        </div>
+                        <img :src="item.imageUrl" alt="" class="mt15 ml30 mb24 jobImg imgSize" :data-index="index"
+                             v-if="item.isDefault=='1'">
+                        <img :src="item.defaultImageUrl" alt="" class="mt15 ml30 mb24 imgSize" :data-index="index" v-else>
+                      </div>
+                    </li>
+                    <li class="serviceObj">
+                      <h4 class="dib">
+                        服务对象
+                      </h4>
+                      <div class="formRt rel">
+                        <label>
+                          <em class="g80 f12">{{item.serviceObject.length}}/20</em>
+                          <input type="text" class="intBig" maxlength="15" v-model="item.serviceObject"
+                                 name="serviceObject" @blur="checkInputData">
+                        </label>
+                        <!--<span class='cm-validation'></span>-->
+                      </div>
+                    </li>
+                    <li class="serviceCtn mt15 ovh">
+                      <h4 class="dib">
+                        服务内容
+                      </h4>
+                      <div class="formRt rel">
+                        <label>
+                          <em class="g80 f12">{{item.serviceContent.length}}/50</em>
+                          <textarea type="text" class="txtArea" maxlength="50" v-model="item.serviceContent"
+                                    name="serviceContent" @blur="checkInputData"></textarea>
+                        </label>
+                        <!--<span class='cm-validation'></span>-->
+                      </div>
+                    </li>
+                  </ul>
+                </form>
+              </div>
+            </div>
+            <!--保存预览-->
+            <div class="btnBox mt30">
+              <a class="btnPreview btnBase" @click="preview">预览</a>
+              <a class="btnSave btnBase ml20 sme-sub" @click="releaseSubmit">保存并发布</a>
+            </div>
+          </div>
+        </div>
+        <div class="box" id="recommend">
+          <h3>
+            <a href="#recommendSetting" @click="switchBar" id="recommendTap">
+              推荐管理
+              <span class="pc">（在pc上查看效果）</span>
+              <i class=""></i>
+            </a>
+          </h3>
+          <div class="contentBox dn recommend_m" id="recommendSetting">
+            <div class="subContent ovh p0">
+              <ul class="recLists mb30 fix">
+                <!--<li class="recItem l mr26 aunt">
+                  <dl class="baby-sitter">
+                    <dt><img src="img/siteManagement/avatar.png" alt=""></dt>
+                    <dd class="g3 name">张阿姨</dd>
+                    <dd class="g80 mt14 type">住家保姆</dd>
+                    <dd class="salary mt14">￥5000元/月</dd>
+                  </dl>
+                  <dl class="baby-sitter-edit dn">
+                    <dt><img src="img/siteManagement/avatar.png" alt=""></dt>
+                    <dd class="g3 name">张丹丹</dd>
+                    <dd class="g80 mt14 type">钟点工、老人陪护、医院护工</dd>
+                    <dd class="salary mt14">
+                      <button class="btnChange">更换</button>
+                    </dd>
+                  </dl>
+                </li>
+                <li class="recItem l noAunt">
+                  <dl class="nobaby-sister">
+                    <dt class="mb30"><img src="img/siteManagement/noavatar.png" alt=""></dt>
+                    <dd class="f13 g80">暂无阿姨</dd>
+                    <dd class="f13 g80">请先录入阿姨</dd>
+                  </dl>
+                </li>-->
+                <li v-for="(item,index) in list" class="recItem l mr26 aunt" :data-staffid="item.staffId" :data-recommendid="item.recommendId">
+                  <dl class="baby-sitter">
+                    <dt><img :src="item.headImage" alt=""></dt>
+                    <dd class="g3 name">{{item.staffName}}</dd>
+                    <dd class="g80 mt14 type">{{item.serviceType}}</dd>
+                    <dd class="salary mt14">{{item.expectedSary}}</dd>
+                  </dl>
+                  <dl class="baby-sitter-edit dn">
+                    <dt><img :src="item.headImage" alt=""></dt>
+                    <dd class="g3 name">{{item.staffName}}</dd>
+                    <dd class="g80 mt14 type">{{item.serviceType}}</dd>
+                    <dd class="salary mt14">
+                      <button class="btnChange" @click="staffsInfoShow" :data-staffid="item.staffId" :data-recommendid="item.recommendId">更换
+                      </button>
+                    </dd>
+                  </dl>
+                </li>
+                <li class="recItem l noAunt" v-if="listLg==1">
+                  <dl class="nobaby-sister">
+                    <dt class="mb30"><img src="img/siteManagement/noavatar.png" alt=""></dt>
+                    <dd class="f13 g80">暂无阿姨</dd>
+                    <dd class="f13 g80">请先录入阿姨</dd>
+                  </dl>
+                </li>
+                <li class="moreAunt r">
+                  <div class="mt40">
+                    <img src="img/siteManagement/moreAunt.png" alt="">
+                    <p class="more">查看更多<em></em></p>
+                  </div>
+                </li>
+              </ul>
+              <div class="btnBox mt50 mb100 dn">
+                <a class="btnBack btnBase">预览</a>
+                <!--<button class="btnSave btnBase ml20">保存并发布</button>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="editor" class="dn">
+</div>
+<script>
+
+  var E = window.wangEditor
+  var editor = new E('#editor')
+  editor.customConfig.withCredentials = false// 上传图片到服务器
+  // 隐藏“网络图片”tab
+  // 将图片大小限制为 3M
+  // 或者 var editor = new E( document.getElementById('#editor') )
+  // 下面两个配置，使用其中一个即可显示“上传图片”的tab。但是两者不要同时使用！！！
+  //   editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+  editor.customConfig.uploadFileName = 'file';
+  editor.customConfig.uploadImgServer = publicPathSP+'/image/upload'
+  editor.customConfig.uploadImgMaxSize = 2 * 1024 * 1024
+  editor.customConfig.showLinkImg = false
+  editor.customConfig.uploadImgHooks = {
+    before: function (xhr, editor, files) {
+      console.log("before")
+      // 图片上传之前触发
+      // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，files 是选择的图片文件
+
+      // 如果返回的结果是 {prevent: true, msg: 'xxxx'} 则表示用户放弃上传
+      // return {
+      //     prevent: true,
+      //     msg: '放弃上传'
+      // }
+    },
+    success: function (xhr, editor, result) {
+      console.log("suc");
+      // 图片上传并返回结果，图片插入成功之后触发
+      // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
+    },
+    fail: function (xhr, editor, result) {
+      console.log("fail")
+      // 图片上传并返回结果，但图片插入错误时触发
+      // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果
+    },
+    timeout: function (xhr, editor) {
+      console.log("timeout")
+      // 图片上传超时时触发
+      // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
+    },
+    error: function (xhr, editor) {
+      console.log("err");
+      // 图片上传出错时触发
+      // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象
+    },
+    // 如果服务器端返回的不是 {errno:0, data: [...]} 这种格式，可使用该配置
+    // （但是，服务器端返回的必须是一个 JSON 格式字符串！！！否则会报错）
+    customInsert: function (insertImg, result, editor) {
+      // 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）
+      // insertImg 是插入图片的函数，editor 是编辑器对象，result 是服务器端返回的结果
+      console.log(result)
+      var url = result.result.url;
+      insertImg(url);
+      // 举例：假如上传图片成功后，服务器端返回的是 {url:'....'} 这种格式，即可这样插入图片：
+      /*var url = result.url
+       insertImg(url)*/
+
+      // result 必须是一个 JSON 格式字符串！！！否则报错
+    }
+  }
+  editor.create();
+
+  queryAboutUsInfo();
+  //获取关于我们信息
+  function queryAboutUsInfo() {
+    var _this = this;
+    let req = {
+      url: window.global_config.queryAboutUsInfo,
+      methods: 'get',
+    };
+    axios(req).then(function (res) {
+      var dataJD = res.data.jsonData;
+      if (dataJD.content!= ""&&dataJD.content!=null&&dataJD.isDefault=="Y") {
+        var html = dataJD.content;
+        console.log(html)
+        editor.txt.html(html);
+      } else{
+        var html = `<img class="defaultBanner" src='`+dataJD.images+`'>
+`
+        editor.txt.html(html);
+      }
+    })
+  }
+/*$("#editor").on("click",'.w-e-menu',function () {
+  console.log(1112);
+  if ($(this).hasClass("w-e-active")){
+    $(this).removeClass("w-e-active")
+  }else {
+    $(this).addClass("w-e-active")
+  }
+})*/
+  //  保存关于我们
+  $("body").on("click", "#saveAboutUs", function (e) {
+    stopDefault(e);
+    var that=$(this);
+    // 取得HTML内容
+
+    var html = editor.txt.html();
+    $.ajax({
+      url: window.global_config.saveAboutUsInfo,
+      type: "post",
+      data: "content=" + html,
+      dataType: "json",
+      success: function success(data) {
+        if (data.success) {
+          toast();
+          queryAboutUsInfo();
+          console.log(data)
+        } else {
+          console.log(data.msg);
+        }
+      }
+    });
+    $("#editor").hide();
+    removeFrame(that);
+  })
+
+  function previewBox() {
+    // 取得HTML内容
+    var html = editor.txt.html();
+    console.log(html);
+    $("body .phonePreview .showHead,body .phonePreview .hotService").hide();
+    $("body .aboutUsPreview .aboutUsCtn").show().html(html)
+  }
+  //关于我们
+/*  $("body").on('click', "#showAboutUs", function () {
+    var ish = $("body #aboutUsSetting").is(":hidden")
+    var that = $(this);
+    switchStatus(ish, that);
+    $("#aboutUs h3 a").triggerHandler("click");
+  })
+  //banner
+  $("body").on("click", ".container .banner", function () {
+    console.log("clickBanner")
+    var ishidden = $("body #bannerSetting").is(":hidden");
+    console.log($("body #bannerSetting"));
+    var that = $(this);
+    switchStatus(ishidden, that);
+    $("body #banner h3 a").triggerHandler("click");
+  })*/
+
+</script>
+
+</body>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      test:true,
+      editor: {},
+      isDisabled: false,
+      isTips:false,
+      id: "",
+//      arrList: [],
+      list: [],
+      listLg:0,
+      siteObj: {
+        banner: {}
+      },
+      banner: {},
+      systemBanners:{},
+      initInfo: {},
+      showJobs: [],
+      defaultUrl: "img/siteManagement/imgSm.png",
+//      isShow:null,
+      selected: 0,
+      tabindex: 0,
+      active: "",
+      beans: [
+        {name: '月嫂'},
+        {name: '育儿嫂'},
+        {name: '保姆'},
+        {name: '钟点工'},
+        {name: '老人陪护'},
+        {name: '家庭管家'}
+      ],
+      isLayer: false,
+      isPreview:false,
+      isCollapsed:true,
+      aid:""
+    },
+    created(){
+      this.getBannerInfo();
+      this.serviceItems();
+      this.createEditor();
+      this.gainStaffRecommend();
+      this.getIndexInfo();
+      this.getSystemBanners();
+    },
+    // watch:{
+    //   test:function(){
+    //     this.$nextTick(function () {
+    //       console.log($(".particulars .box_box").length);
+    //       if($("#serviceSetting .btnBar .btnMd").length%2==0){
+    //             $(".more_gz").show();
+    //         }else{
+    //           $(".more_gz").hide();
+    //         }
+    //     })
+    //   }
+    // },
+    methods: {
+//      获取bannerInfo
+      getBannerInfo: function () {
+        var _this = this;
+        $.ajax({
+          url: publicPath + "/api/banner/getBannerInfo",
+          type: "post",
+          data: {},
+          dataType: "json",
+          success: function success(data) {
+            if (data.success) {
+              if (data.code == 0) {
+                var dataJD = data.jsonData;
+                var isChecked = fomateValue(dataJD.isDefault);
+                _this.banner = {
+                  isDefault: dataJD.isDefault,
+                  defaultUrl: "img/siteManagement/banner.png",
+                  bannerUrl: dataJD.bannerUrl,
+                  isChecked: isChecked
+                }
+                console.log(data.msg);
+              } else {
+                console.log(data.msg);
+              }
+            } else {
+              console.log(data.msg);
+            }
+          }
+        });
+      },
+      getSystemBanners: function () {
+        var _this = this;
+        $.ajax({
+          url: publicPath + "/api/banner/getSystemBanners",
+          type: "get",
+          data: {},
+          dataType: "json",
+          success: function success(data) {
+            if (data.success) {
+              if (data.code == 0) {
+                var dataJD = data.jsonData;
+                _this.systemBanners = {
+                  bannerUrl: dataJD[0].bannerUrl
+                }
+                console.log(data.msg);
+                console.log(dataJD.bannerUrl);
+              } else {
+                console.log(data.msg);
+              }
+            } else {
+              console.log(data.msg);
+            }
+          }
+        });
+      },
+      isShowMore: function(){
+        var _this = this;
+        if($("#serviceSetting .btnBar .btnMd").length%2==0){
+            _this.siteObj.isMore = 1;
+        }else{
+          _this.siteObj.isMore = 0;
+        }
+      },
+//      保存banner
+      saveBanner: function (e) {
+        var _this = this;
+        var el = e.currentTarget;
+        var that = $(el);
+        if (_this.banner.isDefault == "0") {
+          var params = {
+            isDefault: _this.banner.isDefault,
+            bannerPath: _this.systemBanners.bannerUrl
+          }
+        } else {
+          if (_this.banner.bannerUrl==""){
+            alert("请上传图片")
+            return;
+          }
+          var params = {
+            isDefault: _this.banner.isDefault,
+            bannerPath: _this.banner.bannerUrl
+          }
+        }
+        $.ajax({
+          url: publicPath + "/api/banner/save",
+          type: "post",
+          data: params,
+          dataType: "json",
+          success: function success(data) {
+            if (data.success) {
+              if (data.code == 0) {
+                console.log(data);
+                toast();
+                _this.getIndexInfo();
+                console.log(data.msg);
+              } else {
+                console.log(data.msg);
+              }
+            } else {
+              console.log(data.msg);
+            }
+          }
+        });
+        removeFrame(that);
+      },
+//      获取左侧展示信息
+      getIndexInfo: function () {
+        let _this = this;
+        let req = {
+          url: window.global_config.getIndexInfo,
+          methods: 'get',
+        };
+        axios(req).then(function (res) {
+          let data = res.data;
+          if (data.success) {
+            var dataJD = data.jsonData;
+            console.log(dataJD);
+            _this.initInfo = dataJD;
+            var showSum=0;
+            for (var idx in dataJD.sIndexInfoJsons) {
+              var obj = dataJD.sIndexInfoJsons[idx];
+              var isShow = fomateValue(obj.isShow);
+              if(obj.isShow==1){
+                showSum++;
+              }
+            }
+            if(showSum%2==0){
+              _this.initInfo.isMore = 1;
+            }else{
+              _this.initInfo.isMore = 0;
+            }
+          } else {
+            console.log(data.msg);
+          }
+        }).catch(function(err){console.log(err)})
+        //权限禁止点击
+
+      },
+      serviceItems: function () {
+        let _this = this;
+        let req = {
+          url: window.global_config.getServiceManageDetails,
+          methods: 'get',
+        };
+        axios(req).then(function (res) {
+          let data = res.data;
+          console.log(data);
+
+          if (data.success) {
+            var dataJD = data.jsonData.jsonData;
+            _this.showJobs = dataJD;
+            var arrList = [];
+            var showSum=0;
+            for (var idx in dataJD) {
+              var obj = dataJD[idx];
+              var isHot = fomateValue(obj.isHot);
+              var isShow = fomateValue(obj.isShow);
+              console.log(isHot)
+              if(obj.isShow==1){
+                showSum++;
+              }
+              var temp = {
+                serviceItemName: obj.serviceItemName,
+                servicePrice: obj.servicePrice,
+                serviceDesc: obj.serviceDesc,
+                imageUrl: obj.imageUrl,
+                defaultImageUrl: obj.defaultImageUrl,
+                serviceObject: obj.serviceObject,
+                serviceContent: obj.serviceContent,
+                isHot: isHot,
+                isShow: isShow,
+                servicePriceUnit: obj.servicePriceUnit,
+                isDefault: obj.isDefault,
+//                serialNumber: obj.serialNumber,
+                priceValue: obj.priceValue,
+                serviceItemCode: obj.serviceItemCode
+                
+              }
+              arrList.push(temp)
+              _this.siteObj = {
+                jobs: arrList
+              }
+            }
+            console.log(showSum);
+            if(showSum%2==0){
+              _this.siteObj.isMore = 1;
+            }else{
+              _this.siteObj.isMore = 0;
+            }
+         
+//            _this.arrList = data.jsonData.jsonData;
+
+//            console.log(_this.arrList)
+          } else {
+            console.log(data.msg);
+          }
+        }).catch((err) => console.log(err))
+      },
+      createEditor: function () {
+        let _this = this;
+      },
+      closeMask: function () {
+        this.isLayer = false;
+        this.isPreview= false;
+      },
+      //				推荐阿姨列表获取
+      gainStaffRecommend: function () {
+        let _this = this;
+        let req = {
+          url: window.global_config.staffRecommend,
+          methods: 'get',
+        };
+        axios(req).then(function (res) {
+          let data = res.data;
+          console.log(data);
+          if (data.success) {
+            _this.list = data.jsonData;
+            _this.listLg=_this.list.length;
+            console.log(_this.list)
+            console.log(_this.listLg)
+          } else {
+            console.log(data.msg);
+          }
+        }).catch((err) => console.log(err))
+        /* $.ajax({
+         url: publicPath + "/api/staffs/staffRecommend",
+         type: "post",
+         data: {},
+         dataType: "json",
+         success: function success(data) {
+         if (data.success) {
+         if (data.code == 0) {
+         var dataJD = data.jsonData;
+         var html = "";
+         var n = 0;
+         $.each(dataJD, function (i, item) {
+         n++;
+         var workStatus = "";
+         if (item.workStatus == "待聘") {
+         workStatus = "空闲";
+         } else {
+         workStatus = item.workStatus;
+         }
+         html += `
+         <li class="recItem l mr26 aunt" data-staffid="${item.staffId}" data-recommendid="${item.recommendId}">
+         <dl class="baby-sitter">
+         <dt><img src="${item.headImage}" alt=""></dt>
+         <dd class="g3 name">${item.staffName}</dd>
+         <dd class="g80 mt14 type">${item.serviceType}</dd>
+         <dd class="salary mt14">￥5000元/月</dd>
+         </dl>
+         <dl class="baby-sitter-edit dn">
+         <dt><img src="${item.headImage}" alt=""></dt>
+         <dd class="g3 name">${item.staffName}</dd>
+         <dd class="g80 mt14 type">${item.serviceType}</dd>
+         <dd class="salary mt14">
+         <button class="btnChange">更换</button>
+         </dd>
+         </dl>
+         </li>
+         `
+         });
+         $(".recommend_m .recLists").prepend(html);
+         if ($(".recommend_m").data("authority") == 1) {
+         /!* $(".recommend_m tbody tr").each(function () {
+         $(this).find("td").eq(7).html("<a class='btnChange'>更换</a>");
+         })*!/
+         if (n < 2) {
+         $(".addSR").show();
+         } else {
+         $(".addSR").hide();
+         }
+         }
+
+         console.log(data.msg);
+         } else {
+         console.log(data.msg);
+         }
+         } else {
+         console.log(data.msg);
+         }
+         }
+         });*/
+      },
+//      更换阿姨
+      switchAunt: function () {
+        var that = this;
+//        var id = $(".ca-head p i").data("id");
+        var id = that.id;
+        var staffId = $(".changeAunt_m input[name='aunt']:checked").val();
+        console.log(staffId);
+        console.log(id);
+        // $('#layer,.changeAunt').hide();
+        $.ajax({
+          url: publicPath + "/api/staffs/updateStaffRecommend",
+          type: "post",
+          data: {staffId: staffId, id: id},
+          dataType: "json",
+          success: function success(data) {
+            if (data.success) {
+              if (data.code == 0) {
+                toast();
+                $('#layer,.changeAunt').hide();
+                that.gainStaffRecommend();
+
+                // setTimeout('location.reload()', 3000)
+                console.log(data.msg);
+              } else {
+                console.log(data.msg);
+              }
+            } else {
+              console.log(data.msg);
+            }
+          }
+        });
+      },
+      selectTab: function (index) {
+        this.tabindex = index;
+        $(".showContent [data-index='"+index+"']").addClass("frameActive").siblings(".frameActive").removeClass("frameActive")
+      },
+      preview: function () {
+        this.isLayer = true;
+        this.isPreview = true;
+        $("body .phonePreview .showHead,body .phonePreview .hotService").show();
+        console.log(this.siteObj);
+        $("body .aboutUsPreview").hide();
+      },
+//      预览关于我们
+      previewAboutUs:function () {
+        this.isLayer = true;
+        this.isPreview = true;
+        $("body .aboutUsPreview").show();
+        previewBox();
+      },
+      staffsInfoShow: function (e) {
+        var _this = this;
+        var el = e.currentTarget;
+        $("#layer,.changeAunt").show();
+        $(".ca-head p span").text("待更换家政员")
+        var staffId = el.dataset.staffid;
+//        console.log($(el).parents(".aunt"));
+        console.log(staffId);
+        var id = el.dataset.recommendid;
+        _this.id = el.dataset.recommendid;
+        $.ajax({
+          url: publicPath + "/api/staffs/staffInfo",
+          type: "post",
+          data: {staffId: staffId},
+          dataType: "json",
+          success: function success(data) {
+            if (data.success) {
+              if (data.code == 0) {
+                var dataJD = data.jsonData;
+                $(".ca-head p i").html(dataJD.staffName + " " + dataJD.baseInfo + " " + dataJD.serviceType);
+                $(".ca-head p i").attr("data-id", id);
+                console.log(data.msg);
+              } else {
+                console.log(data.msg);
+              }
+            } else {
+              console.log(data.msg);
+            }
+          }
+        });
+        $.ajax({
+          url: publicPath + "/api/staffs/staffsInfo",
+          type: "post",
+          data: {},
+          dataType: "json",
+          success: function success(data) {
+            if (data.success) {
+              if (data.code == 0) {
+                var dataJD = data.jsonData;
+                pagination(dataJD.records);
+                console.log(data.msg);
+              } else {
+                console.log(data.msg);
+              }
+            } else {
+              console.log(data.msg);
+            }
+          }
+        });
+      },
+//      检查数据
+      checkInputData: function (e) {
+        var self = $(e.currentTarget);
+
+        var name = self.attr("name");
+        console.log(name, self)
+        chkData(name, self);
+      },
+      releaseSubmit: function (e) {
+        var _this = this;
+        var el = e.currentTarget;
+        var that=$(el);
+        console.log(that);
+        var jobs = _this.siteObj.jobs;
+        var arrList = [];
+        var sumIsShow=0;
+        for (var idx in jobs) {
+          var obj = jobs[idx];
+          var isHot = backFomateValue(obj.isHot);
+          var isShow = backFomateValue(obj.isShow);
+          if(isShow==0){
+            sumIsShow++;
+          }
+          if (sumIsShow>6){
+            alert("请至少展示一个工种！");
+            return;
+          }
+          console.log(sumIsShow);
+          if (obj.isDefault=="0") {
+            var imgUrl="";
+          } else if (obj.isDefault=="1"){
+            if (obj.imageUrl==""){
+              alert("请上传图片")
+              return;
+            }
+            var imgUrl=obj.imageUrl;
+          }
+          var temp = {
+            serviceItemName: obj.serviceItemName,
+            servicePrice: obj.servicePrice,
+            serviceDesc: obj.serviceDesc,
+            imageUrl: imgUrl,
+            serviceObject: obj.serviceObject,
+            serviceContent: obj.serviceContent,
+            isHot: isHot,
+            isShow: isShow,
+            servicePriceUnit: obj.servicePriceUnit,
+            isDefault: obj.isDefault,
+//            serialNumber: obj.serialNumber,
+            priceValue: obj.priceValue,
+            serviceItemCode: obj.serviceItemCode
+          }
+          arrList.push(temp)
+        }
+        console.log(arrList);
+        console.log($(".validation,.validationTxt").length);
+        if ($(".validation,.validationTxt").length > 0) {
+          return;
+        }
+        ;
+        $.ajax({
+          url: window.global_config.updateServiceItem,
+          type: "post",
+          contentType: 'application/json;charset=utf-8', //设置请求头信息
+          data: JSON.stringify(arrList),
+          dataType: "json",
+          success: function success(data) {
+            if (data.success) {
+              toast();
+              _this.getIndexInfo();
+              console.log(data);
+            } else {
+              console.log(data.msg);
+            }
+          }
+        });
+        removeFrame(that);
+      },
+      confirmTips:function () {
+        var that=$("#"+this.aid);
+        console.log(that);
+        removeFrame(that);
+        this.isTips=false;
+        this.isLayer=false;
+        this.isCollapsed=true;
+        $("#editor").hide();
+      },
+      cancelTips:function () {
+        this.isTips=false;
+        this.isLayer=false;
+        this.isCollapsed=false;
+      },
+      switchBar: function (e) {
+        var author=sessionStorage.getItem("siteAuth");
+        console.log(author);
+        if(author==0){
+          $("a,div").unbind();
+          return;
+        }
+
+        var el = e.currentTarget;
+        stopDefault(el);
+        var that = $(el);
+        var id = $(el).attr('href');
+        this.aid=$(el).attr("id");
+        console.log(this.aid);
+        var showId = $($(that).data("id"));
+        console.log(showId);
+        var _box = $(el).parents(".box");
+        $(".contentBox").stop();
+        _box.siblings("div").removeData("status").find("i").removeClass("down");
+        if (_box.data("status") == "open") {
+          this.isTips=true;
+          this.isLayer=true;
+          this.isCollapsed=true;
+//          $("#editor").hide();
+        } else {
+          addFrame(that, showId);
+          this.isCollapsed=false;
+          if (id.indexOf("aboutUs") != -1) {
+            $("#editor").show();
+          } else {
+            $("#editor").hide();
+          }
+        }
+      },
+      switchRtBar: function (e) {
+        var author=sessionStorage.getItem("siteAuth");
+        console.log(author);
+        if(author==0){
+          $("a,div").unbind();
+          return;
+        }
+        var _this = this;
+        var el = e.currentTarget;
+        var _box = $($(el).data("id"));
+        var that = _box.find(".btnSave");
+        var id = $(that).attr('href');
+        var status=this.isCollapsed;
+         _box.siblings("div").removeData("status").find("i").removeClass("down");
+         addFrame(that, $(el));
+         _box.find(".contentBox").slideDown();
+         if (id.indexOf("Us") != -1) {
+         $("#editor").show();
+         } else {
+         $("#editor").hide();
+         }
+      /*  if (_box.data("status")== "open") {
+          this.isCollapsed=false;
+        }else if (_box.data("status")!= "open"&&!this.isCollapsed){
+          this.isTips=true;
+          this.isLayer=true;
+          var showBox=_box.siblings("div");
+          if(showBox.data("status")=="open"){
+            this.id=showBox.children("h3").children("a").attr("id");
+            console.log(this.aid);
+          }
+        }else {
+           _box.siblings("div").removeData("status").find("i").removeClass("down");
+           this.isCollapsed=false;
+           addFrame(that, $(el));
+           _box.find(".contentBox").slideDown();
+           if (id.indexOf("Us") != -1) {
+           $("#editor").show();
+           } else {
+           $("#editor").hide();
+           }
+        }*/
+
+      },
+      switchPannel: function (e) {
+        var author=sessionStorage.getItem("siteAuth");
+        console.log(author);
+        if(author==0){
+          $("a,div").unbind();
+          return;
+        }
+        $("#service").siblings("div").removeData("status").find("i").removeClass("down");
+        $("#service").find(".contentBox").slideDown();
+        var that = $("#service").find(".btnSave");
+        $("#service").show().data("status", "open").find("i").addClass("down").parents(".box").siblings(".box").hide();
+        $("#editor").hide();
+        var el = e.currentTarget;
+        $(el).addClass("frameActive").parents(".showL").find(".frameActive").not($(el)).removeClass("frameActive");
+        console.log(el);
+        var idx = el.dataset.index;
+        console.log(idx);
+       /* $(".btnBar a").eq(idx).addClass("btnFill").siblings(".btnFill").removeClass("btnFill");*/
+        this.tabindex=idx;
+//        $(".typeWrapper").eq(idx).show().siblings(".typeWrapper").hide();
+      },
+      //  预览工种图片
+      switchImg: function (e) {
+        var el = e.currentTarget;
+        console.log("jobImg")
+        var limsize = 2;
+        var _this = el;
+        var file = _this.files[0];
+        var objUrl = getObjectURL(_this.files[0]);
+        imgCheck(_this, limsize);
+        if (objUrl) {
+          var that = $(el).parents(".rdoGroup").siblings('.jobImg')
+          that.attr("src", "img/loading.gif")
+          var formData = new FormData();
+          formData.append('file', file);
+          this.uploadImage(formData, that);
+        }
+        ;
+      },
+      switchBannerImg: function (e) {
+        var limSize=2;
+        var el = e.currentTarget;
+        var _this = el;
+        var file = _this.files[0];
+        var objUrl = getObjectURL(_this.files[0]);
+        imgCheck(_this,limSize);
+        if (objUrl) {
+          var that = $(el).parents(".rdoGroup").siblings('.imgBox').children("#imgCustom");
+          that.attr("src", "img/loading.gif")
+          var formData = new FormData();
+          formData.append('file', file);
+          this.uploadImage(formData, that);
+        }
+        ;
+      },
+      inquiry:function () {
+        caInquiry();
+      },
+      uploadImage: function (formData, that) {
+        var _this = this;
+        $.ajax({
+          url: publicPathSP+"/image/upload",
+          type: "post",
+          data: formData,
+          async: false,
+          cache: false,
+          contentType: false,
+          processData: false,
+          success: function success(data) {
+            if (data.status == 0) {
+              _this.responseData(data, that);
+            } else {
+              console.log(data.message);
+            }
+          },
+          error: function (err) {
+            console.log(err);
+          }
+        });
+      },
+      responseData: function (data, that) {
+        if (data.status == 0) {
+          if (that.hasClass("imgCustom")) {
+            var url = data.result.url;
+            that.attr('src', url)
+//            $("[name='bannerPath']").val(url);
+            this.siteObj.bannerImg = url;
+            this.banner.bannerUrl = url;
+          } else if (that.hasClass("jobImg")) {
+            var url = data.result.url;
+            that.attr('src', url);
+            console.log(that)
+            var i = $(that).data("index");
+            console.log(i);
+            this.siteObj.jobs[i].imageUrl = url;
+          }
+          console.log(data)
+        } else {
+          console.log(data.message);
+        }
+      }
+    },
+    
+    components: {
+//        phoneBox
+    },
+    filters: {
+      formatValue: function (value) {
+        value = value == "0" ? false : true;
+        return value;
+      }
+    },
+    computed: {
+      /* isShow:function () {
+
+       }*/
+    }
+  })
+
+</script>
+</html>

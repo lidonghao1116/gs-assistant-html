@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+    	<meta http-equiv="Pragma" CONTENT="no-cache">
+		<title>您身边的，家政好帮手</title>
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/ordermenu.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/orderManagement.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/recruitManagement.css?v=0.01"/>
+	</head>
+	<body>
+		<input type="hidden" value="" id="dataPk">
+		<div id="layer"></div>
+		<div class="no_select">
+			<div class="oi-title clearfix">
+				<p>订单刷新</p>
+				<a></a>
+			</div>
+			<h1>请选择你要刷新的招聘信息</h1>
+			<div class="no_select_bt">
+				<a class="ns_ok">确定</a>
+			</div>
+		</div>
+		<div class="shua_xin">
+			<div class="oi-title clearfix">
+				<p>订单刷新</p>
+				<a></a>
+			</div>
+			<h2>确定要批量刷新吗</h2>
+			<h1>友情提醒：每个订单每天只能刷新一次</h1>
+			<div class="shangjai_bt">
+				<a class="sj_cancel">取消</a>
+				<a class="sj_ok">确定</a>
+			</div>
+		</div>
+		<div class="sx_suc">
+			<div class="oi-title clearfix">
+				<p>订单刷新</p>
+			</div>
+			<h1></h1>
+			<div class="no_select_bt">
+				<a class="sx_ok" href="recruitManagement.html">确定</a>
+			</div>
+		</div>
+		<div id="header" class="clearfix">
+			<div class="h-frame">
+				<div class="logo"><img src="img/logo.png"/></div>
+				<div class="h-right">
+					<div class="account">
+						<ul class="clearfix">
+						</ul>
+					</div>
+					<div class="navigator">
+						<ul class="clearfix">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="naviLeft">
+			<ul>
+				<li><a class="ddgl" href="orderManagement.html"><em></em>我的订单</a></li>
+				<li><a class="hzqd" href="ordering.html"><em></em>合作抢单</a></li>
+				<li class="nl_on"><a class="zpgl" href="recruitManagement.html"><em></em>我的招聘</a></li>
+				<li><a class="jlx" href="orderingReceive.html"><em></em>简历箱</a></li>
+			</ul>
+		</div>
+		
+		<div class="particulars">
+			<!-- <p class="paths">当前页面：订单管理 > 我的招聘</p> -->
+			<div class="frame">
+				<div class="clearfix ">
+					<p class="title title_sp"><i>职位发布</i><span>每条订单每天只能刷新一次</span></p>
+					 <div class="recruit-QR">
+						<!-- <p>
+							微信扫码<br />
+							查看职位发布
+						</p>
+						<img src="img/QR Code.png"/> -->
+						<div class="rq-img">
+							<canvas></canvas>
+						</div>
+					</div> 
+				</div>
+				<div class="jobRecruitment">
+					<div class="clearfix quey_box">
+						<!-- <div class="qu_right"> -->
+							<label class="postSelect">服务工种
+								<select name="serviceType">
+									<option value="">请选择工种</option>
+								</select>
+							</label>
+							<label class="tenantUserId">业务员
+								<select name="tenantUserId">
+									<option value=""></option>
+								</select>
+							</label>
+							<label class="status">状态
+								<select name="status">
+									<option value="">请选择</option>
+									<option value="1">上架</option>
+									<option value="0">下架</option>
+								</select>
+							</label>
+							<label class="refreshDate">刷新日期
+								<input type="text" id="refreshDate" name="refreshDate" placeholder="请选择" readonly="readonly"/>
+							</label>
+						<a class="b-sbtn">查询</a>
+						<!-- </div> -->
+					</div>
+					<div class="qu_left"><a class="refresh">刷新</a><span></span></div>
+					<table class="jobList" data-authority="1">
+						<thead>
+							<tr>
+								<td style="width:80px;"><input id="all" name="all" type="checkbox"></td>
+								<td>刷新日期</td>
+								<td>岗位名称</td>
+								<td>服务工种</td>
+								<td>年龄要求</td>
+								<td>薪资要求</td>
+								<td>业务员</td>
+								<td style="width:100px;">状态</td>
+							</tr>
+						</thead>
+						<tbody>
+							
+						</tbody>
+					</table>
+					<div class="clearfix">
+						<div id="pagination">
+						</div>
+						<!-- <p class="records">共<span></span>条</p> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 详情 -->
+		<div class="orderDetails orderDetails_sp">
+			<input type="hidden" value="" name="id" >
+			<p class="od-title clearfix">订单详情<a></a></p>
+			<div id="ic-frame">
+				<div class="infoCard">
+					<div class="card_list">
+						<p class="title"><i>订单信息</i></p>
+						<div class="order_info">
+							<ul class="column_ul">
+								<li  class="column clearfix">
+									<label>刷新日期：</label>
+									<div class="column_right De_modifyTime"></div>
+								</li>
+								<li  class="column clearfix">
+									<label>业务员：</label>
+									<div class="column_right De_contactName"></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="card_list">
+						<p class="title"><i>服务信息</i></p>
+						<div class="order_info">
+							<ul class="column_ul">
+								<li  class="column clearfix">
+									<label>服务工种：</label>
+									<div class="column_right De_positionName"></div>
+								</li>
+								<li  class="column clearfix">
+									<label>服务区域：</label>
+									<div class="column_right De_serviceAd"></div>
+								</li>
+								<li  class="column clearfix">
+									<label>服务时间：</label>
+									<div class="column_right De_serviceTime"> <span>至</span> </div>
+								</li>
+								<li  class="column clearfix">
+									<label>价格预算：</label>
+									<div class="column_right De_salary"></div>
+								</li>
+								<li  class="column clearfix">
+									<label>年龄要求：</label>
+									<div class="column_right De_age"></div>
+								</li>
+								<li  class="column clearfix">
+									<label>技能要求：</label>
+									<div class="column_right De_skill"></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="card_list">
+						<p class="title"><i>职位要求</i></p>
+						<div class="order_info">
+							<ul class="column_ul">
+								<li  class="column clearfix">
+									<label>职位要求：</label>
+									<div class="column_right De_demand">
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.pagination.js" type="text/javascript" charset="utf-8"></script>
+		<script src="time/lhgcore.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="time/lhgcalendar.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.qrcode.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/scroller.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		function getzf(num){  
+						if(parseInt(num) < 10){  
+							num = '0'+num;  
+						}  
+						return num;  
+					};
+		function updateJobsMTime(strId){
+			$.ajax({
+					url: publicPath+"/api/job/refresh",
+					type: "post",
+					data: {jobIds:strId},
+					dataType: "json",
+					success: function success(data) {
+						if(data.success){
+							if(data.code == 0){
+								$(".sx_suc h1").html("您成功刷新了"+data.jsonData+"个订单");
+								$("#layer,.sx_suc").show();
+								console.log(data.msg);
+							}else{
+								console.log(data.msg);
+							}
+						}else{
+							console.log(data.msg);
+						}
+					}
+				});
+		}
+			function getServiceType(){
+				$.ajax({
+			        url: publicPath+"/api/website/getServiceType",
+			        type: "post",
+			        data: {},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	var html = "";
+			                	$.each(dataJD, function(i,item) {
+			                		html += "<option value='"+item.code+"'>"+item.serviceType+"</option>"; 
+			                	});
+			                	$("select[name='serviceType']").append(html);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			};
+			
+			
+			
+//			获取招聘列表信息
+//			分页
+			var page = 1;
+			var rowNum = 8;
+			function pagination(records){
+				//$("#pagination").siblings(".records").children().text(records);
+				$("#pagination").pagination(records, {
+				    num_edge_entries: 1,
+				    num_display_entries: 4,
+				    current_page:page-1,
+				    items_per_page:rowNum,
+				    prev_text:"上一页",
+				    next_text:"下一页",
+				    callback: getTenantsJobsListInfo
+				});
+			};
+			
+			function getTenantsJobsListInfo(page_index){
+				var page = page_index+1;
+				var serviceType = $("select[name='serviceType']").val();
+				var tenantUserId = $("select[name='tenantUserId']").val();
+				var status = $("select[name='status']").val();
+				var modifyTime =$("#refreshDate").val();
+				$.ajax({
+			        url: publicPath+"/api/job",
+			        type: "get",
+			        data: {onlySelf:1,visualExtend:0,page:page,rowNum:rowNum,serviceType:serviceType,queryUserId:tenantUserId,jobStatus:status,modifyTime:modifyTime},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+								var dataJD = data.jsonData.rows;
+								if(dataJD!=""){
+									var html = "";
+									var n = 0;
+									$.each(dataJD, function(i,item) {
+										n++;
+										
+										var modifyTime= new Date(item.modifyTime),
+											oYear = modifyTime.getFullYear(),  
+											oMonth = modifyTime.getMonth()+1,  
+											oDay = modifyTime.getDate();
+											oTime = oYear +'-'+ getzf(oMonth) +'-'+ getzf(oDay);
+											var status="";
+											if(item.status==0){
+												status = "下架";
+											}else if(item.status==1){
+												status = "上架";
+											}
+											html += "<tr data-pk='"+item.id+"'>"+
+													"<td><input type='checkbox' name='refresh'></td>"+
+													"<td>"+oTime+"</td>"+
+													"<td class='positionName'>"+item.positionName+"</td>"+
+													"<td class='serviceType'>"+item.serviceTypeValue+"</td>"+
+													"<td class='age'>"+item.ageValue+"</td>"+
+													"<td class='salary'>"+item.salary+item.salaryTypeValue+"</td>"+
+													"<td class='salary'>"+item.contactName+"</td>"+
+													"<td class='status'>"+status+"</td>"+
+												"</tr>";
+										
+									});
+									$(".no_order").remove();
+									$(".jobRecruitment table tbody").html(html);
+								}else{
+									$(".jobRecruitment table tbody").html("");
+									$(".no_order").remove();
+									$(".jobRecruitment table").after("<div class='no_order'>暂无内容~</div>");
+								}
+			                	
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			};
+			
+// 详情
+function getTenantsJobsDetail(id){
+				$.ajax({
+			        url: publicPath+"/api/job/"+id,
+			        type: "get",
+			        data: {},
+			        dataType: "json",
+			        async:false,
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+								var dataJD = data.jsonData;
+								var serviceAdd="";
+								if(dataJD.serviceArea==""){
+									serviceAdd=dataJD.serviceProvinceValue+"-"+dataJD.serviceCityValue;
+								}else{
+									serviceAdd=dataJD.serviceProvinceValue+"-"+dataJD.serviceCityValue+"-"+dataJD.serviceAreaValue;
+								}
+								if(dataJD.serviceType=="01" || dataJD.serviceType=="02" || dataJD.serviceType=="06"){
+									serviceType=dataJD.serviceTypeValue+"（住家）";
+								}else{
+									serviceType=dataJD.serviceTypeValue+"（"+dataJD.serviceMoldValue+"）";
+								}
+								var serviceTime = "";
+								if(dataJD.serviceStartTime!=null && dataJD.serviceEndTime!=null){
+									var serviceTime =dataJD.serviceStartTime+" 至 "+dataJD.serviceEndTime;
+								}
+								$(".orderDetails .De_modifyTime").text(dataJD.modifyTime||"");
+								$(".orderDetails .De_contactName").text(dataJD.contactName||"");
+								$(".orderDetails .De_positionName").html(serviceType);
+								$(".orderDetails .De_serviceAd").text(serviceAdd);
+								$(".orderDetails .De_serviceTime").html(serviceTime);
+								$(".orderDetails .De_salary").text(dataJD.salary+dataJD.salaryTypeValue);
+								$(".orderDetails .De_age").text(dataJD.ageValue||"");
+								$(".orderDetails .De_skill").text(dataJD.skillRequirementsValue||"");
+								$(".orderDetails .De_demand").html(dataJD.demand||"");
+
+								if(dataJD.emsSign=="01"){
+									$(".orderDetails .De_positionName").append("<span>急</span>");
+								}
+								$("#ic-frame").scroller(0);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			};
+
+			$(function(){
+				J('#refreshDate').calendar();
+				$.ajax({
+					url:publicPath+"/api/user/getTenatsUserListSel",
+					type:"post",
+					data:{},
+					dataType:"json",
+					success:function success(data){
+						if(data.success){
+							if(data.code==0){
+								var dataJD = data.jsonData;
+								var html="";
+								$.each(dataJD,function(i,item){
+									html+="<option value='"+item.id+"'>"+item.loginName+"</option>";
+								});
+								$("select[name='tenantUserId']").html("<option value=''>请选择</option>"+html);
+							}else{
+								console.log(data.msg);
+							}
+						}else{
+							console.log(data.msg);
+						}
+					}
+				});
+//				头部引入
+//				$('#header').load('header.html?v=0.01',function(){
+//					$(".navigator ul li a").removeClass("navi-on");
+//					$(".navigator ul li").eq(1).children().addClass("navi-on");
+//				});
+				
+//				获取总页数
+				$.ajax({
+			        url: publicPath+"/api/job",
+			        type: "get",
+			        data: {onlySelf:1,visualExtend:0},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+								var dataJD = data.jsonData;
+								$(".qu_left span").text("职位总数："+dataJD.records+" 条");
+			                	pagination(dataJD.records);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+				
+				getServiceType();
+				
+		
+				
+				$(".jobRecruitment .b-sbtn").click(function(){
+					var serviceType = $("select[name='serviceType']").val();
+					var tenantUserId = $("select[name='tenantUserId']").val();
+					var status = $("select[name='status']").val();
+					var modifyTime =$("#refreshDate").val();
+					$.ajax({
+				        url: publicPath+"/api/job",
+				        type: "get",
+				        data: {onlySelf:1,visualExtend:0,serviceType:serviceType,queryUserId:tenantUserId,jobStatus:status,modifyTime:modifyTime},
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	var dataJD = data.jsonData;
+									$(".qu_left span").text("招聘总数："+dataJD.records+" 条")
+									pagination(dataJD.records);
+				                	console.log(data.msg);
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				                console.log(data.msg);
+				            }
+				        }
+				    });
+				})
+				
+				
+//				二维码
+			    $.ajax({
+			        url: publicPath+"/api/index/info",
+			        type: "post",
+			        data: {},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	if(dataJD.moblieQrUrl!=null&&dataJD.domain!=null){
+			                		$(".rq-img").find("canvas").remove();
+			                		var Qrcode = "http://"+dataJD.moblieQrUrl+"/"+dataJD.domain+"/job.html";
+			                		$(".rq-img").qrcode(Qrcode);
+			                	}
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+				
+				// $(".frame").on("mouseenter mouseleave",".recruit-QR",function(e){
+				// 	if (e.type=="mouseenter") {
+				// 		$(".rq-img").show();
+				// 	} else{
+				// 		$(".rq-img").hide();
+				// 	}
+				// });
+				
+				
+				// $(".jobRecruitment table").on("click","tbody tr",function(){
+				// 	var Url = "recruitManagementEdit.html"+"?"+"id="+$(this).data("pk");
+				// 	location.assign(Url);
+				// });
+				$(".oi-title a,.sj_cancel").click(function(){
+					$("#layer,.shangjia_alert").hide();
+					$("#dataPk").val("");
+				});
+				// 刷新
+				$(".no_select").on("click",".oi-title a,.ns_ok",function(){
+					$("#layer,.no_select").hide();
+				})
+				$(".shua_xin").on("click",".oi-title a,.sj_cancel",function(){
+					$("#layer,.shua_xin").hide();
+				})
+				$(".shua_xin").on("click",".sj_ok",function(){
+					var strId="";
+					$($("input[name='refresh']:checked")).each(function(){
+						strId += $(this).parents("tr").data("pk")+",";
+					})
+					strId = strId.substring(0,strId.length-1);
+					updateJobsMTime(strId);
+				})
+				
+				$(".refresh").click(function(){
+					var strId="";
+						$($("input[name='refresh']:checked")).each(function(){
+							strId += $(this).parents("tr").data("pk")+",";
+						})
+						strId = strId.substring(0,strId.length-1);
+					if($("input[name='refresh']:checked").length<1){
+						$("#layer,.no_select").show();
+					}else if($("input[name='refresh']:checked").length==1){
+						updateJobsMTime(strId);
+					}else{
+						$("#layer,.shua_xin").show();
+						
+					}
+				});
+				$(".jobList").on("click","input[name='refresh']",function(event){
+					event.stopPropagation(); 
+				})
+				$("#all").change(function(){
+					var state = $(this).prop("checked");
+					if(state){
+						$("input[name='refresh']").prop("checked",true);
+					}else{
+						$("input[name='refresh']").prop("checked",false);
+					}
+				});
+				$(".quey_box select").change(function(){
+					if($(this).val()==""){
+						$(this).removeClass("active");
+					}else{
+						$(this).addClass("active");
+					}
+				});
+//			 查看详情
+				$(".jobList").on("click","tbody tr",function(){
+					var id = $(this).data("pk");
+					if($(this).hasClass("slideRight")){
+						$(this).removeClass("slideRight");
+						$(".orderDetails").animate({"right":-750})
+						return;
+					} else {
+						$(this).addClass("slideRight").siblings().removeClass("slideRight");
+						$(".orderDetails").animate({"right":0});
+						$(".orderDetails input[name='id']").val(id);
+						getTenantsJobsDetail(id);
+					}
+				});
+				// 关闭详情
+				$(".od-title a").click(function(){
+					$(".orderDetails").animate({"right":-750});
+					$(".jobList tr").removeClass("slideRight");
+				});
+			});
+		</script>
+	</body>
+</html>

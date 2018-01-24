@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+    	<meta http-equiv="Pragma" CONTENT="no-cache">
+		<title>您身边的，家政好帮手</title>
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/siteManagement.css?v=0.01"/>
+	</head>
+	<body>
+		<div id="header" class="clearfix">
+			<div class="h-frame">
+				<div class="logo"><img src="img/logo.png"/></div>
+				<div class="h-right">
+					<div class="account">
+						<ul class="clearfix">
+							<!-- <li class="login"><a href="login.html">登录</a></li>
+							<li><a href="accountManagement.html">系统管理</a></li>
+							<li><a>退出</a></li> -->
+						</ul>
+					</div>
+					<div class="navigator">
+						<ul class="clearfix">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="naviLeft">
+			<ul>
+				<!-- <li><a class="sygl" href="homeManagement.html"><em></em>首页管理</a></li>
+				<li class="nl_on"><a class="fwgl" href="serviceManagement.html"><em></em>服务管理</a></li>
+				<li><a class="lxfs" href="contactWay.html"><em></em>联系方式</a></li>
+				<li><a class="zpgl" href="recruitManagement.html"><em></em>招聘管理</a></li>
+				<li><a class="gywm" href="aboutUs.html"><em></em>关于我们</a></li> -->
+			</ul>
+		</div>
+		
+		<div class="particulars">
+			<p class="paths">当前页面：网站管理 > 服务管理 > 服务编辑</p>
+			<div class="frame">
+				<p class="title"><i>首页</i></p>
+				<form id="serviceEdit" enctype="multipart/form-data">
+					<div class="homeEdit">
+						<table>
+							<tbody>
+								<tr>
+									<td width="82px">服务工种</td>
+									<td class="serviceItemName">月嫂</td>
+								</tr>
+								<tr>
+									<td>服务价格</td>
+									<td>
+										<input class="servicePrice" type="text" name="servicePrice" value="" />
+										<select name="servicePriceUnit">
+											<option value="">元起/26天</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<td>服务描述</td>
+									<td><input class="serviceBewrite" type="text" name="serviceDesc" value="" /> <span class="remarks">(不超过15个汉字)</span></td>
+								</tr>
+								<tr>
+									<td>首页图片</td>
+									<td>
+										<div class="pic-manage">
+											<label><input type="radio" name="isDefault" id="" class="default" value="0" checked="checked"/>系统默认</label><br />
+											<label><input type="radio" name="isDefault" id="" class="custom" value="1"/>自定义</label>
+											<span class="limit">(尺寸不能超过<i>200*200</i>,大小<i>50K</i>以内)</span>
+											<span class="upload-sel">
+												<a>选择<input type="file" name="imageUrl" id="" disabled="disabled"/></a>
+											</span>
+											<p>http://www.jiacer.com/baner/123456</p>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td>Hot标签</td>
+									<td>
+										<label class="checkbox">
+											<em></em>
+										    <input name="isHot" type="checkbox" value="0"/>
+										</label>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<p class="title"><i>服务详情</i></p>
+					<div class="serviceDetail">
+						<table>
+							<tbody>
+								<tr>
+									<td width="82px">服务对象</td>
+									<td><input type="text" name="serviceObject" value="" /><span class="remarks">(不超过20个汉字)</span></td>
+								</tr>
+								<tr>
+									<td>服务内容</td>
+									<td><textarea name="serviceContent" rows="" cols=""></textarea><span class="remarks">(不超过50个汉字)</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<a class="sme-sub">保存</a>
+				</form>
+			</div>
+		</div>
+		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.form.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+				
+			function serviceItem(serviceItemCode){
+				$.ajax({
+			        url: publicPath+"/api/staffs/serviceItem",
+			        type: "post",
+			        data: {serviceItemCode:serviceItemCode},
+			        dataType: "json",
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	$(".serviceItemName").text(dataJD.serviceItemName);
+			                	$("input[name='servicePrice']").val(dataJD.servicePrice);
+			                	$("input[name='serviceDesc']").val(dataJD.serviceDesc);
+			                	dataJD.isHot==1?$("input[name='isHot']").prop("checked",true).val(1).siblings("em").css("left","17px").parent().css("background-color","#0A7EE3"):$("input[name='isHot']").prop("checked",false).val(0).siblings("em").css("left","1px").parent().css("background-color","#B3B3B3");
+			                	$("input[name='serviceObject']").val(dataJD.serviceObject);
+			                	$("textarea[name='serviceContent']").val(dataJD.serviceContent);
+			                	if (dataJD.isDefault==0) {
+			                		$(".pic-manage .default").prop("checked",true);
+			                	} else{
+			                		$(".pic-manage .custom").prop("checked",true);
+			                		$(".upload-sel a").css({"background-color":"#0A7EE3","cursor":"pointer"}).find("input").css("cursor","pointer").removeAttr("disabled")
+			                	}
+			                	var servicePriceUnit = dataJD.servicePriceUnit;
+			                	$.ajax({
+							        url: publicPath+"/api/common/getDictionaryData/c015",
+							        type: "post",
+							        data: {},
+							        dataType: "json",
+							        async:false,
+							        success: function success(data) {
+							            if(data.success){
+							                if(data.code == 0){
+							                	var dataJD = data.jsonData;
+							                	var html = "";
+							                	$.each(dataJD, function(i,item) {
+							                		html += "<option value='"+item.code+"'>"+item.name+"</option>"; 
+							                	});
+							                	$("select[name='servicePriceUnit']").html("<option value=''>请选择</option>"+html);
+							                	$("select[name='servicePriceUnit']").val(servicePriceUnit);
+							                	console.log(data.msg);
+							                }else{
+							                    console.log(data.msg);
+							                }
+							            }else{
+							                console.log(data.msg);
+							            }
+							        }
+							    });
+			                	
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			}
+			
+			
+			$(function(){
+//				头部引入
+//				$('#header').load('header.html?v=0.01',function(){
+//					$(".navigator ul li a").removeClass("navi-on");
+//					$(".navigator ul li").eq(1).children().addClass("navi-on");
+//				});
+				
+				var url = location.search;
+				if (url.indexOf("?") != -1) {
+					var str = url.substr(1);
+					var serviceItemCode = str.split("=")[1];
+					serviceItem(serviceItemCode);
+				};
+				
+//				图片上传检查
+				$("input[name='imageUrl']").on("change",function(){
+					var fileSize = this.files[0].size;
+					var size = fileSize/1024;
+					var filepath = $(this).val();
+					var extStart = filepath.lastIndexOf(".");
+					var ext = filepath.substring(extStart, filepath.length).toUpperCase();
+					
+					if (ext != ".BMP" && ext != ".PNG" && ext != ".GIF" && ext != ".JPG" && ext != ".JPEG") {
+	                    alert("图片限于bmp,png,gif,jpeg,jpg格式");
+	                    $(this).val("");
+	                    return;
+	               	};
+	               	if (size > 50){
+	               		alert("上传的图片大小不能超过50K！");
+	               		$(this).val("");
+	               		return;
+	               	};
+					
+				});
+				
+//				提交
+				$(".sme-sub").click(function(){
+					$("#serviceEdit input,#serviceEdit textarea").trigger("blur");
+					if ($(".validation").length>0) {
+						return;
+					};
+					if ($("input[name='isHot']").val()==0) {
+						$("#serviceEdit").ajaxSubmit({
+							url: publicPath+"/api/staffs/updateServiceItem",
+					        type: "post",
+					        data:{serviceItemCode:serviceItemCode,serviceItemName:$(".serviceItemName").text(),isHot:$("input[name='isHot']").val()},
+					        dataType: "json",
+					        success: function success(data) {
+					            if(data.success){
+					                if(data.code == 0){
+					                	location.href="serviceManagement.html";
+					                	console.log(data.msg);
+					                }else{
+					                    console.log(data.msg);
+					                }
+					            }else{
+					                console.log(data.msg);
+					            }
+					        }
+						});
+					} else{
+						$("#serviceEdit").ajaxSubmit({
+							url: publicPath+"/api/staffs/updateServiceItem",
+					        type: "post",
+					        data:{serviceItemCode:serviceItemCode,serviceItemName:$(".serviceItemName").text()},
+					        dataType: "json",
+					        success: function success(data) {
+					            if(data.success){
+					                if(data.code == 0){
+					                	location.href="serviceManagement.html";
+					                	console.log(data.msg);
+					                }else{
+					                    console.log(data.msg);
+					                }
+					            }else{
+					                console.log(data.msg);
+					            }
+					        }
+						});
+					}
+					
+					
+				});
+				
+//				表单验证
+				var regChar=/^([\u4e00-\u9fa5]+|[a-zA-Z0-9]+)$/;				//特殊字符
+				var regNum= /^[0-9]*$/;
+				
+				$("#serviceEdit input,#serviceEdit textarea").blur(function(){
+					var self = $(this);
+					var name = $(this).attr("name");
+					switch (name){
+						case "servicePrice":
+							if (!regNum.test(self.val())){
+								onError('请填写数字',self);
+							} else if (self.val() == "") {
+								onError('不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "serviceDesc":
+							if (self.val().length>=15){
+								onError('不能超过15个汉字',self);
+							} else if (self.val() == "") {
+								onError('不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "serviceObject":
+							if (self.val().length>=20){
+								onError('不能超过20个汉字',self);
+							} else if (self.val() == "") {
+								onError('不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						case "serviceContent":
+							if (self.val().length>=50){
+								onError('不能超过50个汉字',self);
+							} else if (self.val() == "") {
+								onError('不能为空',self);
+							} else {
+								onSuccess(self);
+							}
+							break;
+						default:
+							break;
+					}
+				});
+				
+			});
+			
+			function onError (msg,self) {
+				if(self.nextAll().hasClass('validation')){
+					self.nextAll('.validation').text(msg);
+					return;
+				}
+				self.parent().append("<span class='validation'>"+msg+"</span>");
+			}
+	
+			function onSuccess(self) {
+				self.nextAll('.validation').remove();	
+			}
+		</script>
+	</body>
+</html>

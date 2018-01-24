@@ -1,0 +1,430 @@
+.no_staff{
+    text-align: center;
+    padding: 180px 0 100px;
+    background: url(../img/no_list.png) no-repeat;
+    background-position: center top;
+    margin-top: 100px;
+    color: #888888;
+}
+.btnCass-b {width: 260px;height: 36px;margin: 38px auto 22px auto;}
+.btnCass-b a {
+    width: 108px;
+    height: 100%;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 3px;
+    line-height: 36px;
+}
+.btnCass-b .bcb-cancel {
+        float: left;
+    color: #333;
+    border: 1px solid #cccccc;
+}
+.btnCass-b .bcb-save {
+    float: right;
+    background-color: #0A7EE3;
+    color: #fff;
+    border: 1px solid #0a7ee3;
+}
+
+.particulars {margin-left: 188px;background-color: #fff;}
+.housekeeping-info .staff_hide {display: none;}
+.housekeeping-info div {display:inline-block; vertical-align: top;}
+.housekeeping-info .hi-basic {width: 412px;}
+.housekeeping-info .hi-basic img {width: 90px;height: 110px;}
+.housekeeping-info .hi-basic div p {margin-top: 16px;}
+.housekeeping-info .hi-basic div .staffResume span {display: inline-block;height: 24px;line-height: 24px;padding: 0 6px;background-color: #E6E6E6;border-radius: 2px;margin-right: 14px;}
+.housekeeping-info .hi-basic div .service-status {
+        font-size: 16px;
+    margin: 0;
+    padding-top: 13px;
+}
+.housekeeping-info .hi-basic div .service-status i {
+        font-size: 10px;
+    font-weight: normal;
+    display: inline-block;
+    height: 16px;
+    line-height: 16px;
+    padding: 0 4px;
+    border: 1px solid #FF9C00;
+    color: #FF9C00;
+    border-radius: 8px;
+    margin-left: 12px;
+    vertical-align: text-top;
+}
+.housekeeping-info .hi-basic .staff_img {
+    width: 90px;
+    height: 110px;
+    display: inline-block;
+    position: relative;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: url(../img/jiazheng.png) no-repeat;
+    background-position: center;
+    background-color: #fff;
+    margin-right: 18px;
+}
+.housekeeping-info .change-hk {
+    position: absolute;
+    bottom: 0;
+    cursor: pointer;
+    right: 0;
+    left: 0;
+    text-align: center;
+    background-color: #228be6;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.housekeeping-info {margin-bottom: 5px;padding-top: 0;border-top:none;margin-left: 28px;}
+.housekeeping-info .hi-basic div .service-status i {width: auto!important;}
+/*匹配度图表*/
+.eCharts {position: relative;}
+.eCharts p {position: absolute;z-index: 10;top: 0;left: 0;bottom: 0;right: 0;line-height: 90px;text-align: center;}
+
+/*更换家政员弹窗*/
+.changeAunt {padding: 20px 0 0; width: 1130px;height: 520px;background-color: #FFF;position: fixed;z-index: 101;left: 50%;top: 50%;margin-left: -585px;margin-top: -250px;display: none;}
+.changeAunt .ca-head {
+    padding: 0 20px 20px 32px;
+    line-height: 36px;
+}
+#om-ca .housekeeping-tab {
+    position: absolute;
+    top: -52px;
+    left: 0;
+    right: 0;
+    background-color: #30314e;
+    height: 42px;
+    padding-top: 10px;
+    padding-left: 26px;
+}
+#om-ca .housekeeping-tab a {
+    display: block;
+    width: 200px;
+    text-align: center;
+    height: 42px;
+    line-height: 42px;
+    cursor: pointer;
+    background: url(../img/stafftab0.png) no-repeat;
+    position: absolute;
+}
+#om-ca .housekeeping-tab .ht-on {background: url(../img/stafftab1.png) no-repeat;color: #FFFFFF;z-index: 1;}
+#om-ca .housekeeping-tab a.tab2 {
+    left: 213px;
+}
+#om-ca .housekeeping-tab a.tab1 {
+    left: 26px;
+}
+.changeAunt .changeStaff_content {
+    overflow: scroll;
+    height: 448px;
+    padding: 0 20px;
+}
+.changeAunt .ca-head p {float: left;}
+.changeAunt .ca-head p span {
+    color: #888888;
+    margin-right: 40px;
+}
+.changeAunt .ca-head div {float: right;}
+.changeAunt .ca-head div a {
+    display: inline-block;
+    width: 88px;
+    height: 36px;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 16px;
+    background-color: #0A7EE3;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.changeAunt .ca-head div .cancel-ca {margin-right: 22px;background-color: #DBDBDB;}
+.changeAunt .ca-inquiry p {margin-top: 22px;padding-left: 18px;}
+.changeAunt .ca-inquiry p span {margin-left: 30px;}
+.changeAunt .ca-inquiry p span:first-child{margin-left: 0;}
+.changeAunt .ca-inquiry p span label {display: inline-block;width: 56px;text-align: right;margin-right: 12px;}
+.changeAunt .ca-inquiry p span input {width: 112px;height: 22px;}
+.changeAunt .ca-inquiry p span select {width: 120px;height: 24px;border: 1px solid #CCCCCC;}
+.changeAunt .ca-inquiry p .ca-inquiry-search {display: inline-block;width: 80px;height: 32px;line-height: 32px;text-align: center;color: #FFFFFF;background-color: #0A7EE3;cursor: pointer;vertical-align: middle;margin-left: 62px;}
+.changeAunt .changeAunt_m {width: 100%;text-align: center;}
+.changeAunt .changeAunt_m img {width: 62px;height: 76px;}
+.changeAunt .changeAunt_m tbody tr td{border: 1px solid #fff;}
+.changeAunt .changeAunt_m thead tr {background-color: #EBEFF8;height: 40px;}
+.changeAunt .changeAunt_m tbody tr {height: 82px; background-color: #f5f5f5;}
+.changeAunt .selector{
+    margin: 0;
+}
+.changeAunt .selector_l {
+    width: 68px;
+    padding-left: 12px;
+    float: left;
+    line-height: 28px;
+    text-align: left;
+}
+.changeAunt .selector_r {
+    padding-left: 80px;
+}
+.selector {
+    background-color: #f5f5f5;
+    margin: 22px 0 56px;
+    padding-top: 18px;
+    position: relative;
+}
+.selector span.staff_more_se {
+    position: absolute;
+    height: 36px;
+    width: 72px;
+    background-color: #fafafa;
+    line-height: 36px;
+    padding-left: 16px;
+    color: #0a7ee3;
+    top: 6px;
+    right: 4px;
+    background-image: url(../img/moreDown.png);
+    background-repeat: no-repeat;
+    background-position: 60px center;
+    cursor: pointer;
+}
+.selector span.staff_more{
+    background-image: url(../img/moreUp.png);
+}
+.selectorList {
+    overflow: hidden;
+}
+.selector_l {
+    width: 80px;
+    text-align: right;
+    float: left;
+    line-height: 28px;
+}
+.selector_r {
+    padding-left: 105px;
+}
+.selector_r .selector_ul {
+    overflow: hidden;
+}
+.selector_r .selector_ul li {
+    float: left;
+    line-height: 26px;
+    border: 1px solid #f5f5f5;
+    padding: 0 14px;
+    margin-bottom: 18px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+.selector_r .selector_ul li.active {
+    border: 1px solid #b3b3b3;
+    color: #0a7ee3;
+    background-color: #fff;
+}
+.total {
+    padding: 13px 0;
+    overflow: hidden;
+}
+.total .summ_staff {
+    float: left;
+    margin-left: 12px;
+    line-height: 24px;
+    color: #888888;
+}
+.total .search {
+    float: right;
+    line-height: 24px;
+}
+.total .search label {
+    color: #000;
+    margin-right: 14px;
+}
+.total .search input[type='text'] {
+    width: 152px;
+    height: 22px;
+    border: 1px solid #b2b2b2;
+}
+.total .ca-inquiry-search {
+    float: right;
+    width: 44px;
+    height: 24px;
+    border-radius: 2px;
+    background: url(../img/search.png) no-repeat;
+    background-color: #479de8;
+    background-position: center;
+    /* margin-top: 1px; */
+    cursor: pointer;
+    margin-left: 30px;
+}
+/* 新样式分割线 */
+.validation {
+     margin-left: 7px!important; 
+    color: #FF411B;
+}
+select,input{
+    border-radius:2px; 
+    background-color: #fff;
+    outline: none;
+}
+.particulars .frame {
+    /* min-width: 950px!important; */
+    margin-top: 0;
+    padding-top: 4px;
+}
+p.title {
+    margin: 22px 0;
+    padding: 0;
+}
+.title i{
+    display: inline-block;
+}
+.title span {
+    color: #d6d6d6;
+}
+.orderInfo_list {
+    background-color: #f5f6fa;
+    padding: 25px 150px 20px 14px;
+}
+
+.hide_info {
+    margin-top: 24px;
+    display: none;
+}
+.info_morebox {
+    width: 100%;
+    height: 24px;
+    margin: 17px 0 0;
+}
+span.zhankai {
+    border: 1px solid #e6e6e6;
+    padding: 1px 18px 1px 30px;
+    background-color: #e6e6e6;
+    color: #808080;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-left: 27px;
+}
+span.shouqi{
+  background-color: #fff;
+  border-color: #9a9a9a;
+  color:#b2b2b2;
+}
+.zhankai {
+    background: url(../img/xiamian.png) no-repeat;
+    background-position: 14px center;
+}
+.shouqi{
+  background: url(../img/shangmian.png) no-repeat;
+  background-position: 14px center;
+}
+h1.border_b {
+    height: 1px;
+    border-bottom: 1px dashed #e3e3e7;
+    margin: 20px 0 20px 31px;
+}
+
+.column {
+    margin-bottom: 14px;
+}
+.column label {
+    float: left;
+    width: 100px;
+    text-align: right;
+    line-height: 30px;
+    color: #888;
+}
+
+.column .column_right {
+    padding-left: 100px;
+}
+
+.column .column_right input[type='text'] {
+    height: 28px;
+    border: 1px solid #e5e5e5;
+    padding: 0 5px;
+    width: 150px;
+    background-color: #fff;
+}
+.column .column_right select{
+     height: 30px;
+     border: 1px solid #e5e5e5;
+     width: 160px;
+}
+.selfCares,.expectedBirth{
+    display: none;
+}
+.expectedBirth input[type='checkbox'] {
+    margin-left: 10px;
+    margin-right: 5px;
+    width: 16px;
+    height: 16px;
+}
+.column .column_right input.address{
+        width: 498px;
+}
+.column .column_right select.mini{
+    width: 90px;
+}
+select[name='serviceType']{
+    display: none;
+}
+.orderInfo_list textarea {
+    resize: none;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    height: 40px;
+    width: 95%;
+    padding: 10px;
+}
+
+.column_tt {
+    float: left;
+    width: 50%;
+}
+ul.skills_ul, .skills ul {
+    margin-bottom: -10px;
+}
+ul.skills_ul li ,.skills ul li{
+    position: relative;
+    float: left;
+    line-height: 34px;
+    margin-right: 10px;
+    padding: 0 19px;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #4d4d4d;
+    margin-bottom: 10px;
+}
+ul.skills_ul li.active, .skills ul li.active {
+    border-color: #57abff;
+    background-image: url(../img/liactive.png);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    color: #57abff;
+}
+
+ul.skills_ul li input[type='checkbox'],.skills ul li input[type='checkbox']{
+    position: absolute;
+    -moz-opacity: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0;
+    z-index: 3;
+    cursor: pointer;
+    right: 0;
+    bottom: 0;
+}
+.cl-remarks .no_remark {
+    color: #bdbdbd;
+}
+
+.cl-remarks .no_remark span {
+    color: #218ae5;
+    cursor: pointer;
+}
+.cl-remarks textarea{
+    display: none;
+}

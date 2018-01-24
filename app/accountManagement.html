@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Cache-Control" CONTENT="no-cache">
+    	<meta http-equiv="Pragma" CONTENT="no-cache">
+		<title>您身边的，家政好帮手</title>
+		<link type="image/x-icon" href="/img/favicon.ico" rel="shortcut icon">
+		<link rel="stylesheet" type="text/css" href="css/global.css?v=0.01"/>
+		<link rel="stylesheet" type="text/css" href="css/accountManagement.css"/>
+	</head>
+	<body>
+		<input type="hidden" id="userType" value="">
+		<div id="layer"></div>
+		<!--达到上限-->
+		<div class="upperLimit">
+			<div class="ul-title clearfix">
+				<p>创建账号</p>
+				<a></a>
+			</div>
+			<div class="ul-content">
+				<p>可使用账号数已达上限</p>
+				<div class="clearfix">
+					<p>提示：<span>该版本为标准版，最多可创建5个账号。</span></p>
+
+				</div>
+			</div>
+			<a class="ul-btn">确定</a>
+		</div>
+
+		<!--删除账号-->
+		<div class="deleteAccount">
+			<input type="hidden" name="ids" value="" />
+			<div class="da-title">
+				<p>删除账号</p>
+				<a></a>
+			</div>
+			<div class="da-content">
+				<p>确定要删除账号？</p>
+				<span>删除账号后，该用户将无法登录。</span>
+			</div>
+			<div class="da-btn">
+				<a class="dab-left">取消</a>
+				<a class="dab-right">确定</a>
+			</div>
+		</div>
+
+		<div id="header" class="clearfix">
+			<div class="h-frame">
+				<div class="logo"><img src="img/logo.png"/></div>
+				<div class="h-right">
+					<div class="account">
+						<ul class="clearfix">
+							<!-- <li class="login"><a href="login.html">登录</a></li>
+							<li><a href="accountManagement.html">系统管理</a></li>
+							<li><a>退出</a></li> -->
+						</ul>
+					</div>
+					<div class="navigator">
+						<ul class="clearfix">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="naviLeft">
+			<ul>
+				<!-- <li class=""><a class="xgmm" href="resetPassword.html"><em></em>修改密码</a></li>
+				<li class="nl_on"><a class="zhgl" href="accountManagement.html"><em></em>账号管理</a></li> -->
+			</ul>
+		</div>
+
+		<div class="particulars">
+			<p class="paths">当前页面：系统管理 > 账号管理</p>
+			<div class="frame">
+				<div class="am-filter clearfix">
+					<p>
+						<label>账号</label>
+						<input type="text" name="loginAccount" value="" />
+					</p>
+					<p>
+						<label>姓名</label>
+						<input type="text" name="loginName" value="" />
+					</p>
+					<p>
+						<label>创建日期</label>
+						<input type="text" id="startCreateDate" class="runcode" name="startCreateDate" value="" readonly="readonly" placeholder="选择日期" /> ~
+						<input type="text" id="endCreateDate" class="runcode" name="endCreateDate" value="" readonly="readonly" placeholder="选择日期" />
+					</p>
+					<a>查询</a>
+				</div>
+
+				<div class="addAccount clearfix">
+					<a id="addNewId" href="#">+ 新建账号</a>
+				</div>
+
+				<table class="am-list">
+					<thead>
+						<tr>
+							<td>序号</td>
+							<td>账号</td>
+							<td>姓名</td>
+							<td>创建时间</td>
+							<td>状态</td>
+							<td>操作</td>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<script src="js/jquery-1.12.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/index.js?v=0.01" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="time/lhgcore.min.js"></script>
+    	<script type="text/javascript" src="time/lhgcalendar.min.js"></script>
+		<script type="text/javascript">
+			function getTenatsUserList(){
+				var loginAccount = $("input[name='loginAccount']").val();
+				var loginName = $("input[name='loginName']").val();
+				var startCreateDate = $("input[name='startCreateDate']").val();
+				var endCreateDate = $("input[name='endCreateDate']").val();
+				$.ajax({
+			        url: publicPath+"/api/index/getSession.do",
+			        type: "post",
+			        data: {},
+			        dataType: "json",
+							 async:false,
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	$("#userType").val(dataJD.userType);
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+				$.ajax({
+			        url: publicPath+"/api/user/getTenatsUserList",
+			        type: "post",
+			        data: {
+			        	loginAccount:loginAccount,
+			        	loginName:loginName,
+			        	startCreateDate:startCreateDate,
+			        	endCreateDate:endCreateDate
+			        },
+			        dataType: "json",
+			        async:false,
+			        success: function success(data) {
+			            if(data.success){
+			                if(data.code == 0){
+			                	var dataJD = data.jsonData;
+			                	var html = "";
+			                	$.each(dataJD, function(i,item) {
+			                		var n = i+1;
+
+			                		var oDate = new Date(item.addTime),
+						            oYear = oDate.getFullYear(),
+						            oMonth = oDate.getMonth()+1,
+						            oDay = oDate.getDate(),
+						            oHours = oDate.getHours(),
+						            oMinutes = oDate.getMinutes(),
+						            oSeconds = oDate.getSeconds(),
+						            oTime = oYear +'-'+ getzf(oMonth) +'-'+ getzf(oDay) +' '+ getzf(oHours) +':'+ getzf(oMinutes) +':'+ getzf(oSeconds);
+
+			                		var status = "";
+			                		if (item.isUsable == 1) {
+			                			status = "正常";
+			                		} else {
+			                			status = "失效";
+			                		}
+													if($("#userType").val()=="01"){
+														if(item.userType=="01"){
+															html+= "<tr data-id='"+item.id+"'>"+
+																			"<td>"+n+"</td>"+
+																			"<td>"+item.loginAccount+"</td>"+
+																			"<td>"+item.loginName+"</td>"+
+																			"<td>"+oTime+"</td>"+
+																			"<td>"+status+"</td>"+
+																			"<td>"+
+																			"</td>"+
+																		"</tr>";
+														}else {
+															html+= "<tr data-id='"+item.id+"'>"+
+																			"<td>"+n+"</td>"+
+																			"<td>"+item.loginAccount+"</td>"+
+																			"<td>"+item.loginName+"</td>"+
+																			"<td>"+oTime+"</td>"+
+																			"<td>"+status+"</td>"+
+																			"<td>"+
+																			"<a class='aml-revise' href='accountEdit.html?id="+item.id+"'>修改</a>"+
+																			"<a class='aml-delete'>删除</a>"+
+																			"</td>"+
+																		"</tr>";
+														}
+													}else if ($("#userType").val()=="02") {
+														if(item.userType=="01"||item.userType=="02"){
+															html+= "<tr data-id='"+item.id+"'>"+
+																			"<td>"+n+"</td>"+
+																			"<td>"+item.loginAccount+"</td>"+
+																			"<td>"+item.loginName+"</td>"+
+																			"<td>"+oTime+"</td>"+
+																			"<td>"+status+"</td>"+
+																			"<td>"+
+																			"</td>"+
+																		"</tr>";
+														}else {
+															html+= "<tr data-id='"+item.id+"'>"+
+																			"<td>"+n+"</td>"+
+																			"<td>"+item.loginAccount+"</td>"+
+																			"<td>"+item.loginName+"</td>"+
+																			"<td>"+oTime+"</td>"+
+																			"<td>"+status+"</td>"+
+																			"<td>"+
+																			"<a class='aml-revise' href='accountEdit.html?id="+item.id+"'>修改</a>"+
+																			"<a class='aml-delete'>删除</a>"+
+																			"</td>"+
+																		"</tr>";
+														}
+													}
+
+			                	});
+												$(".am-list tbody").html(html);
+
+
+			                	// $(".am-list tbody tr").each(function(){
+												// 		if ($(this).index()>0) {
+				                // 			var id = $(this).data("id");
+				                // 			$(this).find("td").eq(5).html("<a class='aml-revise' href='accountEdit.html?id="+id+"'>修改</a><a class='aml-delete'>删除</a>");
+				                // 		}
+			                	// })
+			                	console.log(data.msg);
+			                }else{
+			                    console.log(data.msg);
+			                }
+			            }else{
+			                console.log(data.msg);
+			            }
+			        }
+			    });
+			}
+
+
+			function getzf(num){
+	            if(parseInt(num) < 10){
+	                num = '0'+num;
+	            }
+	            return num;
+	        }
+
+			$(function(){
+//				$('#header').load('header.html?v=0.01',function(){
+//					$(".navigator ul li a").removeClass("navi-on");
+//					$(".navigator ul li").eq(6).children().addClass("navi-on");
+//				});
+
+				J('#startCreateDate').calendar({maxDate:'#endCreateDate'});
+				J('#endCreateDate').calendar({minDate:'#startCreateDate'});
+
+				getTenatsUserList();
+
+			$.ajax({
+					url: publicPath+"/api/user/getUserSysSetting",
+					type: "get",
+					data: {},
+					dataType: "json",
+					success: function success(data) {
+							if(data.success){
+								if(data.code == 0){
+								var naviLeft1 = data.jsonData[0].subMenuList;
+								$(".naviLeft ul").empty();
+								for (var i=0;i<naviLeft1.length;i++) {
+									$(".naviLeft ul").append("<li><a href='"+naviLeft1[i].href+"'><em></em>"+naviLeft1[i].name+"</a></li>")
+								}
+								$(".naviLeft ul li").each(function(){
+									if ($(this).index()==0) {
+										$(this).children("a").addClass("xgmm");
+									} else if ($(this).index()==1) {
+										$(this).children("a").addClass("zhgl");
+									}
+								})
+
+								var UrlLeft = location.href;
+								if (UrlLeft.indexOf("resetPassword")!=-1) {
+									$(".naviLeft li").eq(0).addClass("nl_on");
+								}else if (UrlLeft.indexOf("accountManagement")!=-1||UrlLeft.indexOf("accountEdit")!=-1) {
+									$(".naviLeft li").eq(1).addClass("nl_on");
+								} 
+							}
+						}
+					}
+				})
+			    $.ajax({
+				        url: publicPath+"/api/user/getUserPermission",
+				        type: "post",
+				        data: {},
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	console.log(data.msg);
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				            	if (data.code == "100014") {
+
+				            	}
+				                console.log(data.msg);
+				            }
+				        }
+				    });
+
+
+//			    筛选
+				$(".am-filter a").click(function(){
+//					var loginAccount = $("input[name='loginAccount']").val();
+//					var loginName = $("input[name='loginName']").val();
+//					var startCreateDate = $("input[name='startCreateDate']").val();
+//					var endCreateDate = $("input[name='endCreateDate']").val();
+					getTenatsUserList()
+				});
+
+
+				$(".am-list").on("click",".aml-delete",function(){
+					var ids = $(this).parents("tr").data("id");
+					$("input[name=ids]").val(ids);
+					$("#layer,.deleteAccount").show();
+				})
+//新建账号
+			$("#addNewId").click(function(){
+				if($(".am-list tr").length>5){
+					$("#layer,.upperLimit").show();
+				}else {
+					window.location.href="accountEdit.html";
+				}
+			});
+			$(".upperLimit .ul-title a,.ul-btn").click(function(){
+				$("#layer,.upperLimit").hide();
+			});
+
+//				删除账号
+				$(".dab-right").click(function(){
+					var ids = $("input[name='ids']").val();
+					$.ajax({
+				        url: publicPath+"/api/user/deleteTenatsUser",
+				        type: "post",
+				        data: {
+				        	ids:ids
+				        },
+				        dataType: "json",
+				        success: function success(data) {
+				            if(data.success){
+				                if(data.code == 0){
+				                	location.reload();
+				                	console.log(data.msg);
+				                }else{
+				                    console.log(data.msg);
+				                }
+				            }else{
+				            	if (data.code == "100014") {
+
+				            	}
+				                console.log(data.msg);
+				            }
+				        }
+				    });
+				})
+
+				$(".deleteAccount .da-title a,.dab-left").click(function(){
+					$("#layer,.deleteAccount").hide();
+				})
+			})
+		</script>
+	</body>
+</html>

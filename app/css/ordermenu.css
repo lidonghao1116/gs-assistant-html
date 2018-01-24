@@ -1,0 +1,37 @@
+
+.naviLeft {width: 188px;background-color: #EBEFF8;position: fixed;}
+.naviLeft ul {margin-top: 30px;}
+.naviLeft ul li {line-height: 44px;vertical-align: top;cursor: pointer;margin-bottom: 5px;}
+.naviLeft ul li a { display: block; padding-left: 80px; font-size: 16px; position: relative; }
+.naviLeft ul li a:link {color: #333333;}
+.naviLeft ul li a:visited {color: #333333;}
+.naviLeft ul li a em { width: 20px; height: 24px; background-image: url(../img/ordermenu.png);position: absolute;top: 10px;left: 40px;background-repeat: no-repeat;}
+.naviLeft ul li.nl_on>a em {background-image: url(../img/ordermenu_on.png);}
+.naviLeft ul .nl_on {background-color: #FFF;}
+.naviLeft ul li.nl_on>a {color: #0A7EE3;}
+.naviLeft ul li .ddgl em {background-position: 0px 3px;}
+.naviLeft ul li .hzqd em {background-position: 0px -40px;}
+.naviLeft ul li .zpgl em { background-position: 0px -78px;}
+.naviLeft ul li .jlx em {background-position: 0px -118px;}
+.naviLeft ul li:hover a em {background-image: url(../img/ordermenu_on.png)!important;}
+.naviLeft ul li:hover {background-color: #FFF;}
+.naviLeft ul li:hover>a {color: #0A7EE3;}
+.selector .more_selector {
+    position: absolute;
+    width: 60px;
+    line-height: 36px;
+    padding: 0 30px;
+    left: 50%;
+    margin-left: -60px;
+    bottom: -36px;
+    background: url(../img/moreDown.png) no-repeat;
+    background-position: 70px center;
+    background-color: #f5f5f5;
+    color: #0a7ee3;
+    cursor: pointer;
+}
+.selector .up_selector {
+    background: url(../img/moreUp.png) no-repeat;
+    background-position: 70px center;
+    background-color: #f5f5f5;
+}
